@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/inter';
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+@theme {
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --color-granito-50: #f6f4ef;
+  --color-granito-100: #ebe7de;
+  --color-granito-300: #c4bfb2;
+  --color-granito-500: #8a8c8f;
+  --color-granito-700: #4a4f57;
+  --color-pino-400: #3f8a68;
+  --color-pino-500: #2d6a4f;
+  --color-pino-700: #1f4d3a;
+  --color-alba-300: #ffd9a0;
+  --color-alba-500: #f2a65a;
+  --color-alba-600: #e08a35;
+  --color-noche-700: #1b2c44;
+  --color-noche-900: #0e1b2c;
+  --color-bien: #3f8a68;
+  --color-regular: #e5b23a;
+  --color-mal: #d1553f;
+}
+
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --ink: #14202e;
+  --ink-soft: #4a5565;
+  --line: #e4dfd3;
+  --accent: #2d6a4f;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --bg: #0e1b2c;
+  --surface: #16273d;
+  --ink: #eef1f5;
+  --ink-soft: #a9b6c7;
+  --line: #243751;
+  --accent: #5fb88f;
+  color-scheme: dark;
+}
+:root[data-theme='rojo'] {
+  --bg: #100303;
+  --surface: #1c0606;
+  --ink: #ff6a5a;
+  --ink-soft: #c0453a;
+  --line: #3a0e0c;
+  --accent: #ff4a3a;
+  color-scheme: dark;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.4;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+button { font: inherit; color: inherit; touch-action: manipulation; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+.tap { min-height: 48px; min-width: 48px; }
+
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 180ms; }
+@media (prefers-reduced-motion: reduce) {
+  *, ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
