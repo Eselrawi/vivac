@@ -42,6 +42,10 @@ for (const e of osm.elements) {
   else if (/chozo|majada|corral/.test(txt)) { kind = 'abrigo'; shelter = 'techo' }
   else if (/refugio/.test(txt)) { kind = 'refugio_libre'; shelter = 'cerrado' }
   if (!kind) continue
+  // En OSM los parapetos de la sierra suelen llamarse «Vivac …»: son muros de piedra para resguardarse.
+  if (/vivac/i.test(txt) && (kind === 'refugio_libre' || kind === 'abrigo')) {
+    if (/cueva|cova|abrigo|covachuela/i.test(txt)) { kind = 'abrigo'; shelter = 'techo' } else { kind = 'parapeto'; shelter = 'parapeto' }
+  }
   if (kind === 'cumbre' && (!ele || ele < 1800)) continue
   if (kind === 'refugio_pago' && !((ele ?? 0) >= 1000 || /zabala|giner|palancar|cotos|fuenfr|vals|rascaf|navacerr|pedriza|cercedilla|canencia|barranca|penalara|peñalara/i.test(txt))) continue
   if (/majada|corral/.test(txt) && !t.amenity && !t.tourism && !t.building) extra = { ...extra, toponym: true }

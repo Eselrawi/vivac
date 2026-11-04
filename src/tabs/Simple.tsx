@@ -9,4 +9,3 @@ export function Empty({ emoji, title, text }: { emoji: string; title: string; te
 }
 
 export const Diario = () => <Empty emoji="📖" title="Vuestro diario" text="Cada noche que durmáis fuera aparecerá aquí, con fotos y recuerdos." />
-export const Mochila = () => <Empty emoji="🎒" title="Tu mochila" text="Apunta tu material una vez y la app te dirá qué llevar cada noche." />

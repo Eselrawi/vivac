@@ -1,6 +1,7 @@
 import Dexie, { liveQuery, type Table } from 'dexie'
 import { useEffect, useState } from 'react'
 import type { Place } from './types'
+import type { GearItem } from './pack'
 
 export interface VivacRecord {
   id: string
@@ -18,9 +19,13 @@ export interface VivacRecord {
 
 class VivacDB extends Dexie {
   vivacs!: Table<VivacRecord, string>
+  gear!: Table<GearItem, string>
+  kv!: Table<{ k: string; v: unknown }, string>
   constructor() {
     super('vivac')
     this.version(1).stores({ vivacs: 'id, at, synced, kind' })
+    this.version(2).stores({ vivacs: 'id, at, synced, kind', kv: 'k' })
+    this.version(3).stores({ vivacs: 'id, at, synced, kind', kv: 'k', gear: 'id, cat' })
   }
 }
 

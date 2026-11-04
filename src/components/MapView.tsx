@@ -59,12 +59,12 @@ function addIcons(m: maplibregl.Map) {
   }
 }
 
-const toGeo = (places: Place[]): FeatureCollection => ({
+const toGeo = (places: Place[], scoreMode = false): FeatureCollection => ({
   type: 'FeatureCollection',
   features: places.map((p) => ({
     type: 'Feature',
     geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
-    properties: { id: p.id, name: p.name, icon: `${p.kind}${p.visited ? '-v' : ''}`, prio: p.kind === 'cumbre' ? 0 : p.kind === 'fuente' ? 1 : 2 },
+    properties: { id: p.id, name: p.name, icon: scoreMode && p.score != null ? `s${p.score}` : `${p.kind}${p.visited ? '-v' : ''}`, prio: p.kind === 'cumbre' ? 0 : p.kind === 'fuente' ? 1 : 2 },
   })),
 })
 
@@ -74,9 +74,12 @@ interface Props {
   onSelect: (p: Place) => void
   is3D: boolean
   layer: BaseLayer
+  scoreMode?: boolean
 }
 
-export default function MapView({ places, selectedId, onSelect, is3D, layer }: Props) {
+export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false }: Props) {
+  const scoreRef = useRef(scoreMode)
+  scoreRef.current = scoreMode
   const el = useRef<HTMLDivElement>(null)
   const map = useRef<maplibregl.Map | null>(null)
   const ready = useRef(false)
@@ -94,9 +97,23 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer }: P
     map.current = m
     ;(window as unknown as { __map?: unknown }).__map = m
 
+    m.on('styleimagemissing', (e) => {
+      const mm = /^s(d+)$/.exec(e.id)
+      if (!mm || m.hasImage(e.id)) return
+      const sc = +mm[1]
+      const c = document.createElement('canvas'); c.width = c.height = 64
+      const g = c.getContext('2d')!
+      g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 6; g.shadowOffsetY = 2
+      g.beginPath(); g.arc(32, 32, 24, 0, Math.PI * 2)
+      g.fillStyle = sc >= 70 ? '#3f8a68' : sc >= 45 ? '#e5b23a' : '#d1553f'; g.fill()
+      g.shadowColor = 'transparent'; g.lineWidth = 4; g.strokeStyle = '#fff'; g.stroke()
+      g.fillStyle = sc >= 45 && sc < 70 ? '#14202e' : '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.font = 'bold 24px Inter, sans-serif'
+      g.fillText(String(sc), 32, 34)
+      m.addImage(e.id, g.getImageData(0, 0, 64, 64), { pixelRatio: 2 })
+    })
     m.on('load', () => {
       addIcons(m)
-      m.addSource('places', { type: 'geojson', data: toGeo(placesRef.current), cluster: true, clusterRadius: 46, clusterMaxZoom: 12 })
+      m.addSource('places', { type: 'geojson', data: toGeo(placesRef.current, scoreRef.current), cluster: true, clusterRadius: 46, clusterMaxZoom: 12 })
       m.addLayer({ id: 'clusters', type: 'circle', source: 'places', filter: ['has', 'point_count'], paint: { 'circle-color': '#1f4d3a', 'circle-radius': ['step', ['get', 'point_count'], 16, 10, 20, 50, 26], 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
       m.addLayer({ id: 'cluster-n', type: 'symbol', source: 'places', filter: ['has', 'point_count'], layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Open Sans Semibold'], 'text-size': 13 }, paint: { 'text-color': '#fff' } })
       m.addLayer({
@@ -148,8 +165,8 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer }: P
   }, [is3D])
 
   useEffect(() => {
-    whenReady((m) => (m.getSource('places') as GeoJSONSource | undefined)?.setData(toGeo(placesRef.current)))
-  }, [places])
+    whenReady((m) => (m.getSource('places') as GeoJSONSource | undefined)?.setData(toGeo(placesRef.current, scoreRef.current)))
+  }, [places, scoreMode])
 
   useEffect(() => {
     const p = places.find((x) => x.id === selectedId)

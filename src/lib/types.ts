@@ -25,6 +25,8 @@ export interface Place {
   verified: boolean
   source: string
   visited?: number
+  eleDem?: boolean
+  score?: number
   unnamed?: boolean
   toponym?: boolean
   capacity?: string

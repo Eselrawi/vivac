@@ -1,70 +1,211 @@
 import { useMemo, useState } from 'react'
-import clsx from 'clsx'
-import * as SunCalc from 'suncalc'
-import { HOME, KIND_LABEL, type Place } from '../lib/types'
+import { CloudOff, List, Map as MapIcon, RefreshCw, ThermometerSnowflake } from 'lucide-react'
+import MapView from '../components/MapView'
+import { Dot, Illustration, ScoreRing } from '../components/ui'
+import { evaluate, type Ctx, type Entry } from '../lib/plan'
+import { hhmm } from '../lib/access'
+import { compass, fmtDur } from '../lib/geo'
+import { SLEEP_KINDS, KIND_LABEL, type Place } from '../lib/types'
 
 const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
+type Fee = 'todos' | 'gratis' | 'pago'
+type Near = 0 | 90 | 120
 
-function useDays(n = 14) {
-  return useMemo(() => {
-    const out: { date: Date; label: string; sub: string }[] = []
-    for (let i = 0; i < n; i++) {
-      const d = new Date()
-      d.setDate(d.getDate() + i)
-      d.setHours(12, 0, 0, 0)
-      out.push({ date: d, label: i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : DIAS[d.getDay()], sub: String(d.getDate()) })
-    }
-    return out
-  }, [n])
+interface Props {
+  places: Place[]
+  days: Date[]
+  dayIdx: number
+  onDay: (i: number) => void
+  ctx: Ctx
+  status: { loading: boolean; error: boolean; refresh: () => void }
+  onOpen: (p: Place) => void
 }
 
-export default function Dormir({ places, onOpen }: { places: Place[]; onOpen: (p: Place) => void }) {
-  const days = useDays()
-  const [sel, setSel] = useState(0)
-  const day = days[sel]
-  const sun = SunCalc.getTimes(day.date, HOME.lat, HOME.lng)
-  const fmt = (d: Date | null) => !d ? '--:--' : d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
-  const sleepable = places.filter((p) => p.kind !== 'parking' && p.kind !== 'fuente')
+const keyData = (e: Entry) => {
+  const s = e.stats
+  const bits = [`${Math.round(s.feels).toString().replace('-', '−')} °C sensación`]
+  if (e.score.shelter.wind <= 0.35 && s.windMean >= 12) bits.push(`cubierto del ${compass(s.dir)}`)
+  else if (s.windMean >= 20) bits.push(`${compass(s.dir)} ${Math.round(s.windMean)} km/h`)
+  if (s.snow >= 1) bits.push('nieve')
+  else if (s.precip >= 1) bits.push('lluvia')
+  return bits.join(' · ')
+}
+
+const Chip = ({ on, children, onClick }: { on: boolean; children: React.ReactNode; onClick: () => void }) => (
+  <button onClick={onClick} aria-pressed={on} className="tap shrink-0 rounded-full px-4 text-sm font-semibold" style={{ background: on ? 'var(--accent)' : 'var(--surface)', color: on ? '#fff' : 'var(--ink)', minHeight: 40 }}>
+    {children}
+  </button>
+)
+
+export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpen }: Props) {
+  const [view, setView] = useState<'lista' | 'mapa'>('lista')
+  const [fee, setFee] = useState<Fee>('todos')
+  const [near, setNear] = useState<Near>(0)
+  const [techo, setTecho] = useState(false)
+  const [parapeto, setParapeto] = useState(false)
+  const [stars, setStars] = useState(false)
+  const [noSnow, setNoSnow] = useState(false)
+  const [never, setNever] = useState(false)
+  const [lowToo, setLowToo] = useState(false)
+  const [limit, setLimit] = useState(40)
+
+  const sleepable = useMemo(() => places.filter((p) => SLEEP_KINDS.includes(p.kind) && !(p.kind === 'abrigo' && p.toponym)), [places])
+
+  // Todas las noches de todos los días (para los puntitos de la tira y el modo inverso).
+  const grid = useMemo(() => days.map((d) => sleepable.map((p) => evaluate(p, d, ctx))), [days, sleepable, ctx])
+  const dots = useMemo(
+    () => grid.map((col) => {
+      const top = col.filter(Boolean).map((e) => e!.score.score).sort((a, b) => b - a).slice(0, 3)
+      return top.length ? Math.round(top.reduce((a, b) => a + b, 0) / top.length) : null
+    }),
+    [grid],
+  )
+
+  const ranked = useMemo(() => {
+    const list = grid[dayIdx].filter((e): e is Entry => !!e).filter((e) => {
+      const p = e.place
+      if (fee === 'gratis' && p.kind === 'refugio_pago') return false
+      if (fee === 'pago' && p.kind !== 'refugio_pago') return false
+      if (near && !(e.access[0] && e.access[0].totalMin <= near)) return false
+      if (techo && !(p.shelter === 'cerrado' || p.shelter === 'techo' || p.kind === 'refugio_libre' || p.kind === 'refugio_pago')) return false
+      if (parapeto && p.shelter !== 'parapeto') return false
+      if (stars && !(e.stats.cloud < 30 && e.moon.fraction < 0.4)) return false
+      if (noSnow && (e.stats.snowDepth >= 0.03 || e.stats.snow > 0.2)) return false
+      if (never && p.visited) return false
+      if (!lowToo && p.kind !== 'vivac' && p.kind !== 'deseo' && (p.ele ?? 9999) < 1200) return false
+      return true
+    })
+    const rank = (e: Entry) => e.score.score - (e.place.unnamed ? 25 : 0)
+    return list.sort((a, b) => rank(b) - rank(a) || (a.access[0]?.totalMin ?? 999) - (b.access[0]?.totalMin ?? 999))
+  }, [grid, dayIdx, fee, near, techo, parapeto, stars, noSnow, never, lowToo])
+
+  const top = ranked[0]
+  const d = days[dayIdx]
+  const dayLabel = dayIdx === 0 ? 'hoy' : dayIdx === 1 ? 'mañana' : d.toLocaleDateString('es-ES', { weekday: 'long' })
+  const scored = useMemo(() => ranked.map((e) => ({ ...e.place, score: e.score.score })), [ranked])
+  const pick = (id: string) => { const p = places.find((x) => x.id === id); if (p) onOpen(p) }
+
+  const price = (p: Place) => (p.kind === 'refugio_pago' ? <span className="ml-2 rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ background: '#e08a3533', color: '#b3641c' }}>De pago · consultar</span> : null)
 
   return (
-    <div className="mx-auto max-w-xl px-4 pb-32" style={{ paddingTop: 'calc(var(--safe-t) + 16px)' }}>
-      <h1 className="text-3xl font-semibold">¿Dónde dormimos?</h1>
-      <div className="no-scrollbar -mx-4 mt-4 flex gap-2 overflow-x-auto px-4 pb-2">
-        {days.map((d, i) => (
-          <button
-            key={i}
-            onClick={() => setSel(i)}
-            className={clsx('tap flex min-w-16 flex-col items-center rounded-2xl px-3 py-2 font-semibold transition-colors')}
-            style={{ background: i === sel ? 'var(--accent)' : 'var(--surface)', color: i === sel ? '#fff' : 'var(--ink)' }}
-          >
-            <span className="text-xs opacity-80">{d.label}</span>
-            <span className="text-xl">{d.sub}</span>
+    <div className="mx-auto max-w-xl pb-40" style={{ paddingTop: 'calc(var(--safe-t) + 60px)' }}>
+      <div className="flex items-end justify-between gap-3 px-4">
+        <h1 className="text-3xl font-semibold leading-tight">¿Dónde dormimos?</h1>
+        <button onClick={status.refresh} aria-label="Actualizar previsión" className="tap grid h-11 w-11 place-items-center rounded-full" style={{ background: 'var(--surface)' }}>
+          {status.error ? <CloudOff size={20} /> : <RefreshCw size={20} className={status.loading ? 'animate-spin' : ''} />}
+        </button>
+      </div>
+
+      <div className="no-scrollbar mt-4 flex gap-2 overflow-x-auto px-4 pb-1" role="tablist" aria-label="Día">
+        {days.map((dd, i) => (
+          <button key={i} role="tab" aria-selected={i === dayIdx} onClick={() => onDay(i)} className="tap flex min-w-[4.4rem] flex-col items-center rounded-2xl px-3 py-2 font-semibold transition-colors" style={{ background: i === dayIdx ? 'var(--accent)' : 'var(--surface)', color: i === dayIdx ? '#fff' : 'var(--ink)' }}>
+            <span className="text-xs opacity-80">{i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : DIAS[dd.getDay()]}</span>
+            <span className="text-xl leading-tight">{dd.getDate()}</span>
+            <span className="mt-0.5 rounded-full" style={{ boxShadow: i === dayIdx ? "0 0 0 2px #fff" : "none" }}><Dot score={dots[i]} size={9} /></span>
           </button>
         ))}
       </div>
 
-      <p className="mt-3 text-sm" style={{ color: 'var(--ink-soft)' }}>
-        Puesta de sol en {HOME.name}: <b>{fmt(sun.sunset)}</b> · Amanece a las <b>{fmt(sun.sunrise)}</b>
-      </p>
+      {status.error && !ctx.wx && <p className="mx-4 mt-3 rounded-2xl p-3 text-sm" style={{ background: '#e5b23a33' }}>No he podido cargar la previsión. Prueba con cobertura y pulsa el botón de actualizar.</p>}
+      {status.error && ctx.wx && <p className="mx-4 mt-3 text-xs" style={{ color: 'var(--ink-soft)' }}>Sin cobertura: se muestra la última previsión guardada ({new Date(ctx.wx.fetchedAt).toLocaleString('es-ES', { weekday: 'short', hour: '2-digit', minute: '2-digit' })}).</p>}
 
-      <h2 className="mt-6 text-xl font-semibold">Sitios para dormir</h2>
-      {sleepable.length === 0 ? (
-        <div className="mt-3 rounded-3xl p-8 text-center" style={{ background: 'var(--surface)' }}>
-          <div className="text-5xl">🏔️</div>
-          <p className="font-display mt-3 text-xl font-semibold">Aún no hay sitios</p>
-          <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>Pulsa + y cuéntanos dónde dormisteis.</p>
+      <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4">
+        <Chip on={near === 90} onClick={() => setNear(near === 90 ? 0 : 90)}>Cerca &lt; 1 h 30</Chip>
+        <Chip on={near === 120} onClick={() => setNear(near === 120 ? 0 : 120)}>&lt; 2 h</Chip>
+        <Chip on={techo} onClick={() => setTecho(!techo)}>Con techo</Chip>
+        <Chip on={parapeto} onClick={() => setParapeto(!parapeto)}>Parapeto</Chip>
+        <Chip on={stars} onClick={() => setStars(!stars)}>Estrellas</Chip>
+        <Chip on={noSnow} onClick={() => setNoSnow(!noSnow)}>Sin nieve</Chip>
+        <Chip on={never} onClick={() => setNever(!never)}>Nunca hemos ido</Chip>
+        <Chip on={lowToo} onClick={() => setLowToo(!lowToo)}>Incluir &lt; 1.200 m</Chip>
+      </div>
+      <div className="mt-2 flex items-center justify-between gap-2 px-4">
+        <div className="inline-flex rounded-full p-1" style={{ background: 'var(--surface)' }} role="group" aria-label="Precio">
+          {(['todos', 'gratis', 'pago'] as Fee[]).map((f) => (
+            <button key={f} onClick={() => setFee(f)} className="tap rounded-full px-3 text-sm font-semibold" style={{ minHeight: 36, background: fee === f ? 'var(--accent)' : 'transparent', color: fee === f ? '#fff' : 'var(--ink)' }}>{f === 'todos' ? 'Todos' : f === 'gratis' ? 'Gratis' : 'De pago'}</button>
+          ))}
+        </div>
+        <div className="inline-flex rounded-full p-1" style={{ background: 'var(--surface)' }} role="group" aria-label="Vista">
+          <button onClick={() => setView('lista')} aria-label="Lista" aria-pressed={view === 'lista'} className="tap grid place-items-center rounded-full px-3" style={{ minHeight: 36, background: view === 'lista' ? 'var(--accent)' : 'transparent', color: view === 'lista' ? '#fff' : 'var(--ink)' }}><List size={18} /></button>
+          <button onClick={() => setView('mapa')} aria-label="Mapa" aria-pressed={view === 'mapa'} className="tap grid place-items-center rounded-full px-3" style={{ minHeight: 36, background: view === 'mapa' ? 'var(--accent)' : 'transparent', color: view === 'mapa' ? '#fff' : 'var(--ink)' }}><MapIcon size={18} /></button>
+        </div>
+      </div>
+
+      {!ctx.wx ? (
+        <div className="mx-4 mt-6 rounded-3xl p-8 text-center" style={{ background: 'var(--surface)' }}>
+          <ThermometerSnowflake className="mx-auto" size={40} />
+          <p className="font-display mt-3 text-xl font-semibold">Mirando el cielo…</p>
+          <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>Estoy pidiendo la previsión de varios modelos para toda la sierra.</p>
+        </div>
+      ) : view === 'mapa' ? (
+        <div className="relative mx-4 mt-4 overflow-hidden rounded-3xl" style={{ height: '58vh' }}>
+          <MapView places={scored} onSelect={(p) => pick(p.id)} is3D={false} layer="mtn" scoreMode />
+        </div>
+      ) : ranked.length === 0 ? (
+        <div className="mx-4 mt-6 rounded-3xl p-8 text-center" style={{ background: 'var(--surface)' }}>
+          <p className="text-5xl">🏔️</p>
+          <p className="font-display mt-3 text-xl font-semibold">Ningún sitio con esos filtros</p>
+          <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>Quita algún filtro para ver más opciones.</p>
         </div>
       ) : (
-        <ul className="mt-3 flex flex-col gap-3">
-          {sleepable.map((p) => (
-            <li key={p.id}>
-              <button onClick={() => onOpen(p)} className="tap w-full rounded-2xl p-4 text-left shadow-sm" style={{ background: 'var(--surface)' }}>
-                <span className="block text-lg font-bold">{p.name}</span>
-                <span className="text-sm" style={{ color: 'var(--ink-soft)' }}>{KIND_LABEL[p.kind]}</span>
+        <>
+          <section className="px-4">
+            <h2 className="mt-5 text-xl font-semibold">La mejor noche para {dayLabel}</h2>
+            {top && (
+              <button onClick={() => onOpen(top.place)} className="mt-3 block w-full overflow-hidden rounded-3xl text-left shadow-lg active:scale-[0.99]" style={{ background: 'var(--surface)' }}>
+                <div className="relative h-44">
+                  <Illustration kind={top.place.kind} className="h-full w-full" />
+                  <div className="absolute inset-x-0 bottom-0 h-24" style={{ background: 'linear-gradient(transparent, rgba(0,0,0,.55))' }} />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
+                    <div><p className="text-xs font-bold uppercase tracking-wider opacity-90">{KIND_LABEL[top.place.kind]}{top.place.ele ? ` · ${top.place.ele} m` : ''}</p><p className="font-display text-2xl font-semibold leading-tight">{top.place.name}</p></div>
+                  </div>
+                  <div className="absolute right-3 top-3 rounded-full p-1" style={{ background: 'var(--surface)' }}><ScoreRing score={top.score.score} size={56} /></div>
+                </div>
+                <div className="p-4">
+                  <p className="font-display text-lg leading-snug">{top.text}</p>
+                  {top.access[0] && (
+                    <p className="mt-2 text-sm font-semibold">
+                      🚗 {fmtDur(top.access[0].driveMin)} + 🥾 {fmtDur(top.access[0].walkMin)} desde casa
+                      {top.leave && <> · sal antes de las {hhmm(top.leave)}</>}
+                    </p>
+                  )}
+                  <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>Puesta de sol {hhmm(top.night.sunset)} · amanece {hhmm(top.night.sunrise)} (en {top.place.name})</p>
+                  <span className="tap mt-3 flex items-center justify-center rounded-2xl font-bold text-white" style={{ background: 'var(--accent)' }}>Ver y planear</span>
+                </div>
               </button>
-            </li>
-          ))}
-        </ul>
+            )}
+            {ranked.length > 1 && (
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                {ranked.slice(1, 3).map((e) => (
+                  <button key={e.place.id} onClick={() => onOpen(e.place)} className="overflow-hidden rounded-3xl text-left shadow-sm active:scale-[0.98]" style={{ background: 'var(--surface)' }}>
+                    <div className="relative h-24"><Illustration kind={e.place.kind} className="h-full w-full" /><div className="absolute right-2 top-2 rounded-full p-0.5" style={{ background: 'var(--surface)' }}><ScoreRing score={e.score.score} size={40} /></div></div>
+                    <div className="p-3"><p className="line-clamp-2 font-bold leading-tight">{e.place.name}</p><p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>{keyData(e)}</p></div>
+                  </button>
+                ))}
+              </div>
+            )}
+          </section>
+
+          <section className="mt-6 px-4">
+            <h2 className="text-xl font-semibold">Todos los sitios <span className="text-sm font-normal" style={{ color: 'var(--ink-soft)' }}>({ranked.length})</span></h2>
+            <ul className="mt-3 flex flex-col gap-2.5">
+              {ranked.slice(3, limit).map((e) => (
+                <li key={e.place.id}>
+                  <button onClick={() => onOpen(e.place)} className="tap flex w-full items-center gap-3 rounded-2xl p-3 text-left active:scale-[0.99]" style={{ background: 'var(--surface)' }}>
+                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl"><Illustration kind={e.place.kind} className="h-full w-full" /></div>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate font-bold">{e.place.name}{price(e.place)}</p>
+                      <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>{KIND_LABEL[e.place.kind]}{e.place.ele ? ` · ${e.place.ele} m` : ''}{e.access[0] ? ` · 🚗 ${fmtDur(e.access[0].driveMin)} + 🥾 ${fmtDur(e.access[0].walkMin)}` : ''}</p>
+                      <p className="truncate text-xs font-semibold">{keyData(e)}</p>
+                    </div>
+                    <ScoreRing score={e.score.score} size={46} />
+                  </button>
+                </li>
+              ))}
+            </ul>
+            {ranked.length > limit && <button onClick={() => setLimit(limit + 40)} className="tap mt-3 w-full rounded-2xl font-semibold" style={{ background: 'var(--surface)' }}>Ver más</button>}
+          </section>
+        </>
       )}
     </div>
   )
