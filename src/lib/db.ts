@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import type { Place } from './types'
 import type { GearItem } from './pack'
 
+export interface TrackRecord { id: string; name: string; coords: [number, number, number?][]; at: number; source: 'import' | 'rec'; vivacId?: string }
+
 export interface VivacRecord {
   id: string
   name: string
@@ -19,6 +21,7 @@ export interface VivacRecord {
 
 class VivacDB extends Dexie {
   vivacs!: Table<VivacRecord, string>
+  tracks!: Table<TrackRecord, string>
   gear!: Table<GearItem, string>
   kv!: Table<{ k: string; v: unknown }, string>
   constructor() {
@@ -26,6 +29,7 @@ class VivacDB extends Dexie {
     this.version(1).stores({ vivacs: 'id, at, synced, kind' })
     this.version(2).stores({ vivacs: 'id, at, synced, kind', kv: 'k' })
     this.version(3).stores({ vivacs: 'id, at, synced, kind', kv: 'k', gear: 'id, cat' })
+    this.version(4).stores({ vivacs: 'id, at, synced, kind', kv: 'k', gear: 'id, cat', tracks: 'id, at' })
   }
 }
 

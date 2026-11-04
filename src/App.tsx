@@ -4,6 +4,7 @@ import BottomNav, { type Tab } from './components/BottomNav'
 import Fab from './components/Fab'
 import PlaceSheet from './components/PlaceSheet'
 import PlanSheet from './components/PlanSheet'
+import Welcome, { WELCOME_KEY } from './components/Welcome'
 import ProfileSheet from './components/ProfileSheet'
 import RecordSheet from './components/RecordSheet'
 import Dormir from './tabs/Dormir'
@@ -26,12 +27,12 @@ export default function App() {
   const [dayIdx, setDayIdx] = useState(0)
   const acc = useAccount()
   const [profile, setProfile] = useState(false)
+  const [welcome, setWelcome] = useState(() => !localStorage.getItem(WELCOME_KEY))
   const [rec, setRec] = useState<'vivac' | 'deseo' | null>(null)
 
   const prefs = usePrefs()
   const ovr = useOverrides()
   const days = useDays(10)
-  const drive = useDrive()
   const catalog = useCatalog()
   const mine = useLive(async () => (await db.vivacs.toArray()).map(recordToPlace), [] as Place[])
 
@@ -45,6 +46,7 @@ export default function App() {
   }, [catalog, mine, ovr])
 
   const parkings = useMemo(() => places.filter((p) => p.kind === 'parking'), [places])
+  const drive = useDrive(prefs, parkings)
   const wxPlaces = useMemo(() => catalog.filter((p) => SLEEP_KINDS.includes(p.kind) || p.kind === 'parking'), [catalog])
   const weather = useWeather(wxPlaces)
   const ctx: Ctx = useMemo(() => ({ wx: weather.wx, parkings, drive, prefs }), [weather.wx, parkings, drive, prefs])
@@ -84,7 +86,8 @@ export default function App() {
       </div>
       {(tab === 'dormir' || tab === 'mapa') && <Fab onPick={(id) => id !== 'refugio' && setRec(id === 'ir' ? 'deseo' : 'vivac')} />}
       <button aria-label="Perfil" onClick={() => setProfile(true)} className="tap fixed left-3 z-20 grid h-11 w-11 place-items-center rounded-full shadow-lg" style={{ top: 'calc(var(--safe-t) + 12px)', background: acc.session ? 'var(--accent)' : 'var(--surface)', color: acc.session ? '#fff' : 'var(--ink)' }}><User size={22} /></button>
-      <ProfileSheet open={profile} onClose={() => setProfile(false)} acc={acc} />
+      <ProfileSheet open={profile} onClose={() => setProfile(false)} acc={acc} onWelcome={() => setWelcome(true)} />
+      {welcome && <Welcome onDone={() => setWelcome(false)} onJoin={() => setProfile(true)} />}
       <RecordSheet mode={rec} onClose={() => setRec(null)} />
       <PlaceSheet place={selected && places.find((p) => p.id === selected.id) || selected} days={days} dayIdx={dayIdx} ctx={ctx} onDay={setDayIdx} onClose={() => setSelected(null)} onRoute={route} onPlan={(p) => { setPlan(p); setSelected(null) }} />
       <PlanSheet place={plan} day={days[dayIdx]} ctx={ctx} onClose={() => setPlan(null)} />

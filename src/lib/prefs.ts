@@ -12,12 +12,14 @@ export interface Prefs {
   threshold: number // °C de sensación a partir de los que el grupo pasa frío
   coldMargin: number // °C extra de frío que has notado (se aprende)
   names: string[] // quién suele venir
+  contacts: { name: string; phone: string }[] // contactos de emergencia
+  units: 'm' | 'ft'
   theme: 'auto' | 'claro' | 'oscuro' | 'rojo'
 }
 
 const DEFAULT: Prefs = {
   homeName: HOME.name, homeLat: HOME.lat, homeLng: HOME.lng,
-  marginMin: 60, consumption: 7, fuelPrice: 1.55, people: 3, threshold: -2, coldMargin: 0, names: ["Yo"], theme: 'auto',
+  marginMin: 60, consumption: 7, fuelPrice: 1.55, people: 3, threshold: -2, coldMargin: 0, names: ["Yo"], contacts: [], units: 'm', theme: 'auto',
 }
 
 const KEY = 'vivac.prefs'

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Drawer } from 'vaul'
 import { Copy, Info, Layers, Mountain, Phone, Search, Siren, X } from 'lucide-react'
 import MapView, { type BaseLayer } from '../components/MapView'
+import { usePrefs } from '../lib/prefs'
 import { KIND_COLOR, KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
 
 const NEXT: Record<BaseLayer, BaseLayer> = { ign: 'mtn', mtn: 'pnoa', pnoa: 'ign' }
@@ -18,6 +19,7 @@ function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [pos, setPos] = useState<GeolocationCoordinates | null>(null)
   const [err, setErr] = useState(false)
   const [copied, setCopied] = useState(false)
+  const { contacts } = usePrefs()
   useEffect(() => {
     if (!open) return
     setErr(false); setCopied(false)
@@ -42,6 +44,12 @@ function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
             <a href="tel:112" className="tap flex items-center justify-center gap-2 rounded-2xl py-4 text-lg font-bold text-white" style={{ background: '#d1553f' }}><Phone size={22} />Llamar al 112</a>
             <button disabled={!pos} onClick={async () => { await navigator.clipboard?.writeText(txt); setCopied(true) }} className="tap flex items-center justify-center gap-2 rounded-2xl py-4 text-lg font-bold disabled:opacity-40" style={{ background: 'var(--surface)' }}><Copy size={20} />{copied ? 'Copiado' : 'Copiar'}</button>
           </div>
+          {contacts.length > 0 && (
+            <div className="mt-4 flex flex-col gap-2">
+              <p className="text-sm font-semibold">Tus contactos</p>
+              {contacts.map((c) => <a key={c.phone} href={`tel:${c.phone}`} className="tap flex items-center justify-between rounded-2xl px-4 font-semibold" style={{ background: 'var(--surface)' }}><span>{c.name}</span><span>{c.phone}</span></a>)}
+            </div>
+          )}
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
