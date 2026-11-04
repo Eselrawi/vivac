@@ -9,7 +9,7 @@ import ProfileSheet from './components/ProfileSheet'
 import { useAccount } from './lib/auth'
 import { User } from 'lucide-react'
 import RecordSheet from './components/RecordSheet'
-import { SEED } from './data/seed'
+import { useCatalog } from './lib/catalog'
 import { askPersistent, db, recordToPlace, useLive } from './lib/db'
 import type { Place } from './lib/types'
 
@@ -20,7 +20,8 @@ export default function App() {
   const [profile, setProfile] = useState(false)
   const [rec, setRec] = useState<'vivac' | 'deseo' | null>(null)
   const mine = useLive(async () => (await db.vivacs.toArray()).map(recordToPlace), [] as Place[])
-  const places = useMemo(() => [...SEED, ...mine], [mine])
+  const catalog = useCatalog()
+  const places = useMemo(() => [...catalog, ...mine], [catalog, mine])
   useEffect(() => { askPersistent() }, [])
 
   const go = useCallback((t: Tab) => {

@@ -1,0 +1,1731 @@
+﻿id;kind;name;lat;lng;ele;shelter;verified;source
+osm-n26863148;cumbre;Cabeza de Hierro Mayor;40.79948;-3.93288;2383;;false;OpenStreetMap node/26863148
+osm-n283436640;fuente;Fuente Ventoso;40.78821;-4.04604;;;false;OpenStreetMap node/283436640
+osm-n283436968;cumbre;Sin nombre;40.78427;-4.03968;2097;;false;OpenStreetMap node/283436968
+osm-n283436990;cumbre;Pico Somontano;40.78163;-4.03236;2138;;false;OpenStreetMap node/283436990
+osm-n283437185;cumbre;Sin nombre;40.78349;-4.03628;2109;;false;OpenStreetMap node/283437185
+osm-n283455039;fuente;El Chupetín;40.59257;-4.1756;;;false;OpenStreetMap node/283455039
+osm-n285717672;fuente;Fuente de la Naranjera;40.6308;-4.17922;;;false;OpenStreetMap node/285717672
+osm-n285892912;fuente;Fuente de la Fuenfría;40.79351;-4.05858;1776;;false;OpenStreetMap node/285892912
+osm-n285899260;fuente;Fuente;40.55219;-3.65336;;;false;OpenStreetMap node/285899260
+osm-n286239935;fuente;Fuente de la Reina;40.56423;-4.16316;;;false;OpenStreetMap node/286239935
+osm-n286307873;fuente;Fuente de La Concha;40.60115;-4.16527;;;false;OpenStreetMap node/286307873
+osm-n287338572;cumbre;Cueva Valiente;40.68985;-4.19258;1903;;false;OpenStreetMap node/287338572
+osm-n287586540;fuente;Fuente del Cervunal;40.61428;-4.15565;;;false;OpenStreetMap node/287586540
+osm-n298248569;fuente;Fuente de la Mina;40.74245;-4.08024;;;false;OpenStreetMap node/298248569
+osm-n299102948;fuente;Fuente;40.64513;-3.99103;;;false;OpenStreetMap node/299102948
+osm-n311044994;cumbre;La Najarra;40.8154;-3.82807;2120;;false;OpenStreetMap node/311044994
+osm-n345781414;fuente;Fuente;40.88222;-3.88381;;;false;OpenStreetMap node/345781414
+osm-n363591027;cumbre;Sin nombre;40.83109;-3.83022;1833;;false;OpenStreetMap node/363591027
+osm-n363594639;cumbre;Cerro de Valdemartín;40.79294;-3.96243;2282;;false;OpenStreetMap node/363594639
+osm-n363595273;cumbre;Cerro de la Camorca;40.82517;-4.05157;1814;;false;OpenStreetMap node/363595273
+osm-n363595297;cumbre;La Peñota;40.74798;-4.10066;1944;;false;OpenStreetMap node/363595297
+osm-n363595404;cumbre;Peña el Oso;40.80412;-4.10418;2196;;false;OpenStreetMap node/363595404
+osm-n363599941;cumbre;Mondalindo;40.88067;-3.69583;1830;;false;OpenStreetMap node/363599941
+osm-n363600119;cumbre;Sin nombre;40.96565;-3.83339;1834;;false;OpenStreetMap node/363600119
+osm-n363600154;cumbre;Cerro Pelado;40.99709;-3.88391;2057;;false;OpenStreetMap node/363600154
+osm-n363600246;cumbre;Sin nombre;40.97129;-3.88363;2157;;false;OpenStreetMap node/363600246
+osm-n363600288;cumbre;La Flecha;40.93142;-3.92148;2077;;false;OpenStreetMap node/363600288
+osm-n364096699;cumbre;La Maliciosa;40.76713;-3.96862;2227;;false;OpenStreetMap node/364096699
+osm-n364099687;fuente;Fuente Carmina;40.7655;-3.87806;;;false;OpenStreetMap node/364099687
+osm-n364101871;cumbre;La Maliciosa Baja;40.76358;-3.95185;1938;;false;OpenStreetMap node/364101871
+osm-n364101923;cumbre;Cerro de los Hoyos (o Risco del Nevazo);40.78341;-3.86753;1899;;false;OpenStreetMap node/364101923
+osm-n364101925;cumbre;Risco de la Ventana;40.77929;-3.86408;1826;;false;OpenStreetMap node/364101925
+osm-n364101927;cumbre;Asomate de Hoyos;40.80582;-3.88295;2242;;false;OpenStreetMap node/364101927
+osm-n364101928;cumbre;Bailanderos;40.81437;-3.86417;2133;;false;OpenStreetMap node/364101928
+osm-n364101933;cumbre;Cabeza de Hierro Menor;40.79621;-3.93794;2376;;false;OpenStreetMap node/364101933
+osm-n364103059;cumbre;Loma de Pandasco;40.80179;-3.91158;2238;;false;OpenStreetMap node/364103059
+osm-n364106243;cumbre;Peña el Águila;40.76549;-4.09609;2008;;false;OpenStreetMap node/364106243
+osm-n364106453;cumbre;La Pinareja;40.81017;-4.09417;2197;;false;OpenStreetMap node/364106453
+osm-n364106490;cumbre;Cerro Minguete;40.79386;-4.07017;2026;;false;OpenStreetMap node/364106490
+osm-n364106503;cumbre;Montón de Trigo;40.80007;-4.07112;2161;;false;OpenStreetMap node/364106503
+osm-n364106542;cumbre;Cerro Ventoso;40.79065;-4.05334;1964;;false;OpenStreetMap node/364106542
+osm-n364106557;cumbre;Pico de Pasapán;40.7943;-4.11954;2005;;false;OpenStreetMap node/364106557
+osm-n364106656;cumbre;Cerro del Carmochín;40.7868;-4.17104;1932;;false;OpenStreetMap node/364106656
+osm-n364107586;cumbre;Alto del Telégrafo;40.78308;-4.01434;1978;;false;OpenStreetMap node/364107586
+osm-n365263185;cumbre;Reajo Alto;41.01607;-3.76725;2100;;false;OpenStreetMap node/365263185
+osm-n365266377;cumbre;Regajo;40.88641;-3.68005;1832;;false;OpenStreetMap node/365266377
+osm-n365266448;cumbre;Romalo Pelado;41.01391;-3.87081;1975;;false;OpenStreetMap node/365266448
+osm-n365267228;cumbre;Cerro Morete;40.8936;-3.95229;2133;;false;OpenStreetMap node/365267228
+osm-n371691540;fuente;Fuente;40.65272;-3.76485;;;false;OpenStreetMap node/371691540
+osm-n373413379;fuente;Fuente del Hornillo;40.86859;-3.77846;;;false;OpenStreetMap node/373413379
+osm-n373413385;fuente;Fuente;40.86343;-3.7945;;;false;OpenStreetMap node/373413385
+osm-n373413402;fuente;Fuente;40.86916;-3.7655;;;false;OpenStreetMap node/373413402
+osm-n418164371;fuente;Fuente;40.60877;-3.7027;;;false;OpenStreetMap node/418164371
+osm-n534902662;fuente;Fuente Entrecabezas;40.55499;-4.16659;;;false;OpenStreetMap node/534902662
+osm-n554591791;fuente;Fuente;40.72961;-3.92003;;;false;OpenStreetMap node/554591791
+osm-n576646225;cumbre;Sin nombre;40.92024;-3.93641;2041;;false;OpenStreetMap node/576646225
+osm-n577623807;parking;Área Recreativa La Jarosa I -aparcamiento;40.67016;-4.12665;;;false;OpenStreetMap node/577623807
+osm-n617647998;fuente;Fuente de Peñamorena;40.7033;-4.2033;;;false;OpenStreetMap node/617647998
+osm-n676533371;fuente;Fuente de la Canaleja;40.73054;-4.01509;;;false;OpenStreetMap node/676533371
+osm-n682310967;fuente;Fuente de Pedro Acuña;40.76352;-3.88329;;;false;OpenStreetMap node/682310967
+osm-n746221111;fuente;Fuente;40.61916;-4.27696;;;false;OpenStreetMap node/746221111
+osm-n746221384;fuente;Fuente;40.61799;-4.27754;;;false;OpenStreetMap node/746221384
+osm-n797690287;fuente;Fuente del Cedrón;40.83077;-3.95404;;;false;OpenStreetMap node/797690287
+osm-n831615147;fuente;Fuente;40.72815;-3.91761;;;false;OpenStreetMap node/831615147
+osm-n831615264;fuente;Fuente;40.71524;-3.9198;;;false;OpenStreetMap node/831615264
+osm-n831615376;fuente;Fuente;40.71487;-3.9197;;;false;OpenStreetMap node/831615376
+osm-n840703994;cumbre;Peñalara;40.85004;-3.95607;2428;;false;OpenStreetMap node/840703994
+osm-n840735029;fuente;Fuente Cubeiro;40.8258;-3.95765;;;false;OpenStreetMap node/840735029
+osm-n853294383;parking;Acueducto;40.94489;-4.12076;;;false;OpenStreetMap node/853294383
+osm-n853378134;fuente;Fuente;40.9523;-4.12774;;;false;OpenStreetMap node/853378134
+osm-n853400649;fuente;Fuente;40.95016;-4.12396;;;false;OpenStreetMap node/853400649
+osm-n862832985;fuente;Fuente;40.72613;-3.86661;;;false;OpenStreetMap node/862832985 + OpenStreetMap node/1048710162
+osm-n868761951;fuente;Chorrera;40.80002;-3.80898;;;false;OpenStreetMap node/868761951
+osm-n869931119;fuente;Fuente;40.80167;-3.84691;;;false;OpenStreetMap node/869931119
+osm-n869946573;fuente;Fuente de la Parada del Rey;40.81319;-3.80272;;;false;OpenStreetMap node/869946573
+osm-n989049073;fuente;Fuente;40.72605;-3.86569;;;false;OpenStreetMap node/989049073
+osm-n1042700803;fuente;Fuente;40.73008;-3.91921;;;false;OpenStreetMap node/1042700803
+osm-n1048710159;fuente;Fuente;40.78194;-3.91388;;;false;OpenStreetMap node/1048710159
+osm-n1048710165;fuente;Fuente;40.77274;-3.91015;;;false;OpenStreetMap node/1048710165
+osm-n1048710179;fuente;Fuente;40.78482;-4.00182;;;false;OpenStreetMap node/1048710179
+osm-n1048710186;fuente;Fuente;40.76803;-4.0691;;;false;OpenStreetMap node/1048710186
+osm-n1048710193;fuente;Fuente;40.82257;-3.97619;;;false;OpenStreetMap node/1048710193
+osm-n1048710198;fuente;Fuente de los Puentes;40.79347;-3.98701;;;false;OpenStreetMap node/1048710198
+osm-n1048710208;fuente;Fuente;40.744;-4.06731;;;false;OpenStreetMap node/1048710208
+osm-n1048710219;fuente;Fuente;40.87538;-4.0207;;;false;OpenStreetMap node/1048710219
+osm-n1048710225;fuente;Fuente de Majavilán;40.77095;-4.06871;;;false;OpenStreetMap node/1048710225
+osm-n1051347022;cumbre;Cabeza Líjar;40.68967;-4.16034;1823;;false;OpenStreetMap node/1051347022
+osm-n1102402843;fuente;Fuente;40.657;-3.7758;;;false;OpenStreetMap node/1102402843
+osm-n1102638280;fuente;Fuente;40.80548;-4.12462;;;false;OpenStreetMap node/1102638280
+osm-n1102638319;fuente;Fuente de la Reina;40.81273;-4.05666;;;false;OpenStreetMap node/1102638319
+osm-n1241421619;abrigo;Majadal de los Regajos;40.6185;-4.40344;;techo;false;OpenStreetMap node/1241421619
+osm-n1241424218;abrigo;Majada Vieja;40.61972;-4.38595;;techo;false;OpenStreetMap node/1241424218
+osm-n1241437816;abrigo;Corral Viejo;40.61752;-4.36879;;techo;false;OpenStreetMap node/1241437816
+osm-n1241458448;abrigo;Majada de Santa María;40.62762;-4.37538;;techo;false;OpenStreetMap node/1241458448
+osm-n1241462754;abrigo;Majada del Cardo;40.62182;-4.44514;;techo;false;OpenStreetMap node/1241462754
+osm-n1241464115;abrigo;Majada del Viento;40.6388;-4.24067;;techo;false;OpenStreetMap node/1241464115
+osm-n1241465789;abrigo;Majadalayegua;40.61204;-4.44012;;techo;false;OpenStreetMap node/1241465789
+osm-n1243023908;abrigo;Majada del Buitre;40.98988;-3.92683;;techo;false;OpenStreetMap node/1243023908
+osm-n1243024220;abrigo;Prados de Majadas Puercas;40.71163;-4.2086;;techo;false;OpenStreetMap node/1243024220
+osm-n1243024251;abrigo;Majada Hambrienta;40.8541;-3.97893;;techo;false;OpenStreetMap node/1243024251
+osm-n1243024355;abrigo;Majada del Roble;40.98065;-3.91539;;techo;false;OpenStreetMap node/1243024355
+osm-n1243025637;abrigo;Los Corralillos;40.98037;-4.16963;;techo;false;OpenStreetMap node/1243025637
+osm-n1243026439;abrigo;La Corraliza;40.77553;-4.16833;;techo;false;OpenStreetMap node/1243026439
+osm-n1243026896;abrigo;Majada Muñoveros;40.81426;-4.06237;;techo;false;OpenStreetMap node/1243026896
+osm-n1243026979;abrigo;Majada del Brezo;40.69458;-4.25058;;techo;false;OpenStreetMap node/1243026979
+osm-n1243027013;abrigo;Majada Morena;41.01178;-3.89083;;techo;false;OpenStreetMap node/1243027013
+osm-n1243028876;abrigo;Cueva del Cestero;40.80715;-4.26034;;techo;false;OpenStreetMap node/1243028876
+osm-n1243028922;abrigo;Majada de Pericón;40.73385;-4.13342;;techo;false;OpenStreetMap node/1243028922
+osm-n1243029517;abrigo;Majada de la Zorra;40.98886;-3.91161;;techo;false;OpenStreetMap node/1243029517
+osm-n1243029770;abrigo;Majada de la Zarza;40.67543;-4.3256;;techo;false;OpenStreetMap node/1243029770
+osm-n1243030298;abrigo;Majada de las Vacas;40.7578;-4.20142;;techo;false;OpenStreetMap node/1243030298
+osm-n1243030771;abrigo;Majada del Rayo;40.97863;-3.94445;;techo;false;OpenStreetMap node/1243030771
+osm-n1243030824;abrigo;Majada Conejo;40.80979;-4.11053;;techo;false;OpenStreetMap node/1243030824
+osm-n1243033031;abrigo;Majada de la Zarza;40.67131;-4.37063;;techo;false;OpenStreetMap node/1243033031
+osm-n1243033429;abrigo;Majada del Hidalgo;40.97253;-3.90902;;techo;false;OpenStreetMap node/1243033429
+osm-n1243033879;cumbre;Alto de las Calderuelas;40.93758;-3.92017;2055;;false;OpenStreetMap node/1243033879
+osm-n1243033946;abrigo;Majada de los Cardos;40.73605;-4.29512;;techo;false;OpenStreetMap node/1243033946
+osm-n1243035017;abrigo;Majada del Escorial;40.82019;-4.04965;;techo;false;OpenStreetMap node/1243035017
+osm-n1243036484;fuente;Fuente de Navalrey;40.87213;-4.04796;;;false;OpenStreetMap node/1243036484
+osm-n1243036541;cumbre;Navahonda;40.95301;-3.93236;1895;;false;OpenStreetMap node/1243036541
+osm-n1243037455;abrigo;Majada de Viento;40.68256;-4.29904;;techo;false;OpenStreetMap node/1243037455
+osm-n1243037686;cumbre;Cerro Redondo;40.98698;-3.90142;2035;;false;OpenStreetMap node/1243037686
+osm-n1243038173;abrigo;Majada Aranguez;40.86008;-3.96536;;techo;false;OpenStreetMap node/1243038173
+osm-n1243039032;abrigo;Majadas Llanas;40.86226;-4.07535;;techo;false;OpenStreetMap node/1243039032
+osm-n1243040362;abrigo;Las Majadas;40.8929;-4.1103;;techo;false;OpenStreetMap node/1243040362
+osm-n1243042411;abrigo;Cerro de Majada Alta;40.72073;-4.17252;;techo;false;OpenStreetMap node/1243042411
+osm-n1243042596;abrigo;Majada del Colladillo;41.00945;-3.87208;;techo;false;OpenStreetMap node/1243042596
+osm-n1243046400;abrigo;Cueva del Gato;41.03386;-4.08213;;techo;false;OpenStreetMap node/1243046400
+osm-n1243048803;abrigo;Majada del Estirado;41.0439;-3.87779;;techo;false;OpenStreetMap node/1243048803
+osm-n1243049084;abrigo;Majada Pascual;40.8153;-4.07959;;techo;false;OpenStreetMap node/1243049084
+osm-n1243050850;cumbre;Majadilla del Queso;41.02273;-3.88295;1899;;false;OpenStreetMap node/1243050850
+osm-n1243053260;abrigo;Majada de la Loba;41.00993;-3.81879;;techo;false;OpenStreetMap node/1243053260
+osm-n1243053979;abrigo;Majada de la Beceda;40.79977;-4.15527;;techo;false;OpenStreetMap node/1243053979
+osm-n1243060832;cumbre;Majada Pielera;40.79142;-4.14669;2003;;false;OpenStreetMap node/1243060832
+osm-n1243060891;abrigo;Los Corrales;41.03423;-4.21924;;techo;false;OpenStreetMap node/1243060891
+osm-n1243060969;abrigo;Majada del Cochino;40.82576;-4.04373;;techo;false;OpenStreetMap node/1243060969
+osm-n1243063324;abrigo;Corral de las Continencias;41.03798;-3.78852;;techo;false;OpenStreetMap node/1243063324
+osm-n1243063470;abrigo;Paredón de Majada la Zarza;40.65975;-4.36891;;techo;false;OpenStreetMap node/1243063470
+osm-n1243064215;abrigo;Majada de Pelayo;41.01662;-3.92169;;techo;false;OpenStreetMap node/1243064215
+osm-n1243065643;abrigo;El Corralón;40.90984;-4.38331;;techo;false;OpenStreetMap node/1243065643
+osm-n1243068761;abrigo;Majada del Tío Blas;40.88094;-3.96044;;techo;false;OpenStreetMap node/1243068761
+osm-n1243069976;abrigo;Majada Holgada;40.75989;-4.11066;;techo;false;OpenStreetMap node/1243069976
+osm-n1243071021;abrigo;Divisoria de Majada Pascual;40.81646;-4.07484;;techo;false;OpenStreetMap node/1243071021
+osm-n1243071292;abrigo;Corrales de Escalona;41.0217;-3.95031;;techo;false;OpenStreetMap node/1243071292
+osm-n1243071340;abrigo;Majada Alta;40.80959;-3.98035;;techo;false;OpenStreetMap node/1243071340
+osm-n1243072431;abrigo;La Majada;40.81351;-4.35964;;techo;false;OpenStreetMap node/1243072431
+osm-n1243073450;cumbre;Cerro del Hornillo;41.00736;-3.79584;1811;;false;OpenStreetMap node/1243073450
+osm-n1243073487;fuente;La Fuentebuena;40.88498;-4.09252;;;false;OpenStreetMap node/1243073487
+osm-n1243074047;abrigo;Majada del Pastuero;40.84542;-4.10812;;techo;false;OpenStreetMap node/1243074047
+osm-n1243074253;abrigo;Majada Laguinda;40.76868;-4.16555;;techo;false;OpenStreetMap node/1243074253
+osm-n1243074444;abrigo;Prado Corral;40.91979;-4.08618;;techo;false;OpenStreetMap node/1243074444
+osm-n1243074551;abrigo;Majada de los Lobos;40.68922;-4.30008;;techo;false;OpenStreetMap node/1243074551
+osm-n1243074735;abrigo;Fuente Majada;40.79132;-4.33142;;techo;false;OpenStreetMap node/1243074735
+osm-n1243074839;abrigo;Majada de Espinarejo;40.94584;-4.16797;;techo;false;OpenStreetMap node/1243074839
+osm-n1243075417;abrigo;Peñas de la Majada;40.79732;-4.14936;;techo;false;OpenStreetMap node/1243075417
+osm-n1243349068;abrigo;Majadahonda;40.59252;-4.20594;;techo;false;OpenStreetMap node/1243349068
+osm-n1243349214;abrigo;Los Corrales;40.76077;-3.67813;;techo;false;OpenStreetMap node/1243349214
+osm-n1243351032;abrigo;Ladera de Majada la Luna;40.74606;-3.98373;;techo;false;OpenStreetMap node/1243351032
+osm-n1243354262;abrigo;Corrales de Julia;40.62137;-3.9383;;techo;false;OpenStreetMap node/1243354262
+osm-n1243354860;abrigo;Majada de los Palanes;40.74576;-3.94221;;techo;false;OpenStreetMap node/1243354860
+osm-n1243355494;abrigo;Valdemajadas;40.651;-3.69364;;techo;false;OpenStreetMap node/1243355494
+osm-n1243356096;abrigo;Majada del Caco;40.74516;-3.9045;;techo;false;OpenStreetMap node/1243356096
+osm-n1243356475;abrigo;Majada del Moreno;40.55438;-4.03587;;techo;false;OpenStreetMap node/1243356475
+osm-n1243356491;abrigo;Majada del Ortigal;40.87113;-3.74866;;techo;false;OpenStreetMap node/1243356491
+osm-n1243356522;abrigo;Corralillos;40.56961;-4.2027;;techo;false;OpenStreetMap node/1243356522
+osm-n1243358435;abrigo;El Corralillo;40.82759;-3.67827;;techo;false;OpenStreetMap node/1243358435
+osm-n1243359209;abrigo;Majada Somera;40.93952;-3.8524;;techo;false;OpenStreetMap node/1243359209
+osm-n1243361577;abrigo;Majada de los Cardos;40.97375;-3.81237;;techo;false;OpenStreetMap node/1243361577
+osm-n1243364086;abrigo;El Corralillo;40.92639;-3.75288;;techo;false;OpenStreetMap node/1243364086
+osm-n1243364257;abrigo;Corral de Peña Jardinera;40.73948;-3.97288;;techo;false;OpenStreetMap node/1243364257
+osm-n1243364654;abrigo;Majada de las Vacas;40.8773;-3.92299;;techo;false;OpenStreetMap node/1243364654
+osm-n1243368762;abrigo;Majada de la Porra;40.80707;-3.84072;;techo;false;OpenStreetMap node/1243368762
+osm-n1243369860;abrigo;Majada del Romero;40.60112;-3.89526;;techo;false;OpenStreetMap node/1243369860
+osm-n1243371672;abrigo;Majada Pinilla;40.86526;-3.89038;;techo;false;OpenStreetMap node/1243371672
+osm-n1243371954;abrigo;Majada de los Cabreros;40.73435;-3.97212;;techo;false;OpenStreetMap node/1243371954
+osm-n1243372591;abrigo;Majada del Cabrero;41.0241;-3.69306;;techo;false;OpenStreetMap node/1243372591
+osm-n1243372634;abrigo;Corral del Pendolero;40.59498;-3.8991;;techo;false;OpenStreetMap node/1243372634
+osm-n1243373599;abrigo;Majada de las Vacas;40.57285;-3.81228;;techo;false;OpenStreetMap node/1243373599
+osm-n1243375856;abrigo;Majada Vieja;40.93112;-3.86759;;techo;false;OpenStreetMap node/1243375856
+osm-n1243383123;abrigo;Prados de la Majada;40.9122;-3.83722;;techo;false;OpenStreetMap node/1243383123
+osm-n1243384405;abrigo;Majada Serrana;40.74566;-4.0325;;techo;false;OpenStreetMap node/1243384405
+osm-n1243385653;abrigo;Corral de Geñeñe;40.6088;-3.86509;;techo;false;OpenStreetMap node/1243385653
+osm-n1243385731;abrigo;Majada del Caballo;40.65922;-4.26592;;techo;false;OpenStreetMap node/1243385731
+osm-n1243386459;abrigo;Majada Grande;40.85765;-3.8698;;techo;false;OpenStreetMap node/1243386459
+osm-n1243387130;abrigo;Majada de la Nava;40.96494;-3.83845;;techo;false;OpenStreetMap node/1243387130
+osm-n1243387467;abrigo;Corrales de Eulogio;40.70291;-3.68466;;techo;false;OpenStreetMap node/1243387467
+osm-n1243389251;abrigo;Majada de los Carneros;40.90991;-3.90774;;techo;false;OpenStreetMap node/1243389251
+osm-n1243392231;abrigo;Majada Arada;40.88756;-3.69881;;techo;false;OpenStreetMap node/1243392231
+osm-n1243392781;abrigo;Majada del Asno;40.73821;-3.66392;;techo;false;OpenStreetMap node/1243392781
+osm-n1243399317;abrigo;Majada de los Arrieros;40.87781;-3.70664;;techo;false;OpenStreetMap node/1243399317
+osm-n1243400464;abrigo;Majada del Asno;40.89338;-3.6997;;techo;false;OpenStreetMap node/1243400464
+osm-n1243407014;abrigo;Majada de Robregordo;40.85969;-3.92391;;techo;false;OpenStreetMap node/1243407014
+osm-n1243415697;abrigo;Majada de los Hoyos;40.97093;-3.85366;;techo;false;OpenStreetMap node/1243415697
+osm-n1243418622;abrigo;Las Majadas;40.93671;-3.84087;;techo;false;OpenStreetMap node/1243418622
+osm-n1243424178;abrigo;Corral del Estudiante;40.63455;-3.88675;;techo;false;OpenStreetMap node/1243424178
+osm-n1243437137;abrigo;Majada del Espinar;40.99145;-3.79529;;techo;false;OpenStreetMap node/1243437137
+osm-n1260539967;cumbre;Peña del Águila;40.80383;-3.9755;2004;;false;OpenStreetMap node/1260539967
+osm-n1260541811;cumbre;El Carmochín;40.7902;-4.16597;1927;;false;OpenStreetMap node/1260541811
+osm-n1260542155;cumbre;Peña Cabra;41.00197;-3.84377;2028;;false;OpenStreetMap node/1260542155
+osm-n1260542344;cumbre;Pico del Reventón;40.9933;-3.79936;1925;;false;OpenStreetMap node/1260542344
+osm-n1260544811;cumbre;Peña Bercial;40.78888;-4.07844;2002;;false;OpenStreetMap node/1260544811
+osm-n1260546814;cumbre;Peña del Hombre;40.80021;-4.1683;1811;;false;OpenStreetMap node/1260546814
+osm-n1260547457;cumbre;El Reventón;40.90814;-3.94267;2076;;false;OpenStreetMap node/1260547457
+osm-n1260548951;cumbre;Alto de la Pinarilla;40.98785;-3.8092;1867;;false;OpenStreetMap node/1260548951
+osm-n1260549692;cumbre;Peña del Buitre;41.02021;-3.7728;2104;;false;OpenStreetMap node/1260549692
+osm-n1260549885;cumbre;Alto de las Guarramillas (Bola del Mundo);40.78469;-3.97975;2265;;false;OpenStreetMap node/1260549885
+osm-n1260550163;cumbre;Cerro Carmocho;40.78845;-4.15818;1965;;false;OpenStreetMap node/1260550163
+osm-n1260550424;cumbre;Picardeñas;41.01588;-3.81944;1859;;false;OpenStreetMap node/1260550424
+osm-n1260552539;cumbre;Pico El Nevero;40.97937;-3.84741;2209;;false;OpenStreetMap node/1260552539
+osm-n1260554954;cumbre;Cerro de los Colladillos;41.00166;-3.82299;1882;;false;OpenStreetMap node/1260554954
+osm-n1304105618;cumbre;Pico de Majalasna;40.77956;-4.05036;1934;;false;OpenStreetMap node/1304105618
+osm-n1304108673;cumbre;Risco de los Claveles;40.85512;-3.95233;2387;;false;OpenStreetMap node/1304108673
+osm-n1304109896;cumbre;La Bota;40.78704;-3.88072;1853;;false;OpenStreetMap node/1304109896
+osm-n1304111846;cumbre;Hermana Mayor;40.83993;-3.96293;2284;;false;OpenStreetMap node/1304111846
+osm-n1304112223;cumbre;Los Hermanitos;40.78402;-3.87397;1808;;false;OpenStreetMap node/1304112223
+osm-n1304114715;cumbre;Alto de los Neveros;40.87344;-3.94736;2139;;false;OpenStreetMap node/1304114715
+osm-n1304119969;cumbre;El Peñotillo;40.76464;-3.97242;2124;;false;OpenStreetMap node/1304119969
+osm-n1304122974;cumbre;La Peñota;41.04965;-3.73901;1917;;false;OpenStreetMap node/1304122974
+osm-n1304127297;cumbre;Hermana Menor;40.83468;-3.96589;2269;;false;OpenStreetMap node/1304127297
+osm-n1304128128;cumbre;El Cocodrilo;40.78142;-3.87049;1811;;false;OpenStreetMap node/1304128128
+osm-n1304129455;cumbre;Cancho de la Herrada;40.77673;-3.86387;1822;;false;OpenStreetMap node/1304129455
+osm-n1304131807;cumbre;Altos de los Poyales;40.88883;-3.94243;2081;;false;OpenStreetMap node/1304131807
+osm-n1304132827;cumbre;La Esfinge;40.7857;-3.86822;1945;;false;OpenStreetMap node/1304132827
+osm-n1304138349;cumbre;Navahondilla;40.80747;-3.88544;2234;;false;OpenStreetMap node/1304138349
+osm-n1346629719;fuente;Fuente del Montañero;40.88726;-3.97972;;;false;OpenStreetMap node/1346629719
+osm-n1373510299;fuente;Fuente;40.75564;-3.92214;;;false;OpenStreetMap node/1373510299
+osm-n1442025321;cumbre;Alto de la Milanera;40.79253;-4.04182;1824;;false;OpenStreetMap node/1442025321
+osm-n1460313479;fuente;Fuente;40.67918;-3.97213;;;false;OpenStreetMap node/1460313479 + OpenStreetMap node/1471170632 + OpenStreetMap node/1471177051
+osm-n1460916295;fuente;Fuente;40.67909;-3.97093;;;false;OpenStreetMap node/1460916295
+osm-n1469073094;fuente;Fuente;40.67931;-3.97172;;;false;OpenStreetMap node/1469073094
+osm-n1481645689;cumbre;Pico Perdiguera;40.84429;-3.78709;1865;;false;OpenStreetMap node/1481645689
+osm-n1482405483;abrigo;El Corralillo;40.82473;-3.68174;943;techo;false;OpenStreetMap node/1482405483
+osm-n1541668813;fuente;Fuente del Caño;40.57656;-3.92946;;;false;OpenStreetMap node/1541668813
+osm-n1611176886;fuente;Fuente;40.57837;-3.95173;;;false;OpenStreetMap node/1611176886
+osm-n1643357962;fuente;Fuente;40.57579;-3.92917;;;false;OpenStreetMap node/1643357962
+osm-n1659749548;fuente;Fuente;40.61119;-4.03636;;;false;OpenStreetMap node/1659749548
+osm-n1666684499;fuente;Fuente;40.57856;-3.93972;;;false;OpenStreetMap node/1666684499
+osm-n1699893369;fuente;Fuente;40.6284;-3.89661;;;false;OpenStreetMap node/1699893369
+osm-n1744769802;fuente;Fuente;40.8967;-4.00472;;;false;OpenStreetMap node/1744769802
+osm-n1751742499;fuente;Fuente;40.57492;-3.95671;;;false;OpenStreetMap node/1751742499
+osm-n1819049876;fuente;Fuente;40.69779;-3.87158;;;false;OpenStreetMap node/1819049876
+osm-n1819049877;fuente;Fuente;40.73209;-4.01804;;;false;OpenStreetMap node/1819049877
+osm-n1819049886;fuente;Fuente;40.6583;-3.77598;;;false;OpenStreetMap node/1819049886
+osm-n1819049988;fuente;Fuente del Gargantón;40.73036;-4.01063;;;false;OpenStreetMap node/1819049988
+osm-n1819461109;fuente;Fuente del Mesadero;40.84318;-4.04709;;;false;OpenStreetMap node/1819461109
+osm-n1820959746;fuente;Fuente;40.95436;-4.13114;;;false;OpenStreetMap node/1820959746
+osm-n1820959972;fuente;Fuente;40.96549;-4.13456;;;false;OpenStreetMap node/1820959972
+osm-n1820960155;fuente;Fuente;40.99933;-4.17415;;;false;OpenStreetMap node/1820960155
+osm-n1820960170;fuente;Fuente;41.00023;-4.17534;;;false;OpenStreetMap node/1820960170
+osm-n1821127528;fuente;Fuente;41.00911;-4.21875;;;false;OpenStreetMap node/1821127528
+osm-n1827009692;fuente;Fuente;40.74272;-4.05277;;;false;OpenStreetMap node/1827009692
+osm-n1830114613;fuente;Fuente;41.03867;-4.29607;;;false;OpenStreetMap node/1830114613
+osm-n1844422256;fuente;Fuente;40.74323;-4.05369;;;false;OpenStreetMap node/1844422256
+osm-n1865417417;fuente;Fuente;40.57917;-3.95511;;;false;OpenStreetMap node/1865417417
+osm-n1885394329;fuente;Fuente de la Raja;40.86944;-3.76521;;;false;OpenStreetMap node/1885394329
+osm-n1885394331;fuente;Fuente;40.87089;-3.76488;;;false;OpenStreetMap node/1885394331
+osm-n1925971763;fuente;Fuente;40.56894;-4.03162;;;false;OpenStreetMap node/1925971763
+osm-n1996682273;fuente;Fuente;40.57749;-3.95094;;;false;OpenStreetMap node/1996682273
+osm-n1998623428;fuente;Fuente de las Negras;40.62987;-4.17937;;;false;OpenStreetMap node/1998623428
+osm-n2010616378;fuente;Fuente;40.59869;-4.18227;;;false;OpenStreetMap node/2010616378
+osm-n2023932555;fuente;Fuente del Nogal;40.73055;-4.01268;;;false;OpenStreetMap node/2023932555
+osm-n2052028167;fuente;Fuente;40.67322;-4.10456;;;false;OpenStreetMap node/2052028167
+osm-n2052052486;fuente;Fuente;40.6733;-4.09081;;;false;OpenStreetMap node/2052052486
+osm-n2101766202;fuente;Fuente;40.60645;-3.71725;;;false;OpenStreetMap node/2101766202
+osm-n2165543110;fuente;Fuente de la Villa;40.81344;-3.78337;;;false;OpenStreetMap node/2165543110
+osm-n2165543112;fuente;Fuente del Cura;40.81354;-3.78261;;;false;OpenStreetMap node/2165543112
+osm-n2267359589;fuente;Trampalón;40.60344;-4.1693;;;false;OpenStreetMap node/2267359589
+osm-n2275801249;fuente;Fuente del Ratón;40.86416;-3.99921;;;false;OpenStreetMap node/2275801249
+osm-n2321804982;cumbre;Peña Citores;40.83557;-3.98004;2181;;false;OpenStreetMap node/2321804982
+osm-n2331098938;fuente;Fuente de Matarrubia 1925;40.67938;-3.97402;;;false;OpenStreetMap node/2331098938
+osm-n2352857551;fuente;Fuente;40.61446;-4.11866;;;false;OpenStreetMap node/2352857551
+osm-n2372592356;fuente;Fuente de los Geólogos;40.7756;-4.00601;;;false;OpenStreetMap node/2372592356
+osm-n2400296952;fuente;Fuente;40.56257;-4.17897;;;false;OpenStreetMap node/2400296952
+osm-n2401800494;fuente;Fuente;40.55632;-3.65958;;;false;OpenStreetMap node/2401800494
+osm-n2401800581;fuente;Fuente;40.55378;-3.65979;;;false;OpenStreetMap node/2401800581
+osm-n2401800616;fuente;Fuente;40.55149;-3.65991;;;false;OpenStreetMap node/2401800616
+osm-n2410791054;abrigo;La cueva del Oso;40.56577;-4.15837;;techo;false;OpenStreetMap node/2410791054
+osm-n2410799913;fuente;Fuente de la Prosperidad;40.57388;-4.15234;;;false;OpenStreetMap node/2410799913
+osm-n2410866798;fuente;Fuente;40.63923;-4.02507;;;false;OpenStreetMap node/2410866798
+osm-n2410872337;fuente;Fuente;40.64034;-4.02862;;;false;OpenStreetMap node/2410872337
+osm-n2417083554;fuente;Fuente;40.82495;-3.96128;;;false;OpenStreetMap node/2417083554
+osm-n2417095684;fuente;Fuente de Balsaín;40.79712;-3.98534;;;false;OpenStreetMap node/2417095684
+osm-n2417101067;fuente;Fuente;40.78867;-3.98126;;;false;OpenStreetMap node/2417101067
+osm-n2417110770;fuente;Fuente de la Gran Cañada;40.75;-3.87851;;;false;OpenStreetMap node/2417110770
+osm-n2443530001;fuente;Fuente;40.90236;-3.87804;;;false;OpenStreetMap node/2443530001
+osm-n2451900372;fuente;Fuente del Astillero;40.75445;-4.09196;;;false;OpenStreetMap node/2451900372
+osm-n2496767002;fuente;Fuente del Pilar;40.81343;-3.76822;;;false;OpenStreetMap node/2496767002
+osm-n2496767003;fuente;Fuente Nueva;40.81318;-3.76633;;;false;OpenStreetMap node/2496767003
+osm-n2496767004;fuente;Fuente del Pino;40.81523;-3.76934;;;false;OpenStreetMap node/2496767004
+osm-n2507391062;fuente;Fuente;40.87242;-4.01786;;;false;OpenStreetMap node/2507391062
+osm-n2528349043;fuente;Pilón del Paso del Lobo;40.71593;-4.13364;;;false;OpenStreetMap node/2528349043
+osm-n2528349047;fuente;Fuente;40.72695;-4.1145;;;false;OpenStreetMap node/2528349047
+osm-n2528349309;fuente;Fuente;40.73871;-4.10203;;;false;OpenStreetMap node/2528349309
+osm-n2563057255;fuente;Fuente;40.81452;-3.76536;;;false;OpenStreetMap node/2563057255
+osm-n2585758869;fuente;Fuente;40.72855;-4.01427;;;false;OpenStreetMap node/2585758869
+osm-n2586578324;fuente;Fuente de la Pradera;40.64972;-3.79599;;;false;OpenStreetMap node/2586578324
+osm-n2623738672;fuente;Fuente;40.82205;-3.67715;;;false;OpenStreetMap node/2623738672
+osm-n2654959925;fuente;Fuente;40.95221;-4.13148;;;false;OpenStreetMap node/2654959925
+osm-n2663766639;fuente;Fuente Cruz de Abastas;40.86281;-3.99171;;;false;OpenStreetMap node/2663766639
+osm-n2663766641;fuente;Fuente Nueva del Tío Levita;40.8535;-3.98422;;;false;OpenStreetMap node/2663766641
+osm-n2665731674;fuente;Fuente;40.68119;-3.97319;;;false;OpenStreetMap node/2665731674
+osm-n2672317582;fuente;Fuente;40.57794;-3.93094;;;false;OpenStreetMap node/2672317582
+osm-n2685883015;fuente;Fuente;40.75842;-4.07803;;;false;OpenStreetMap node/2685883015
+osm-n2686390588;fuente;Fuente de la Campanilla;40.77006;-3.99023;;;false;OpenStreetMap node/2686390588
+osm-n2754691800;parking;Aparcamiento Plaza Nueva;40.74128;-4.05415;;;false;OpenStreetMap node/2754691800
+osm-n2758099510;fuente;Fuente del Tomillar;40.73602;-4.06668;;;false;OpenStreetMap node/2758099510
+osm-n2758159944;fuente;Fuente;40.74125;-4.05859;;;false;OpenStreetMap node/2758159944
+osm-n2799291348;fuente;Fuente de Marcos;40.86951;-3.99827;;;false;OpenStreetMap node/2799291348
+osm-n2799337165;fuente;Fuente de La Chorranca;40.86994;-3.97357;;;false;OpenStreetMap node/2799337165
+osm-n2799346454;fuente;Fuente del Chotete;40.88418;-3.98151;;;false;OpenStreetMap node/2799346454
+osm-n2799369128;fuente;Fuente de la Plata;40.88637;-3.99552;;;false;OpenStreetMap node/2799369128
+osm-n2803204724;fuente;Fuente Del Infante;40.90031;-3.96418;;;false;OpenStreetMap node/2803204724
+osm-n2803204725;fuente;Fuente de Ruper;40.89442;-3.97802;;;false;OpenStreetMap node/2803204725
+osm-n2873273512;abrigo;Cueva de Prueba Valiente;40.6918;-4.19502;;techo;false;OpenStreetMap node/2873273512
+osm-n2881473814;fuente;Fuente;40.65063;-3.7865;;;false;OpenStreetMap node/2881473814
+osm-n2881474692;fuente;Fuente;40.64646;-3.78896;;;false;OpenStreetMap node/2881474692
+osm-n2881480142;fuente;Fuente de Los Molineros;40.65443;-3.7843;;;false;OpenStreetMap node/2881480142
+osm-n2917882520;cumbre;La Campana;40.96532;-3.9172;1842;;false;OpenStreetMap node/2917882520
+osm-n2952825093;fuente;Fuente;40.6731;-4.08944;;;false;OpenStreetMap node/2952825093
+osm-n2952825094;fuente;Fuente;40.66732;-4.08824;;;false;OpenStreetMap node/2952825094 + OpenStreetMap node/2952825095
+osm-n2952825096;fuente;Fuente;40.67311;-4.08636;;;false;OpenStreetMap node/2952825096
+osm-n2952825097;fuente;Fuente;40.67351;-4.09119;;;false;OpenStreetMap node/2952825097
+osm-n2965235803;fuente;Fuente;40.6043;-3.71201;;;false;OpenStreetMap node/2965235803
+osm-n2965252606;fuente;Fuente;40.60281;-3.71335;;;false;OpenStreetMap node/2965252606
+osm-n2965294019;fuente;Fuente;40.60209;-3.71318;;;false;OpenStreetMap node/2965294019
+osm-n2971801243;fuente;Fuente;40.60912;-3.70758;;;false;OpenStreetMap node/2971801243
+osm-n2971804503;fuente;Fuente;40.60956;-3.70642;;;false;OpenStreetMap node/2971804503
+osm-n2971806843;fuente;Fuente;40.60975;-3.70599;;;false;OpenStreetMap node/2971806843
+osm-n2971809042;fuente;Fuente;40.61011;-3.70513;;;false;OpenStreetMap node/2971809042
+osm-n2973548986;fuente;Fuente;40.83407;-3.85771;;;false;OpenStreetMap node/2973548986
+osm-n2974761583;fuente;Fuente;40.59007;-4.19475;;;false;OpenStreetMap node/2974761583
+osm-n2974782206;fuente;Fuente;40.5993;-4.19152;;;false;OpenStreetMap node/2974782206
+osm-n2975916335;fuente;Fuente del Tercer Retén;40.76413;-4.06846;;;false;OpenStreetMap node/2975916335
+osm-n2975920806;fuente;Fuente;40.75328;-4.06153;;;false;OpenStreetMap node/2975920806
+osm-n2975958181;fuente;Fuente de los Alevines;40.78734;-4.04619;;;false;OpenStreetMap node/2975958181
+osm-n2975988167;fuente;Fuente de los Acebos;40.78723;-4.06618;;;false;OpenStreetMap node/2975988167
+osm-n2980955248;fuente;Fuente;40.94751;-4.11861;;;false;OpenStreetMap node/2980955248
+osm-n2980955249;fuente;Fuente San Millán;40.94535;-4.12062;;;false;OpenStreetMap node/2980955249
+osm-n2980963913;fuente;Fuente;40.94446;-4.12068;;;false;OpenStreetMap node/2980963913
+osm-n2980963915;fuente;Fuente Alameda 1;40.95459;-4.12074;;;false;OpenStreetMap node/2980963915
+osm-n2980963916;fuente;Fuente;40.94401;-4.12398;;;false;OpenStreetMap node/2980963916
+osm-n2980963917;fuente;Fuente Potable Santo Tomás;40.94229;-4.11798;;;false;OpenStreetMap node/2980963917
+osm-n2980985008;fuente;Fuente La Fuencisla 1;40.95617;-4.13547;;;false;OpenStreetMap node/2980985008
+osm-n2980985009;fuente;Fuente de San Marcos;40.95422;-4.13356;;;false;OpenStreetMap node/2980985009
+osm-n2980985010;fuente;Fuente;40.94747;-4.10932;;;false;OpenStreetMap node/2980985010
+osm-n2980985011;fuente;Fuente Potable Plaza de la Gimnástica Segoviana;40.94555;-4.10607;;;false;OpenStreetMap node/2980985011
+osm-n2980985012;fuente;Fuente Potable Avenida de la Constitución;40.942;-4.11407;;;false;OpenStreetMap node/2980985012
+osm-n2980985013;fuente;Fuente Potable Cordel de Santillana;40.94067;-4.11561;;;false;OpenStreetMap node/2980985013
+osm-n2980985014;fuente;Fuente Potable Concepcionistas;40.94975;-4.11747;;;false;OpenStreetMap node/2980985014
+osm-n2980985015;fuente;Fuente;40.94996;-4.12124;;;false;OpenStreetMap node/2980985015
+osm-n2981125548;fuente;Fuente;40.93934;-4.10328;;;false;OpenStreetMap node/2981125548
+osm-n2985084551;fuente;Fuente;40.94678;-4.11206;;;false;OpenStreetMap node/2985084551
+osm-n2985174385;fuente;Fuente;40.63227;-4.16209;;;false;OpenStreetMap node/2985174385
+osm-n2985174387;fuente;Fuente;40.6301;-4.15289;;;false;OpenStreetMap node/2985174387
+osm-n2987737307;fuente;Fuente La Piedra;40.71987;-4.12874;;;false;OpenStreetMap node/2987737307
+osm-n2990849452;fuente;Fuente Once Jesus;40.77592;-4.04573;;;false;OpenStreetMap node/2990849452
+osm-n2990856254;fuente;Fuente Majalasna;40.77795;-4.0492;;;false;OpenStreetMap node/2990856254
+osm-n2990856255;fuente;Fuente;40.76727;-4.0624;;;false;OpenStreetMap node/2990856255
+osm-n2990868747;fuente;Fuente del Infante;40.78509;-4.07534;;;false;OpenStreetMap node/2990868747
+osm-n2990915998;fuente;Fuente de la Casa de Guías;40.75403;-3.99415;;;false;OpenStreetMap node/2990915998
+osm-n2990958902;fuente;Fuente del Mingo;40.76687;-3.9947;;;false;OpenStreetMap node/2990958902
+osm-n2999839598;fuente;Fuente;40.71116;-4.07401;;;false;OpenStreetMap node/2999839598
+osm-n3005469141;fuente;Fuente;40.55459;-3.65331;;;false;OpenStreetMap node/3005469141
+osm-n3006530971;fuente;Fuente;40.94947;-4.11653;;;false;OpenStreetMap node/3006530971
+osm-n3006530972;fuente;Fuente;40.94775;-4.11259;;;false;OpenStreetMap node/3006530972
+osm-n3008766694;fuente;Fuente;41.02181;-4.41858;;;false;OpenStreetMap node/3008766694
+osm-n3011907278;fuente;Fuente;40.67245;-4.10336;;;false;OpenStreetMap node/3011907278
+osm-n3045309374;fuente;Fuente;40.6265;-3.8986;;;false;OpenStreetMap node/3045309374
+osm-n3045312538;fuente;Fuente;40.62226;-3.90647;;;false;OpenStreetMap node/3045312538
+osm-n3065587816;fuente;Fuente;40.78601;-4.07723;;;false;OpenStreetMap node/3065587816
+osm-n3066296634;fuente;Fuente;40.92437;-3.81939;;;false;OpenStreetMap node/3066296634
+osm-n3070186944;fuente;Fuente Reyna;40.81555;-3.78079;;;false;OpenStreetMap node/3070186944
+osm-n3070215204;fuente;Fuente;40.80184;-3.84942;;;false;OpenStreetMap node/3070215204
+osm-n3101304569;fuente;Fuente de Los Ángeles;40.72914;-4.01477;;;false;OpenStreetMap node/3101304569
+osm-n3164354811;fuente;Fuente del Mostajo;40.83534;-3.72996;;;false;OpenStreetMap node/3164354811
+osm-n3177298287;cumbre;Peña Pintada;40.76034;-4.00626;1858;;false;OpenStreetMap node/3177298287
+osm-n3177331994;abrigo;Vivac Peña Vaqueros;40.80008;-3.9226;;techo;false;OpenStreetMap node/3177331994
+osm-n3199295162;fuente;Fuente;40.7952;-4.07622;;;false;OpenStreetMap node/3199295162
+osm-n3202843961;fuente;Fuente del Agua Fría;40.87559;-3.69505;;;false;OpenStreetMap node/3202843961
+osm-n3245810465;fuente;Fuente;40.87624;-3.68807;;;false;OpenStreetMap node/3245810465
+osm-n3245822112;fuente;Fuente;40.88378;-3.67254;;;false;OpenStreetMap node/3245822112
+osm-n3245857499;fuente;Fuente del Collado;40.85512;-3.7297;;;false;OpenStreetMap node/3245857499
+osm-n3256478106;fuente;Fuente;40.68389;-4.07992;;;false;OpenStreetMap node/3256478106
+osm-n3271217675;fuente;Fuente;40.58009;-4.13282;;;false;OpenStreetMap node/3271217675
+osm-n3281909767;fuente;Fuente de la Víbora;40.84441;-3.71791;;;false;OpenStreetMap node/3281909767
+osm-n3294669302;fuente;Fuente;40.60589;-4.04951;;;false;OpenStreetMap node/3294669302
+osm-n3445241798;fuente;Fuente;40.58401;-4.13205;;;false;OpenStreetMap node/3445241798
+osm-n3445241799;fuente;Fuente;40.58547;-4.13135;;;false;OpenStreetMap node/3445241799
+osm-n3447671627;fuente;Fuente del Navazo;40.56785;-4.0223;;;false;OpenStreetMap node/3447671627
+osm-n3447671628;fuente;Fuente del Pozuelo;40.56307;-4.01705;;;false;OpenStreetMap node/3447671628
+osm-n3451352999;fuente;Fuente;40.56078;-4.01647;;;false;OpenStreetMap node/3451352999
+osm-n3472161488;fuente;Fuente;40.98368;-3.81763;;;false;OpenStreetMap node/3472161488
+osm-n3525138505;fuente;Fuente;40.8998;-4.00404;;;false;OpenStreetMap node/3525138505
+osm-n3525138506;fuente;Fuente;40.90121;-4.0032;;;false;OpenStreetMap node/3525138506
+osm-n3525138508;fuente;Fuente;40.90088;-4.00484;;;false;OpenStreetMap node/3525138508
+osm-n3525138531;fuente;Fuente;40.90156;-4.00673;;;false;OpenStreetMap node/3525138531
+osm-n3525138543;fuente;Fuente del Príncipe;40.90508;-4.00768;;;false;OpenStreetMap node/3525138543
+osm-n3525138544;fuente;Fuente de Chamberí;40.90646;-4.00897;;;false;OpenStreetMap node/3525138544
+osm-n3525138550;fuente;Fuente;40.90499;-4.00988;;;false;OpenStreetMap node/3525138550
+osm-n3525138551;fuente;Fuente;40.90224;-4.00971;;;false;OpenStreetMap node/3525138551
+osm-n3536133496;fuente;Fuente;40.98244;-4.20378;;;false;OpenStreetMap node/3536133496
+osm-n3578199422;fuente;Fuente de los Tejos;40.86815;-3.76289;;;false;OpenStreetMap node/3578199422
+osm-n3578706691;abrigo;Cueva del Monje;40.86809;-3.9981;1390;techo;false;OpenStreetMap node/3578706691
+osm-n3613050164;cumbre;Cancho Negro;40.77689;-3.97152;2117;;false;OpenStreetMap node/3613050164
+osm-n3618133218;fuente;Fuente de Antón Ruiz;40.78639;-4.05345;;;false;OpenStreetMap node/3618133218
+osm-n3632234861;fuente;Fuente;40.85287;-4.16384;;;false;OpenStreetMap node/3632234861
+osm-n3632880191;cumbre;Peña los Quesos;40.83229;-3.95631;2032;;false;OpenStreetMap node/3632880191
+osm-n3635420439;fuente;Fuente;40.62069;-3.9129;;;false;OpenStreetMap node/3635420439
+osm-n3638074424;fuente;Fuente;40.85181;-4.16471;;;false;OpenStreetMap node/3638074424
+osm-n3638075513;fuente;Fuente;40.85188;-4.15844;;;false;OpenStreetMap node/3638075513
+osm-n3638075514;fuente;Fuente;40.8545;-4.16078;;;false;OpenStreetMap node/3638075514
+osm-n3638076478;fuente;Fuente;40.85341;-4.16663;;;false;OpenStreetMap node/3638076478
+osm-n3640923692;fuente;Fuente de la Casilla;40.81956;-4.0156;;;false;OpenStreetMap node/3640923692
+osm-n3642935136;fuente;Fuente;40.94947;-3.79116;;;false;OpenStreetMap node/3642935136 + OpenStreetMap node/13159321501
+osm-n3642935137;fuente;Fuente;40.94994;-3.79217;;;false;OpenStreetMap node/3642935137
+osm-n3642935138;fuente;Fuente;40.95126;-3.79535;;;false;OpenStreetMap node/3642935138
+osm-n3642948021;fuente;Fuente;40.87606;-3.77936;;;false;OpenStreetMap node/3642948021
+osm-n3642948026;fuente;Fuente de la Barrera;40.9064;-3.73905;;;false;OpenStreetMap node/3642948026
+osm-n3642948027;fuente;Fuente;40.90824;-3.73811;;;false;OpenStreetMap node/3642948027
+osm-n3646339133;fuente;Fuente;40.95828;-3.71505;;;false;OpenStreetMap node/3646339133
+osm-n3646606777;fuente;Fuente de la Teja;40.76752;-4.0702;;;false;OpenStreetMap node/3646606777
+osm-n3664969074;fuente;Fuente;40.78447;-4.06234;;;false;OpenStreetMap node/3664969074
+osm-n3665691420;cumbre;Risco de los Pájaros;40.85984;-3.95073;2265;;false;OpenStreetMap node/3665691420
+osm-n3689583775;fuente;Fuente;40.71459;-4.24497;;;false;OpenStreetMap node/3689583775
+osm-n3689609585;fuente;Fuente;40.71894;-4.22631;;;false;OpenStreetMap node/3689609585
+osm-n3689620010;fuente;Fuente;40.71672;-4.23804;;;false;OpenStreetMap node/3689620010
+osm-n3696062425;fuente;Fuente del Camino Schmidt;40.78876;-4.01102;;;false;OpenStreetMap node/3696062425
+osm-n3721232842;fuente;Fuente;40.77043;-4.04047;;;false;OpenStreetMap node/3721232842
+osm-n3721232847;fuente;Fuente de los Acebos;40.77862;-4.03904;;;false;OpenStreetMap node/3721232847
+osm-n3722220878;fuente;Fuente del pocito;40.76642;-4.05979;;;false;OpenStreetMap node/3722220878
+osm-n3734394418;fuente;Fuente;40.62137;-3.90766;;;false;OpenStreetMap node/3734394418
+osm-n3734394419;fuente;Fuente;40.62248;-3.90786;;;false;OpenStreetMap node/3734394419
+osm-n3735217224;fuente;Fuente del Brezal;40.83021;-3.76697;;;false;OpenStreetMap node/3735217224
+osm-n3735230286;fuente;Fuente;40.81542;-3.75617;;;false;OpenStreetMap node/3735230286
+osm-n3744005197;fuente;Fuente del Pilón o del Retén;40.68956;-3.98912;;;false;OpenStreetMap node/3744005197
+osm-n3744005198;fuente;Fuente;40.68993;-3.98471;;;false;OpenStreetMap node/3744005198
+osm-n3744005199;fuente;Fuente;40.69184;-3.99031;;;false;OpenStreetMap node/3744005199
+osm-n3784467405;cumbre;Sin nombre;40.78257;-4.0341;2105;;false;OpenStreetMap node/3784467405
+osm-n3784467406;cumbre;Sin nombre;40.78373;-4.04218;2097;;false;OpenStreetMap node/3784467406
+osm-n3784467414;cumbre;Sin nombre;40.78478;-4.04032;2087;;false;OpenStreetMap node/3784467414
+osm-n3838716489;fuente;Fuente;40.88674;-3.66936;;;false;OpenStreetMap node/3838716489
+osm-n3892996592;fuente;Fuente de las Hondillas;40.69708;-4.13948;;;false;OpenStreetMap node/3892996592
+osm-n3947478294;fuente;Fuente;40.79604;-3.83652;;;false;OpenStreetMap node/3947478294
+osm-n3955665156;fuente;Pilón de los Reajos;40.6842;-4.13758;;;false;OpenStreetMap node/3955665156
+osm-n4072360562;fuente;Fuente del Mierlo;40.73911;-3.919;;;false;OpenStreetMap node/4072360562
+osm-n4081808431;fuente;Fuente;40.8718;-3.65815;;;false;OpenStreetMap node/4081808431
+osm-n4111715820;fuente;Fuente de Fuentecillas;40.71095;-4.16843;;;false;OpenStreetMap node/4111715820
+osm-n4138750308;fuente;Fuente;40.64122;-3.99566;;;false;OpenStreetMap node/4138750308
+osm-n4185141603;fuente;Fuente del Risco de la Fuente;40.7572;-3.86908;;;false;OpenStreetMap node/4185141603
+osm-n4185237691;fuente;Fuente;40.75311;-3.78702;;;false;OpenStreetMap node/4185237691
+osm-n4193939377;fuente;Fuente;40.60722;-3.6876;;;false;OpenStreetMap node/4193939377
+osm-n4204042289;cumbre;Peñas Buitreras;40.91377;-3.95176;1935;;false;OpenStreetMap node/4204042289
+osm-n4204253499;fuente;Fuente;40.77173;-3.91293;;;false;OpenStreetMap node/4204253499
+osm-n4237665491;fuente;Fuente;40.69052;-3.76948;;;false;OpenStreetMap node/4237665491
+osm-n4239070633;fuente;Fuente;40.56731;-3.65344;;;false;OpenStreetMap node/4239070633
+osm-n4254690693;fuente;Fuente de la Colmena;40.73381;-3.98131;;;false;OpenStreetMap node/4254690693
+osm-n4256253263;fuente;Fuente de las Zorras;40.76182;-3.90599;;;false;OpenStreetMap node/4256253263
+osm-n4256262496;fuente;Fuente de la Beceilla;40.743;-3.98526;;;false;OpenStreetMap node/4256262496
+osm-n4264663008;fuente;Fuente;40.6675;-4.13215;;;false;OpenStreetMap node/4264663008
+osm-n4264663797;fuente;Fuente del Arroyo de las Chorreras;40.68183;-4.12937;;;false;OpenStreetMap node/4264663797
+osm-n4264667795;fuente;Fuente;40.69026;-4.13689;;;false;OpenStreetMap node/4264667795
+osm-n4278619772;fuente;Fuente de la Salud;40.77537;-4.06664;;;false;OpenStreetMap node/4278619772
+osm-n4306378961;fuente;Fuente;40.85992;-3.94851;;;false;OpenStreetMap node/4306378961
+osm-n4319790343;abrigo;Abrigo del Molino;40.95176;-4.14115;;techo;false;OpenStreetMap node/4319790343
+osm-n4322282408;fuente;Fuente;40.57698;-3.92579;;;false;OpenStreetMap node/4322282408
+osm-n4322282437;fuente;Fuente;40.58091;-3.93589;;;false;OpenStreetMap node/4322282437
+osm-n4327137190;fuente;Fuente;40.74412;-4.04278;;;false;OpenStreetMap node/4327137190
+osm-n4331537503;fuente;Fuente del Chindo;40.83676;-3.80194;;;false;OpenStreetMap node/4331537503
+osm-n4364562593;cumbre;Cogorro de Maravillas;40.80175;-4.01104;1875;;false;OpenStreetMap node/4364562593
+osm-n4369382718;fuente;Fuente del Huerto;40.62524;-3.95197;;;false;OpenStreetMap node/4369382718
+osm-n4369382719;fuente;Manantial de los Abantos;40.64534;-3.94299;;;false;OpenStreetMap node/4369382719
+osm-n4371664265;fuente;Fuente Ezequiel;40.77908;-4.04345;;;false;OpenStreetMap node/4371664265
+osm-n4382348906;fuente;Fuente;40.67056;-4.12725;;;false;OpenStreetMap node/4382348906
+osm-n4388175692;fuente;Fuente de los Dos Caños;40.8546;-4.02648;;;false;OpenStreetMap node/4388175692
+osm-n4411126914;cumbre;Peñotillo Bajo;40.76204;-3.97733;1848;;false;OpenStreetMap node/4411126914
+osm-n4431634289;abrigo;Sin nombre;40.7693;-3.89535;;techo;false;OpenStreetMap node/4431634289
+osm-n4468627232;abrigo;Majada de Quila;40.77644;-3.88889;1609;techo;false;OpenStreetMap node/4468627232
+osm-n4469143321;fuente;La pinosilla;40.68535;-4.14954;;;false;OpenStreetMap node/4469143321
+osm-n4485721300;abrigo;Cueva-vivac;40.75938;-3.97892;;techo;false;OpenStreetMap node/4485721300
+osm-n4511186356;fuente;Fuente Cossío;40.8322;-3.83734;;;false;OpenStreetMap node/4511186356
+osm-n4511621799;fuente;Fuente del Rey;40.55235;-4.17461;;;false;OpenStreetMap node/4511621799
+osm-n4513971225;fuente;Fuente Majada del Cojo;40.87167;-3.82218;;;false;OpenStreetMap node/4513971225
+osm-n4518625373;fuente;Fuente;40.70426;-3.67148;;;false;OpenStreetMap node/4518625373
+osm-n4528015385;fuente;Fuente del Cochero;40.89698;-4.01288;;;false;OpenStreetMap node/4528015385
+osm-n4528221718;fuente;Fuente de Palominos;40.81938;-4.05937;1548;;false;OpenStreetMap node/4528221718
+osm-n4528229309;fuente;Fuente de Palominos Nueva;40.8222;-4.0506;;;false;OpenStreetMap node/4528229309
+osm-n4539470992;abrigo;La Sima;40.89046;-4.17644;;techo;false;OpenStreetMap node/4539470992
+osm-n4570845917;fuente;Fuente del Canco Negro;40.77438;-3.97178;;;false;OpenStreetMap node/4570845917
+osm-n4594862398;fuente;Fuente;40.69117;-3.75576;;;false;OpenStreetMap node/4594862398
+osm-n4594862403;fuente;Fuente;40.6901;-3.75327;;;false;OpenStreetMap node/4594862403
+osm-n4594862404;fuente;Fuente;40.69916;-3.75672;;;false;OpenStreetMap node/4594862404
+osm-n4616449546;fuente;Fuente de la Genciana;40.84981;-3.79139;;;false;OpenStreetMap node/4616449546
+osm-n4616457224;cumbre;Cerro de la Genciana;40.84674;-3.79634;1867;;false;OpenStreetMap node/4616457224
+osm-n4620247768;fuente;Fuente del Piornal;40.87255;-3.7403;;;false;OpenStreetMap node/4620247768
+osm-n4632198180;cumbre;Sin nombre;40.78311;-4.04303;2073;;false;OpenStreetMap node/4632198180
+osm-n4632212581;fuente;Fuente;40.77148;-4.03921;;;false;OpenStreetMap node/4632212581
+osm-n4632212582;fuente;Fuente;40.76891;-4.03914;;;false;OpenStreetMap node/4632212582
+osm-n4632238607;fuente;Fuente del Pozuelo;40.76682;-4.0523;;;false;OpenStreetMap node/4632238607
+osm-n4632238608;fuente;Fuente de Díaz Duque;40.76872;-4.0516;;;false;OpenStreetMap node/4632238608
+osm-n4634828110;fuente;Fuente de los Baldíos;40.75844;-4.01395;;;false;OpenStreetMap node/4634828110
+osm-n4642764208;fuente;Fuente;40.76462;-3.97999;;;false;OpenStreetMap node/4642764208
+osm-n4657273056;fuente;Fuente del pinar del chiquillo;40.74201;-4.01129;;;false;OpenStreetMap node/4657273056
+osm-n4661900331;cumbre;Sin nombre;40.81348;-3.8517;2026;;false;OpenStreetMap node/4661900331
+osm-n4661970322;cumbre;Sin nombre;40.82081;-3.83051;2009;;false;OpenStreetMap node/4661970322
+osm-n4661970323;fuente;Fuente del Pilanquillo;40.82181;-3.82968;;;false;OpenStreetMap node/4661970323
+osm-n4662906332;fuente;Fuente de la Teja;40.78495;-3.97383;;;false;OpenStreetMap node/4662906332
+osm-n4665913134;fuente;Fuente;40.61343;-4.20223;;;false;OpenStreetMap node/4665913134
+osm-n4667646615;cumbre;Sin nombre;40.80049;-3.91375;2243;;false;OpenStreetMap node/4667646615
+osm-n4667646617;cumbre;Sin nombre;40.80126;-3.91213;2247;;false;OpenStreetMap node/4667646617
+osm-n4667703576;fuente;Fuente de la Belesa;40.80458;-3.9028;;;false;OpenStreetMap node/4667703576
+osm-n4667810889;fuente;Fuente;40.79911;-3.94226;;;false;OpenStreetMap node/4667810889
+osm-n4667946776;cumbre;Sin nombre;40.8114;-3.91682;2083;;false;OpenStreetMap node/4667946776
+osm-n4667946777;fuente;Fuente del Pinganillo;40.80391;-3.92766;;;false;OpenStreetMap node/4667946777
+osm-n4667958317;fuente;Fuente del Hierro;40.81012;-3.92245;;;false;OpenStreetMap node/4667958317
+osm-n4668104618;cumbre;Cerro del Cuco;40.83361;-3.95358;2004;;false;OpenStreetMap node/4668104618
+osm-n4668104623;cumbre;Sin nombre;40.84247;-3.96303;2283;;false;OpenStreetMap node/4668104623
+osm-n4668104626;cumbre;Sin nombre;40.85114;-3.95536;2421;;false;OpenStreetMap node/4668104626
+osm-n4668153056;cumbre;Sin nombre;40.8888;-3.94677;2074;;false;OpenStreetMap node/4668153056
+osm-n4668276258;fuente;Fuente de los Gallegos;40.8465;-4.0335;;;false;OpenStreetMap node/4668276258
+osm-n4668277417;fuente;Fuente de la Boca del Asno;40.84417;-4.02623;1247;;false;OpenStreetMap node/4668277417
+osm-n4670673566;cumbre;Peña Carabitas;40.7915;-3.92988;2092;;false;OpenStreetMap node/4670673566
+osm-n4670694339;fuente;Fuente del Collado Ortigoso;40.7703;-3.92371;;;false;OpenStreetMap node/4670694339
+osm-n4670694343;fuente;Fuente;40.75898;-3.92683;;;false;OpenStreetMap node/4670694343
+osm-n4674420252;fuente;Fuente;40.75736;-3.86767;;;false;OpenStreetMap node/4674420252
+osm-n4684493574;fuente;Manantial Pinilla;40.65129;-3.86519;;;false;OpenStreetMap node/4684493574
+osm-n4718006344;fuente;Fuente;40.67957;-4.17917;;;false;OpenStreetMap node/4718006344
+osm-n4718006345;fuente;Fuente de la Cierva;40.68369;-4.16296;;;false;OpenStreetMap node/4718006345
+osm-n4731737838;fuente;Fuente;40.65136;-4.20824;;;false;OpenStreetMap node/4731737838
+osm-n4742721485;fuente;Fuente;40.56752;-4.17834;;;false;OpenStreetMap node/4742721485
+osm-n4761570623;fuente;Fuente;40.94698;-4.23316;;;false;OpenStreetMap node/4761570623
+osm-n4791944562;fuente;Fuente de la Canaleja;40.82361;-4.01741;;;false;OpenStreetMap node/4791944562
+osm-n4801784818;fuente;Fuente;40.6778;-3.97824;;;false;OpenStreetMap node/4801784818
+osm-n4828135022;fuente;Manantial del Quiñón Viejo;40.92827;-3.66257;;;false;OpenStreetMap node/4828135022
+osm-n4828135024;fuente;Manantial de las Hontanillas;40.9282;-3.68153;;;false;OpenStreetMap node/4828135024
+osm-n4828135025;fuente;Fuente del Piojo;40.93013;-3.68603;;;false;OpenStreetMap node/4828135025
+osm-n4828146173;fuente;Fuente Talanquera;40.95957;-3.67877;;;false;OpenStreetMap node/4828146173
+osm-n4841311103;fuente;Fuente;40.74182;-3.88314;;;false;OpenStreetMap node/4841311103
+osm-n4857681679;abrigo;Cueva de una antigua mina;40.7621;-4.02553;1470;techo;false;OpenStreetMap node/4857681679
+osm-n4862529784;fuente;Fuente de la Duquesa;40.57482;-4.37322;;;false;OpenStreetMap node/4862529784
+osm-n4862540799;fuente;Fuente del Sauco;40.61286;-4.33951;;;false;OpenStreetMap node/4862540799
+osm-n4862540808;fuente;Fuente de la Tortuga;40.60735;-4.3374;;;false;OpenStreetMap node/4862540808
+osm-n4862588318;fuente;Fuente de la Lancha;40.63719;-4.41347;;;false;OpenStreetMap node/4862588318
+osm-n4862606603;fuente;Fuente Mece;40.6339;-4.33649;;;false;OpenStreetMap node/4862606603
+osm-n4862606604;fuente;Fuente de las Bereas;40.63474;-4.31684;;;false;OpenStreetMap node/4862606604
+osm-n4862638917;fuente;Fuente de Fontuana;40.56207;-4.32584;;;false;OpenStreetMap node/4862638917
+osm-n4867656233;fuente;Fuente;40.88887;-3.65903;;;false;OpenStreetMap node/4867656233
+osm-n4868239943;abrigo;Sin nombre;40.76596;-4.03912;;techo;false;OpenStreetMap node/4868239943
+osm-n4868258320;fuente;Fuente de Collado Albo;40.76435;-4.0263;;;false;OpenStreetMap node/4868258320
+osm-n4901700722;fuente;Fuente del Carnero;40.70299;-4.17974;;;false;OpenStreetMap node/4901700722
+osm-n4901700723;fuente;Fuente de la Hiedra;40.70438;-4.18495;;;false;OpenStreetMap node/4901700723
+osm-n4901700773;fuente;Fuente de la Gasca;40.69737;-4.15345;;;false;OpenStreetMap node/4901700773
+osm-n4902168930;fuente;Fuente;40.71113;-4.16746;;;false;OpenStreetMap node/4902168930
+osm-n4902202808;cumbre;Cerro Valiente;40.68482;-4.19091;1872;;false;OpenStreetMap node/4902202808
+osm-n4902557093;fuente;Fuente;40.82663;-3.89524;;;false;OpenStreetMap node/4902557093
+osm-n4903426690;fuente;Fuente del Mostajo;40.73938;-4.11912;;;false;OpenStreetMap node/4903426690
+osm-n4903426694;cumbre;Sin nombre;40.74794;-4.09837;1936;;false;OpenStreetMap node/4903426694
+osm-n4903532186;fuente;Fuente de los Guijos;40.76172;-4.1297;;;false;OpenStreetMap node/4903532186
+osm-n4925734335;fuente;Fuente de los Neveros;40.87673;-3.98388;;;false;OpenStreetMap node/4925734335
+osm-n4932282755;fuente;Fuente;40.62714;-4.00876;;;false;OpenStreetMap node/4932282755
+osm-n4935953705;fuente;Fuente de los Lobos;40.81143;-3.77563;;;false;OpenStreetMap node/4935953705
+osm-n4946182156;refugio_libre;Sin nombre;40.82844;-3.9505;;cerrado;false;OpenStreetMap node/4946182156
+osm-n4946926947;fuente;P. Bargueño;40.78059;-4.06678;;;false;OpenStreetMap node/4946926947
+osm-n4946926948;fuente;Fuente;40.75258;-4.07757;;;false;OpenStreetMap node/4946926948
+osm-n4969826650;fuente;Fuente;40.67229;-4.09033;;;false;OpenStreetMap node/4969826650
+osm-n5012301318;fuente;Fuente del Miradero;40.76109;-4.0651;;;false;OpenStreetMap node/5012301318
+osm-n5012340230;fuente;Fuente Pradera de las Cortes;40.76013;-4.02177;;;false;OpenStreetMap node/5012340230
+osm-n5031809918;fuente;Fuente de Valen;40.69013;-4.18279;;;false;OpenStreetMap node/5031809918 + OpenStreetMap node/5031816334
+osm-n5031820381;fuente;Fuente de Máximo;40.68499;-4.17997;;;false;OpenStreetMap node/5031820381
+osm-n5031829532;fuente;Fuente de Juan Bellver;40.68905;-4.20666;;;false;OpenStreetMap node/5031829532
+osm-n5031834283;fuente;Fuente de Bellver Marqués;40.69113;-4.20131;;;false;OpenStreetMap node/5031834283
+osm-n5046930765;fuente;Fuente de Prueba Valiente;40.69265;-4.19455;1766;;false;OpenStreetMap node/5046930765
+osm-n5069195170;fuente;Fuente;40.64785;-3.78203;;;false;OpenStreetMap node/5069195170
+osm-n5107247418;fuente;Fuente de los Canteros;40.67285;-3.77028;;;false;OpenStreetMap node/5107247418
+osm-n5124734951;fuente;Fuente;40.56548;-4.01362;;;false;OpenStreetMap node/5124734951
+osm-n5167097214;fuente;Fuente;40.75217;-4.08064;;;false;OpenStreetMap node/5167097214
+osm-n5186184445;fuente;Fuente de la Peseta;40.82669;-4.00529;1566;;false;OpenStreetMap node/5186184445
+osm-n5186184448;fuente;Fuente;40.81825;-3.99215;;;false;OpenStreetMap node/5186184448
+osm-n5186184485;fuente;Fuente de los Pájaros;40.83616;-3.97405;2149;;false;OpenStreetMap node/5186184485
+osm-n5187925300;fuente;Fuente Fría;40.808;-4.01216;;;false;OpenStreetMap node/5187925300
+osm-n5188134151;abrigo;Corrales de la Majada Minguete;40.79654;-4.06484;;techo;false;OpenStreetMap node/5188134151
+osm-n5190229389;fuente;Fuente de Caño Seco;40.83182;-4.0232;;;false;OpenStreetMap node/5190229389
+osm-n5190229412;fuente;Fuente del Charco de las Ranas;40.83961;-4.01491;;;false;OpenStreetMap node/5190229412
+osm-n5190860706;fuente;Fuente del Tío Conrado;40.85723;-4.0139;;;false;OpenStreetMap node/5190860706
+osm-n5196582249;fuente;Fuente;40.58152;-3.88946;;;false;OpenStreetMap node/5196582249
+osm-n5229888167;fuente;Fuente de la Culebra;40.73694;-3.89881;;;false;OpenStreetMap node/5229888167
+osm-n5229891393;fuente;Fuente del Berzosillo;40.74274;-3.90529;;;false;OpenStreetMap node/5229891393
+osm-n5232160902;abrigo;Descansadero de la Majada de las Cuevas;40.74554;-3.95105;;techo;false;OpenStreetMap node/5232160902
+osm-n5232232189;fuente;Fuente;40.74032;-3.95603;;;false;OpenStreetMap node/5232232189
+osm-n5240749824;cumbre;Torre de los Buitres;40.77897;-3.86532;1827;;false;OpenStreetMap node/5240749824
+osm-n5240800153;cumbre;El Cocodrilo;40.78375;-3.86653;1909;;false;OpenStreetMap node/5240800153
+osm-n5240800155;cumbre;Sin nombre;40.7848;-3.86655;1933;;false;OpenStreetMap node/5240800155
+osm-n5240800156;cumbre;Sin nombre;40.7843;-3.86662;1946;;false;OpenStreetMap node/5240800156
+osm-n5241071453;cumbre;Risco del Ventanillo;40.78676;-3.87155;1924;;false;OpenStreetMap node/5241071453
+osm-n5242804428;cumbre;Tres Cestos;40.78056;-3.89129;1822;;false;OpenStreetMap node/5242804428
+osm-n5242804441;cumbre;Cancho del Centeno;40.7852;-3.88801;1917;;false;OpenStreetMap node/5242804441
+osm-n5242818063;cumbre;Sin nombre;40.78818;-3.88594;1907;;false;OpenStreetMap node/5242818063
+osm-n5244389317;cumbre;Alto del Matasanos;40.79307;-3.87619;2056;;false;OpenStreetMap node/5244389317
+osm-n5244395748;cumbre;Peña Lindera;40.79569;-3.87564;2107;;false;OpenStreetMap node/5244395748
+osm-n5267492630;fuente;Manantial de Ríofrío;40.8923;-3.682;;;false;OpenStreetMap node/5267492630
+osm-n5267492631;fuente;Manantial de Sardalinde;40.8911;-3.68855;;;false;OpenStreetMap node/5267492631
+osm-n5267492632;fuente;Fuente de la Talayuela;40.89123;-3.69339;;;false;OpenStreetMap node/5267492632
+osm-n5267492633;fuente;Manantial de Peña Ahorcada;40.89239;-3.70349;;;false;OpenStreetMap node/5267492633
+osm-n5267494524;fuente;Manantial de Mondalindo;40.88408;-3.6927;;;false;OpenStreetMap node/5267494524
+osm-n5267531432;cumbre;Peña Negra;40.8858;-3.68074;1832;;false;OpenStreetMap node/5267531432
+osm-n5267531447;fuente;Fuente del Pelado;40.90536;-3.6717;;;false;OpenStreetMap node/5267531447
+osm-n5271575033;fuente;Manantial del Goyete;40.89725;-3.71553;;;false;OpenStreetMap node/5271575033
+osm-n5271760543;fuente;Fuente de Matainiesta;40.90448;-3.71529;;;false;OpenStreetMap node/5271760543
+osm-n5306467844;fuente;Fuente;40.76546;-3.99394;;;false;OpenStreetMap node/5306467844
+osm-n5306467846;cumbre;Sin nombre;40.76154;-4.00577;1857;;false;OpenStreetMap node/5306467846
+osm-n5306467847;cumbre;Sin nombre;40.76329;-4.00522;1834;;false;OpenStreetMap node/5306467847
+osm-n5308127318;cumbre;Sin nombre;40.76453;-4.00492;1855;;false;OpenStreetMap node/5308127318
+osm-n5308127320;cumbre;Peña Horcón;40.76644;-4.00473;1879;;false;OpenStreetMap node/5308127320
+osm-n5308128321;cumbre;Sin nombre;40.7677;-4.0044;1873;;false;OpenStreetMap node/5308128321
+osm-n5308128346;cumbre;Sin nombre;40.77042;-4.00371;1852;;false;OpenStreetMap node/5308128346
+osm-n5308128359;cumbre;Risco de los Emburriaderos;40.77659;-3.99916;1959;;false;OpenStreetMap node/5308128359
+osm-n5308128368;cumbre;Dos Castillas;40.78548;-3.98964;2179;;false;OpenStreetMap node/5308128368
+osm-n5309877451;abrigo;Corrales de las Cabras o Majada el Regajo;40.80836;-4.07469;;techo;false;OpenStreetMap node/5309877451
+osm-n5309877452;fuente;Ojos del Río Moros;40.79549;-4.07301;;;false;OpenStreetMap node/5309877452
+osm-n5347372078;fuente;Fuente;40.95659;-4.23495;;;false;OpenStreetMap node/5347372078
+osm-n5377661114;fuente;Fuente;41.02072;-3.83112;;;false;OpenStreetMap node/5377661114
+osm-n5379210423;cumbre;Sin nombre;40.98917;-3.84517;2146;;false;OpenStreetMap node/5379210423
+osm-n5381479016;fuente;Fuente;41.02598;-3.83092;;;false;OpenStreetMap node/5381479016
+osm-n5435780851;abrigo;Sin nombre;40.73144;-3.91859;;techo;false;OpenStreetMap node/5435780851
+osm-n5435780852;abrigo;Sin nombre;40.73424;-3.91712;;techo;false;OpenStreetMap node/5435780852
+osm-n5435780853;abrigo;Sin nombre;40.7362;-3.91509;;techo;false;OpenStreetMap node/5435780853 + OpenStreetMap node/7972566084 + OpenStreetMap node/10308319856
+osm-n5486437571;fuente;Fuente no tratada;40.62652;-4.23351;;;false;OpenStreetMap node/5486437571
+osm-n5505908098;fuente;Fuente;40.55288;-3.89255;;;false;OpenStreetMap node/5505908098
+osm-n5526176444;fuente;Fuente;40.56558;-3.91609;;;false;OpenStreetMap node/5526176444
+osm-n5544722641;fuente;Fuente de la Teja;40.96474;-3.95473;;;false;OpenStreetMap node/5544722641
+osm-n5550523545;fuente;Fuente de los Cielos;40.71616;-3.98823;;;false;OpenStreetMap node/5550523545
+osm-n5553637217;fuente;Fuente;40.95067;-4.12562;;;false;OpenStreetMap node/5553637217
+osm-n5561392143;fuente;Fuente de las Chozuelas;40.88037;-4.05412;;;false;OpenStreetMap node/5561392143
+osm-n5563956291;cumbre;El Cancho;40.92731;-3.93812;2042;;false;OpenStreetMap node/5563956291
+osm-n5564028983;fuente;Fuente del Malpaso;40.92712;-3.98491;;;false;OpenStreetMap node/5564028983
+osm-n5564151879;cumbre;Cerro de Navahonda;40.94633;-3.91904;1975;;false;OpenStreetMap node/5564151879
+osm-n5564206184;cumbre;Peñas Crecientes;40.95896;-3.89811;2004;;false;OpenStreetMap node/5564206184
+osm-n5564373032;cumbre;La Risca;40.96145;-3.85649;1829;;false;OpenStreetMap node/5564373032
+osm-n5564551791;cumbre;Peñacabra;40.97123;-3.86984;2159;;false;OpenStreetMap node/5564551791
+osm-n5564551793;cumbre;Alto del Porrinoso;40.97418;-3.8647;2169;;false;OpenStreetMap node/5564551793
+osm-n5564551797;cumbre;Cerro Redondo;40.98753;-3.89748;2039;;false;OpenStreetMap node/5564551797
+osm-n5564552448;cumbre;Pico Negro;40.98172;-3.89126;2087;;false;OpenStreetMap node/5564552448
+osm-n5564594126;cumbre;Sin nombre;40.95417;-3.9282;1882;;false;OpenStreetMap node/5564594126
+osm-n5564610697;cumbre;Sin nombre;40.92045;-3.95994;1883;;false;OpenStreetMap node/5564610697
+osm-n5568777944;fuente;Fuente;40.75576;-4.06266;;;false;OpenStreetMap node/5568777944
+osm-n5590212321;fuente;Fuente;40.95094;-4.12111;;;false;OpenStreetMap node/5590212321
+osm-n5592949191;parking;Aparcamiento Minusvalidos;40.93034;-4.0993;;;false;OpenStreetMap node/5592949191 + OpenStreetMap node/5592949195 + OpenStreetMap node/5592949197 + OpenStreetMap node/5592949198
+osm-n5604391436;fuente;Fuente;40.78433;-3.68791;;;false;OpenStreetMap node/5604391436
+osm-n5643389522;refugio_libre;finca Gerardo;40.57762;-4.13277;;cerrado;false;OpenStreetMap node/5643389522
+osm-n5670401985;fuente;Fuente;40.69357;-4.02412;;;false;OpenStreetMap node/5670401985
+osm-n5705992722;fuente;Fuente;40.78117;-3.68151;;;false;OpenStreetMap node/5705992722
+osm-n5730776723;fuente;Fuente;40.63028;-4.00847;;;false;OpenStreetMap node/5730776723
+osm-n5740423124;fuente;Fuente;40.87801;-4.02727;;;false;OpenStreetMap node/5740423124
+osm-n5760050201;fuente;Fuente del Caño Ortiz;41.01827;-3.80823;;;false;OpenStreetMap node/5760050201
+osm-n5760836106;fuente;Fuente;40.95264;-4.12377;;;false;OpenStreetMap node/5760836106
+osm-n5762100865;fuente;Fuente;40.94892;-4.12367;;;false;OpenStreetMap node/5762100865
+osm-n5779331909;fuente;Fuente de la Casa de Postas;40.8157;-4.01696;;;false;OpenStreetMap node/5779331909
+osm-n5790329570;fuente;Fuente;40.92593;-3.90321;;;false;OpenStreetMap node/5790329570
+osm-n5792059584;fuente;Fuente;40.7608;-4.08659;;;false;OpenStreetMap node/5792059584
+osm-n5804805929;fuente;Fuente de la Bola;40.595;-4.15463;;;false;OpenStreetMap node/5804805929
+osm-n5825047765;fuente;Fuente;40.57855;-3.95076;;;false;OpenStreetMap node/5825047765
+osm-n5839486989;fuente;Fuente;40.63555;-4.01584;;;false;OpenStreetMap node/5839486989
+osm-n5851794989;fuente;Fuente ermita;40.7702;-3.78819;;;false;OpenStreetMap node/5851794989
+osm-n5853144783;fuente;Fuente;40.75269;-3.7818;;;false;OpenStreetMap node/5853144783
+osm-n5853145817;fuente;Fuente;40.75365;-3.78852;;;false;OpenStreetMap node/5853145817
+osm-n5863449238;fuente;Fuente;40.7435;-4.06669;;;false;OpenStreetMap node/5863449238
+osm-n5892602669;fuente;Fuente El Pájaro;40.86126;-4.05071;;;false;OpenStreetMap node/5892602669
+osm-n5893045429;fuente;Fuente de las Palomas;40.86619;-4.05187;;;false;OpenStreetMap node/5893045429
+osm-n5893045432;fuente;Fuente de los Pastores;40.85727;-4.05539;;;false;OpenStreetMap node/5893045432
+osm-n5893169952;fuente;Fuente de Cabeza Gatos;40.86933;-4.05896;;;false;OpenStreetMap node/5893169952
+osm-n5895207640;fuente;Fuente del Tío Linos;40.85299;-4.0363;;;false;OpenStreetMap node/5895207640
+osm-n5898761808;fuente;Fuente;40.72188;-3.86961;;;false;OpenStreetMap node/5898761808
+osm-n5899861697;cumbre;Cerro de la Muela;40.81391;-4.09129;2153;;false;OpenStreetMap node/5899861697
+osm-n5901193039;cumbre;Sin nombre;40.80817;-4.09968;2143;;false;OpenStreetMap node/5901193039
+osm-n5901193041;cumbre;Sin nombre;40.80738;-4.10117;2141;;false;OpenStreetMap node/5901193041
+osm-n5905469020;cumbre;Sin nombre;40.7904;-4.13956;1998;;false;OpenStreetMap node/5905469020
+osm-n5907533027;refugio_libre;Refugio Loma de los Ardiles;40.74942;-4.11619;;cerrado;false;OpenStreetMap node/5907533027
+osm-n5907553948;abrigo;Sin nombre;40.74677;-4.10501;;techo;false;OpenStreetMap node/5907553948
+osm-n5907901124;abrigo;Majadas de Belén;40.81228;-3.72209;;techo;false;OpenStreetMap node/5907901124
+osm-n5911102912;fuente;Fuente de los Navazos;40.72424;-4.17405;;;false;OpenStreetMap node/5911102912
+osm-n5915517347;fuente;Fuente Mata del Pozo;40.74967;-4.05627;;;false;OpenStreetMap node/5915517347
+osm-n5921133863;abrigo;Sin nombre;40.74311;-3.86522;;techo;false;OpenStreetMap node/5921133863
+osm-n5921133864;abrigo;Sin nombre;40.74411;-3.86479;;techo;false;OpenStreetMap node/5921133864 + OpenStreetMap node/8198127409
+osm-n5921141850;abrigo;Vivac;40.74588;-3.87348;;techo;false;OpenStreetMap node/5921141850 + OpenStreetMap node/5921141851
+osm-n5921141852;abrigo;Cueva del Chamán;40.75205;-3.86315;1380;techo;false;OpenStreetMap node/5921141852
+osm-n5921141853;abrigo;Sin nombre;40.75591;-3.86336;;techo;false;OpenStreetMap node/5921141853
+osm-n5921141854;abrigo;Sin nombre;40.75649;-3.8632;1489;techo;false;OpenStreetMap node/5921141854
+osm-n5921146495;abrigo;Sin nombre;40.75511;-3.88035;;techo;false;OpenStreetMap node/5921146495 + OpenStreetMap node/5921146496
+osm-n5921146497;abrigo;Sin nombre;40.75553;-3.8838;;techo;false;OpenStreetMap node/5921146497
+osm-n5936377649;fuente;Fuente;40.73605;-3.94196;;;false;OpenStreetMap node/5936377649
+osm-n5937065140;fuente;Fuente;40.80821;-4.03849;;;false;OpenStreetMap node/5937065140
+osm-n5937065165;abrigo;Vivac;40.79977;-4.071;;techo;false;OpenStreetMap node/5937065165
+osm-n5941227622;fuente;Fuente del Caño Viejo;40.6397;-3.99029;;;false;OpenStreetMap node/5941227622
+osm-n5954069804;abrigo;Sin nombre;40.74935;-3.87116;;techo;false;OpenStreetMap node/5954069804
+osm-n5954069805;abrigo;Sin nombre;40.75149;-3.86243;1359;techo;false;OpenStreetMap node/5954069805
+osm-n5954069806;abrigo;Sin nombre;40.76011;-3.87113;;techo;false;OpenStreetMap node/5954069806
+osm-n5954069807;abrigo;Sin nombre;40.75839;-3.87231;;techo;false;OpenStreetMap node/5954069807
+osm-n5954069808;abrigo;Sin nombre;40.75582;-3.87832;;techo;false;OpenStreetMap node/5954069808
+osm-n5993874485;abrigo;Vivac;40.74788;-4.10073;;techo;false;OpenStreetMap node/5993874485
+osm-n6179348585;fuente;Fuente;40.87515;-3.65473;;;false;OpenStreetMap node/6179348585
+osm-n6190241090;fuente;Fuente Fernando Benito;40.68736;-4.21904;;;false;OpenStreetMap node/6190241090
+osm-n6267876788;fuente;Fuente;40.5849;-4.13667;;;false;OpenStreetMap node/6267876788
+osm-n6330558909;fuente;Fuente;40.71716;-4.16256;;;false;OpenStreetMap node/6330558909
+osm-n6333891025;fuente;Fuente del Cornocal;40.67307;-3.99154;;;false;OpenStreetMap node/6333891025
+osm-n6335960965;fuente;Fuente;40.8539;-4.16495;;;false;OpenStreetMap node/6335960965
+osm-n6336438370;fuente;Fuente;40.84085;-4.17585;;;false;OpenStreetMap node/6336438370
+osm-n6342000009;fuente;Fuente de Los Pinsapos;40.60222;-4.15179;;;false;OpenStreetMap node/6342000009
+osm-n6343582077;fuente;Fuente;40.63736;-4.02477;;;false;OpenStreetMap node/6343582077
+osm-n6361429232;fuente;Fuente;40.68819;-4.07804;;;false;OpenStreetMap node/6361429232
+osm-n6362211287;cumbre;Sin nombre;40.91196;-3.94157;2072;;false;OpenStreetMap node/6362211287
+osm-n6362736930;cumbre;Sin nombre;40.99268;-3.91333;1964;;false;OpenStreetMap node/6362736930
+osm-n6367269333;abrigo;Cueva de Peña Rubia;40.77133;-3.66393;;techo;false;OpenStreetMap node/6367269333
+osm-n6375513169;fuente;Fuente del Hueco;40.92884;-3.96333;;;false;OpenStreetMap node/6375513169
+osm-n6434478412;fuente;Fuente;40.72586;-3.86483;;;false;OpenStreetMap node/6434478412
+osm-n6434489675;fuente;Fuente;40.72665;-3.8638;;;false;OpenStreetMap node/6434489675
+osm-n6437861961;fuente;Fuente Linosa;40.95598;-3.8314;;;false;OpenStreetMap node/6437861961
+osm-n6437897006;fuente;Fuente de la Quebradura;40.95706;-3.82177;;;false;OpenStreetMap node/6437897006
+osm-n6437897007;fuente;Fuente Reajo Milanes;40.95904;-3.82937;;;false;OpenStreetMap node/6437897007
+osm-n6454886185;fuente;Fuente;40.81399;-3.75933;;;false;OpenStreetMap node/6454886185
+osm-n6456266787;fuente;Fuente;40.81289;-3.75882;;;false;OpenStreetMap node/6456266787
+osm-n6456266903;fuente;Fuente;40.85511;-3.7061;;;false;OpenStreetMap node/6456266903
+osm-n6466474375;fuente;Fuente;40.87178;-3.66213;;;false;OpenStreetMap node/6466474375
+osm-n6466521859;fuente;Fuente;40.87243;-3.6631;;;false;OpenStreetMap node/6466521859
+osm-n6466921871;fuente;Fuente;40.87171;-3.66177;;;false;OpenStreetMap node/6466921871
+osm-n6467962083;fuente;Fuente;40.87207;-3.66117;;;false;OpenStreetMap node/6467962083
+osm-n6486763054;fuente;Fuente;40.60687;-3.70886;;;false;OpenStreetMap node/6486763054
+osm-n6486763055;fuente;Fuente;40.60746;-3.70719;;;false;OpenStreetMap node/6486763055
+osm-n6503919199;fuente;Fuente de los Cabreros;40.72225;-4.02549;;;false;OpenStreetMap node/6503919199
+osm-n6503919200;fuente;Fuente de los Rasos;40.72282;-4.03521;;;false;OpenStreetMap node/6503919200
+osm-n6540483687;fuente;Fuente;40.64254;-3.99649;;;false;OpenStreetMap node/6540483687
+osm-n6540483691;fuente;Fuente;40.64634;-3.99562;;;false;OpenStreetMap node/6540483691
+osm-n6540483695;fuente;Fuente;40.64906;-3.99768;;;false;OpenStreetMap node/6540483695
+osm-n6551168030;fuente;Fuente de Santiago Arroyo;40.59743;-4.16186;;;false;OpenStreetMap node/6551168030
+osm-n6551384640;fuente;Fuente;40.76834;-4.01379;;;false;OpenStreetMap node/6551384640
+osm-n6551442953;fuente;Fuente;40.68758;-4.17022;;;false;OpenStreetMap node/6551442953
+osm-n6564508885;fuente;Fuente de Navalmedio;40.74825;-4.03377;;;false;OpenStreetMap node/6564508885
+osm-n6564541790;fuente;Fuente de Majalzarzal;40.74059;-4.03081;;;false;OpenStreetMap node/6564541790
+osm-n6564588124;fuente;Fuente del rebosadero;40.73483;-4.0191;;;false;OpenStreetMap node/6564588124
+osm-n6570952531;fuente;Fuente Aldara;40.72248;-4.12888;;;false;OpenStreetMap node/6570952531
+osm-n6584727755;fuente;Fuente;40.9093;-4.00954;;;false;OpenStreetMap node/6584727755
+osm-n6584727757;fuente;Fuente;40.90796;-4.00481;;;false;OpenStreetMap node/6584727757
+osm-n6653652577;fuente;Fuente;40.59334;-4.14637;;;false;OpenStreetMap node/6653652577
+osm-n6718737785;fuente;Fuente Merendera;40.85996;-4.00417;;;false;OpenStreetMap node/6718737785
+osm-n6718739486;fuente;Fuente del Pino la Bota;40.85826;-4.00905;;;false;OpenStreetMap node/6718739486
+osm-n6722799050;fuente;Fuente;40.95625;-4.19231;;;false;OpenStreetMap node/6722799050
+osm-n6724972291;fuente;Fuente;40.95409;-4.12785;;;false;OpenStreetMap node/6724972291
+osm-n6735448967;fuente;Fuente;40.81365;-3.76384;;;false;OpenStreetMap node/6735448967
+osm-n6746530455;fuente;Fuente;40.6964;-4.22392;;;false;OpenStreetMap node/6746530455
+osm-n6767267372;fuente;Fuente;40.95891;-4.23332;;;false;OpenStreetMap node/6767267372
+osm-n6776737994;fuente;Fuente;40.73694;-3.94591;;;false;OpenStreetMap node/6776737994
+osm-n6776741011;fuente;Fuente;40.74068;-4.05499;;;false;OpenStreetMap node/6776741011
+osm-n6776746738;fuente;Fuente;40.6997;-3.93504;;;false;OpenStreetMap node/6776746738
+osm-n6776755606;fuente;Fuente;40.71717;-3.92047;;;false;OpenStreetMap node/6776755606
+osm-n6776762557;fuente;Fuente;40.68314;-3.96744;;;false;OpenStreetMap node/6776762557
+osm-n6792299541;fuente;Caño de Quebrantaherraduras;40.7987;-4.06186;1786;;false;OpenStreetMap node/6792299541
+osm-n6792304138;fuente;Fuente;40.65504;-4.02096;;;false;OpenStreetMap node/6792304138
+osm-n6792314201;refugio_libre;Refugio de los Pastores;40.85719;-4.05524;;cerrado;false;OpenStreetMap node/6792314201
+osm-n6862106955;fuente;Fuente;40.58104;-3.89892;;;false;OpenStreetMap node/6862106955
+osm-n6880048603;parking;TiendaAnimal;40.63498;-4.01295;;;false;OpenStreetMap node/6880048603 + OpenStreetMap node/6880048638
+osm-n6919864544;cumbre;Sin nombre;40.7991;-4.01108;1887;;false;OpenStreetMap node/6919864544
+osm-n6919864546;cumbre;Sin nombre;40.79569;-4.00964;1894;;false;OpenStreetMap node/6919864546
+osm-n6919955955;cumbre;Sin nombre;40.89997;-3.94855;2095;;false;OpenStreetMap node/6919955955
+osm-n6974111435;fuente;Fuente Lagarto;40.91036;-3.66045;;;false;OpenStreetMap node/6974111435
+osm-n7006508605;fuente;Fuente Chiquillo;40.74275;-4.00928;;;false;OpenStreetMap node/7006508605
+osm-n7007565132;abrigo;Corral Ciego;40.75937;-3.87428;;techo;false;OpenStreetMap node/7007565132
+osm-n7010643153;abrigo;Cueva del Ave María;40.74581;-3.86798;;techo;false;OpenStreetMap node/7010643153
+osm-n7016331027;fuente;Fuente;40.75864;-3.99366;;;false;OpenStreetMap node/7016331027
+osm-n7018729989;fuente;Fuente de los Cebales;40.72093;-3.96095;;;false;OpenStreetMap node/7018729989
+osm-n7021018449;abrigo;Ciudad de los Muchachos y Majadas de los Palanes;40.73543;-3.95818;1157;techo;false;OpenStreetMap node/7021018449
+osm-n7021032927;abrigo;Cueva de los Maquis;40.74209;-3.92892;;techo;false;OpenStreetMap node/7021032927
+osm-n7086408606;fuente;Fuente;40.64147;-4.00667;;;false;OpenStreetMap node/7086408606
+osm-n7086669231;fuente;Fuente Muela;41.0204;-3.76883;;;false;OpenStreetMap node/7086669231
+osm-n7086696248;cumbre;Sin nombre;41.02697;-3.75923;2077;;false;OpenStreetMap node/7086696248
+osm-n7086696252;cumbre;Sin nombre;41.03652;-3.74843;2022;;false;OpenStreetMap node/7086696252
+osm-n7086696254;cumbre;Sin nombre;41.04378;-3.74425;1933;;false;OpenStreetMap node/7086696254
+osm-n7087626364;cumbre;Sin nombre;40.98709;-3.87653;2077;;false;OpenStreetMap node/7087626364
+osm-n7087626367;cumbre;Sin nombre;40.98875;-3.87015;2075;;false;OpenStreetMap node/7087626367
+osm-n7091785760;fuente;Fuente de Juan de Redueña;40.86607;-3.66175;;;false;OpenStreetMap node/7091785760
+osm-n7091898086;abrigo;Majada de las Ovejas;40.88863;-3.65757;;techo;false;OpenStreetMap node/7091898086
+osm-n7095243101;fuente;Fuente del Comedero;40.88253;-3.67874;;;false;OpenStreetMap node/7095243101
+osm-n7096465763;fuente;Fuente Garcilla;40.8798;-3.67232;;;false;OpenStreetMap node/7096465763
+osm-n7096465764;fuente;Fuente;40.86386;-3.6856;;;false;OpenStreetMap node/7096465764
+osm-n7096465782;fuente;Fuente de las Pocitas;40.86327;-3.69732;;;false;OpenStreetMap node/7096465782
+osm-n7099252080;fuente;Fuente;40.87942;-3.75469;;;false;OpenStreetMap node/7099252080
+osm-n7099288722;fuente;Manantial de la Gregoria;40.85763;-3.73405;;;false;OpenStreetMap node/7099288722
+osm-n7099361563;abrigo;Corral de la Vereda;40.90314;-3.66561;;techo;false;OpenStreetMap node/7099361563
+osm-n7105465291;fuente;Fuente la Borriqueña;40.90279;-3.75045;;;false;OpenStreetMap node/7105465291
+osm-n7125976486;fuente;Fuente;40.90814;-4.12418;;;false;OpenStreetMap node/7125976486
+osm-n7126194598;fuente;Fuente;40.65935;-4.0239;;;false;OpenStreetMap node/7126194598
+osm-n7134032207;fuente;Fuente;41.01613;-4.08133;;;false;OpenStreetMap node/7134032207
+osm-n7141734515;fuente;Fuente;40.73317;-3.99444;;;false;OpenStreetMap node/7141734515
+osm-n7198671088;fuente;Fuente plateada;41.02596;-3.88901;;;false;OpenStreetMap node/7198671088
+osm-n7228146182;fuente;Fuente;40.90902;-4.00797;;;false;OpenStreetMap node/7228146182
+osm-n7229172216;abrigo;Gruta del Estanque;40.89127;-3.99533;;techo;false;OpenStreetMap node/7229172216
+osm-n7234397763;cumbre;Sin nombre;40.88144;-3.69589;1822;;false;OpenStreetMap node/7234397763
+osm-n7234647665;fuente;Fuente;40.89433;-3.70987;;;false;OpenStreetMap node/7234647665
+osm-n7237353789;fuente;Fuente;40.92239;-3.69792;;;false;OpenStreetMap node/7237353789
+osm-n7237353790;fuente;Fuente;40.92405;-3.6927;;;false;OpenStreetMap node/7237353790
+osm-n7247558640;fuente;Fuente;40.95528;-4.03694;;;false;OpenStreetMap node/7247558640
+osm-n7247558654;fuente;Fuente;40.9638;-4.03595;;;false;OpenStreetMap node/7247558654
+osm-n7279658538;fuente;Fuente;40.71246;-4.08014;;;false;OpenStreetMap node/7279658538
+osm-n7279658539;fuente;Fuente;40.71212;-4.08001;;;false;OpenStreetMap node/7279658539 + OpenStreetMap node/7279658540
+osm-n7279658575;fuente;Fuente;40.71502;-4.07265;;;false;OpenStreetMap node/7279658575
+osm-n7280000165;fuente;Fuente;40.76223;-3.82562;;;false;OpenStreetMap node/7280000165
+osm-n7281737951;fuente;Fuente;40.74979;-3.83615;;;false;OpenStreetMap node/7281737951
+osm-n7281789830;fuente;Fuente;40.74522;-3.82735;;;false;OpenStreetMap node/7281789830
+osm-n7282496247;fuente;Fuente;40.76133;-3.82178;;;false;OpenStreetMap node/7282496247
+osm-n7282496248;fuente;Fuente;40.76013;-3.82091;;;false;OpenStreetMap node/7282496248
+osm-n7282496249;fuente;Fuente;40.7604;-3.81756;;;false;OpenStreetMap node/7282496249
+osm-n7285119203;abrigo;Cueva de la Mora;40.75712;-3.8808;;techo;false;OpenStreetMap node/7285119203
+osm-n7285119225;cumbre;Sin nombre;40.81349;-3.83552;2098;;false;OpenStreetMap node/7285119225
+osm-n7285120285;cumbre;Sin nombre;40.81873;-3.83213;2033;;false;OpenStreetMap node/7285120285
+osm-n7285120286;cumbre;Sin nombre;40.81867;-3.83041;2071;;false;OpenStreetMap node/7285120286
+osm-n7285120290;cumbre;Sin nombre;40.81499;-3.81582;1911;;false;OpenStreetMap node/7285120290
+osm-n7287679618;fuente;Fuente;40.76116;-3.90687;;;false;OpenStreetMap node/7287679618
+osm-n7288716496;fuente;Fuente de la Culebra;40.71463;-3.95705;;;false;OpenStreetMap node/7288716496
+osm-n7290790070;cumbre;Sin nombre;40.80113;-3.96239;2117;;false;OpenStreetMap node/7290790070
+osm-n7290790071;cumbre;Sin nombre;40.81597;-3.95834;1836;;false;OpenStreetMap node/7290790071
+osm-n7290790072;cumbre;Sin nombre;40.81787;-3.96466;1921;;false;OpenStreetMap node/7290790072
+osm-n7292922636;fuente;Fuente de las Corujas;40.68993;-3.89912;;;false;OpenStreetMap node/7292922636
+osm-n7293481844;fuente;Fuente;40.76765;-3.81289;;;false;OpenStreetMap node/7293481844
+osm-n7293822401;fuente;Fuente;40.78407;-3.81146;;;false;OpenStreetMap node/7293822401
+osm-n7293822402;fuente;Fuente;40.78416;-3.81217;;;false;OpenStreetMap node/7293822402
+osm-n7294234618;fuente;Fuente;40.76945;-3.80631;;;false;OpenStreetMap node/7294234618
+osm-n7294234620;fuente;Fuente;40.76663;-3.80641;;;false;OpenStreetMap node/7294234620
+osm-n7294851273;fuente;Fuente;40.77691;-3.78846;;;false;OpenStreetMap node/7294851273
+osm-n7294899953;fuente;Fuente;40.77609;-3.81761;;;false;OpenStreetMap node/7294899953
+osm-n7295010908;fuente;Fuente;40.78501;-3.81684;;;false;OpenStreetMap node/7295010908
+osm-n7295010909;fuente;Fuente;40.7843;-3.81733;;;false;OpenStreetMap node/7295010909
+osm-n7471029953;fuente;Fuente;40.71163;-4.16492;;;false;OpenStreetMap node/7471029953
+osm-n7504319179;fuente;Fuente;40.71801;-3.91923;;;false;OpenStreetMap node/7504319179
+osm-n7568188971;fuente;Fuente de Majarrompe;40.82949;-4.01312;;;false;OpenStreetMap node/7568188971
+osm-n7568188973;fuente;Fuente del Intendente;40.83909;-3.99296;;;false;OpenStreetMap node/7568188973
+osm-n7609858442;fuente;Fuente;40.86808;-3.70498;;;false;OpenStreetMap node/7609858442
+osm-n7620437232;cumbre;Sin nombre;40.78151;-4.03079;2133;;false;OpenStreetMap node/7620437232
+osm-n7620437237;abrigo;Sin nombre;40.78433;-4.03776;;techo;false;OpenStreetMap node/7620437237
+osm-n7620468164;cumbre;Sin nombre;40.79324;-4.01057;1894;;false;OpenStreetMap node/7620468164
+osm-n7635181079;cumbre;Sin nombre;40.83902;-3.81661;1822;;false;OpenStreetMap node/7635181079
+osm-n7635181081;cumbre;La Torrecica;40.84135;-3.81565;1824;;false;OpenStreetMap node/7635181081
+osm-n7656426529;fuente;Fuente;40.65908;-4.03244;;;false;OpenStreetMap node/7656426529
+osm-n7656426530;fuente;Fuente;40.66134;-4.02503;;;false;OpenStreetMap node/7656426530
+osm-n7680107860;fuente;Fuente;40.55148;-3.90067;;;false;OpenStreetMap node/7680107860
+osm-n7693858286;fuente;Fuente;40.59573;-4.22978;;;false;OpenStreetMap node/7693858286
+osm-n7694413078;fuente;Fuente;40.67152;-4.08952;;;false;OpenStreetMap node/7694413078
+osm-n7724190856;fuente;Fuente Peña La Cruz;40.70749;-4.23917;;;false;OpenStreetMap node/7724190856
+osm-n7724197288;refugio_libre;Refugio Peña la Casa;40.70744;-4.23903;;techo;false;OpenStreetMap node/7724197288
+osm-n7768213918;fuente;Fuente;40.98968;-3.80046;;;false;OpenStreetMap node/7768213918
+osm-n7838207137;fuente;Fuente;40.94147;-4.11188;;;false;OpenStreetMap node/7838207137
+osm-n7873245285;fuente;Peña Alta;40.98095;-3.80147;;;false;OpenStreetMap node/7873245285
+osm-n7873502155;abrigo;Abrigo de los Aljibes;40.75798;-3.83052;;techo;false;OpenStreetMap node/7873502155
+osm-n7881074291;fuente;Fuente Paquito Ochoa;40.78132;-4.04549;;;false;OpenStreetMap node/7881074291
+osm-n7884688659;fuente;Fuente del Raso del Pino;40.87277;-3.97051;;;false;OpenStreetMap node/7884688659
+osm-n7891400851;fuente;Fuente;40.9429;-4.11708;;;false;OpenStreetMap node/7891400851
+osm-n7900266395;fuente;Fuente del Ventorrillo;40.75166;-4.01685;;;false;OpenStreetMap node/7900266395
+osm-n7900281954;fuente;Fuente de la Fonda Real;40.73775;-4.02182;;;false;OpenStreetMap node/7900281954
+osm-n7900298654;fuente;Fuente de la Caña;40.77989;-3.99298;;;false;OpenStreetMap node/7900298654
+osm-n7900298655;fuente;Fuente Larga;40.77432;-3.99756;;;false;OpenStreetMap node/7900298655
+osm-n7900360037;fuente;Fuente de Peña Llana;40.76283;-4.00339;;;false;OpenStreetMap node/7900360037
+osm-n7900360038;fuente;Fuente de Piornolon;40.75634;-4.00828;;;false;OpenStreetMap node/7900360038
+osm-n7900423613;fuente;Fuente de La Barranca;40.75353;-3.99295;;;false;OpenStreetMap node/7900423613
+osm-n7900423614;fuente;Fuente del Mojón (Fuente de la Senda Ortiz);40.75093;-4.00359;;;false;OpenStreetMap node/7900423614
+osm-n7900423615;fuente;Fuente del cazador;40.72491;-4.03609;;;false;OpenStreetMap node/7900423615
+osm-n7900423616;fuente;Fuente del buey;40.7277;-4.03433;;;false;OpenStreetMap node/7900423616
+osm-n7900425800;fuente;Fuente;40.71827;-4.03915;;;false;OpenStreetMap node/7900425800
+osm-n7902608391;fuente;Fuente Nuestra Señora de las Nieves;40.70435;-4.18419;;;false;OpenStreetMap node/7902608391
+osm-n7903442033;abrigo;Antigua Mina de Wolframio abandonada;40.68637;-4.16402;;techo;false;OpenStreetMap node/7903442033
+osm-n7905699598;fuente;Fuente Loma del Viento;40.76446;-4.0489;;;false;OpenStreetMap node/7905699598
+osm-n7905699599;fuente;Fuente Nadal;40.76156;-4.05202;;;false;OpenStreetMap node/7905699599
+osm-n7905699600;fuente;Fuente Pata de la cabra;40.77653;-4.0424;;;false;OpenStreetMap node/7905699600
+osm-n7905699601;fuente;Fuente Ignacio;40.77618;-4.04222;;;false;OpenStreetMap node/7905699601
+osm-n7905699602;fuente;Fuente Ermita del Carmen;40.711;-4.17726;;;false;OpenStreetMap node/7905699602
+osm-n7905699603;fuente;Fuente del Avellano;40.70838;-4.18213;;;false;OpenStreetMap node/7905699603
+osm-n7905699604;fuente;Fuente de Gabarreros;40.70382;-4.1793;;;false;OpenStreetMap node/7905699604
+osm-n7905699605;fuente;Fuente fria;40.69283;-4.16824;;;false;OpenStreetMap node/7905699605
+osm-n7905699606;fuente;Fuente de Arteseros;40.6985;-4.20855;;;false;OpenStreetMap node/7905699606
+osm-n7916515448;fuente;Fuente;40.57991;-3.95665;;;false;OpenStreetMap node/7916515448
+osm-n7950400734;fuente;Fuente del Pocillo;40.87603;-4.15039;;;false;OpenStreetMap node/7950400734
+osm-n7950400735;fuente;Fuente del Palacio;40.8739;-4.14965;;;false;OpenStreetMap node/7950400735
+osm-n7950400736;fuente;Fuente del Rey;40.87563;-4.14807;;;false;OpenStreetMap node/7950400736
+osm-n7950400737;fuente;Fuente del Plomo;40.87132;-4.15183;;;false;OpenStreetMap node/7950400737
+osm-n7950400738;fuente;Fuente de los Pastores;40.88937;-4.13328;;;false;OpenStreetMap node/7950400738
+osm-n7972591656;abrigo;Cueva de la Torreta;40.73804;-3.91933;;techo;false;OpenStreetMap node/7972591656
+osm-n7972593185;abrigo;Sin nombre;40.74383;-3.9217;;techo;false;OpenStreetMap node/7972593185
+osm-n7972689182;abrigo;Vivac del Peñotillo;40.76322;-3.97294;;techo;false;OpenStreetMap node/7972689182
+osm-n8022740312;fuente;Fuente del Risco;40.60537;-4.32586;;;false;OpenStreetMap node/8022740312
+osm-n8176937953;refugio_libre;Sin nombre;40.73728;-3.88761;;cerrado;false;OpenStreetMap node/8176937953
+osm-n8262487886;abrigo;Cueva del Diente;40.74488;-3.87375;;techo;false;OpenStreetMap node/8262487886
+osm-n8262487887;abrigo;Sin nombre;40.7465;-3.86599;;techo;false;OpenStreetMap node/8262487887
+osm-n8262487888;fuente;Fuente;40.74649;-3.86598;;;false;OpenStreetMap node/8262487888
+osm-n8296498281;fuente;Fuente;40.94497;-4.11647;;;false;OpenStreetMap node/8296498281
+osm-n8356649401;fuente;Fuente de Navatejera;40.84715;-4.07473;;;false;OpenStreetMap node/8356649401
+osm-n8356649402;fuente;Fuente del Vado de Arrastraderos;40.85071;-4.06089;1291;;false;OpenStreetMap node/8356649402
+osm-n8409369472;fuente;Fuente del Seminario;40.58493;-4.15338;;;false;OpenStreetMap node/8409369472
+osm-n8442156111;cumbre;Sin nombre;40.98002;-3.84698;2211;;false;OpenStreetMap node/8442156111
+osm-n8442156113;cumbre;Sin nombre;40.98145;-3.84699;2211;;false;OpenStreetMap node/8442156113
+osm-n8442156115;cumbre;Sin nombre;40.98381;-3.83862;2165;;false;OpenStreetMap node/8442156115
+osm-n8442355890;fuente;Fuente del Mojón;40.97544;-3.88527;;;false;OpenStreetMap node/8442355890
+osm-n8442355892;cumbre;Sin nombre;40.96618;-3.88753;1966;;false;OpenStreetMap node/8442355892
+osm-n8442370345;cumbre;Sin nombre;40.96023;-3.89786;2002;;false;OpenStreetMap node/8442370345
+osm-n8442370348;fuente;Fuente del Merendero;40.96219;-3.90613;1845;;false;OpenStreetMap node/8442370348
+osm-n8442420757;fuente;Fuente;40.96298;-3.9268;;;false;OpenStreetMap node/8442420757
+osm-n8442420785;fuente;Fuente de la Abierta;40.97083;-3.96786;;;false;OpenStreetMap node/8442420785
+osm-n8442930025;fuente;Fuente;41.00182;-3.82982;;;false;OpenStreetMap node/8442930025
+osm-n8442930033;fuente;Fuente;41.00667;-3.81981;;;false;OpenStreetMap node/8442930033
+osm-n8442995098;fuente;Fuente;41.0225;-3.8152;;;false;OpenStreetMap node/8442995098
+osm-n8442995099;fuente;Manantial de Miraver;41.02744;-3.81149;;;false;OpenStreetMap node/8442995099
+osm-n8443267673;cumbre;Sin nombre;40.94573;-3.91173;2013;;false;OpenStreetMap node/8443267673
+osm-n8443267675;cumbre;Sin nombre;40.94922;-3.91241;2012;;false;OpenStreetMap node/8443267675
+osm-n8443267705;cumbre;Sin nombre;40.93362;-3.9151;1911;;false;OpenStreetMap node/8443267705
+osm-n8443267706;abrigo;Chozo Almedrano;40.94669;-3.93697;;techo;false;OpenStreetMap node/8443267706
+osm-n8443447846;cumbre;Picota;40.99063;-3.91135;1986;;false;OpenStreetMap node/8443447846
+osm-n8443455552;cumbre;Sin nombre;41.00811;-3.876;1972;;false;OpenStreetMap node/8443455552
+osm-n8443455572;cumbre;Sin nombre;41.01278;-3.87324;1973;;false;OpenStreetMap node/8443455572
+osm-n8443455771;fuente;Fuente del Mojón;41.03132;-3.88395;;;false;OpenStreetMap node/8443455771
+osm-n8451916027;fuente;Fuente de La Flecha;40.92893;-3.93221;;;false;OpenStreetMap node/8451916027
+osm-n8461882891;fuente;Fuente;40.63079;-4.01324;;;false;OpenStreetMap node/8461882891
+osm-n8496110591;fuente;Fuente;40.97679;-4.03188;;;false;OpenStreetMap node/8496110591
+osm-n8496428271;fuente;Fuente;40.90542;-3.88054;;;false;OpenStreetMap node/8496428271
+osm-n8503430922;fuente;Fuente;40.78671;-3.706;;;false;OpenStreetMap node/8503430922
+osm-n8503840397;fuente;Fuente;40.59537;-3.97967;;;false;OpenStreetMap node/8503840397
+osm-n8515973767;fuente;Fuente;40.97426;-3.82556;;;false;OpenStreetMap node/8515973767
+osm-n8515979050;fuente;Fuente de la Teja;40.98845;-3.81588;;;false;OpenStreetMap node/8515979050
+osm-n8515979085;cumbre;Sin nombre;40.98947;-3.8079;1866;;false;OpenStreetMap node/8515979085
+osm-n8515979087;cumbre;Sin nombre;40.9908;-3.80579;1861;;false;OpenStreetMap node/8515979087
+osm-n8540549052;fuente;Fuente del Hontanar;40.90465;-3.79431;;;false;OpenStreetMap node/8540549052
+osm-n8540664711;fuente;Fuente de Raso Carnero;40.93501;-3.76905;;;false;OpenStreetMap node/8540664711
+osm-n8543110752;abrigo;Majada del Cojo;40.87204;-3.82286;;techo;false;OpenStreetMap node/8543110752
+osm-n8543207829;fuente;Fuente Perrera;40.87356;-3.8135;;;false;OpenStreetMap node/8543207829
+osm-n8544928053;fuente;Fuente de los Venenos;40.91286;-3.78101;;;false;OpenStreetMap node/8544928053
+osm-n8544928097;fuente;Fuente los Cañuelos;40.92005;-3.76818;;;false;OpenStreetMap node/8544928097
+osm-n8547859199;fuente;Fuente de la Lobera;40.87992;-3.84532;;;false;OpenStreetMap node/8547859199
+osm-n8560398157;fuente;Fuente;40.92753;-4.11946;;;false;OpenStreetMap node/8560398157
+osm-n8567026717;fuente;Fuente Romana;40.82289;-4.0575;;;false;OpenStreetMap node/8567026717
+osm-n8576202317;fuente;Fuente;40.73085;-3.72691;;;false;OpenStreetMap node/8576202317
+osm-n8614076527;cumbre;Sin nombre;40.95281;-3.94001;1877;;false;OpenStreetMap node/8614076527
+osm-n8618136263;fuente;Fuente de los dos hermanitos;40.56605;-4.1552;;;false;OpenStreetMap node/8618136263
+osm-n8678352119;cumbre;Sin nombre;40.8149;-3.82868;2116;;false;OpenStreetMap node/8678352119
+osm-n8685306144;abrigo;Vivac;40.80584;-3.83745;;techo;false;OpenStreetMap node/8685306144
+osm-n8693218879;fuente;Fuente;40.67872;-4.00611;;;false;OpenStreetMap node/8693218879
+osm-n8694059449;fuente;Fuente de los Galleggos;40.8554;-3.84605;;;false;OpenStreetMap node/8694059449
+osm-n8735035897;fuente;Fuente del Milano;40.8761;-4.0011;;;false;OpenStreetMap node/8735035897
+osm-n8740296777;abrigo;Sin nombre;40.75162;-3.93345;;techo;false;OpenStreetMap node/8740296777
+osm-n8755448318;fuente;Fuente;40.9762;-4.03098;;;false;OpenStreetMap node/8755448318
+osm-n8760608085;fuente;Fuente;40.55089;-3.90013;;;false;OpenStreetMap node/8760608085
+osm-n8767936929;fuente;Fuente;40.961;-4.03728;;;false;OpenStreetMap node/8767936929
+osm-n8862576294;fuente;Fuente;40.55278;-3.88724;;;false;OpenStreetMap node/8862576294
+osm-n8893054392;fuente;Fuente;40.99821;-4.11892;;;false;OpenStreetMap node/8893054392
+osm-n8899500230;fuente;Fuente;40.62891;-4.00358;;;false;OpenStreetMap node/8899500230
+osm-n8971365216;fuente;Fuente del Carro;40.82094;-3.76519;;;false;OpenStreetMap node/8971365216
+osm-n9016774904;fuente;Fuente del Batallón Alpino;40.83873;-3.97607;;;false;OpenStreetMap node/9016774904
+osm-n9040090203;fuente;Fuente del Cardo;40.83706;-4.02812;1262;;false;OpenStreetMap node/9040090203
+osm-n9110867010;fuente;Fuente;40.69881;-3.99269;;;false;OpenStreetMap node/9110867010
+osm-n9143978646;fuente;Fuente La Pililla;40.62703;-4.23593;;;false;OpenStreetMap node/9143978646
+osm-n9163113490;fuente;Fuente de las Barrancas;40.70608;-4.22855;;;false;OpenStreetMap node/9163113490
+osm-n9203817681;fuente;Fuente de Majada Velasco;40.69001;-4.28486;;;false;OpenStreetMap node/9203817681
+osm-n9205686520;fuente;Fuente;40.97896;-4.26646;;;false;OpenStreetMap node/9205686520
+osm-n9215522809;fuente;Fuente;40.64586;-4.23528;;;false;OpenStreetMap node/9215522809
+osm-n9220924588;fuente;Fuente;41.0008;-4.11382;;;false;OpenStreetMap node/9220924588
+osm-n9220924599;fuente;Fuente;40.99921;-4.11724;;;false;OpenStreetMap node/9220924599
+osm-n9220938387;fuente;Fuente del Moro;41.00294;-4.10601;;;false;OpenStreetMap node/9220938387
+osm-n9220938389;fuente;Fuente de Los Pájaros;41.00157;-4.10695;;;false;OpenStreetMap node/9220938389
+osm-n9290026482;fuente;Fuente;40.99069;-3.7256;;;false;OpenStreetMap node/9290026482
+osm-n9303530516;fuente;Fuente Verato;40.5585;-4.31565;;;false;OpenStreetMap node/9303530516
+osm-n9307145652;fuente;Fuente;40.99275;-3.70881;;;false;OpenStreetMap node/9307145652
+osm-n9331981603;fuente;Fuente;40.62633;-4.23177;;;false;OpenStreetMap node/9331981603
+osm-n9338950315;fuente;Fuente;40.57923;-4.12681;;;false;OpenStreetMap node/9338950315
+osm-n9352957773;fuente;Fuente;40.90425;-3.87995;;;false;OpenStreetMap node/9352957773
+osm-n9422144781;fuente;Fuente;40.81053;-3.76217;;;false;OpenStreetMap node/9422144781
+osm-n9422194544;fuente;Fuente;40.81257;-3.76235;;;false;OpenStreetMap node/9422194544
+osm-n9449805267;fuente;Fuente;40.59181;-4.14889;;;false;OpenStreetMap node/9449805267
+osm-n9501660042;abrigo;Chozo Kindelán;40.75539;-3.8925;1080;techo;false;OpenStreetMap node/9501660042
+osm-n9520425472;fuente;Fuente;40.59484;-4.14861;;;false;OpenStreetMap node/9520425472
+osm-n9556029270;fuente;Fuente;40.65878;-3.76579;;;false;OpenStreetMap node/9556029270
+osm-n9572877509;fuente;Fuente;40.65745;-3.76616;;;false;OpenStreetMap node/9572877509
+osm-n9575286488;fuente;Fuente;40.96455;-4.03487;;;false;OpenStreetMap node/9575286488
+osm-n9601878619;abrigo;Cueva de la Zorra;40.95288;-4.12987;;techo;false;OpenStreetMap node/9601878619
+osm-n9624420184;fuente;Fuente;40.95381;-4.0796;;;false;OpenStreetMap node/9624420184
+osm-n9647320713;fuente;Fuente;40.59182;-4.14608;;;false;OpenStreetMap node/9647320713
+osm-n9648992277;fuente;Fuente;40.95264;-4.07866;;;false;OpenStreetMap node/9648992277
+osm-n9655344843;abrigo;Vivac;40.98083;-3.84565;;techo;false;OpenStreetMap node/9655344843
+osm-n9669924567;fuente;Fuente;40.59395;-4.14836;;;false;OpenStreetMap node/9669924567
+osm-n9670171195;fuente;Fuente;40.95944;-4.03676;;;false;OpenStreetMap node/9670171195
+osm-n9671433912;fuente;Fuente;40.71357;-4.0002;;;false;OpenStreetMap node/9671433912
+osm-n9671455931;fuente;Fuente;40.71619;-4.00093;;;false;OpenStreetMap node/9671455931
+osm-n9671455932;fuente;Fuente;40.71612;-4.00063;;;false;OpenStreetMap node/9671455932
+osm-n9671455959;fuente;Fuente;40.72154;-4.00143;;;false;OpenStreetMap node/9671455959
+osm-n9681258995;fuente;Fuente;41.00271;-4.31295;;;false;OpenStreetMap node/9681258995
+osm-n9681282561;fuente;Fuente del prado;40.99377;-4.30759;;;false;OpenStreetMap node/9681282561
+osm-n9710968599;fuente;Fuente;40.71591;-3.98993;;;false;OpenStreetMap node/9710968599 + OpenStreetMap node/9710968600
+osm-n9723212400;fuente;Fuente del Zarzal;40.68741;-3.9759;;;false;OpenStreetMap node/9723212400
+osm-n9737749715;fuente;Fuente;40.93055;-4.10446;;;false;OpenStreetMap node/9737749715
+osm-n9767049173;fuente;Fuente;40.99615;-4.42748;;;false;OpenStreetMap node/9767049173
+osm-n9776681306;fuente;Fuente;40.58972;-4.14207;;;false;OpenStreetMap node/9776681306
+osm-n9786616876;fuente;Fuente Rubiales;40.99551;-4.12492;;;false;OpenStreetMap node/9786616876
+osm-n9804878263;fuente;Fuente;40.98762;-4.02584;;;false;OpenStreetMap node/9804878263
+osm-n9814377715;fuente;Fuente;40.99134;-4.30842;;;false;OpenStreetMap node/9814377715
+osm-n9840901017;fuente;Fuente;40.59231;-4.1472;;;false;OpenStreetMap node/9840901017
+osm-n9842751001;fuente;Fuente;40.59221;-4.15022;;;false;OpenStreetMap node/9842751001
+osm-n9855387718;fuente;Fuente;41.03451;-4.05329;;;false;OpenStreetMap node/9855387718
+osm-n9893876309;fuente;Fuente;40.6197;-3.999;;;false;OpenStreetMap node/9893876309
+osm-n9893878583;fuente;Fuente;40.62728;-4.00205;;;false;OpenStreetMap node/9893878583
+osm-n9893911082;fuente;Fuente;40.60133;-4.05832;;;false;OpenStreetMap node/9893911082
+osm-n9893911184;fuente;Fuente;40.62015;-4.00039;;;false;OpenStreetMap node/9893911184
+osm-n9893935301;fuente;Fuente;40.58338;-4.00669;;;false;OpenStreetMap node/9893935301
+osm-n9893939578;fuente;Fuente de los Cebos;40.70263;-4.18647;;;false;OpenStreetMap node/9893939578
+osm-n9893945065;fuente;Fuente;40.63065;-4.02379;;;false;OpenStreetMap node/9893945065
+osm-n9893946711;fuente;Fuente de la Botella;40.70755;-4.18778;;;false;OpenStreetMap node/9893946711
+osm-n9893949574;fuente;Fuente;40.6396;-4.0062;;;false;OpenStreetMap node/9893949574 + OpenStreetMap node/9963726031
+osm-n9893970507;fuente;Fuente de la Teja;40.70867;-4.18824;;;false;OpenStreetMap node/9893970507
+osm-n9896936766;fuente;Fuente;40.60019;-4.14234;;;false;OpenStreetMap node/9896936766
+osm-n9919830775;fuente;Fuente;40.6344;-4.01277;;;false;OpenStreetMap node/9919830775
+osm-n9922900297;fuente;Fuente;40.62718;-4.00688;;;false;OpenStreetMap node/9922900297
+osm-n9922909151;fuente;Fuente;40.6244;-3.99935;;;false;OpenStreetMap node/9922909151
+osm-n9934148696;fuente;Fuente;40.6436;-4.00406;;;false;OpenStreetMap node/9934148696
+osm-n9934152212;fuente;Fuente;40.58431;-4.00745;;;false;OpenStreetMap node/9934152212
+osm-n9934172909;fuente;Fuente;40.63465;-4.0176;;;false;OpenStreetMap node/9934172909
+osm-n9934181315;fuente;Fuente;40.62899;-4.00432;;;false;OpenStreetMap node/9934181315
+osm-n9934183204;fuente;Fuente;40.62071;-4.01694;;;false;OpenStreetMap node/9934183204
+osm-n9934195904;fuente;Fuente;40.6509;-4.00081;;;false;OpenStreetMap node/9934195904
+osm-n9934218534;fuente;Fuente;40.62661;-4.00393;;;false;OpenStreetMap node/9934218534
+osm-n9934218719;fuente;Fuente;40.602;-4.13194;;;false;OpenStreetMap node/9934218719
+osm-n9936862942;fuente;Fuente;40.64535;-3.99528;;;false;OpenStreetMap node/9936862942
+osm-n9961113885;fuente;Fuente;40.59559;-4.14957;;;false;OpenStreetMap node/9961113885
+osm-n9964401266;fuente;Fuente de los Cuatro Caños;40.64408;-3.99101;;;false;OpenStreetMap node/9964401266
+osm-n9971094478;fuente;Fuente;40.68167;-3.97253;;;false;OpenStreetMap node/9971094478
+osm-n9974606286;fuente;Fuente;40.90027;-4.16798;;;false;OpenStreetMap node/9974606286
+osm-n9974606531;abrigo;Cueva del Lobo;40.80974;-4.26801;;techo;false;OpenStreetMap node/9974606531
+osm-n9977131066;fuente;Fuente;41.04136;-3.98966;;;false;OpenStreetMap node/9977131066
+osm-n9979640918;fuente;Fuente;40.75803;-3.783;;;false;OpenStreetMap node/9979640918
+osm-n9979667502;fuente;Fuente;41.00049;-4.0199;;;false;OpenStreetMap node/9979667502
+osm-n9983868014;fuente;Fuente;41.0268;-4.11033;;;false;OpenStreetMap node/9983868014
+osm-n9985541432;fuente;Fuente;40.95243;-4.07616;;;false;OpenStreetMap node/9985541432
+osm-n9985541433;fuente;Fuente;40.95217;-4.0761;;;false;OpenStreetMap node/9985541433
+osm-n9988139575;fuente;Fuente;40.93186;-4.05851;;;false;OpenStreetMap node/9988139575
+osm-n10004170817;fuente;Fuente;40.5692;-4.03111;;;false;OpenStreetMap node/10004170817
+osm-n10004171117;fuente;Fuente;40.56821;-4.02244;;;false;OpenStreetMap node/10004171117
+osm-n10040342972;fuente;Fuente;40.65069;-3.99988;;;false;OpenStreetMap node/10040342972
+osm-n10054695337;fuente;Fuente;40.94732;-4.41475;;;false;OpenStreetMap node/10054695337
+osm-n10095395845;fuente;Fuente del Cura;40.89497;-4.02457;;;false;OpenStreetMap node/10095395845
+osm-n10095395846;fuente;Fuente de San Pedro;40.88324;-4.05906;;;false;OpenStreetMap node/10095395846
+osm-n10103324817;fuente;Fuente;40.64862;-3.77748;;;false;OpenStreetMap node/10103324817
+osm-n10197258618;fuente;Fuente;40.67694;-4.10267;;;false;OpenStreetMap node/10197258618
+osm-n10219216976;fuente;Fuente de Majada Hambrienta;40.85338;-3.98047;;;false;OpenStreetMap node/10219216976
+osm-n10241311155;fuente;Fuente Pequeña;40.57668;-3.9306;;;false;OpenStreetMap node/10241311155
+osm-n10243512059;fuente;Fuente;41.02599;-4.11248;;;false;OpenStreetMap node/10243512059
+osm-n10243512078;fuente;Fuente del Obispo;40.96227;-4.11348;;;false;OpenStreetMap node/10243512078
+osm-n10243522779;fuente;Fuente;40.92961;-4.15042;;;false;OpenStreetMap node/10243522779
+osm-n10260831140;fuente;Fuente del Esportón;40.69032;-4.23246;;;false;OpenStreetMap node/10260831140
+osm-n10261135565;fuente;Fuente;40.97813;-4.26634;;;false;OpenStreetMap node/10261135565
+osm-n10261442873;fuente;Fuente;40.98918;-4.42173;;;false;OpenStreetMap node/10261442873
+osm-n10261442874;fuente;Fuente;40.99;-4.42063;;;false;OpenStreetMap node/10261442874
+osm-n10261442875;fuente;Fuente;41.03666;-4.29638;;;false;OpenStreetMap node/10261442875
+osm-n10261442876;fuente;Fuente;40.98001;-4.36629;;;false;OpenStreetMap node/10261442876
+osm-n10261442882;fuente;Fuente;40.94646;-4.41421;;;false;OpenStreetMap node/10261442882
+osm-n10261442883;fuente;Fuente;40.92329;-4.43806;;;false;OpenStreetMap node/10261442883
+osm-n10261442884;fuente;Fuente;40.89596;-4.3842;;;false;OpenStreetMap node/10261442884
+osm-n10261442885;fuente;Fuente;40.94539;-4.31048;;;false;OpenStreetMap node/10261442885
+osm-n10261442886;fuente;Fuente;40.94549;-4.30863;;;false;OpenStreetMap node/10261442886
+osm-n10261442887;fuente;Fuente;40.95113;-4.27332;;;false;OpenStreetMap node/10261442887
+osm-n10261442888;fuente;Fuente;40.91608;-4.26709;;;false;OpenStreetMap node/10261442888
+osm-n10261442889;fuente;Fuente;40.78531;-4.30939;;;false;OpenStreetMap node/10261442889
+osm-n10261442890;fuente;Fuente;40.82;-4.20898;;;false;OpenStreetMap node/10261442890
+osm-n10261442891;fuente;Fuente;40.84919;-4.35036;;;false;OpenStreetMap node/10261442891
+osm-n10261442892;fuente;Fuente;40.84985;-4.35184;;;false;OpenStreetMap node/10261442892
+osm-n10261442893;fuente;Fuente;40.84885;-4.35147;;;false;OpenStreetMap node/10261442893
+osm-n10261442894;fuente;Fuente;40.87917;-4.34602;;;false;OpenStreetMap node/10261442894
+osm-n10261442899;fuente;Fuente;40.9464;-4.43198;;;false;OpenStreetMap node/10261442899
+osm-n10261442902;fuente;Fuente;41.03831;-4.36495;;;false;OpenStreetMap node/10261442902
+osm-n10261442907;fuente;Fuente;41.03847;-4.23507;;;false;OpenStreetMap node/10261442907
+osm-n10261451112;fuente;Fuente;41.0403;-4.23579;;;false;OpenStreetMap node/10261451112
+osm-n10261451123;fuente;Fuente;40.96915;-4.10359;;;false;OpenStreetMap node/10261451123
+osm-n10261451124;fuente;Fuente;40.95481;-4.08021;;;false;OpenStreetMap node/10261451124
+osm-n10261451125;fuente;Fuente;40.93425;-4.10957;;;false;OpenStreetMap node/10261451125
+osm-n10261451126;fuente;Fuente;40.93644;-4.11072;;;false;OpenStreetMap node/10261451126
+osm-n10261451127;fuente;Fuente;40.87495;-4.22793;;;false;OpenStreetMap node/10261451127
+osm-n10261451128;fuente;Fuente;40.79992;-4.37765;;;false;OpenStreetMap node/10261451128
+osm-n10267105309;fuente;Fuente;40.93771;-4.11387;;;false;OpenStreetMap node/10267105309
+osm-n10272766200;abrigo;Cancho del Horno;40.73783;-3.91946;;techo;false;OpenStreetMap node/10272766200
+osm-n10272801156;fuente;Fuente Aculadero;40.73271;-3.90703;;;false;OpenStreetMap node/10272801156
+osm-n10272801708;fuente;Fuente;40.74802;-3.91284;;;false;OpenStreetMap node/10272801708
+osm-n10279912513;fuente;Fuente;40.93184;-4.17771;;;false;OpenStreetMap node/10279912513
+osm-n10298157453;fuente;Fuente;40.63085;-4.02241;;;false;OpenStreetMap node/10298157453
+osm-n10308175373;abrigo;Refugio Cancho Porrón;40.7553;-3.94204;1670;techo;false;OpenStreetMap node/10308175373
+osm-n10314690711;fuente;Fuente;40.93081;-4.10245;;;false;OpenStreetMap node/10314690711
+osm-n10314746841;fuente;Fuente;41.02649;-4.02439;;;false;OpenStreetMap node/10314746841
+osm-n10550528443;refugio_libre;Sin nombre;40.5937;-3.868;;cerrado;false;OpenStreetMap node/10550528443
+osm-n10550528444;refugio_libre;Sin nombre;40.59111;-3.90001;;cerrado;false;OpenStreetMap node/10550528444
+osm-n10655336139;fuente;Fuente;40.73263;-3.99448;;;false;OpenStreetMap node/10655336139
+osm-n10682966592;fuente;Fuente;40.84033;-4.17677;;;false;OpenStreetMap node/10682966592
+osm-n10719750578;fuente;Fuente del Cañito de Don Pedro;40.86908;-4.02624;;;false;OpenStreetMap node/10719750578
+osm-n10739332248;abrigo;Sin nombre;40.74628;-3.88463;;techo;false;OpenStreetMap node/10739332248
+osm-n10739381869;abrigo;Vivac del Cachalote;40.74828;-3.88079;;techo;false;OpenStreetMap node/10739381869
+osm-n10739424294;abrigo;Vivac del Ratón;40.76865;-3.88166;1216;techo;false;OpenStreetMap node/10739424294
+osm-n10739455280;abrigo;Vivac del Bizcocho;40.75497;-3.86781;1537;techo;false;OpenStreetMap node/10739455280
+osm-n10739594998;refugio_libre;Refugio Libre Casetón de los Horcos;41.00439;-3.8079;;cerrado;false;OpenStreetMap node/10739594998
+osm-n10739900259;abrigo;Cabaña Iñaki;40.77906;-3.87536;1500;techo;false;OpenStreetMap node/10739900259
+osm-n10739900260;abrigo;Vivac;40.77462;-3.86359;;techo;false;OpenStreetMap node/10739900260
+osm-n10739940346;refugio_libre;Refugio Libre de Las Majarganillas;41.02437;-3.80562;;cerrado;false;OpenStreetMap node/10739940346
+osm-n10739952938;abrigo;Cueva de las Brujas;40.75436;-3.86758;;techo;false;OpenStreetMap node/10739952938
+osm-n10743254463;fuente;Fuente;41.00092;-4.02247;;;false;OpenStreetMap node/10743254463
+osm-n10743285611;fuente;Fuente Cagona;40.9541;-4.03766;;;false;OpenStreetMap node/10743285611
+osm-n10775193332;fuente;Fuente;40.94872;-4.1191;;;false;OpenStreetMap node/10775193332
+osm-n10778143766;fuente;Fuente;40.66981;-3.75883;;;false;OpenStreetMap node/10778143766
+osm-n10779391277;fuente;Fuente;40.62125;-4.0169;;;false;OpenStreetMap node/10779391277
+osm-n10793624323;fuente;Fuente;40.86824;-4.13621;;;false;OpenStreetMap node/10793624323
+osm-n10794941622;fuente;Fuente;40.90197;-3.87725;;;false;OpenStreetMap node/10794941622
+osm-n10872238113;fuente;Fuente;40.55586;-3.65683;;;false;OpenStreetMap node/10872238113
+osm-n10893357408;fuente;Fuente Potable José Zorrilla;40.94099;-4.11561;;;false;OpenStreetMap node/10893357408
+osm-n10899341180;fuente;Fuente de los Capones;40.57815;-4.14974;;;false;OpenStreetMap node/10899341180
+osm-n10926791175;fuente;Fuente;40.55587;-3.65317;;;false;OpenStreetMap node/10926791175
+osm-n10931714846;fuente;Fuente;40.99159;-4.05494;;;false;OpenStreetMap node/10931714846
+osm-n10958179789;fuente;Fuente;41.01115;-4.38781;;;false;OpenStreetMap node/10958179789
+osm-n10958179794;fuente;Fuente;41.02706;-4.38483;;;false;OpenStreetMap node/10958179794
+osm-n10958179795;fuente;Fuente;41.0382;-4.36403;;;false;OpenStreetMap node/10958179795
+osm-n10958179796;fuente;Fuente;41.01018;-4.21891;;;false;OpenStreetMap node/10958179796
+osm-n10958179797;fuente;Fuente;41.028;-4.18109;;;false;OpenStreetMap node/10958179797
+osm-n10970774779;fuente;Fuente de DryLock;40.99564;-4.12118;;;false;OpenStreetMap node/10970774779
+osm-n10973838492;fuente;Fuente;40.90608;-4.41382;;;false;OpenStreetMap node/10973838492
+osm-n10994462322;fuente;Comunidad de Ciudad y Tierra;40.98132;-4.20686;;;false;OpenStreetMap node/10994462322
+osm-n10994462353;fuente;Fuente;40.98092;-4.20701;;;false;OpenStreetMap node/10994462353
+osm-n11014165222;fuente;Fuente;40.55756;-3.65305;;;false;OpenStreetMap node/11014165222
+osm-n11037167733;cumbre;Sin nombre;40.82527;-3.83042;1861;;false;OpenStreetMap node/11037167733
+osm-n11054495715;fuente;Fuente;40.71379;-4.07265;;;false;OpenStreetMap node/11054495715
+osm-n11085462465;fuente;Fuente;40.81763;-4.25732;;;false;OpenStreetMap node/11085462465
+osm-n11085462466;fuente;Fuente;40.85522;-4.16274;;;false;OpenStreetMap node/11085462466
+osm-n11097662200;fuente;Fuente;40.58176;-4.1299;;;false;OpenStreetMap node/11097662200
+osm-n11135952433;fuente;Fuente;40.78896;-3.69498;;;false;OpenStreetMap node/11135952433
+osm-n11135974259;fuente;Fuente;40.82293;-3.67418;;;false;OpenStreetMap node/11135974259
+osm-n11141096604;fuente;Fuente de la Reina;40.89839;-4.01494;;;false;OpenStreetMap node/11141096604
+osm-n11143611323;fuente;Fuente;40.58476;-4.12966;;;false;OpenStreetMap node/11143611323
+osm-n11155775990;fuente;Fuente;40.95184;-4.07736;;;false;OpenStreetMap node/11155775990
+osm-n11170261143;abrigo;Covachuela de la Acevera;40.92372;-3.99138;;techo;false;OpenStreetMap node/11170261143
+osm-n11175073637;fuente;Fuente;40.67519;-4.09379;;;false;OpenStreetMap node/11175073637
+osm-n11176584665;abrigo;Cueva del Bandolero;40.74437;-3.8741;1101;techo;false;OpenStreetMap node/11176584665
+osm-n11185716637;fuente;Fuente;40.94984;-4.12756;;;false;OpenStreetMap node/11185716637
+osm-n11185943737;fuente;Fuente;40.95321;-4.12795;;;false;OpenStreetMap node/11185943737
+osm-n11227887587;fuente;Fuente;40.59076;-4.41313;;;false;OpenStreetMap node/11227887587
+osm-n11230817540;fuente;Fuente;40.95479;-4.12494;;;false;OpenStreetMap node/11230817540 + OpenStreetMap node/11711679739
+osm-n11242931602;refugio_libre;Sin nombre;40.82214;-3.81658;;techo;false;OpenStreetMap node/11242931602
+osm-n11247735588;fuente;Fuente;40.93821;-4.1024;;;false;OpenStreetMap node/11247735588
+osm-n11253876233;fuente;Fuente;40.69857;-3.93196;;;false;OpenStreetMap node/11253876233
+osm-n11269831958;fuente;Fuente;40.95331;-4.16229;;;false;OpenStreetMap node/11269831958
+osm-n11269883013;fuente;Fuente de la Mancibera;41.04392;-4.36937;;;false;OpenStreetMap node/11269883013
+osm-n11271628173;parking;Parking Centro Comercial;40.59947;-3.70925;;;false;OpenStreetMap node/11271628173
+osm-n11274460474;fuente;Fuente;40.60929;-3.71308;;;false;OpenStreetMap node/11274460474
+osm-n11274460502;fuente;Fuente;40.6124;-3.70759;;;false;OpenStreetMap node/11274460502
+osm-n11308531064;fuente;Fuente del Marqués;40.89748;-4.03345;;;false;OpenStreetMap node/11308531064
+osm-n11313776205;fuente;Fuente del Pájaro;40.96953;-4.16248;;;false;OpenStreetMap node/11313776205
+osm-n11325722083;fuente;Fuente del Nogal;40.88487;-4.00965;;;false;OpenStreetMap node/11325722083
+osm-n11327895180;fuente;Fuente del Navazo;40.99552;-4.00464;;;false;OpenStreetMap node/11327895180
+osm-n11327895181;fuente;Fuente;40.99736;-4.00454;;;false;OpenStreetMap node/11327895181
+osm-n11354004468;fuente;Fuente;40.94359;-4.10971;;;false;OpenStreetMap node/11354004468
+osm-n11369808978;refugio_libre;Retén Guardas Forestales;40.858;-3.893;;techo;false;OpenStreetMap node/11369808978
+osm-n11413723042;fuente;Fuente;40.66185;-3.76568;;;false;OpenStreetMap node/11413723042
+osm-n11453694715;fuente;Fuente;41.04097;-3.98712;;;false;OpenStreetMap node/11453694715
+osm-n11453852789;fuente;Fuente de la Teja;40.8907;-4.00727;;;false;OpenStreetMap node/11453852789
+osm-n11494294145;fuente;Fuente de las Meriendas;40.82157;-4.01597;;;false;OpenStreetMap node/11494294145
+osm-n11494301418;fuente;Fuente de las Pintadas;40.81555;-4.00293;;;false;OpenStreetMap node/11494301418
+osm-n11494304357;fuente;Fuente de los Corrales de las Tetas de Vaca;40.83464;-4.00702;;;false;OpenStreetMap node/11494304357
+osm-n11494314046;fuente;Fuente del Batán;40.82589;-4.0241;;;false;OpenStreetMap node/11494314046
+osm-n11495715500;fuente;Fuente;40.9539;-4.16281;;;false;OpenStreetMap node/11495715500
+osm-n11511585152;fuente;Fuente;40.93841;-4.11611;;;false;OpenStreetMap node/11511585152
+osm-n11511585153;fuente;Fuente;40.9387;-4.11546;;;false;OpenStreetMap node/11511585153
+osm-n11519799343;refugio_libre;Chozo de Majada Minguete;40.79608;-4.06477;1829;cerrado;false;OpenStreetMap node/11519799343
+osm-n11519827472;refugio_libre;Chozo Arroyo Carneros;40.8796;-3.96973;1606;cerrado;false;OpenStreetMap node/11519827472
+osm-n11519843524;refugio_libre;Chozo Rectangular;40.8437;-3.99252;1706;cerrado;false;OpenStreetMap node/11519843524
+osm-n11549514133;fuente;Fuente;40.59778;-4.34231;;;false;OpenStreetMap node/11549514133
+osm-n11585105952;fuente;Fuente;40.67329;-3.97542;;;false;OpenStreetMap node/11585105952
+osm-n11586726035;abrigo;Cueva-Vivac;40.73519;-3.98668;;techo;false;OpenStreetMap node/11586726035
+osm-n11637438926;abrigo;Sin nombre;40.76505;-3.9718;;techo;false;OpenStreetMap node/11637438926
+osm-n11638561273;fuente;Fuente;40.82356;-3.96212;;;false;OpenStreetMap node/11638561273 + OpenStreetMap way/1240318125
+osm-n11638561674;fuente;Fuente de la Fuentecilla;40.79262;-4.00831;;;false;OpenStreetMap node/11638561674 + OpenStreetMap way/1237515265
+osm-n11653196460;fuente;Manantial de Regajohondo;41.0028;-3.82943;;;false;OpenStreetMap node/11653196460
+osm-n11662307432;fuente;Fuente Vieja;40.98899;-3.72531;;;false;OpenStreetMap node/11662307432
+osm-n11662324568;fuente;Fuente de Reajocil;40.98347;-3.76824;;;false;OpenStreetMap node/11662324568
+osm-n11668778310;fuente;Fuente de Majalcarro;41.03201;-3.82289;;;false;OpenStreetMap node/11668778310
+osm-n11676085619;fuente;Fuente de las Viñas;40.90853;-4.26256;;;false;OpenStreetMap node/11676085619
+osm-n11682700196;fuente;Fuente;40.61141;-3.69187;;;false;OpenStreetMap node/11682700196
+osm-n11711679679;fuente;Fuente;40.955;-4.12633;;;false;OpenStreetMap node/11711679679
+osm-n11723907779;fuente;Fuente;40.61575;-4.17323;;;false;OpenStreetMap node/11723907779
+osm-n11736679656;fuente;Fuente;41.02683;-4.17917;;;false;OpenStreetMap node/11736679656
+osm-n11736732307;fuente;Fuente;41.02642;-4.18088;;;false;OpenStreetMap node/11736732307
+osm-n11745828829;fuente;Fuente;40.72831;-4.01626;;;false;OpenStreetMap node/11745828829
+osm-n11749221369;fuente;Fuente;40.66836;-3.76979;;;false;OpenStreetMap node/11749221369
+osm-n11755430784;fuente;Fuente;40.78473;-3.69343;;;false;OpenStreetMap node/11755430784
+osm-n11760329970;fuente;Fuentes de El Bustar;40.87417;-3.71509;;;false;OpenStreetMap node/11760329970
+osm-n11780282975;fuente;Fuente del Jesús;40.82993;-3.7792;;;false;OpenStreetMap node/11780282975
+osm-n11791671180;fuente;Fuente;40.62986;-4.01598;;;false;OpenStreetMap node/11791671180
+osm-n11795322240;fuente;Fuente;40.63671;-4.01837;;;false;OpenStreetMap node/11795322240
+osm-n11795716088;fuente;Fuente;40.63705;-4.01124;;;false;OpenStreetMap node/11795716088
+osm-n11795814681;fuente;Fuente;40.63748;-4.00892;;;false;OpenStreetMap node/11795814681
+osm-n11795824343;fuente;Fuente;40.63398;-4.01483;;;false;OpenStreetMap node/11795824343
+osm-n11802721733;fuente;Fuente Castellanos;40.87949;-4.12451;;;false;OpenStreetMap node/11802721733
+osm-n11930272189;fuente;Fuente;40.6845;-3.96378;;;false;OpenStreetMap node/11930272189
+osm-n11934312927;fuente;Fuente;40.90334;-3.79581;;;false;OpenStreetMap node/11934312927
+osm-n11934313080;fuente;Fuente;40.90344;-3.80511;;;false;OpenStreetMap node/11934313080
+osm-n11934564558;fuente;Fuente;40.87647;-3.82565;;;false;OpenStreetMap node/11934564558
+osm-n11952096722;fuente;Fuente de San Sebastián;40.58216;-4.12268;;;false;OpenStreetMap node/11952096722
+osm-n11961597461;fuente;Fuente Vieja;40.98703;-4.16266;;;false;OpenStreetMap node/11961597461
+osm-n11961650442;fuente;Fuentesalá;40.86587;-4.18067;;;false;OpenStreetMap node/11961650442
+osm-n12000945296;fuente;Fuente;40.93748;-4.10861;;;false;OpenStreetMap node/12000945296
+osm-n12058681010;fuente;Fuente;40.97388;-3.86802;;;false;OpenStreetMap node/12058681010
+osm-n12068728246;fuente;Fuente;40.75303;-3.78487;;;false;OpenStreetMap node/12068728246
+osm-n12068749116;fuente;Fuente;40.99468;-3.7072;;;false;OpenStreetMap node/12068749116
+osm-n12068771197;fuente;Fuente;40.90925;-3.73769;;;false;OpenStreetMap node/12068771197
+osm-n12085951003;fuente;Fuente;40.64977;-3.77384;;;false;OpenStreetMap node/12085951003
+osm-n12085954311;fuente;Fuente;40.64761;-3.77754;;;false;OpenStreetMap node/12085954311
+osm-n12085967627;fuente;Fuente;40.65321;-3.76984;;;false;OpenStreetMap node/12085967627
+osm-n12085971306;fuente;Fuente;40.65295;-3.76756;;;false;OpenStreetMap node/12085971306
+osm-n12085976286;fuente;Fuente;40.6561;-3.76161;;;false;OpenStreetMap node/12085976286
+osm-n12087563312;fuente;Fuente;40.60145;-4.12599;;;false;OpenStreetMap node/12087563312
+osm-n12100381107;fuente;Fuente;40.9507;-4.11874;;;false;OpenStreetMap node/12100381107
+osm-n12112435348;fuente;Fuente;40.60219;-4.1281;;;false;OpenStreetMap node/12112435348
+osm-n12118171920;fuente;Pilón del Helechal;40.59402;-4.17043;;;false;OpenStreetMap node/12118171920
+osm-n12118176651;fuente;Fuente de las Cebadillas;40.60952;-4.14617;;;false;OpenStreetMap node/12118176651
+osm-n12137265452;fuente;Fuente;40.95467;-4.13038;;;false;OpenStreetMap node/12137265452
+osm-n12142646164;fuente;Fuente;40.55706;-4.11838;;;false;OpenStreetMap node/12142646164
+osm-n12153430894;cumbre;Sin nombre;40.78429;-4.01247;1968;;false;OpenStreetMap node/12153430894
+osm-n12165298237;fuente;Fuente milano;40.85783;-3.69193;;;false;OpenStreetMap node/12165298237
+osm-n12207659701;fuente;Fuente;40.66411;-3.75987;;;false;OpenStreetMap node/12207659701
+osm-n12208555328;fuente;Fuente;40.55265;-3.65215;;;false;OpenStreetMap node/12208555328
+osm-n12230327131;fuente;Fuente;40.78077;-3.69124;;;false;OpenStreetMap node/12230327131
+osm-n12230455540;fuente;Fuente;40.70434;-3.76911;;;false;OpenStreetMap node/12230455540
+osm-n12328277931;fuente;Fuente;40.55262;-3.65544;;;false;OpenStreetMap node/12328277931
+osm-n12330378861;fuente;Fuente;40.58377;-3.9959;;;false;OpenStreetMap node/12330378861
+osm-n12331551401;fuente;Fuente;40.62109;-4.01656;;;false;OpenStreetMap node/12331551401
+osm-n12338027996;fuente;Fuente;40.81241;-3.76087;;;false;OpenStreetMap node/12338027996
+osm-n12350597198;fuente;Fuente;40.55402;-3.88892;;;false;OpenStreetMap node/12350597198
+osm-n12350951857;fuente;Fuente;40.55259;-3.89271;;;false;OpenStreetMap node/12350951857
+osm-n12352275440;fuente;Fuente;40.94822;-4.1116;;;false;OpenStreetMap node/12352275440
+osm-n12353682815;fuente;Fuente;40.94871;-4.12517;;;false;OpenStreetMap node/12353682815
+osm-n12354059537;fuente;Fuente;40.58494;-3.99854;;;false;OpenStreetMap node/12354059537
+osm-n12378214869;fuente;Fuente;40.56832;-3.9263;;;false;OpenStreetMap node/12378214869
+osm-n12383106936;fuente;Fuente;40.61635;-3.92183;;;false;OpenStreetMap node/12383106936
+osm-n12383126204;fuente;Fuente;40.73367;-3.94875;;;false;OpenStreetMap node/12383126204
+osm-n12407391796;fuente;Fuente del Salsero;40.56453;-4.16578;;;false;OpenStreetMap node/12407391796
+osm-n12523108210;fuente;Fuente;40.95679;-4.13472;;;false;OpenStreetMap node/12523108210
+osm-n12550845963;fuente;Fuente;40.88746;-4.02532;;;false;OpenStreetMap node/12550845963
+osm-n12585020063;fuente;Fuente;40.72867;-3.91777;;;false;OpenStreetMap node/12585020063
+osm-n12595059671;fuente;Fuente;40.58366;-4.00765;;;false;OpenStreetMap node/12595059671
+osm-n12597960089;fuente;Fuente;40.84437;-3.69369;;;false;OpenStreetMap node/12597960089
+osm-n12650300285;abrigo;Sin nombre;40.94833;-4.12633;;techo;false;OpenStreetMap node/12650300285
+osm-n12650300286;fuente;Fuente de la Cuesta de los Hoyos;40.9485;-4.12582;;;false;OpenStreetMap node/12650300286
+osm-n12697709438;fuente;Fuente;40.93825;-4.06553;;;false;OpenStreetMap node/12697709438
+osm-n12715620800;fuente;Fuente;40.99328;-4.02441;;;false;OpenStreetMap node/12715620800
+osm-n12775731608;abrigo;Sin nombre;40.81147;-4.23117;;techo;false;OpenStreetMap node/12775731608
+osm-n12775810228;fuente;Fuente de Herreros;40.80902;-4.22773;;;false;OpenStreetMap node/12775810228
+osm-n12844613627;refugio_libre;Resguardo La Cañada;40.89385;-3.88167;;cerrado;false;OpenStreetMap node/12844613627
+osm-n12873471682;fuente;Fuente de Aguas Buenas;40.83017;-4.05585;1551;;false;OpenStreetMap node/12873471682
+osm-n12879282719;fuente;Fuente del Pocholo;40.87974;-3.97131;;;false;OpenStreetMap node/12879282719
+osm-n12879302038;fuente;Fuente;40.72432;-4.24574;;;false;OpenStreetMap node/12879302038
+osm-n12883631704;fuente;Fuente;40.87498;-3.66555;;;false;OpenStreetMap node/12883631704
+osm-n12899230427;fuente;Fuente;40.7334;-4.03208;;;false;OpenStreetMap node/12899230427
+osm-n12903216844;fuente;Fuente de las Arenitas;40.57125;-4.15472;;;false;OpenStreetMap node/12903216844
+osm-n12911701096;fuente;Fuente;40.95384;-4.11314;;;false;OpenStreetMap node/12911701096
+osm-n12913273825;fuente;Fuente;40.98088;-3.69214;;;false;OpenStreetMap node/12913273825
+osm-n12913347238;fuente;Fuente;40.98155;-3.69131;;;false;OpenStreetMap node/12913347238
+osm-n12913473071;fuente;Fuente;40.69233;-4.02561;;;false;OpenStreetMap node/12913473071
+osm-n12916338202;fuente;Fuente;40.59614;-3.70214;;;false;OpenStreetMap node/12916338202
+osm-n12916341801;fuente;Fuente;40.59581;-3.70429;;;false;OpenStreetMap node/12916341801
+osm-n12919326624;fuente;Fuente;40.66518;-3.75478;;;false;OpenStreetMap node/12919326624
+osm-n12920873256;parking;Aparcamiento de Peña Alta;40.98071;-3.8013;;;false;OpenStreetMap node/12920873256
+osm-n12943311191;fuente;Fuente;40.62423;-3.72157;;;false;OpenStreetMap node/12943311191
+osm-n12944605518;fuente;Fuente de los Pinsapos;40.58495;-4.15735;;;false;OpenStreetMap node/12944605518
+osm-n12963037287;abrigo;Cueva de San Lázaro;40.95448;-4.13633;;techo;false;OpenStreetMap node/12963037287
+osm-n12963037288;abrigo;Abrigo del Molino superior;40.95127;-4.14068;;techo;false;OpenStreetMap node/12963037288
+osm-n12963037289;abrigo;Cueva de la Tarascona;40.95169;-4.13895;;techo;false;OpenStreetMap node/12963037289
+osm-n12963156166;abrigo;Cuevas del Búho y la Zarzamora;40.93193;-4.13714;;techo;false;OpenStreetMap node/12963156166
+osm-n12963220619;fuente;Fuente Cagona;40.87301;-4.10586;;;false;OpenStreetMap node/12963220619
+osm-n12971451423;fuente;Fuente;40.59191;-4.15291;;;false;OpenStreetMap node/12971451423
+osm-n12977023505;fuente;Fuente;40.61927;-3.72119;;;false;OpenStreetMap node/12977023505
+osm-n12979085230;fuente;Fuente;40.95464;-4.07975;;;false;OpenStreetMap node/12979085230
+osm-n12980126555;abrigo;Cueva de la Llave;40.94061;-4.14389;;techo;false;OpenStreetMap node/12980126555
+osm-n12995554443;fuente;Fuente;40.62703;-4.01434;;;false;OpenStreetMap node/12995554443
+osm-n12997755595;fuente;La Currutaca;40.59739;-4.15877;;;false;OpenStreetMap node/12997755595
+osm-n12997859058;fuente;Fuente;40.59314;-4.15356;;;false;OpenStreetMap node/12997859058
+osm-n13058300041;fuente;Fuente San Antonio;40.91026;-4.05868;;;false;OpenStreetMap node/13058300041
+osm-n13061488693;fuente;Fuente;40.62374;-4.00178;;;false;OpenStreetMap node/13061488693
+osm-n13061521703;fuente;Fuente;40.65631;-4.02127;;;false;OpenStreetMap node/13061521703
+osm-n13063140338;fuente;Fuente;40.95095;-4.12741;;;false;OpenStreetMap node/13063140338
+osm-n13081609013;fuente;Fuente;40.9507;-4.07519;;;false;OpenStreetMap node/13081609013
+osm-n13081670368;fuente;Fuente;40.95902;-4.03778;;;false;OpenStreetMap node/13081670368
+osm-n13081825156;abrigo;Sin nombre;40.94621;-4.09095;;techo;false;OpenStreetMap node/13081825156
+osm-n13081825157;abrigo;Sin nombre;40.94581;-4.09047;;techo;false;OpenStreetMap node/13081825157
+osm-n13082119710;fuente;Fuente;40.94025;-4.10719;;;false;OpenStreetMap node/13082119710
+osm-n13082239186;fuente;Fuente;40.59069;-4.14149;;;false;OpenStreetMap node/13082239186
+osm-n13092115589;fuente;Fuente;40.73486;-3.94584;;;false;OpenStreetMap node/13092115589
+osm-n13093291329;refugio_libre;Vivac;40.80557;-4.02793;;cerrado;false;OpenStreetMap node/13093291329
+osm-n13093306515;fuente;Fuente;40.94917;-4.08256;;;false;OpenStreetMap node/13093306515
+osm-n13107117842;refugio_libre;Cabaña del Pastor;40.89169;-3.98673;1370;cerrado;false;OpenStreetMap node/13107117842
+osm-n13134732428;fuente;Fuente de la Cancha 1;40.83033;-4.08889;;;false;OpenStreetMap node/13134732428
+osm-n13134824169;fuente;Fuente del Agujero;40.84418;-4.06557;1480;;false;OpenStreetMap node/13134824169
+osm-n13136284001;fuente;Fuente;40.63431;-4.01217;;;false;OpenStreetMap node/13136284001
+osm-n13140414268;fuente;Fuente;40.69317;-4.02531;;;false;OpenStreetMap node/13140414268
+osm-n13140561721;fuente;Fuente;40.69346;-4.03215;;;false;OpenStreetMap node/13140561721
+osm-n13146707088;fuente;Fuente del Callao;40.77915;-4.0684;;;false;OpenStreetMap node/13146707088
+osm-n13150964162;fuente;Fuente;40.66034;-3.75958;;;false;OpenStreetMap node/13150964162
+osm-n13150964163;fuente;Fuente;40.75015;-3.783;;;false;OpenStreetMap node/13150964163
+osm-n13157630158;fuente;Fuente Vallejo La Zarzas;40.58073;-4.28356;;;false;OpenStreetMap node/13157630158 + OpenStreetMap node/13157630159
+osm-n13158045001;fuente;Fuente de agua potable;40.9177;-3.84136;;;false;OpenStreetMap node/13158045001
+osm-n13158417301;fuente;Fuente de agua potable;40.92756;-3.81645;;;false;OpenStreetMap node/13158417301
+osm-n13167672549;fuente;Fuente;40.68864;-4.30015;;;false;OpenStreetMap node/13167672549
+osm-n13191359768;fuente;Fuente;40.99311;-4.02211;;;false;OpenStreetMap node/13191359768
+osm-n13192389287;fuente;Fuente;41.03583;-4.0528;;;false;OpenStreetMap node/13192389287
+osm-n13201128606;fuente;Fuente;40.60159;-4.13253;;;false;OpenStreetMap node/13201128606
+osm-n13201155369;fuente;Fuente;40.59904;-4.13575;;;false;OpenStreetMap node/13201155369
+osm-n13233724321;fuente;Fuente del Pesebre (sepultada);40.96952;-4.09063;;;false;OpenStreetMap node/13233724321
+osm-n13235091627;fuente;Fuente;40.57934;-4.1351;;;false;OpenStreetMap node/13235091627
+osm-n13272887601;fuente;Fuente;40.7358;-3.9455;;;false;OpenStreetMap node/13272887601
+osm-n13288622235;fuente;Fuente;40.68071;-3.97577;;;false;OpenStreetMap node/13288622235
+osm-n13290788830;abrigo;Sin nombre;40.80752;-4.26045;;techo;false;OpenStreetMap node/13290788830
+osm-n13290788846;parking;Aparacamiento exclusivo para servicio de emergencia;40.81236;-4.26659;;;false;OpenStreetMap node/13290788846
+osm-n13312302398;fuente;Fuente de Paco;40.83497;-4.12612;;;false;OpenStreetMap node/13312302398
+osm-n13322620091;fuente;Fuente de la Tía Faica;40.81947;-4.05553;1603;;false;OpenStreetMap node/13322620091
+osm-n13352357530;fuente;Fuente de las Heras;40.6891;-4.2714;;;false;OpenStreetMap node/13352357530
+osm-n13378485163;fuente;Fuente Las Cabras;40.80895;-4.07442;;;false;OpenStreetMap node/13378485163
+osm-n13378536539;fuente;Fuente del Valle;40.80764;-4.07764;;;false;OpenStreetMap node/13378536539
+osm-n13383780270;fuente;Fuente de la Bola;40.7178;-3.98723;;;false;OpenStreetMap node/13383780270
+osm-n13423686414;fuente;Fuente;40.91416;-4.03874;;;false;OpenStreetMap node/13423686414
+osm-n13436592395;abrigo;Cueva de los Moros;40.80238;-4.26125;;techo;false;OpenStreetMap node/13436592395
+osm-n13449261314;abrigo;Sin nombre;40.94348;-4.14998;;techo;false;OpenStreetMap node/13449261314
+osm-n13449274128;abrigo;Sin nombre;40.9589;-4.12463;;techo;false;OpenStreetMap node/13449274128
+osm-n13449274134;abrigo;Sin nombre;40.95814;-4.12516;;techo;false;OpenStreetMap node/13449274134
+osm-n13449274137;abrigo;Sin nombre;40.95793;-4.12567;;techo;false;OpenStreetMap node/13449274137
+osm-n13449274139;abrigo;Sin nombre;40.9582;-4.12594;;techo;false;OpenStreetMap node/13449274139
+osm-n13449284497;abrigo;Sin nombre;40.95781;-4.1264;;techo;false;OpenStreetMap node/13449284497
+osm-n13504590125;fuente;Fuente;41.0168;-4.15834;;;false;OpenStreetMap node/13504590125
+osm-n13505653322;fuente;Fuente;40.94896;-4.07488;;;false;OpenStreetMap node/13505653322
+osm-n13507953274;fuente;Fuente del Cancho;40.83665;-3.99426;;;false;OpenStreetMap node/13507953274
+osm-n13512830015;fuente;Fuente de la Cancha 2;40.82971;-4.08859;;;false;OpenStreetMap node/13512830015
+osm-n13512935776;fuente;Manantial de la Venta de la Fuenfría;40.81537;-4.05393;;;false;OpenStreetMap node/13512935776
+osm-n13513463032;fuente;Fuente de la Argolla;40.80386;-4.05866;1751;;false;OpenStreetMap node/13513463032
+osm-n13513468483;fuente;Fuente Nueva del Camino Schmidt;40.78948;-4.03783;;;false;OpenStreetMap node/13513468483
+osm-n13514082173;fuente;Manantial de la Vuelta Oscura;40.80234;-4.00677;;;false;OpenStreetMap node/13514082173
+osm-n13514221889;fuente;Fuente del Pinganillo;40.84476;-4.03291;;;false;OpenStreetMap node/13514221889
+osm-n13516574038;fuente;Fuente de los Vadillos;40.82943;-4.02475;1283;;false;OpenStreetMap node/13516574038
+osm-n13516574039;abrigo;Covachuela de los Vadillos;40.8295;-4.02565;;techo;false;OpenStreetMap node/13516574039
+osm-n13516590756;fuente;Fuente del Tío Casto;40.83659;-4.02659;1264;;false;OpenStreetMap node/13516590756
+osm-n13516627878;fuente;Fuente Nueva de la Boca del asno;40.84562;-4.02628;1245;;false;OpenStreetMap node/13516627878
+osm-n13516797733;fuente;Manantial del Puente de la Cantina;40.82308;-4.01722;;;false;OpenStreetMap node/13516797733
+osm-n13516830859;fuente;Fuente de los Guardas de la Cueva del Monje;40.86655;-4.00188;1360;;false;OpenStreetMap node/13516830859
+osm-n13518739494;fuente;Fuente del Pino Bonito;40.86415;-3.98864;;;false;OpenStreetMap node/13518739494
+osm-n13518850043;fuente;Fuente del arroyo de Valdeclemente;40.84302;-4.0023;1595;;false;OpenStreetMap node/13518850043
+osm-n13518897884;fuente;Fuente de la Peña de los Acebos;40.87453;-3.99041;;;false;OpenStreetMap node/13518897884
+osm-n13519899959;fuente;Fuente de la Mesilla Alta;40.88674;-3.9759;1632;;false;OpenStreetMap node/13519899959
+osm-n13519900068;fuente;Fuente de los Helechos;40.89337;-3.98757;;;false;OpenStreetMap node/13519900068
+osm-n13519900069;fuente;Fuente del Esquinazo;40.89262;-3.98823;;;false;OpenStreetMap node/13519900069
+osm-n13521551115;fuente;Fuente de la Majada del Tío Blas;40.88225;-3.96093;;;false;OpenStreetMap node/13521551115
+osm-n13521696132;fuente;Fuente Fría;40.87273;-3.96098;;;false;OpenStreetMap node/13521696132 + OpenStreetMap node/13525001357
+osm-n13521872250;fuente;Fuente de las Moreiras;40.87207;-3.9559;1959;;false;OpenStreetMap node/13521872250
+osm-n13525172217;fuente;Manantial del Arroyo de las Minas de Tellado;40.86739;-3.96688;;;false;OpenStreetMap node/13525172217
+osm-n13525239322;fuente;Manantiales de Peñalara;40.86127;-3.96021;;;false;OpenStreetMap node/13525239322
+osm-n13525249423;refugio_libre;Pequeño refugio;40.86102;-3.96046;;cerrado;false;OpenStreetMap node/13525249423
+osm-n13527520925;abrigo;Covachuelas de Piedras Caballeras;40.82903;-4.01365;;techo;false;OpenStreetMap node/13527520925
+osm-n13530048147;fuente;Manantial del Arroyo de Dos Hermanas;40.84855;-3.9843;1697;;false;OpenStreetMap node/13530048147
+osm-n13530090847;fuente;Fuente de los Ceniceros;40.83354;-4.00603;;;false;OpenStreetMap node/13530090847
+osm-n13530410269;fuente;Fuente de los Militares;40.87383;-4.08496;;;false;OpenStreetMap node/13530410269
+osm-n13536356829;refugio_libre;Sin nombre;40.94047;-3.98502;;cerrado;false;OpenStreetMap node/13536356829
+osm-n13538314198;fuente;Fuente de los Guardas;40.86543;-4.07293;;;false;OpenStreetMap node/13538314198
+osm-n13538589264;fuente;Manantial del Arroyo de las Charcas;40.86587;-4.07568;;;false;OpenStreetMap node/13538589264
+osm-n13539176764;fuente;Fuente de Santillana;40.88102;-4.05763;;;false;OpenStreetMap node/13539176764
+osm-n13539204366;fuente;Fuente del Hueco de la Dehesilla;40.86967;-4.07063;1332;;false;OpenStreetMap node/13539204366
+osm-n13539216868;fuente;Fuente de los Cachapolos;40.86116;-4.05785;;;false;OpenStreetMap node/13539216868
+osm-n13539260552;fuente;Fuente de Valdeconejos;40.86225;-4.06073;;;false;OpenStreetMap node/13539260552
+osm-n13540871014;fuente;Fuente 3 de Nava del Rey;40.86359;-4.05678;;;false;OpenStreetMap node/13540871014
+osm-n13587991850;fuente;Fuente;40.55847;-3.65299;;;false;OpenStreetMap node/13587991850
+osm-n13588914301;fuente;Fuente;40.75472;-3.87646;;;false;OpenStreetMap node/13588914301
+osm-n13592387926;abrigo;Vivac;40.68893;-4.28727;;techo;false;OpenStreetMap node/13592387926
+osm-n13607088265;abrigo;Majada Lobos;40.69271;-4.31857;;techo;false;OpenStreetMap node/13607088265
+osm-n13607544124;fuente;Fuente;41.01529;-3.72654;;;false;OpenStreetMap node/13607544124
+osm-n13626277331;fuente;Fuente;40.69438;-4.2066;;;false;OpenStreetMap node/13626277331
+osm-n13626277332;fuente;Fuente;40.68255;-4.23042;;;false;OpenStreetMap node/13626277332
+osm-n13636074887;fuente;Fuente de las Brujas;41.02132;-4.01417;;;false;OpenStreetMap node/13636074887
+osm-n13660367865;fuente;Fuente;40.79202;-4.09805;;;false;OpenStreetMap node/13660367865
+osm-n13660427102;fuente;Fuente;40.77708;-4.09216;;;false;OpenStreetMap node/13660427102
+osm-n13670350289;fuente;Fuente;40.95344;-4.13083;;;false;OpenStreetMap node/13670350289
+osm-n13673189126;fuente;Fuente de Bohones;40.97414;-4.17138;;;false;OpenStreetMap node/13673189126
+osm-n13686886410;fuente;Arroyo;40.88073;-3.73334;;;false;OpenStreetMap node/13686886410
+osm-n13695359055;fuente;Fuente Lapila;40.73353;-3.90916;;;false;OpenStreetMap node/13695359055
+osm-n13706153901;fuente;Fuente;41.00088;-4.01963;;;false;OpenStreetMap node/13706153901
+osm-n13706194975;fuente;Fuente;41.0141;-4.00788;;;false;OpenStreetMap node/13706194975
+osm-n13742579401;refugio_libre;Sin nombre;40.91263;-3.85926;;techo;false;OpenStreetMap node/13742579401
+osm-n13774858425;cumbre;Sin nombre;40.81542;-4.09612;1999;;false;OpenStreetMap node/13774858425
+osm-n13774858428;cumbre;Sin nombre;40.80103;-4.11086;2051;;false;OpenStreetMap node/13774858428
+osm-n13774858431;cumbre;Sin nombre;40.77241;-4.08624;1893;;false;OpenStreetMap node/13774858431
+osm-n13774858434;cumbre;Sin nombre;40.74698;-4.1041;1878;;false;OpenStreetMap node/13774858434
+osm-n13784145701;cumbre;Sin nombre;40.79711;-4.16743;1812;;false;OpenStreetMap node/13784145701
+osm-n13786036295;cumbre;Sin nombre;40.79869;-4.1025;1967;;false;OpenStreetMap node/13786036295
+osm-n13829699102;fuente;Fuente;40.70751;-4.10739;;;false;OpenStreetMap node/13829699102
+osm-n13830361199;fuente;Fuente;40.93456;-4.09907;;;false;OpenStreetMap node/13830361199
+osm-n13836162249;fuente;Fuente;41.00548;-3.6707;;;false;OpenStreetMap node/13836162249
+osm-n13887250201;fuente;Fuente de agua en la piedra;40.65394;-3.77463;;;false;OpenStreetMap node/13887250201
+osm-n13893333814;fuente;Fuente del Acebo;40.86695;-4.10758;;;false;OpenStreetMap node/13893333814
+osm-n13893334330;fuente;Fuente;40.87442;-4.1027;;;false;OpenStreetMap node/13893334330
+osm-n13910256501;refugio_libre;vivac;40.82055;-3.83049;;techo;false;OpenStreetMap node/13910256501
+osm-n13912780069;fuente;Fuente;40.55699;-3.65009;;;false;OpenStreetMap node/13912780069
+osm-n13951890281;fuente;Fuente de Abajo;41.03361;-3.94042;;;false;OpenStreetMap node/13951890281
+osm-n13964200062;cumbre;Sin nombre;40.78342;-4.04436;2093;;false;OpenStreetMap node/13964200062
+osm-n13977166939;fuente;Fuente;40.92198;-4.43838;;;false;OpenStreetMap node/13977166939
+osm-n13982411682;fuente;Fuente;40.89904;-3.98032;;;false;OpenStreetMap node/13982411682
+osm-n14059941701;fuente;Fuente;40.66492;-3.76572;;;false;OpenStreetMap node/14059941701
+osm-n14096957433;fuente;Fuente del Tonete;40.66844;-3.99079;;;false;OpenStreetMap node/14096957433
+osm-n14098630001;refugio_libre;Cabaña del Tio Blas;40.88154;-3.96192;;cerrado;false;OpenStreetMap node/14098630001
+osm-n14142331708;fuente;Fuente de Parrales;40.99643;-4.08148;;;false;OpenStreetMap node/14142331708
+osm-n14155699204;fuente;Fuente;40.95523;-4.23656;;;false;OpenStreetMap node/14155699204
+osm-n14155942268;refugio_libre;Refugio Regajohondo;41.00281;-3.82949;1739;cerrado;false;OpenStreetMap node/14155942268
+osm-n14156356262;fuente;Fuente;40.99712;-4.07334;;;false;OpenStreetMap node/14156356262
+osm-n14171048534;fuente;Fuente;40.86208;-4.14165;;;false;OpenStreetMap node/14171048534
+osm-n14175499169;fuente;Fuente;40.60688;-4.05706;;;false;OpenStreetMap node/14175499169
+osm-n14175911072;abrigo;Sin nombre;40.92575;-4.13014;;techo;false;OpenStreetMap node/14175911072
+osm-n14175911074;abrigo;Sin nombre;40.92605;-4.13032;;techo;false;OpenStreetMap node/14175911074
+osm-n14182548965;fuente;Fuente de la Comunidad;40.74657;-4.165;;;false;OpenStreetMap node/14182548965
+osm-n14213070862;fuente;Fuente;40.95505;-4.03635;;;false;OpenStreetMap node/14213070862
+osm-n14221014617;fuente;Fuente;40.84533;-4.02563;;;false;OpenStreetMap node/14221014617
+osm-n14225575238;fuente;Fuente de la Vívora;40.98903;-3.80496;;;false;OpenStreetMap node/14225575238
+osm-n14274319671;fuente;Fuente del Mirador;40.87546;-4.15191;;;false;OpenStreetMap node/14274319671
+osm-n14292944308;abrigo;Vivac del Hueso I;40.76868;-3.87318;1377;techo;false;OpenStreetMap node/14292944308 + OpenStreetMap node/14292944315
+osm-n14292944310;abrigo;Refugio Navajuelos;40.77542;-3.86946;1658;techo;false;OpenStreetMap node/14292944310
+osm-n14292944312;abrigo;Vivac del Manatial;40.77853;-3.87721;;techo;false;OpenStreetMap node/14292944312
+osm-n14292944313;abrigo;Refugio Aguja Sultán;40.78197;-3.87513;1606;techo;false;OpenStreetMap node/14292944313
+osm-n14292944314;abrigo;Vivac Laberinto;40.77092;-3.8706;1528;techo;false;OpenStreetMap node/14292944314
+osm-n14295412273;abrigo;Vivac del Tolno;40.76668;-3.87845;1221;techo;false;OpenStreetMap node/14295412273
+osm-n14295412274;abrigo;Vivac de las Buitreras;40.76714;-3.87479;1290;techo;false;OpenStreetMap node/14295412274
+osm-n14295461225;abrigo;Cueva de los Pollos;40.77659;-3.88973;1539;techo;false;OpenStreetMap node/14295461225
+osm-n14298539425;cumbre;Sin nombre;40.78544;-3.87426;1828;;false;OpenStreetMap node/14298539425
+osm-n14298539426;cumbre;Sin nombre;40.78916;-3.87736;2029;;false;OpenStreetMap node/14298539426
+osm-n14298539427;cumbre;Sin nombre;40.78944;-3.87669;2024;;false;OpenStreetMap node/14298539427
+osm-n14298539429;cumbre;Sin nombre;40.79;-3.8769;1992;;false;OpenStreetMap node/14298539429
+osm-n14298539430;cumbre;Sin nombre;40.7899;-3.87609;1999;;false;OpenStreetMap node/14298539430
+osm-n14298539431;cumbre;Sin nombre;40.78944;-3.87531;2009;;false;OpenStreetMap node/14298539431
+osm-n14298539432;cumbre;Sin nombre;40.78969;-3.87551;2009;;false;OpenStreetMap node/14298539432
+osm-n14298539433;cumbre;Sin nombre;40.78918;-3.87486;2003;;false;OpenStreetMap node/14298539433
+osm-n14298539434;cumbre;Sin nombre;40.7891;-3.87389;1999;;false;OpenStreetMap node/14298539434
+osm-n14298539502;cumbre;Sin nombre;40.79343;-3.87602;2057;;false;OpenStreetMap node/14298539502
+osm-n14314499365;abrigo;Vivac de la Laja;40.76728;-3.87514;1296;techo;false;OpenStreetMap node/14314499365
+osm-n14314524837;abrigo;Sin nombre;40.76842;-3.87867;1257;techo;false;OpenStreetMap node/14314524837
+osm-n14314524839;abrigo;Sin nombre;40.7734;-3.88054;;techo;false;OpenStreetMap node/14314524839
+osm-n14314524841;cumbre;Sin nombre;40.78698;-3.88356;1864;;false;OpenStreetMap node/14314524841
+osm-n14314524842;cumbre;Sin nombre;40.78638;-3.88571;1892;;false;OpenStreetMap node/14314524842
+osm-n14314524843;cumbre;Sin nombre;40.78647;-3.88537;1892;;false;OpenStreetMap node/14314524843
+osm-n14314524844;cumbre;Sin nombre;40.78391;-3.88945;1827;;false;OpenStreetMap node/14314524844
+osm-n14314524846;cumbre;Sin nombre;40.7832;-3.89001;1838;;false;OpenStreetMap node/14314524846
+osm-n14314524848;cumbre;Sin nombre;40.78165;-3.89112;1812;;false;OpenStreetMap node/14314524848
+osm-n14314524894;cumbre;Sin nombre;40.78614;-3.86969;1907;;false;OpenStreetMap node/14314524894
+osm-n14314524896;cumbre;Sin nombre;40.78452;-3.87118;1847;;false;OpenStreetMap node/14314524896
+osm-n14314524897;cumbre;Sin nombre;40.7842;-3.8718;1832;;false;OpenStreetMap node/14314524897
+osm-n14314524898;cumbre;Sin nombre;40.78337;-3.87123;1808;;false;OpenStreetMap node/14314524898
+osm-n14314524899;cumbre;Sin nombre;40.78464;-3.86884;1889;;false;OpenStreetMap node/14314524899
+osm-n14314524900;cumbre;Sin nombre;40.78532;-3.8678;1917;;false;OpenStreetMap node/14314524900
+osm-n14314524902;cumbre;Sin nombre;40.78443;-3.86539;1915;;false;OpenStreetMap node/14314524902
+osm-n14317414752;abrigo;Sin nombre;40.77108;-3.86966;1528;techo;false;OpenStreetMap node/14317414752
+osm-n14317414787;abrigo;Sin nombre;40.77144;-3.86856;;techo;false;OpenStreetMap node/14317414787
+osm-n14317552065;abrigo;Sin nombre;40.77066;-3.87184;1528;techo;false;OpenStreetMap node/14317552065
+osm-n14317591372;abrigo;Sin nombre;40.76941;-3.87544;1367;techo;false;OpenStreetMap node/14317591372
+osm-n14337831310;abrigo;Sin nombre;40.76023;-3.8392;;techo;false;OpenStreetMap node/14337831310
+osm-w23375935;parking;Aparcamiento Cantocochino;40.74925;-3.89628;;;false;OpenStreetMap way/23375935
+osm-w23375942;parking;Cantocochino;40.7496;-3.89661;;;false;OpenStreetMap way/23375942
+osm-w23406677;parking;Plaza de la Constitución;40.71734;-3.92019;;;false;OpenStreetMap way/23406677
+osm-w48275879;parking;Aparcamiento de Las Tejeras;40.94688;-4.12444;;;false;OpenStreetMap way/48275879
+osm-w48675286;refugio_libre;Refugio La Salamanca;40.68054;-4.17229;1789;cerrado;false;OpenStreetMap way/48675286
+osm-w53794159;parking;Aparcamiento Municipal;40.72566;-3.86562;;;false;OpenStreetMap way/53794159
+osm-w68875066;refugio_libre;Refugio Peñalara;40.781;-4.066;;cerrado;false;OpenStreetMap way/68875066
+osm-w70468188;refugio_libre;Cobertizo del Depósito;40.8262;-3.95745;;techo;false;OpenStreetMap way/70468188
+osm-w71303945;refugio_libre;Refugio El Pingarrón;40.81579;-3.95749;1830;cerrado;false;OpenStreetMap way/71303945
+osm-w71902242;refugio_libre;Refugio de Cueva Valiente;40.68965;-4.19288;1900;cerrado;false;OpenStreetMap way/71902242
+osm-w75107689;parking;Parking de "Casa Julián";40.74211;-3.88318;;;false;OpenStreetMap way/75107689 + OpenStreetMap way/696229516
+osm-w82862967;parking;Parking Polideportivo;40.68003;-3.95812;;;false;OpenStreetMap way/82862967
+osm-w90806870;refugio_libre;Refugio de la Naranjera;40.63642;-4.17129;1600;cerrado;false;OpenStreetMap way/90806870
+osm-w94584149;parking;Aparcamiento Machacaderas;40.75213;-3.90219;;;false;OpenStreetMap way/94584149
+osm-w143126424;parking;Plaza de la Estrella;40.62797;-4.00602;;;false;OpenStreetMap way/143126424
+osm-w143142662;parking;Centro Comercial Zoco;40.63393;-4.00421;;;false;OpenStreetMap way/143142662
+osm-w151229062;parking;Dos Castillas;40.78797;-4.00352;;;false;OpenStreetMap way/151229062
+osm-w171060376;parking;Plaza del Río;40.6303;-4.00792;;;false;OpenStreetMap way/171060376
+osm-w173915162;refugio_pago;Refugio Juvenil Puerto de la Morcuera;40.83637;-3.83547;1737;cerrado;false;OpenStreetMap way/173915162
+osm-w179111574;parking;Plaza Norte;40.64638;-3.99159;;;false;OpenStreetMap way/179111574
+osm-w190733756;refugio_libre;Refugio Cabeza Lijar;40.68961;-4.16041;1820;cerrado;false;OpenStreetMap way/190733756
+osm-w191917940;parking;Las Canteras;40.66081;-4.02362;;;false;OpenStreetMap way/191917940
+osm-w196325600;parking;Plaza de Nuestra Señora del Rosario;40.62171;-3.90785;;;false;OpenStreetMap way/196325600
+osm-w217172239;parking;Aparacmiento Norte;40.87441;-4.15066;;;false;OpenStreetMap way/217172239
+osm-w218320491;refugio_libre;Mirador de Lucio;40.82474;-3.96223;;cerrado;false;OpenStreetMap way/218320491
+osm-w219166544;refugio_libre;Refugio Majada del Cojo;40.87175;-3.82219;1614;cerrado;false;OpenStreetMap way/219166544
+osm-w232932569;parking;Aparcamiento Puerto de la Morcuera;40.82825;-3.83018;;;false;OpenStreetMap way/232932569
+osm-w237146504;refugio_libre;Sin nombre;40.81426;-3.7834;;cerrado;false;OpenStreetMap way/237146504
+osm-w240870894;refugio_libre;Sin nombre;40.61065;-3.92794;;cerrado;false;OpenStreetMap way/240870894
+osm-w244610310;parking;Parking de La Sierra;40.67541;-4.08983;;;false;OpenStreetMap way/244610310
+osm-w275661812;refugio_libre;Chozo de La Fuente del Infante;40.90031;-3.96399;1826;cerrado;false;OpenStreetMap way/275661812
+osm-w292042536;parking;Parking La Chopera;40.71445;-3.89343;;;false;OpenStreetMap way/292042536
+osm-w292116787;refugio_libre;Refugio Libre del Aguilón;40.83389;-3.85752;1560;cerrado;false;OpenStreetMap way/292116787
+osm-w293409861;parking;Aparcamiento Las Ranas;40.75064;-3.89905;;;false;OpenStreetMap way/293409861
+osm-w294848760;parking;Aparcamiento Pontón Alto;40.90401;-4.02973;;;false;OpenStreetMap way/294848760
+osm-w304582541;parking;Plaza de La Mosquilona;40.66355;-3.76921;;;false;OpenStreetMap way/304582541
+osm-w308222467;refugio_libre;Sin nombre;40.73768;-4.06774;;cerrado;false;OpenStreetMap way/308222467
+osm-w323711215;parking;Parking de Bar Los Endrinales;40.78829;-3.7405;;;false;OpenStreetMap way/323711215
+osm-w349554306;parking;Aparcamiento de la Plaza de Toros de San Lorenzo;40.95247;-4.11507;;;false;OpenStreetMap way/349554306
+osm-w352043515;refugio_libre;Quiosco de Música;40.95027;-4.12398;;techo;false;OpenStreetMap way/352043515
+osm-w354583166;refugio_libre;Refugio de la Fuente de los Guijos;40.76145;-4.13149;;cerrado;false;OpenStreetMap way/354583166
+osm-w354583167;refugio_libre;Refugio de Puente Negro;40.75486;-4.14113;;cerrado;false;OpenStreetMap way/354583167
+osm-w355998364;parking;Aparcamiento de la Finca de Felipe II;40.59415;-4.15471;;;false;OpenStreetMap way/355998364
+osm-w359364886;parking;Aparcamiento del Puente de la Cantina 1;40.82339;-4.01746;;;false;OpenStreetMap way/359364886
+osm-w359619783;refugio_libre;Refugio juvenil de Canencia;40.89044;-3.77235;;cerrado;false;OpenStreetMap way/359619783
+osm-w359620702;refugio_libre;Refugio Juvenil El Palancar;40.87993;-3.84572;1367;cerrado;false;OpenStreetMap way/359620702
+osm-w360823742;parking;Aparcamiento Boca del Asno;40.84493;-4.02645;;;false;OpenStreetMap way/360823742
+osm-w363323399;parking;Aparcamiento del Puente de la Cantina 2;40.82278;-4.01698;;;false;OpenStreetMap way/363323399
+osm-w368276362;refugio_libre;Refugio de Navarrulaque;40.76935;-4.05241;;cerrado;false;OpenStreetMap way/368276362
+osm-w370457443;refugio_libre;Refugio Cumbres;40.7888;-4.0023;;cerrado;false;OpenStreetMap way/370457443
+osm-w373151722;parking;Aparcamiento Público RENFE-Cercedilla;40.73779;-4.06601;;;false;OpenStreetMap way/373151722
+osm-w395309613;parking;Protección Civil.;40.78489;-3.6954;;;false;OpenStreetMap way/395309613
+osm-w395478872;parking;Parking disuasorio;40.57956;-3.99913;;;false;OpenStreetMap way/395478872 + OpenStreetMap way/1333183095
+osm-w407424210;parking;Parking Sur;40.59922;-3.94927;;;false;OpenStreetMap way/407424210
+osm-w407424211;parking;Parking Este;40.60026;-3.94896;;;false;OpenStreetMap way/407424211
+osm-w410615253;refugio_libre;Chozo Aránguez;40.85768;-3.96699;1890;cerrado;false;OpenStreetMap way/410615253
+osm-w443867012;refugio_libre;Refugio del Puerto de Navafría;40.98703;-3.81462;;cerrado;false;OpenStreetMap way/443867012
+osm-w447957048;parking;Aparcamiento La Panera;40.74837;-4.15036;;;false;OpenStreetMap way/447957048
+osm-w472906070;refugio_pago;Refugio Giner de los Ríos;40.76317;-3.88349;1201;cerrado;false;OpenStreetMap way/472906070
+osm-w474501165;abrigo;Sin nombre;40.65283;-3.88808;;techo;false;OpenStreetMap way/474501165
+osm-w480991098;abrigo;Sin nombre;40.86898;-3.77828;;techo;false;OpenStreetMap way/480991098
+osm-w499001899;refugio_libre;Hospital de Gudillos;40.73292;-4.1403;;techo;false;OpenStreetMap way/499001899
+osm-w499027379;refugio_libre;Refugio del Raso;40.77107;-4.11964;;cerrado;false;OpenStreetMap way/499027379
+osm-w499027380;refugio_libre;Refugio de los Horcajos;40.77216;-4.12602;1420;cerrado;false;OpenStreetMap way/499027380
+osm-w499027382;refugio_libre;Refugio de las Tabladillas;40.78071;-4.1092;;cerrado;false;OpenStreetMap way/499027382
+osm-w534875229;abrigo;Corrales del Juncional;40.81833;-3.9879;;techo;false;OpenStreetMap way/534875229
+osm-w541327860;refugio_libre;Chozo de la Raja;40.75776;-3.83467;;techo;false;OpenStreetMap way/541327860
+osm-w544596401;refugio_libre;Sin nombre;40.94986;-4.08283;;cerrado;false;OpenStreetMap way/544596401
+osm-w557619367;refugio_libre;Refugio del Chorro;41.02611;-3.83071;;cerrado;false;OpenStreetMap way/557619367
+osm-w557619379;refugio_libre;Refugio Navalcollado;41.0074;-3.81943;1790;cerrado;false;OpenStreetMap way/557619379
+osm-w557619382;refugio_libre;Refugio Piemediano Alto;41.01441;-3.83909;;cerrado;false;OpenStreetMap way/557619382
+osm-w557619393;refugio_libre;Refugio de la Fragua;41.01519;-3.85073;;cerrado;false;OpenStreetMap way/557619393
+osm-w557620269;refugio_libre;Refugio del Peñón;41.0212;-3.84378;;cerrado;false;OpenStreetMap way/557620269
+osm-w557652564;refugio_libre;Refugio de la Muchachera;41.03147;-3.81037;1422;cerrado;false;OpenStreetMap way/557652564
+osm-w557783489;refugio_libre;Refugio de Piemediano Bajo;41.01233;-3.83425;;cerrado;false;OpenStreetMap way/557783489
+osm-w575665223;refugio_libre;Refugio Descansadero;40.79043;-4.13928;;cerrado;false;OpenStreetMap way/575665223
+osm-w582702623;refugio_libre;Sin nombre;40.77041;-3.81945;;cerrado;false;OpenStreetMap way/582702623
+osm-w582702624;refugio_libre;Sin nombre;40.76989;-3.82015;;cerrado;false;OpenStreetMap way/582702624
+osm-w582702625;refugio_libre;Sin nombre;40.77039;-3.82032;;cerrado;false;OpenStreetMap way/582702625 + OpenStreetMap way/582702626
+osm-w582702627;refugio_libre;Sin nombre;40.77078;-3.81989;;cerrado;false;OpenStreetMap way/582702627
+osm-w582702628;refugio_libre;Sin nombre;40.77109;-3.8204;;cerrado;false;OpenStreetMap way/582702628
+osm-w582702629;refugio_libre;Sin nombre;40.77087;-3.82025;;cerrado;false;OpenStreetMap way/582702629
+osm-w582702630;refugio_libre;Sin nombre;40.77081;-3.8206;;cerrado;false;OpenStreetMap way/582702630
+osm-w619176222;parking;Aparcamiento Pepe's;40.69568;-4.12429;;;false;OpenStreetMap way/619176222
+osm-w626837239;refugio_libre;Sin nombre;40.89434;-4.00965;;cerrado;false;OpenStreetMap way/626837239
+osm-w631683398;refugio_libre;Refugio Libre del Pinganillo;40.83233;-3.87047;;cerrado;false;OpenStreetMap way/631683398
+osm-w672686594;abrigo;Sin nombre;40.74198;-4.06679;;techo;false;OpenStreetMap way/672686594
+osm-w701168827;refugio_libre;Sin nombre;40.89853;-4.00107;;cerrado;false;OpenStreetMap way/701168827
+osm-w701646691;refugio_libre;Sin nombre;40.89728;-4.01092;;cerrado;false;OpenStreetMap way/701646691
+osm-w751134367;refugio_libre;Refugio Libre la Vaqueriza;40.7762;-4.10273;;cerrado;false;OpenStreetMap way/751134367
+osm-w774712698;parking;Parking de la Fábrica de Cristal;40.90446;-4.00861;;;false;OpenStreetMap way/774712698
+osm-w780805520;refugio_libre;Caseta de Vigilancia;40.73577;-3.89264;;cerrado;false;OpenStreetMap way/780805520
+osm-w782394372;refugio_libre;Sin nombre;40.89777;-4.01031;;cerrado;false;OpenStreetMap way/782394372
+osm-w791858644;refugio_libre;Refugio de la Camorca;40.82512;-4.05151;1814;cerrado;false;OpenStreetMap way/791858644
+osm-w832027797;parking;Aparcamiento Las Lagunillas;40.98326;-3.81747;;;false;OpenStreetMap way/832027797
+osm-w902259184;parking;Aparcamiento ambulancias;40.94589;-4.12628;;;false;OpenStreetMap way/902259184
+osm-w902260419;refugio_libre;Sin nombre;40.61897;-3.91865;;cerrado;false;OpenStreetMap way/902260419
+osm-w905125758;refugio_libre;Sin nombre;40.90014;-4.03681;;cerrado;false;OpenStreetMap way/905125758 + OpenStreetMap way/905125759 + OpenStreetMap way/905125760 + OpenStreetMap way/905125761 + OpenStreetMap way/905125776 + OpenStreetMap way/905125777 + OpenStreetMap way/905125778
+osm-w905125762;refugio_libre;Sin nombre;40.8999;-4.03664;;cerrado;false;OpenStreetMap way/905125762 + OpenStreetMap way/905125763 + OpenStreetMap way/905125764 + OpenStreetMap way/905125765 + OpenStreetMap way/905125779 + OpenStreetMap way/905125780 + OpenStreetMap way/905125781 + OpenStreetMap way/905125782
+osm-w905125766;refugio_libre;Sin nombre;40.90035;-4.03626;;cerrado;false;OpenStreetMap way/905125766 + OpenStreetMap way/905125767 + OpenStreetMap way/905125768 + OpenStreetMap way/905125769 + OpenStreetMap way/905125773 + OpenStreetMap way/905125774 + OpenStreetMap way/905125775
+osm-w905125770;refugio_libre;Sin nombre;40.9001;-4.03604;;cerrado;false;OpenStreetMap way/905125770 + OpenStreetMap way/905125771 + OpenStreetMap way/905125772
+osm-w905125783;refugio_libre;Sin nombre;40.8998;-4.03632;;cerrado;false;OpenStreetMap way/905125783
+osm-w909264115;refugio_libre;Caseta de los Vascos;40.97007;-3.96137;;cerrado;false;OpenStreetMap way/909264115
+osm-w909374193;refugio_libre;Chozo del Ahorcado;40.98512;-3.9045;1950;cerrado;false;OpenStreetMap way/909374193
+osm-w909389471;refugio_libre;Sin nombre;40.62847;-4.01246;;cerrado;false;OpenStreetMap way/909389471
+osm-w909748296;refugio_libre;Sin nombre;40.63009;-4.01237;;cerrado;false;OpenStreetMap way/909748296
+osm-w910133671;refugio_libre;Sin nombre;40.63719;-4.00071;;cerrado;false;OpenStreetMap way/910133671
+osm-w914263921;refugio_libre;Sin nombre;40.62745;-3.99377;;cerrado;false;OpenStreetMap way/914263921
+osm-w914263922;refugio_libre;Sin nombre;40.62792;-3.99426;;cerrado;false;OpenStreetMap way/914263922
+osm-w914432206;refugio_libre;Sin nombre;40.97599;-4.03204;;cerrado;false;OpenStreetMap way/914432206
+osm-w914468674;refugio_libre;Sin nombre;40.97711;-4.03164;;cerrado;false;OpenStreetMap way/914468674 + OpenStreetMap way/1044811769 + OpenStreetMap way/1124682017
+osm-w916895608;refugio_libre;Refugio de El Mirador;40.97426;-3.82557;;techo;false;OpenStreetMap way/916895608
+osm-w919062589;refugio_libre;Sin nombre;40.56185;-4.017;;cerrado;false;OpenStreetMap way/919062589
+osm-w919950381;refugio_libre;Sin nombre;40.5621;-4.01693;;cerrado;false;OpenStreetMap way/919950381
+osm-w920057215;refugio_libre;Sin nombre;40.55663;-4.02607;;cerrado;false;OpenStreetMap way/920057215
+osm-w920057216;refugio_libre;Sin nombre;40.5561;-4.02621;;cerrado;false;OpenStreetMap way/920057216 + OpenStreetMap way/920057217
+osm-w925480049;fuente;Fuente de la Ermita;40.57258;-4.15452;;;false;OpenStreetMap way/925480049
+osm-w926313101;refugio_libre;Sin nombre;40.62434;-4.00927;;cerrado;false;OpenStreetMap way/926313101
+osm-w927193975;refugio_libre;Refugio Zabala;40.83713;-3.95849;2075;cerrado;false;OpenStreetMap way/927193975
+osm-w931813015;parking;Zona de aparcamiento Estación Renfe - Los Negrales;40.63812;-4.02095;;;false;OpenStreetMap way/931813015
+osm-w934776143;abrigo;Sin nombre;40.92802;-3.81605;;techo;false;OpenStreetMap way/934776143
+osm-w936572547;refugio_libre;Refugio La Najarra;40.81229;-3.83811;2100;cerrado;false;OpenStreetMap way/936572547
+osm-w938177502;refugio_libre;Sin nombre;40.87151;-3.76786;;cerrado;false;OpenStreetMap way/938177502
+osm-w938440436;refugio_libre;Refugio Piedra;40.83736;-3.85587;;techo;false;OpenStreetMap way/938440436
+osm-w938440437;refugio_libre;Caseta Los Barracones;40.83667;-3.85625;;cerrado;false;OpenStreetMap way/938440437
+osm-w941196301;refugio_libre;Sin nombre;40.62917;-4.02268;;cerrado;false;OpenStreetMap way/941196301
+osm-w941675354;refugio_libre;Sin nombre;40.62518;-4.01237;;cerrado;false;OpenStreetMap way/941675354
+osm-w958894116;refugio_libre;Sin nombre;40.96482;-4.03754;;cerrado;false;OpenStreetMap way/958894116
+osm-w960779565;parking;Parking Centro Ecuestre de Castilla y León;40.95349;-4.16588;;;false;OpenStreetMap way/960779565
+osm-w965305686;parking;Aparcamiento Hueco de San Blas;40.78166;-3.82989;;;false;OpenStreetMap way/965305686
+osm-w966518262;parking;Aparcamiento CENEAM;40.8729;-4.02049;;;false;OpenStreetMap way/966518262
+osm-w967933401;refugio_libre;Sin nombre;40.81275;-3.76967;;cerrado;false;OpenStreetMap way/967933401
+osm-w990647239;refugio_libre;Refugio Valle Enmedio;40.67491;-4.19485;;cerrado;false;OpenStreetMap way/990647239
+osm-w993416059;refugio_libre;Chozo de los Arteseros;40.6983;-4.20861;1564;cerrado;false;OpenStreetMap way/993416059
+osm-w997628182;refugio_libre;Refugio Las Esquinillas;40.66505;-4.23103;1590;cerrado;false;OpenStreetMap way/997628182
+osm-w999354903;refugio_libre;Refugio de la Peña Cítores;40.83678;-3.99072;2000;cerrado;false;OpenStreetMap way/999354903
+osm-w1006684355;parking;Aparcamiento El Mirador;40.97383;-3.8247;;;false;OpenStreetMap way/1006684355
+osm-w1009489716;refugio_libre;Refugio El;40.66038;-4.19967;1483;techo;false;OpenStreetMap way/1009489716
+osm-w1025037030;parking;Aparcamiento de Urgencias;40.60796;-4.11956;;;false;OpenStreetMap way/1025037030
+osm-w1035603026;refugio_libre;Sin nombre;40.95453;-4.04098;;cerrado;false;OpenStreetMap way/1035603026
+osm-w1039696473;refugio_libre;Sin nombre;40.96251;-4.03553;;cerrado;false;OpenStreetMap way/1039696473
+osm-w1040929761;refugio_libre;Molino de Santo Domingo de Pirón;41.03893;-3.99068;;cerrado;false;OpenStreetMap way/1040929761
+osm-w1041254215;refugio_libre;Sin nombre;40.99054;-4.00777;;cerrado;false;OpenStreetMap way/1041254215
+osm-w1041254216;refugio_libre;Sin nombre;40.99068;-4.00716;;cerrado;false;OpenStreetMap way/1041254216
+osm-w1041469462;refugio_libre;Sin nombre;40.96497;-4.03662;;cerrado;false;OpenStreetMap way/1041469462
+osm-w1041751304;refugio_libre;Sin nombre;40.81559;-4.25303;;cerrado;false;OpenStreetMap way/1041751304
+osm-w1041751305;refugio_libre;Sin nombre;40.81556;-4.25272;;cerrado;false;OpenStreetMap way/1041751305 + OpenStreetMap way/1041751306
+osm-w1041751315;refugio_libre;Sin nombre;40.81728;-4.25802;;cerrado;false;OpenStreetMap way/1041751315
+osm-w1041751318;refugio_libre;Sin nombre;40.81772;-4.25778;;cerrado;false;OpenStreetMap way/1041751318
+osm-w1041940892;refugio_libre;Refugio de Bercellana Alta;40.95019;-3.96348;;cerrado;false;OpenStreetMap way/1041940892
+osm-w1044492336;refugio_libre;Sin nombre;40.78504;-4.30973;;cerrado;false;OpenStreetMap way/1044492336
+osm-w1046802449;refugio_libre;Sin nombre;40.56184;-3.89609;;techo;false;OpenStreetMap way/1046802449
+osm-w1049100410;refugio_libre;Sin nombre;40.95445;-4.10449;;cerrado;false;OpenStreetMap way/1049100410
+osm-w1052050686;refugio_libre;Sin nombre;40.9899;-4.09131;;cerrado;false;OpenStreetMap way/1052050686
+osm-w1052815528;refugio_libre;Casa Forestal de La Tejera;41.04203;-3.68226;;cerrado;false;OpenStreetMap way/1052815528
+osm-w1053573830;refugio_libre;Sin nombre;40.55004;-3.90837;;techo;false;OpenStreetMap way/1053573830
+osm-w1055537062;refugio_libre;Refugio Pilangostillos;41.01096;-4.32698;;cerrado;false;OpenStreetMap way/1055537062
+osm-w1057238474;refugio_libre;Sin nombre;40.96388;-4.0371;;cerrado;false;OpenStreetMap way/1057238474
+osm-w1063001000;refugio_libre;Sin nombre;40.97639;-4.03298;;cerrado;false;OpenStreetMap way/1063001000
+osm-w1065333309;refugio_libre;Sin nombre;40.88981;-3.88353;;techo;false;OpenStreetMap way/1065333309
+osm-w1068466456;refugio_libre;Sin nombre;40.56409;-3.90311;;techo;false;OpenStreetMap way/1068466456
+osm-w1073540758;parking;Parking bosque de las herrerias;40.57598;-4.15319;;;false;OpenStreetMap way/1073540758
+osm-w1106280408;refugio_libre;Sin nombre;40.93195;-4.09446;;cerrado;false;OpenStreetMap way/1106280408
+osm-w1106280410;parking;Plaza de Juan Ramón Jiménez;40.92998;-4.09224;;;false;OpenStreetMap way/1106280410
+osm-w1106791155;parking;Acueducto Oriental;40.94821;-4.11492;;;false;OpenStreetMap way/1106791155
+osm-w1106791168;refugio_libre;Sin nombre;40.94696;-4.11616;;cerrado;false;OpenStreetMap way/1106791168
+osm-w1107764820;refugio_libre;Chozo;40.94675;-3.92914;;cerrado;false;OpenStreetMap way/1107764820 + OpenStreetMap way/1239960640
+osm-w1107765578;refugio_libre;Sin nombre;40.94066;-3.94972;;cerrado;false;OpenStreetMap way/1107765578
+osm-w1108977497;refugio_libre;Sin nombre;40.94326;-4.09438;;cerrado;false;OpenStreetMap way/1108977497
+osm-w1115777381;parking;Aparcamiento de camiones;40.8764;-4.02106;;;false;OpenStreetMap way/1115777381
+osm-w1117311662;refugio_libre;Chozo de Majada Hambrienta;40.85427;-3.97897;1780;cerrado;false;OpenStreetMap way/1117311662
+osm-w1120991634;refugio_libre;Chozo del Tío Blas;40.88139;-3.96133;;cerrado;false;OpenStreetMap way/1120991634
+osm-w1120992226;refugio_libre;Choza del Guarda;40.83718;-3.95176;;cerrado;false;OpenStreetMap way/1120992226
+osm-w1144032607;parking;Aparcamiento Sur;40.87343;-4.15097;;;false;OpenStreetMap way/1144032607
+osm-w1144829508;refugio_libre;Sin nombre;40.73267;-3.99415;;cerrado;false;OpenStreetMap way/1144829508
+osm-w1149629664;parking;Peñas Pedrigueras;40.85139;-4.02713;;;false;OpenStreetMap way/1149629664
+osm-w1149629706;refugio_libre;Sin nombre;40.87328;-4.02013;;cerrado;false;OpenStreetMap way/1149629706
+osm-w1156052749;refugio_libre;Refugio Libre el Vivero;40.7468;-4.13812;;cerrado;false;OpenStreetMap way/1156052749
+osm-w1156053826;refugio_libre;Refugio Libre;41.03343;-3.8573;;cerrado;false;OpenStreetMap way/1156053826
+osm-w1156055561;refugio_libre;Chozo;40.83596;-3.85506;;cerrado;false;OpenStreetMap way/1156055561
+osm-w1156057459;refugio_libre;Refugio Libre del Raso de La Atalayuela;41.02474;-3.85892;;cerrado;false;OpenStreetMap way/1156057459
+osm-w1156989328;abrigo;Vivac Las Mesas;40.76044;-3.83764;;techo;false;OpenStreetMap way/1156989328
+osm-w1156989329;abrigo;Sin nombre;40.75918;-3.84125;;techo;false;OpenStreetMap way/1156989329
+osm-w1156989330;abrigo;Sin nombre;40.76043;-3.83887;;techo;false;OpenStreetMap way/1156989330
+osm-w1167329480;refugio_libre;Sin nombre;40.95172;-4.08406;;cerrado;false;OpenStreetMap way/1167329480
+osm-w1173428543;refugio_libre;choza;40.96632;-3.95497;;cerrado;false;OpenStreetMap way/1173428543
+osm-w1176895358;refugio_libre;Sin nombre;40.94982;-4.11555;;cerrado;false;OpenStreetMap way/1176895358 + OpenStreetMap way/1176895359 + OpenStreetMap way/1176895360 + OpenStreetMap way/1176895361
+osm-w1176936954;refugio_libre;Sin nombre;40.959;-4.03758;;cerrado;false;OpenStreetMap way/1176936954
+osm-w1178777737;refugio_libre;Chozo de la Portera de la Dehesa;41.04311;-3.79545;;cerrado;false;OpenStreetMap way/1178777737
+osm-w1181322898;fuente;Fuente de Los Caños;41.00088;-4.11049;;;false;OpenStreetMap way/1181322898
+osm-w1188611482;refugio_libre;Resguardo de la Morcuera;40.82787;-3.83038;1790;cerrado;false;OpenStreetMap way/1188611482
+osm-w1192590322;fuente;Fuente de Matalapeña;40.9085;-3.67591;;;false;OpenStreetMap way/1192590322
+osm-w1197897994;parking;Plaza de Espronceda;40.93054;-4.09964;;;false;OpenStreetMap way/1197897994
+osm-w1201680230;refugio_libre;Sin nombre;40.65559;-3.97102;;cerrado;false;OpenStreetMap way/1201680230 + OpenStreetMap way/1201680231
+osm-w1207180921;fuente;Manantial del Navarejo;40.91119;-3.68246;;;false;OpenStreetMap way/1207180921
+osm-w1211235054;refugio_libre;Sin nombre;40.76012;-3.81693;;cerrado;false;OpenStreetMap way/1211235054
+osm-w1211607970;parking;Aparcamiento quitanieves;40.78896;-4.00337;;;false;OpenStreetMap way/1211607970
+osm-w1212819908;refugio_libre;Refugio de Majada de Los Lobos;40.68898;-4.30119;1508;cerrado;false;OpenStreetMap way/1212819908
+osm-w1212820521;refugio_libre;Mirador de los Buitres;40.69862;-4.31505;;techo;false;OpenStreetMap way/1212820521
+osm-w1215031605;refugio_libre;Sin nombre;40.94676;-4.10221;;cerrado;false;OpenStreetMap way/1215031605
+osm-w1215031616;refugio_libre;Sin nombre;40.94624;-4.10225;;cerrado;false;OpenStreetMap way/1215031616
+osm-w1215031617;refugio_libre;Sin nombre;40.94627;-4.10193;;cerrado;false;OpenStreetMap way/1215031617 + OpenStreetMap way/1215031618
+osm-w1215561690;refugio_libre;Sin nombre;40.90178;-4.04219;;cerrado;false;OpenStreetMap way/1215561690
+osm-w1215561691;refugio_libre;Sin nombre;40.90175;-4.04186;;cerrado;false;OpenStreetMap way/1215561691 + OpenStreetMap way/1215561692 + OpenStreetMap way/1215561693
+osm-w1220244514;refugio_libre;Chozo de La Chata;40.96225;-3.90661;1844;cerrado;false;OpenStreetMap way/1220244514
+osm-w1220299509;fuente;Fuente;41.0275;-4.02113;;;false;OpenStreetMap way/1220299509
+osm-w1220398136;abrigo;Corral del Tío Poncio;40.88743;-3.97597;;techo;false;OpenStreetMap way/1220398136
+osm-w1237656950;refugio_libre;Sin nombre;40.99041;-3.98826;;techo;false;OpenStreetMap way/1237656950
+osm-w1243710242;refugio_libre;Vivac Einar;40.89596;-4.02316;;cerrado;false;OpenStreetMap way/1243710242
+osm-w1246831661;parking;Brigada de Obras;40.62664;-4.0146;;;false;OpenStreetMap way/1246831661
+osm-w1254584438;parking;Aparcamiento de Las Lastras;40.94017;-4.11915;;;false;OpenStreetMap way/1254584438
+osm-w1265880879;parking;Aparcamiento de Las Arenas;40.94739;-4.10658;;;false;OpenStreetMap way/1265880879
+osm-w1265880919;parking;Aparcamiento y recinto ferial;40.94235;-4.09955;;;false;OpenStreetMap way/1265880919
+osm-w1319224774;parking;Aparcamiento de equipos de obras;40.9488;-4.11705;;;false;OpenStreetMap way/1319224774
+osm-w1323817684;refugio_libre;Sin nombre;40.93502;-4.11569;;cerrado;false;OpenStreetMap way/1323817684
+osm-w1341004715;refugio_libre;Caseta de Madera;41.02692;-3.88325;;cerrado;false;OpenStreetMap way/1341004715
+osm-w1343031519;refugio_libre;Refugio de Pescadores;40.91977;-4.0442;;cerrado;false;OpenStreetMap way/1343031519
+osm-w1368353909;parking;Aparcamiento de autobuses;40.94654;-4.12393;;;false;OpenStreetMap way/1368353909
+osm-w1394173791;refugio_libre;Sin nombre;40.87761;-4.02701;;cerrado;false;OpenStreetMap way/1394173791 + OpenStreetMap way/1394173794 + OpenStreetMap way/1394173795 + OpenStreetMap way/1394173796 + OpenStreetMap way/1480960811 + OpenStreetMap way/1480960812
+osm-w1394173793;refugio_libre;Sin nombre;40.87724;-4.02718;;cerrado;false;OpenStreetMap way/1394173793 + OpenStreetMap way/1480960810 + OpenStreetMap way/1480960815 + OpenStreetMap way/1480960816
+osm-w1394173797;refugio_libre;Sin nombre;40.87728;-4.02639;;cerrado;false;OpenStreetMap way/1394173797 + OpenStreetMap way/1394173798 + OpenStreetMap way/1394173799 + OpenStreetMap way/1394173800 + OpenStreetMap way/1394173801 + OpenStreetMap way/1480960849
+osm-w1394173802;refugio_libre;Sin nombre;40.87703;-4.02642;;cerrado;false;OpenStreetMap way/1394173802 + OpenStreetMap way/1394173803
+osm-w1394867260;refugio_libre;Sin nombre;40.95089;-4.11282;;cerrado;false;OpenStreetMap way/1394867260 + OpenStreetMap way/1394867261
+osm-w1394867272;refugio_libre;Sin nombre;40.95065;-4.11464;;cerrado;false;OpenStreetMap way/1394867272
+osm-w1394867290;refugio_libre;Sin nombre;40.95137;-4.11206;;cerrado;false;OpenStreetMap way/1394867290
+osm-w1410072605;abrigo;Cueva de Santo Domingo;40.9532;-4.11873;;techo;false;OpenStreetMap way/1410072605
+osm-w1423306628;refugio_libre;Sin nombre;40.9457;-4.0906;;cerrado;false;OpenStreetMap way/1423306628
+osm-w1424489875;refugio_libre;Chozo de Navalazor;40.80684;-4.03047;;cerrado;false;OpenStreetMap way/1424489875
+osm-w1425317937;refugio_libre;Chozo de Majada Muñoveros;40.81416;-4.06281;1690;cerrado;false;OpenStreetMap way/1425317937
+osm-w1429833832;parking;Aparcamiento provisional de Nueva Segovia;40.93024;-4.09274;;;false;OpenStreetMap way/1429833832
+osm-w1446932979;parking;Aparcamiento municipal;41.03399;-3.94121;;;false;OpenStreetMap way/1446932979
+osm-w1453567068;refugio_libre;Sin nombre;41.01524;-4.08039;;cerrado;false;OpenStreetMap way/1453567068 + OpenStreetMap way/1453567069
+osm-w1464159369;parking;Parking APK2 Catedral - Oblatas;40.95244;-4.12274;;;false;OpenStreetMap way/1464159369
+osm-w1464159401;parking;Aparcamiento de Plaza de San Esteban;40.9517;-4.1246;;;false;OpenStreetMap way/1464159401
+osm-w1466256774;refugio_libre;Ruinas del Refugio La Maliciosa;40.78279;-3.97585;;cerrado;false;OpenStreetMap way/1466256774
+osm-w1473890970;refugio_libre;Sin nombre;40.92654;-4.11697;;cerrado;false;OpenStreetMap way/1473890970
+osm-w1480960809;refugio_libre;Sin nombre;40.87699;-4.0274;;cerrado;false;OpenStreetMap way/1480960809 + OpenStreetMap way/1480960877
+osm-w1480960829;refugio_libre;Sin nombre;40.87726;-4.02781;;cerrado;false;OpenStreetMap way/1480960829
+osm-w1480960840;refugio_libre;Sin nombre;40.87757;-4.02632;;cerrado;false;OpenStreetMap way/1480960840 + OpenStreetMap way/1480960841
+osm-w1480960842;refugio_libre;Sin nombre;40.87739;-4.02606;;cerrado;false;OpenStreetMap way/1480960842
+osm-w1480960850;refugio_libre;Sin nombre;40.87713;-4.02672;;cerrado;false;OpenStreetMap way/1480960850 + OpenStreetMap way/1480960852 + OpenStreetMap way/1480960853
+osm-w1480960851;refugio_libre;Sin nombre;40.87738;-4.02692;;cerrado;false;OpenStreetMap way/1480960851
+osm-w1480960854;refugio_libre;Sin nombre;40.87751;-4.02737;;cerrado;false;OpenStreetMap way/1480960854
+osm-w1480960872;refugio_libre;Sin nombre;40.87919;-4.0281;;cerrado;false;OpenStreetMap way/1480960872 + OpenStreetMap way/1480960873 + OpenStreetMap way/1480960874 + OpenStreetMap way/1480960875
+osm-w1484420400;refugio_libre;Sin nombre;40.98256;-4.20478;;cerrado;false;OpenStreetMap way/1484420400 + OpenStreetMap way/1484420401
+osm-w1484420402;refugio_libre;Sin nombre;40.98237;-4.2046;;cerrado;false;OpenStreetMap way/1484420402
+osm-w1484718725;refugio_libre;Sin nombre;40.90158;-4.01014;;cerrado;false;OpenStreetMap way/1484718725
+osm-w1484718766;refugio_libre;Sin nombre;40.90691;-4.00863;;cerrado;false;OpenStreetMap way/1484718766 + OpenStreetMap way/1484718767
+osm-w1484718768;refugio_libre;Sin nombre;40.90723;-4.00893;;cerrado;false;OpenStreetMap way/1484718768
+osm-w1485140631;refugio_libre;Sin nombre;40.74151;-4.19455;;cerrado;false;OpenStreetMap way/1485140631
+osm-w1487216160;refugio_libre;Sin nombre;40.74161;-4.0646;;cerrado;false;OpenStreetMap way/1487216160 + OpenStreetMap way/1487216161 + OpenStreetMap way/1487216162
+osm-w1493005625;parking;Plaza de los Espejos;40.94918;-4.12067;;;false;OpenStreetMap way/1493005625
+osm-w1493987417;refugio_libre;Sin nombre;40.55333;-3.65544;;techo;false;OpenStreetMap way/1493987417 + OpenStreetMap way/1493987419
+osm-w1493987420;refugio_libre;Sin nombre;40.55298;-3.65551;;techo;false;OpenStreetMap way/1493987420
+osm-w1513020438;refugio_libre;Sin nombre;40.91132;-4.12379;;cerrado;false;OpenStreetMap way/1513020438
+osm-w1518243930;refugio_libre;Sin nombre;41.00182;-4.11748;;cerrado;false;OpenStreetMap way/1518243930
+osm-w1530775485;refugio_libre;Sin nombre;40.97633;-3.80848;;cerrado;false;OpenStreetMap way/1530775485
+osm-w1532250329;refugio_libre;Sin nombre;40.9025;-4.0047;;cerrado;false;OpenStreetMap way/1532250329
+osm-w1532250330;refugio_libre;Sin nombre;40.90285;-4.00541;;cerrado;false;OpenStreetMap way/1532250330
+osm-w1532250368;refugio_libre;Sin nombre;40.90822;-4.00715;;cerrado;false;OpenStreetMap way/1532250368 + OpenStreetMap way/1532250369 + OpenStreetMap way/1532250370 + OpenStreetMap way/1532250371
+osm-w1532250381;refugio_libre;Sin nombre;40.90745;-4.00648;;cerrado;false;OpenStreetMap way/1532250381
+osm-w1534543082;parking;Aparcamiento provisional Hospital;40.94394;-4.12876;;;false;OpenStreetMap way/1534543082
+osm-w1534798156;refugio_libre;Sin nombre;40.94294;-4.1114;;cerrado;false;OpenStreetMap way/1534798156
+osm-w1548726147;refugio_libre;Sin nombre;40.94913;-4.10829;;cerrado;false;OpenStreetMap way/1548726147
+osm-w1548730026;parking;Aparcamiento de la Cruz de la Gallega;40.8785;-4.03514;;;false;OpenStreetMap way/1548730026
+osm-w1551324318;parking;Aparcamiento provisional AVE Segovia;40.91214;-4.09757;;;false;OpenStreetMap way/1551324318
+osm-w1557493785;parking;Aparcamiento de Colón;40.95001;-4.12221;;;false;OpenStreetMap way/1557493785
+osm-w1562989361;parking;Aparcamiento de Albergue Peñalara;40.78571;-4.001;;;false;OpenStreetMap way/1562989361
+osm-w1563330945;fuente;Manantial de La Sima;40.89045;-4.17632;;;false;OpenStreetMap way/1563330945
+osm-w1565452765;refugio_libre;Sin nombre;40.97579;-4.08665;;cerrado;false;OpenStreetMap way/1565452765 + OpenStreetMap way/1565452766 + OpenStreetMap way/1565452767
+osm-w1570528052;refugio_libre;Sin nombre;40.94345;-4.10972;;cerrado;false;OpenStreetMap way/1570528052
+osm-w1570528054;refugio_libre;Sin nombre;40.94299;-4.11007;;cerrado;false;OpenStreetMap way/1570528054 + OpenStreetMap way/1570528055 + OpenStreetMap way/1570528056
+osm-w1574985736;refugio_libre;Chozo de Pastores;40.79933;-4.12601;;cerrado;false;OpenStreetMap way/1574985736
+osm-r19190422;abrigo;Pradera de Corralillos;40.78105;-4.06532;;techo;false;OpenStreetMap relation/19190422
+osm-r21451566;parking;Aparcamientos en el Puerto de Navafría;40.98675;-3.81403;;;false;OpenStreetMap relation/21451566
+osm-r21451567;parking;Aparcamientos de Las Dehesas;40.76937;-4.06836;;;false;OpenStreetMap relation/21451567

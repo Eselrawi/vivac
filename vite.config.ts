@@ -33,6 +33,7 @@ export default defineConfig({
       workbox: {
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         navigateFallback: `${base}index.html`,
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/(s3\.amazonaws\.com\/elevation-tiles-prod|www\.ign\.es\/wmts)\/.*/,

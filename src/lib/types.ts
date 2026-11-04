@@ -7,6 +7,7 @@ export type PlaceKind =
   | 'deseo'
   | 'fuente'
   | 'parking'
+  | 'cumbre'
 
 export type Shelter = 'cerrado' | 'techo' | 'parapeto' | 'raso'
 
@@ -24,6 +25,11 @@ export interface Place {
   verified: boolean
   source: string
   visited?: number
+  unnamed?: boolean
+  toponym?: boolean
+  capacity?: string
+  web?: string
+  phone?: string
 }
 
 export const KIND_LABEL: Record<PlaceKind, string> = {
@@ -35,6 +41,7 @@ export const KIND_LABEL: Record<PlaceKind, string> = {
   deseo: 'Deseo',
   fuente: 'Fuente',
   parking: 'Aparcamiento',
+  cumbre: 'Cumbre',
 }
 
 export const KIND_COLOR: Record<PlaceKind, string> = {
@@ -46,6 +53,9 @@ export const KIND_COLOR: Record<PlaceKind, string> = {
   deseo: '#d1553f',
   fuente: '#3a86c8',
   parking: '#5b6472',
+  cumbre: '#6b7280',
 }
+
+export const SLEEP_KINDS: PlaceKind[] = ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'vivac', 'deseo']
 
 export const HOME = { name: 'Villanueva de la Cañada', lat: 40.4436, lng: -3.9944 }

@@ -1,65 +1,72 @@
 import { useEffect, useRef } from 'react'
 import * as maplibregl from 'maplibre-gl'
-import type { StyleSpecification } from 'maplibre-gl'
+import type { StyleSpecification, GeoJSONSource } from 'maplibre-gl'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
+import type { FeatureCollection, Point } from 'geojson'
+import { KIND_COLOR, type Place } from '../lib/types'
 
 maplibregl.setWorkerUrl(workerUrl)
-import { KIND_COLOR, type Place } from '../lib/types'
 
 export type BaseLayer = 'ign' | 'mtn' | 'pnoa'
 
 const wmts = (layer: string, server: string) =>
   `https://www.ign.es/wmts/${server}?service=WMTS&request=GetTile&version=1.0.0&layer=${layer}&style=default&tilematrixset=GoogleMapsCompatible&format=image/jpeg&tilematrix={z}&tilerow={y}&tilecol={x}`
+const DEM = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'
 
 const style: StyleSpecification = {
   version: 8,
+  glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
   sources: {
     ign: { type: 'raster', tiles: [wmts('IGNBaseTodo', 'ign-base')], tileSize: 256, maxzoom: 19, attribution: '© IGN' },
     mtn: { type: 'raster', tiles: [wmts('MTN', 'mapa-raster')], tileSize: 256, maxzoom: 17, attribution: '© IGN MTN' },
     pnoa: { type: 'raster', tiles: [wmts('OI.OrthoimageCoverage', 'pnoa-ma')], tileSize: 256, maxzoom: 19, attribution: '© PNOA IGN' },
-    demShade: {
-      type: 'raster-dem',
-      tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
-      encoding: 'terrarium',
-      tileSize: 256,
-      maxzoom: 13,
-    },
-    dem: {
-      type: 'raster-dem',
-      tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
-      encoding: 'terrarium',
-      tileSize: 256,
-      maxzoom: 14,
-      attribution: 'Terrain Tiles AWS',
-    },
+    demShade: { type: 'raster-dem', tiles: [DEM], encoding: 'terrarium', tileSize: 256, maxzoom: 13 },
+    dem: { type: 'raster-dem', tiles: [DEM], encoding: 'terrarium', tileSize: 256, maxzoom: 14, attribution: 'Terrain Tiles AWS' },
   },
   layers: [
     { id: 'ign', type: 'raster', source: 'ign' },
     { id: 'mtn', type: 'raster', source: 'mtn', layout: { visibility: 'none' } },
     { id: 'pnoa', type: 'raster', source: 'pnoa', layout: { visibility: 'none' } },
-    {
-      id: 'hillshade',
-      type: 'hillshade',
-      source: 'demShade',
-      paint: { 'hillshade-exaggeration': 0.35, 'hillshade-shadow-color': '#1b2c44', 'hillshade-highlight-color': '#fff7e6' },
-    },
+    { id: 'hillshade', type: 'hillshade', source: 'demShade', paint: { 'hillshade-exaggeration': 0.35, 'hillshade-shadow-color': '#1b2c44', 'hillshade-highlight-color': '#fff7e6' } },
   ],
-  sky: {
-    'sky-color': '#7fb0e0',
-    'horizon-color': '#f6e6cf',
-    'fog-color': '#f6e6cf',
-    'sky-horizon-blend': 0.6,
-    'horizon-fog-blend': 0.7,
-    'fog-ground-blend': 0.3,
-    'atmosphere-blend': 0.8,
-  },
+  sky: { 'sky-color': '#7fb0e0', 'horizon-color': '#f6e6cf', 'fog-color': '#f6e6cf', 'sky-horizon-blend': 0.6, 'horizon-fog-blend': 0.7, 'fog-ground-blend': 0.3, 'atmosphere-blend': 0.8 },
   terrain: { source: 'dem', exaggeration: 1.3 },
 }
 
-const EMOJI: Record<string, string> = {
-  refugio_libre: '🛖', refugio_pago: '€', parapeto: '🧱', abrigo: '🪨',
-  vivac: '⛺', deseo: '⭐', fuente: '💧', parking: 'P',
+const GLYPH: Record<string, string> = {
+  refugio_libre: '🛖', refugio_pago: '€', parapeto: '🧱', abrigo: '🪨', vivac: '⛺', deseo: '⭐', fuente: '💧', parking: 'P', cumbre: '▲',
 }
+
+function addIcons(m: maplibregl.Map) {
+  for (const [kind, glyph] of Object.entries(GLYPH)) {
+    for (const visited of [false, true]) {
+      const name = `${kind}${visited ? '-v' : ''}`
+      if (m.hasImage(name)) continue
+      const s = 64
+      const c = document.createElement('canvas')
+      c.width = c.height = s
+      const g = c.getContext('2d')!
+      g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 6; g.shadowOffsetY = 2
+      g.beginPath(); g.arc(s / 2, s / 2, 24, 0, Math.PI * 2)
+      g.fillStyle = KIND_COLOR[kind as keyof typeof KIND_COLOR] ?? '#5b6472'; g.fill()
+      g.shadowColor = 'transparent'
+      g.lineWidth = visited ? 6 : 4; g.strokeStyle = visited ? '#ffd9a0' : '#fff'; g.stroke()
+      g.fillStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle'
+      g.font = kind === 'refugio_pago' || kind === 'parking' || kind === 'cumbre' ? 'bold 26px Inter, sans-serif' : '26px sans-serif'
+      g.fillText(glyph, s / 2, s / 2 + 2)
+      m.addImage(name, g.getImageData(0, 0, s, s), { pixelRatio: 2 })
+    }
+  }
+}
+
+const toGeo = (places: Place[]): FeatureCollection => ({
+  type: 'FeatureCollection',
+  features: places.map((p) => ({
+    type: 'Feature',
+    geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
+    properties: { id: p.id, name: p.name, icon: `${p.kind}${p.visited ? '-v' : ''}`, prio: p.kind === 'cumbre' ? 0 : p.kind === 'fuente' ? 1 : 2 },
+  })),
+})
 
 interface Props {
   places: Place[]
@@ -72,66 +79,83 @@ interface Props {
 export default function MapView({ places, selectedId, onSelect, is3D, layer }: Props) {
   const el = useRef<HTMLDivElement>(null)
   const map = useRef<maplibregl.Map | null>(null)
-  const markers = useRef<maplibregl.Marker[]>([])
+  const ready = useRef(false)
+  const queue = useRef<Array<(m: maplibregl.Map) => void>>([])
+  const placesRef = useRef(places)
+  placesRef.current = places
   const onSelectRef = useRef(onSelect)
   onSelectRef.current = onSelect
 
   useEffect(() => {
     if (!el.current) return
-    const m = new maplibregl.Map({
-      container: el.current,
-      style,
-      center: [-3.97, 40.8],
-      zoom: 10.2,
-      pitch: 55,
-      bearing: -15,
-      maxPitch: 80,
-    })
+    const m = new maplibregl.Map({ container: el.current, style, center: [-3.97, 40.8], zoom: 10.2, pitch: 55, bearing: -15, maxPitch: 80 })
     m.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left')
     m.addControl(new maplibregl.GeolocateControl({ trackUserLocation: true, positionOptions: { enableHighAccuracy: true } }), 'bottom-right')
     map.current = m
-    return () => { m.remove(); map.current = null }
+    ;(window as unknown as { __map?: unknown }).__map = m
+
+    m.on('load', () => {
+      addIcons(m)
+      m.addSource('places', { type: 'geojson', data: toGeo(placesRef.current), cluster: true, clusterRadius: 46, clusterMaxZoom: 12 })
+      m.addLayer({ id: 'clusters', type: 'circle', source: 'places', filter: ['has', 'point_count'], paint: { 'circle-color': '#1f4d3a', 'circle-radius': ['step', ['get', 'point_count'], 16, 10, 20, 50, 26], 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
+      m.addLayer({ id: 'cluster-n', type: 'symbol', source: 'places', filter: ['has', 'point_count'], layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Open Sans Semibold'], 'text-size': 13 }, paint: { 'text-color': '#fff' } })
+      m.addLayer({
+        id: 'icons', type: 'symbol', source: 'places', filter: ['!', ['has', 'point_count']],
+        layout: { 'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 8, 0.55, 13, 0.9, 16, 1.1], 'icon-allow-overlap': true, 'symbol-sort-key': ['get', 'prio'] },
+      })
+      m.addLayer({
+        id: 'names', type: 'symbol', source: 'places', minzoom: 13, filter: ['!', ['has', 'point_count']],
+        layout: { 'text-field': ['get', 'name'], 'text-font': ['Open Sans Semibold'], 'text-size': 12, 'text-offset': [0, 1.5], 'text-anchor': 'top', 'text-optional': true },
+        paint: { 'text-color': '#14202e', 'text-halo-color': '#fff', 'text-halo-width': 1.6 },
+      })
+      m.on('click', 'clusters', (e) => {
+        const f = e.features?.[0]
+        if (!f) return
+        const src = m.getSource('places') as GeoJSONSource
+        src.getClusterExpansionZoom(f.properties.cluster_id).then((z) => m.easeTo({ center: (f.geometry as Point).coordinates as [number, number], zoom: z + 0.5 }))
+      })
+      m.on('click', 'icons', (e) => {
+        const id = e.features?.[0]?.properties?.id
+        const p = placesRef.current.find((x) => x.id === id)
+        if (p) onSelectRef.current(p)
+      })
+      for (const l of ['clusters', 'icons']) {
+        m.on('mouseenter', l, () => (m.getCanvas().style.cursor = 'pointer'))
+        m.on('mouseleave', l, () => (m.getCanvas().style.cursor = ''))
+      }
+      ready.current = true
+      queue.current.splice(0).forEach((fn) => fn(m))
+    })
+    return () => { ready.current = false; m.remove(); map.current = null }
   }, [])
 
-  useEffect(() => {
+  const whenReady = (fn: (m: maplibregl.Map) => void) => {
     const m = map.current
     if (!m) return
-    const apply = () => {
-      for (const id of ['ign', 'mtn', 'pnoa']) m.setLayoutProperty(id, 'visibility', id === layer ? 'visible' : 'none')
-    }
-    if (m.isStyleLoaded()) apply()
-    else m.once('load', apply)
+    if (ready.current) fn(m)
+    else queue.current.push(fn)
+  }
+
+  useEffect(() => {
+    whenReady((m) => { for (const id of ['ign', 'mtn', 'pnoa']) m.setLayoutProperty(id, 'visibility', id === layer ? 'visible' : 'none') })
   }, [layer])
 
   useEffect(() => {
-    const m = map.current
-    if (!m) return
-    const run = () => {
+    whenReady((m) => {
       m.easeTo({ pitch: is3D ? 60 : 0, bearing: is3D ? m.getBearing() : 0, duration: 700 })
       m.setTerrain(is3D ? { source: 'dem', exaggeration: 1.3 } : null)
-    }
-    if (m.isStyleLoaded()) run()
-    else m.once('load', run)
+    })
   }, [is3D])
 
   useEffect(() => {
-    const m = map.current
-    if (!m) return
-    markers.current.forEach((k) => k.remove())
-    markers.current = places.map((p) => {
-      const b = document.createElement('button')
-      b.setAttribute('aria-label', p.name)
-      b.style.cssText = `width:40px;height:40px;border-radius:9999px;border:2px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.3);color:#fff;font-weight:700;font-size:18px;background:${KIND_COLOR[p.kind]}`
-      b.textContent = EMOJI[p.kind]
-      b.addEventListener('click', (e) => { e.stopPropagation(); onSelectRef.current(p) })
-      return new maplibregl.Marker({ element: b }).setLngLat([p.lng, p.lat]).addTo(m)
-    })
+    whenReady((m) => (m.getSource('places') as GeoJSONSource | undefined)?.setData(toGeo(placesRef.current)))
   }, [places])
 
   useEffect(() => {
     const p = places.find((x) => x.id === selectedId)
-    if (p && map.current) map.current.flyTo({ center: [p.lng, p.lat], zoom: 14.5, pitch: 62, speed: 0.8, essential: true })
-  }, [selectedId, places])
+    if (p) whenReady((m) => m.flyTo({ center: [p.lng, p.lat], zoom: 14.5, pitch: is3D ? 62 : 0, speed: 0.8, essential: true }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedId])
 
-  return <div ref={el} style={{ position: "absolute", inset: 0 }} />
+  return <div ref={el} style={{ position: 'absolute', inset: 0 }} />
 }
