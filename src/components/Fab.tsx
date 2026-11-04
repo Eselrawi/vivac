@@ -8,7 +8,7 @@ const OPTIONS = [
   { id: 'refugio', label: 'Refugio / fuente', sub: 'Un parapeto, refugio o fuente nuevo', Icon: Droplets, color: '#3a86c8' },
 ]
 
-export default function Fab() {
+export default function Fab({ onPick }: { onPick: (id: string) => void }) {
   const [open, setOpen] = useState(false)
   return (
     <Drawer.Root open={open} onOpenChange={setOpen}>
@@ -29,7 +29,7 @@ export default function Fab() {
           <Drawer.Description className="sr-only">Elige una opción</Drawer.Description>
           <div className="flex flex-col gap-3">
             {OPTIONS.map(({ id, label, sub, Icon, color }) => (
-              <button key={id} onClick={() => setOpen(false)} className="tap flex items-center gap-4 rounded-2xl p-4 text-left shadow-sm active:scale-[0.99]" style={{ background: 'var(--surface)' }}>
+              <button key={id} onClick={() => { setOpen(false); onPick(id) }} className="tap flex items-center gap-4 rounded-2xl p-4 text-left shadow-sm active:scale-[0.99]" style={{ background: 'var(--surface)' }}>
                 <span className="grid h-12 w-12 place-items-center rounded-xl text-white" style={{ background: color }}><Icon size={26} /></span>
                 <span><span className="block text-lg font-bold">{label}</span><span className="text-sm" style={{ color: 'var(--ink-soft)' }}>{sub}</span></span>
               </button>

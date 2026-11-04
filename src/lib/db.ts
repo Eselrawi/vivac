@@ -1,0 +1,68 @@
+import Dexie, { liveQuery, type Table } from 'dexie'
+import { useEffect, useState } from 'react'
+import type { Place } from './types'
+
+export interface VivacRecord {
+  id: string
+  name: string
+  kind: 'vivac' | 'deseo'
+  lat: number
+  lng: number
+  ele?: number | null
+  at: number
+  photo?: Blob | null
+  sleep?: 1 | 2 | 3 | null // 1 frío, 2 bien, 3 calor
+  notes?: string
+  synced: 0 | 1
+}
+
+class VivacDB extends Dexie {
+  vivacs!: Table<VivacRecord, string>
+  constructor() {
+    super('vivac')
+    this.version(1).stores({ vivacs: 'id, at, synced, kind' })
+  }
+}
+
+export const db = new VivacDB()
+
+export async function saveVivac(r: Omit<VivacRecord, 'id' | 'at' | 'synced'>) {
+  const rec: VivacRecord = { ...r, id: crypto.randomUUID(), at: Date.now(), synced: 0 }
+  await db.vivacs.add(rec)
+  return rec
+}
+
+export function useLive<T>(q: () => Promise<T>, initial: T): T {
+  const [v, setV] = useState<T>(initial)
+  useEffect(() => {
+    const s = liveQuery(q).subscribe({ next: setV })
+    return () => s.unsubscribe()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  return v
+}
+
+export const recordToPlace = (r: VivacRecord): Place => ({
+  id: r.id,
+  name: r.name,
+  kind: r.kind,
+  lat: r.lat,
+  lng: r.lng,
+  ele: r.ele ?? undefined,
+  verified: true,
+  source: 'grupo',
+  visited: 1,
+})
+
+/** Comprime una foto a WebP (máx. 1280 px) en el propio móvil. */
+export async function compressPhoto(file: File): Promise<Blob> {
+  const bmp = await createImageBitmap(file)
+  const k = Math.min(1, 1280 / Math.max(bmp.width, bmp.height))
+  const c = new OffscreenCanvas(Math.round(bmp.width * k), Math.round(bmp.height * k))
+  c.getContext('2d')!.drawImage(bmp, 0, 0, c.width, c.height)
+  return c.convertToBlob({ type: 'image/webp', quality: 0.8 })
+}
+
+export async function askPersistent() {
+  try { await navigator.storage?.persist?.() } catch { /* iOS puede negarlo */ }
+}
