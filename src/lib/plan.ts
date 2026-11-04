@@ -107,7 +107,7 @@ export function useDrive(prefs: Prefs, parkings: Place[]): DriveTable {
 }
 
 // ---- Ediciones locales de un sitio (orientación del parapeto, tipo de protección) ----
-type Ovr = Record<string, Partial<Pick<Place, 'shelteredFrom' | 'shelter' | 'priceNight'>>>
+type Ovr = Record<string, Partial<Pick<Place, 'shelteredFrom' | 'shelter' | 'priceNight' | 'verified'>>>
 const KEY = 'vivac.ovr'
 let ovr: Ovr = JSON.parse(localStorage.getItem(KEY) ?? '{}')
 const subs = new Set<() => void>()

@@ -28,7 +28,7 @@ function AddGear({ open, onClose }: { open: boolean; onClose: () => void }) {
     <Drawer.Root open={open} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 z-[70] rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle />
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Añadir material</Drawer.Title>
           <Drawer.Description className="sr-only">Nuevo objeto de tu mochila</Drawer.Description>

@@ -1,11 +1,13 @@
 import { useMemo, useState } from 'react'
 import { Drawer } from 'vaul'
-import { AlertTriangle, CalendarCheck, Car, ExternalLink, Footprints, Navigation, Share2, Sunrise, Sunset, Wallet } from 'lucide-react'
+import { AlertTriangle, BadgeCheck, CalendarCheck, Car, Globe, Phone, ExternalLink, Footprints, Navigation, Share2, Sunrise, Sunset, Wallet } from 'lucide-react'
 import { KIND_LABEL, type Place } from '../lib/types'
 import { evaluate, setOverride, type Ctx } from '../lib/plan'
 import { DGT_URL, hhmm, isPass } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
 import { cellKey } from '../lib/weather'
+import { usePhotos } from '../lib/photos'
+import { supabase, GROUP_KEY } from '../lib/supabase'
 import { Dot, Illustration, NightChart, ScoreRing, WindRose } from './ui'
 
 const DAY = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb']
@@ -35,22 +37,35 @@ export default function PlaceSheet({ place, days, dayIdx, ctx, onDay, onClose, o
     else window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
+  const photos = usePhotos(place)
+  const [shot, setShot] = useState(0)
   const a = e?.access[0]
+  const confirm = async () => {
+    if (!place) return
+    setOverride(place.id, { verified: true })
+    const gid = localStorage.getItem(GROUP_KEY)
+    if (gid && navigator.onLine) await supabase.from('place_notes').insert({ group_id: gid, place_ref: place.id, kind: 'confirm', data: {} })
+  }
   const sunsetOk = e && a && e.leave
   const dayName = (d: Date, i: number) => (i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : `${DAY[d.getDay()]} ${d.getDate()}`)
 
   return (
     <Drawer.Root open={!!place} onOpenChange={(o) => { if (!o) { onClose(); setPicked(undefined) } }} snapPoints={[0.5, 1]} modal={false} fadeFromIndex={1}>
       <Drawer.Portal>
-        <Drawer.Content className="fixed inset-x-0 bottom-0 z-40 flex h-full max-h-[96%] flex-col rounded-t-3xl shadow-2xl outline-none" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-40 flex h-full max-h-[96%] flex-col rounded-t-3xl shadow-2xl outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle className="mt-2 mb-1" />
           {place && (
             <div className="no-scrollbar overflow-y-auto pb-28">
-              <div className="relative h-40 overflow-hidden">
-                <Illustration kind={place.kind} className="h-full w-full" />
-                <div className="absolute inset-x-0 bottom-0 h-20" style={{ background: 'linear-gradient(transparent, var(--bg))' }} />
+              <div className="relative h-48 overflow-hidden">
+                {photos.length ? (
+                  <div className="no-scrollbar flex h-full snap-x snap-mandatory overflow-x-auto" onScroll={(ev) => setShot(Math.round(ev.currentTarget.scrollLeft / ev.currentTarget.clientWidth))}>
+                    {photos.map((ph) => <img key={ph.url} src={ph.url} alt={ph.title} loading="lazy" className="h-full w-full shrink-0 snap-center object-cover" />)}
+                  </div>
+                ) : <Illustration kind={place.kind} className="h-full w-full" />}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20" style={{ background: 'linear-gradient(transparent, var(--bg))' }} />
               </div>
-              <div className="-mt-10 px-5">
+              {photos[shot] && <p className="px-5 text-[11px]" style={{ color: 'var(--ink-soft)' }}>Foto: {photos[shot].author} · {photos[shot].license} · <a className="underline" href={photos[shot].page} target="_blank" rel="noreferrer">Wikimedia Commons</a></p>}
+              <div className="-mt-6 px-5">
                 <p className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--accent)' }}>
                   {KIND_LABEL[place.kind]}{place.kind === 'refugio_pago' && ' · De pago · precio: consultar'}
                 </p>
@@ -70,6 +85,22 @@ export default function PlaceSheet({ place, days, dayIdx, ctx, onDay, onClose, o
                     </button>
                   ))}
                 </div>
+
+                {(place.phone || place.web || place.kind === 'refugio_pago') && (
+                  <div className="mt-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
+                    <p className="font-semibold">Reservar</p>
+                    <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>Precio por noche: consultar. Los precios que no están confirmados no los inventamos.</p>
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      {place.phone && <a href={`tel:${place.phone}`} className="tap flex items-center justify-center gap-2 rounded-2xl font-semibold text-white" style={{ background: 'var(--accent)' }}><Phone size={18} />Llamar</a>}
+                      {place.web && <a href={place.web} target="_blank" rel="noreferrer" className="tap flex items-center justify-center gap-2 rounded-2xl font-semibold" style={{ background: 'var(--bg)' }}><Globe size={18} />Web</a>}
+                    </div>
+                  </div>
+                )}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {!place.verified && place.source !== 'grupo' && <button onClick={confirm} className="tap inline-flex items-center gap-2 rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--surface)' }}><BadgeCheck size={18} />Existe: confirmar</button>}
+                  <a href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(place.name + ' Guadarrama')}`} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--surface)' }}><ExternalLink size={16} />Ver más fotos en la web</a>
+                </div>
+                <p className="mt-2 text-[11px]" style={{ color: 'var(--ink-soft)' }}>Fuente: {place.source}</p>
 
                 <h3 className="mt-6 text-lg font-semibold">Esta noche</h3>
                 <div className="no-scrollbar -mx-5 mt-2 flex gap-2 overflow-x-auto px-5">

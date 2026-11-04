@@ -5,10 +5,15 @@ import type { GearItem } from './pack'
 
 export interface TrackRecord { id: string; name: string; coords: [number, number, number?][]; at: number; source: 'import' | 'rec'; vivacId?: string }
 
+export interface NightWx { tmin: number; tmax: number; windMax: number; precip: number; cloud: number; src: 'real' | 'previsión' }
+
 export interface VivacRecord {
   id: string
   name: string
-  kind: 'vivac' | 'deseo'
+  kind: 'vivac' | 'deseo' | 'refugio_libre' | 'parapeto' | 'abrigo' | 'fuente'
+  shelter?: Place['shelter']
+  shelteredFrom?: number[]
+  capacity?: number | null
   lat: number
   lng: number
   ele?: number | null
@@ -16,6 +21,9 @@ export interface VivacRecord {
   photo?: Blob | null
   sleep?: 1 | 2 | 3 | null // 1 frío, 2 bien, 3 calor
   notes?: string
+  photoPath?: string | null
+  by?: string
+  wx?: NightWx | null
   synced: 0 | 1
 }
 
@@ -60,7 +68,10 @@ export const recordToPlace = (r: VivacRecord): Place => ({
   ele: r.ele ?? undefined,
   verified: true,
   source: 'grupo',
-  visited: 1,
+  shelter: r.shelter,
+  shelteredFrom: r.shelteredFrom,
+  capacity: r.capacity ? String(r.capacity) : undefined,
+  visited: r.kind === 'vivac' ? 1 : undefined,
 })
 
 /** Comprime una foto a WebP (máx. 1280 px) en el propio móvil. */

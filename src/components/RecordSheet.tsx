@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import { Drawer } from 'vaul'
 import { Camera, Check, MapPin } from 'lucide-react'
 import { compressPhoto, saveVivac } from '../lib/db'
+import { haversine } from '../lib/geo'
+import type { Place } from '../lib/types'
 
 type Mode = 'vivac' | 'deseo'
 const SLEEP = [{ v: 1, e: '🥶', l: 'Frío' }, { v: 2, e: '😴', l: 'Bien' }, { v: 3, e: '🥵', l: 'Calor' }] as const
 
-export default function RecordSheet({ mode, onClose }: { mode: Mode | null; onClose: () => void }) {
+export default function RecordSheet({ mode, onClose, places }: { mode: Mode | null; onClose: () => void; places: Place[] }) {
   const [name, setName] = useState('')
   const [pos, setPos] = useState<{ lat: number; lng: number; ele: number | null } | null>(null)
   const [gpsErr, setGpsErr] = useState(false)
@@ -25,6 +27,14 @@ export default function RecordSheet({ mode, onClose }: { mode: Mode | null; onCl
     return () => void id
   }, [mode])
 
+  // Si estás junto a un sitio conocido, te propongo su nombre.
+  useEffect(() => {
+    if (!pos || name) return
+    const near = places.filter((p) => !p.unnamed && p.kind !== 'parking' && p.kind !== 'cumbre' && p.kind !== 'fuente').map((p) => ({ p, d: haversine(pos.lat, pos.lng, p.lat, p.lng) })).filter((x) => x.d < 250).sort((a, b) => a.d - b.d)[0]
+    if (near) setName(near.p.name)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pos])
+
   const save = async () => {
     if (!pos || !name.trim() || !mode) return
     await saveVivac({ name: name.trim(), kind: mode, lat: pos.lat, lng: pos.lng, ele: pos.ele, photo, sleep })
@@ -36,7 +46,7 @@ export default function RecordSheet({ mode, onClose }: { mode: Mode | null; onCl
     <Drawer.Root open={!!mode} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 z-[70] rounded-t-3xl p-5 pb-8" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] rounded-t-3xl p-5 pb-8" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle />
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">{mode === 'deseo' ? 'Quiero ir aquí' : 'Dormimos aquí'}</Drawer.Title>
           <Drawer.Description className="sr-only">Guardar un sitio</Drawer.Description>

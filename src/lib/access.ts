@@ -1,17 +1,16 @@
 import { haversine } from './geo'
+import { walkTimeMin } from './router'
 import type { Place } from './types'
 import type { Prefs } from './prefs'
 
 export interface DriveRow { min: number; km: number }
 export type DriveTable = Record<string, DriveRow>
 
-/** Minutos a pie (Naismith: 5 km/h + 1 min por cada 10 m de subida; recto ×1,3 por el trazado real). */
+/** Minutos a pie (norma DIN 33466: 4 km/h, 300 m/h subiendo, 500 m/h bajando; recto ×1,3 por el trazado real). */
 export function walkMin(from: Pick<Place, 'lat' | 'lng' | 'ele'>, to: Pick<Place, 'lat' | 'lng' | 'ele'>): { min: number; km: number } {
   const dist = haversine(from.lat, from.lng, to.lat, to.lng) * 1.3
   const dz = (to.ele ?? 0) - (from.ele ?? 0)
-  const asc = Math.max(0, dz)
-  const desc = Math.max(0, -dz)
-  return { min: dist / 83 + asc * 0.1 + desc * 0.03, km: dist / 1000 }
+  return { min: walkTimeMin(dist, Math.max(0, dz), Math.max(0, -dz)), km: dist / 1000 }
 }
 
 export interface AccessOption {

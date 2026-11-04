@@ -75,9 +75,12 @@ interface Props {
   is3D: boolean
   layer: BaseLayer
   scoreMode?: boolean
+  route?: [number, number, number][] | null
+  cursor?: [number, number] | null
+  tracks?: [number, number, number?][][]
 }
 
-export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false }: Props) {
+export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [] }: Props) {
   const scoreRef = useRef(scoreMode)
   scoreRef.current = scoreMode
   const el = useRef<HTMLDivElement>(null)
@@ -113,6 +116,14 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
     })
     m.on('load', () => {
       addIcons(m)
+      const empty = { type: 'FeatureCollection', features: [] } as FeatureCollection
+      m.addSource('route', { type: 'geojson', data: empty })
+      m.addSource('tracks', { type: 'geojson', data: empty })
+      m.addSource('cursor', { type: 'geojson', data: empty })
+      m.addLayer({ id: 'tracks', type: 'line', source: 'tracks', paint: { 'line-color': '#7a6fa8', 'line-width': 3, 'line-opacity': 0.85, 'line-dasharray': [2, 1] } })
+      m.addLayer({ id: 'route-casing', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#fff', 'line-width': 9 } })
+      m.addLayer({ id: 'route', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#e08a35', 'line-width': 5 } })
+      m.addLayer({ id: 'cursor', type: 'circle', source: 'cursor', paint: { 'circle-radius': 8, 'circle-color': '#1b2c44', 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
       m.addSource('places', { type: 'geojson', data: toGeo(placesRef.current, scoreRef.current), cluster: true, clusterRadius: 46, clusterMaxZoom: 12 })
       m.addLayer({ id: 'clusters', type: 'circle', source: 'places', filter: ['has', 'point_count'], paint: { 'circle-color': '#1f4d3a', 'circle-radius': ['step', ['get', 'point_count'], 16, 10, 20, 50, 26], 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
       m.addLayer({ id: 'cluster-n', type: 'symbol', source: 'places', filter: ['has', 'point_count'], layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Open Sans Semibold'], 'text-size': 13 }, paint: { 'text-color': '#fff' } })
@@ -167,6 +178,25 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
   useEffect(() => {
     whenReady((m) => (m.getSource('places') as GeoJSONSource | undefined)?.setData(toGeo(placesRef.current, scoreRef.current)))
   }, [places, scoreMode])
+
+  useEffect(() => {
+    whenReady((m) => {
+      const line = route && route.length > 1 ? { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: route.map((c) => [c[0], c[1]]) } }] } : { type: 'FeatureCollection', features: [] }
+      ;(m.getSource('route') as GeoJSONSource).setData(line as FeatureCollection)
+      if (route && route.length > 1) {
+        const xs = route.map((c) => c[0]), ys = route.map((c) => c[1])
+        m.fitBounds([[Math.min(...xs), Math.min(...ys)], [Math.max(...xs), Math.max(...ys)]], { padding: { top: 130, bottom: 330, left: 40, right: 40 }, duration: 900, maxZoom: 15.5 })
+      }
+    })
+  }, [route])
+
+  useEffect(() => {
+    whenReady((m) => (m.getSource('cursor') as GeoJSONSource).setData({ type: 'FeatureCollection', features: cursor ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: cursor } }] : [] } as FeatureCollection))
+  }, [cursor])
+
+  useEffect(() => {
+    whenReady((m) => (m.getSource('tracks') as GeoJSONSource).setData({ type: 'FeatureCollection', features: tracks.map((t) => ({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: t.map((c) => [c[0], c[1]]) } })) } as FeatureCollection))
+  }, [tracks])
 
   useEffect(() => {
     const p = places.find((x) => x.id === selectedId)

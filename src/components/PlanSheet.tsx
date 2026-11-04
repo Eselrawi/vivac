@@ -54,7 +54,7 @@ export default function PlanSheet({ place, day, ctx, onClose }: { place: Place |
     <Drawer.Root open={!!place} onOpenChange={(o) => !o && close()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 z-[70] max-h-[92%] overflow-y-auto rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92%] overflow-y-auto rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle />
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Planear salida</Drawer.Title>
           <Drawer.Description className="text-sm" style={{ color: 'var(--ink-soft)' }}>{place?.name} · {dateTxt} · paso {step + 1} de 3</Drawer.Description>

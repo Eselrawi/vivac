@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Drawer } from 'vaul'
-import { Copy, Info, Layers, Mountain, Phone, Search, Siren, X } from 'lucide-react'
+import { Copy, Download, Info, Layers, Mountain, Phone, Search, Siren, X } from 'lucide-react'
+import DownloadSheet from '../components/DownloadSheet'
 import MapView, { type BaseLayer } from '../components/MapView'
+import type { Bounds } from '../lib/offline'
 import { usePrefs } from '../lib/prefs'
 import { KIND_COLOR, KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
 
@@ -31,7 +33,7 @@ function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
     <Drawer.Root open={open} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/50" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 z-[70] rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle />
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Emergencia</Drawer.Title>
           <Drawer.Description className="text-sm" style={{ color: 'var(--ink-soft)' }}>Llama al 112 y dicta estas coordenadas. Funciona sin cobertura de datos.</Drawer.Description>
@@ -56,12 +58,16 @@ function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
   )
 }
 
-export default function Mapa({ places, selectedId, onSelect }: { places: Place[]; selectedId: string | null; onSelect: (p: Place) => void }) {
+interface MapaProps { places: Place[]; selectedId: string | null; onSelect: (p: Place) => void; route: [number, number, number][] | null; cursor: [number, number] | null; tracks: [number, number, number?][][] }
+
+export default function Mapa({ places, selectedId, onSelect, route, cursor, tracks }: MapaProps) {
   const [is3D, setIs3D] = useState(true)
   const [layer, setLayer] = useState<BaseLayer>('ign')
-  const [mode, setMode] = useState<Mode>('todo')
+  const [mode, setMode] = useState<Mode>("dormir")
   const [legend, setLegend] = useState(false)
   const [sos, setSos] = useState(false)
+  const [dl, setDl] = useState(false)
+  const [view, setView] = useState<Bounds | null>(null)
   const [q, setQ] = useState('')
   const [focusId, setFocusId] = useState<string | null>(null)
 
@@ -80,9 +86,9 @@ export default function Mapa({ places, selectedId, onSelect }: { places: Place[]
   const btn = 'tap grid h-12 w-12 place-items-center rounded-full shadow-lg'
   return (
     <div className="absolute inset-0">
-      <MapView places={shown} selectedId={focusId ?? selectedId} onSelect={onSelect} is3D={is3D} layer={layer} />
+      <MapView places={shown} selectedId={focusId ?? selectedId} onSelect={onSelect} is3D={is3D} layer={layer} route={route} cursor={cursor} tracks={tracks} />
 
-      <div className="absolute inset-x-0 flex flex-col items-center gap-2 px-16" style={{ top: 'calc(var(--safe-t) + 10px)' }}>
+      <div className="absolute inset-x-0 z-20 flex flex-col items-center gap-2 px-16" style={{ top: 'calc(var(--safe-t) + 10px)' }}>
         <div className="flex w-full max-w-md items-center gap-2 rounded-full px-4 shadow-lg" style={{ background: 'var(--surface)', minHeight: 48 }}>
           <Search size={18} />
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar refugio, cumbre, fuente…" aria-label="Buscar" className="min-w-0 flex-1 bg-transparent py-3 outline-none" style={{ userSelect: 'text' }} />
@@ -108,6 +114,7 @@ export default function Mapa({ places, selectedId, onSelect }: { places: Place[]
       <div className="absolute right-3 flex flex-col gap-2" style={{ top: 'calc(var(--safe-t) + 124px)' }}>
         <button className={btn} style={{ background: 'var(--surface)' }} aria-label={`Capa: ${NAME[layer]}`} onClick={() => setLayer(NEXT[layer])}><Layers size={22} /></button>
         <button className={btn} style={{ background: is3D ? 'var(--accent)' : 'var(--surface)', color: is3D ? '#fff' : 'var(--ink)' }} aria-label="3D" aria-pressed={is3D} onClick={() => setIs3D(!is3D)}><Mountain size={22} /></button>
+        <button className={btn} style={{ background: 'var(--surface)' }} aria-label="Descargar zona sin conexión" onClick={() => { const b = (window as unknown as { __map?: { getBounds: () => { getWest: () => number; getSouth: () => number; getEast: () => number; getNorth: () => number } } }).__map?.getBounds(); setView(b ? { w: b.getWest(), s: b.getSouth(), e: b.getEast(), n: b.getNorth() } : null); setDl(true) }}><Download size={22} /></button>
         <button className={btn} style={{ background: '#d1553f', color: '#fff' }} aria-label="SOS 112" onClick={() => setSos(true)}><Siren size={22} /></button>
       </div>
 
@@ -123,6 +130,7 @@ export default function Mapa({ places, selectedId, onSelect }: { places: Place[]
         </button>
       </div>
       <SOS open={sos} onClose={() => setSos(false)} />
+      <DownloadSheet open={dl} onClose={() => setDl(false)} view={view} />
     </div>
   )
 }

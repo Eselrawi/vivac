@@ -135,3 +135,31 @@ export function useWeather(places: Place[]) {
 
   return { wx, loading, error, refresh }
 }
+
+/** Tiempo que hizo de verdad esa noche (archivo histórico de Open-Meteo; los últimos días vienen de la previsión con datos pasados). */
+export async function nightActual(lat: number, lng: number, ele: number | null | undefined, atMs: number): Promise<import('./db').NightWx | null> {
+  const day = new Date(atMs)
+  const iso = (d: Date) => d.toLocaleDateString('sv-SE')
+  const next = new Date(atMs + 86400000)
+  const old = Date.now() - atMs > 6 * 86400000
+  const base = old ? 'https://archive-api.open-meteo.com/v1/archive' : 'https://api.open-meteo.com/v1/forecast'
+  const qs = new URLSearchParams({
+    latitude: lat.toFixed(4), longitude: lng.toFixed(4),
+    hourly: 'temperature_2m,wind_speed_10m,precipitation,cloud_cover',
+    timezone: 'Europe/Madrid', timeformat: 'unixtime', wind_speed_unit: 'kmh',
+    ...(ele != null ? { elevation: String(Math.round(ele)) } : {}),
+    ...(old ? { start_date: iso(day), end_date: iso(next) } : { past_days: '7', forecast_days: '1' }),
+  })
+  const r = await fetch(`${base}?${qs}`)
+  if (!r.ok) return null
+  const j = await r.json()
+  const t: number[] = j.hourly.time
+  const from = atMs - 2 * 3600000
+  const to = atMs + 12 * 3600000
+  const idx = t.map((x, i) => (x * 1000 >= from && x * 1000 <= to ? i : -1)).filter((i) => i >= 0)
+  const col = (k: string) => idx.map((i) => j.hourly[k][i]).filter((v: number | null) => v != null) as number[]
+  const temps = col('temperature_2m')
+  if (!temps.length) return null
+  const wind = col('wind_speed_10m'), pr = col('precipitation'), cl = col('cloud_cover')
+  return { tmin: Math.min(...temps), tmax: Math.max(...temps), windMax: Math.max(...wind), precip: pr.reduce((a, b) => a + b, 0), cloud: cl.length ? cl.reduce((a, b) => a + b, 0) / cl.length : 0, src: 'real' }
+}

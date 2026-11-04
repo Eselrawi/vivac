@@ -75,7 +75,7 @@ export default function ProfileSheet({ open, onClose, acc, onWelcome }: { open: 
     <Drawer.Root open={open} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 z-[70] max-h-[92%] overflow-y-auto rounded-t-3xl p-5 pb-10 outline-none" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92%] overflow-y-auto rounded-t-3xl p-5 pb-10 outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle />
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Perfil</Drawer.Title>
           <Drawer.Description className="sr-only">Cuenta, grupo y ajustes</Drawer.Description>
@@ -145,6 +145,10 @@ export default function ProfileSheet({ open, onClose, acc, onWelcome }: { open: 
             <button className="tap col-span-2 flex items-center justify-center gap-2 rounded-2xl py-3 text-sm font-semibold" style={card} onClick={() => file.current?.click()}><Upload size={16} />Importar GPX, KML o GeoJSON (de Wikiloc…)</button>
             <input ref={file} type="file" accept=".gpx,.kml,.geojson,.json" hidden onChange={(e) => { const f = e.target.files?.[0]; if (f) void importFile(f); e.target.value = '' }} />
           </div>
+
+          <H>Avisos</H>
+          <button className="tap mt-2 w-full rounded-2xl py-3 text-sm font-semibold" style={card} onClick={async () => { if (!('Notification' in window)) return setMsg('Este móvil no admite avisos. En iPhone, instala primero la app.'); const r = await Notification.requestPermission(); setMsg(r === 'granted' ? 'Avisos activados: te recordaré valorar cada noche.' : 'Avisos desactivados.') }}>Activar el aviso «¿qué tal durmieron?»</button>
+          <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>El aviso sale al abrir la app al día siguiente. En iPhone solo funciona con la app instalada (iOS 16.4 o más).</p>
 
           <H>Instalar la app</H>
           <div className="mt-2"><InstallSteps /></div>

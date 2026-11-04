@@ -23,7 +23,7 @@ export default function Fab({ onPick }: { onPick: (id: string) => void }) {
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 z-50 rounded-t-3xl p-4 pb-8" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-50 rounded-t-3xl p-4 pb-8" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle />
           <Drawer.Title className="font-display mb-3 mt-3 text-2xl font-semibold">¿Qué quieres añadir?</Drawer.Title>
           <Drawer.Description className="sr-only">Elige una opción</Drawer.Description>

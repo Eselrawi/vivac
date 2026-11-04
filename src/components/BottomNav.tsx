@@ -11,7 +11,7 @@ const TABS = [
 export default function BottomNav({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void }) {
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-30 border-t backdrop-blur-xl"
+      className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-30 border-t backdrop-blur-xl"
       style={{ background: 'color-mix(in srgb, var(--surface) 88%, transparent)', borderColor: 'var(--line)', paddingBottom: 'var(--safe-b)' }}
     >
       <ul className="mx-auto grid max-w-xl grid-cols-4">
