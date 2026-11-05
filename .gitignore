@@ -39,3 +39,5 @@ scripts/b6-test.mjs
 scripts/b7-test.mjs
 scripts/b8-test.mjs
 scripts/b9-test.mjs
+shots/
+scripts/nav-*test.mjs

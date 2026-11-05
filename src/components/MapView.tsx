@@ -105,9 +105,17 @@ interface Props {
   /** Ubicación y rumbo propios (flecha). */
   me?: { lng: number; lat: number; heading: number | null } | null
   follow?: boolean
+  /** Cámara de navegación: gira con tu rumbo, inclinada y con este zoom. */
+  navZoom?: number
+  /** No encuadrar la ruta al cambiarla (en navegación manda la cámara que te sigue). */
+  fitRoute?: boolean
+  /** El usuario arrastra el mapa con el dedo. */
+  onDrag?: () => void
 }
 
-export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false, onLongPress, initialCenter, initialZoom, onMoveEnd, controls = true, trails = false, me = null, follow = false }: Props) {
+export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false, onLongPress, initialCenter, initialZoom, onMoveEnd, controls = true, trails = false, me = null, follow = false, navZoom, fitRoute = true, onDrag }: Props) {
+  const dragRef = useRef(onDrag)
+  dragRef.current = onDrag
   const trailsRef = useRef(trails)
   trailsRef.current = trails
   const moveRef = useRef(onMoveEnd)
@@ -275,9 +283,16 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       meRef.current.setLngLat([me.lng, me.lat])
       const arrow = meRef.current.getElement().querySelector('.me-arrow') as HTMLElement | null
       if (arrow && me.heading != null) arrow.style.transform = `rotate(${me.heading}deg)`
-      if (follow) m.easeTo({ center: [me.lng, me.lat], duration: 600 })
+      if (follow && navZoom) {
+        // Como un navegador: el mapa gira con tu rumbo y tú quedas en el tercio inferior.
+        m.easeTo({ center: [me.lng, me.lat], bearing: me.heading ?? m.getBearing(), pitch: 58, zoom: navZoom, offset: [0, Math.round((el.current?.clientHeight ?? 600) * 0.2)], duration: 900, essential: true })
+      } else if (follow) m.easeTo({ center: [me.lng, me.lat], duration: 600 })
     })
-  }, [me, follow])
+  }, [me, follow, navZoom])
+
+  useEffect(() => {
+    whenReady((m) => { m.on('dragstart', () => dragRef.current?.()) })
+  }, [])
 
   useEffect(() => {
     whenReady((m) => {
@@ -294,7 +309,7 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
     whenReady((m) => {
       const line = route && route.length > 1 ? { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: route.map((c) => [c[0], c[1]]) } }] } : { type: 'FeatureCollection', features: [] }
       ;(m.getSource('route') as GeoJSONSource).setData(line as FeatureCollection)
-      if (route && route.length > 1) {
+      if (fitRoute && route && route.length > 1) {
         const xs = route.map((c) => c[0]), ys = route.map((c) => c[1])
         m.fitBounds([[Math.min(...xs), Math.min(...ys)], [Math.max(...xs), Math.max(...ys)]], { padding: { top: 130, bottom: 330, left: 40, right: 40 }, duration: 900, maxZoom: 15.5 })
       }

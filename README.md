@@ -33,6 +33,16 @@ En iPhone los avisos solo funcionan con la app instalada y no vibra. Es una limi
 2. Escribe tu correo y pulsa «Enviarme el enlace». Te llega un correo; ábrelo desde el mismo móvil. No hay contraseña.
 3. Quien crea el grupo pulsa «Invitar a un amigo» y lo manda por WhatsApp. Al abrir ese enlace, el amigo entra solo en el grupo.
 
+## Navegar hasta un sitio
+
+En la ficha de un sitio, «Cómo llegar» abre la ruta. Si estás lejos, primero te lleva en coche hasta el aparcamiento (con cobertura) y después a pie. Pulsa **Empezar** y la pantalla se convierte en un navegador: te dice cuántos metros faltan para el próximo giro, habla en español, gira el mapa según vas mirando y recalcula si te sales del camino. **Vista previa** te enseña cómo sería sin moverte de casa.
+
+Lo que hay que saber:
+- El tramo en coche necesita cobertura. Sin ella, solo te marca la dirección en línea recta hasta el aparcamiento.
+- El tramo a pie funciona sin cobertura. Los senderos no tienen nombre en los datos, así que oirás «gira a la derecha», no el nombre del sendero.
+- En iPhone hay que dejar la pantalla encendida: si se apaga, el GPS se para.
+- «Volver al coche» en Mi GPS usa esta misma navegación.
+
 ## Guardar una noche («Dormimos aquí»)
 
 Pulsa el **+** verde, elige «Dormimos aquí», dale un nombre y ya está. El GPS, la altitud y la hora se ponen solos. Puedes añadir una foto y cómo habéis dormido. Funciona sin cobertura: cuando vuelva la red, se sube solo y se añade el tiempo real de esa noche.

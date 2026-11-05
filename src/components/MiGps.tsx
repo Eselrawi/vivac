@@ -7,8 +7,10 @@ import { parseGpx } from '../lib/gpx'
 import { computeRoute } from '../lib/router'
 import { detectPlatform } from '../lib/platform'
 import { KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
+import { buildWalkLeg, type Leg } from './Navegacion'
 
 const MapView = lazy(() => import('./MapView'))
+const Navegacion = lazy(() => import('./Navegacion'))
 
 interface Fix { lat: number; lng: number; alt: number | null; acc: number; speed: number | null; heading: number | null; t: number }
 type Pt = [number, number, number?]
@@ -29,6 +31,7 @@ export default function MiGps({ places, onClose }: { places: Place[]; onClose: (
   const [msg, setMsg] = useState('')
   const [follow2, setFollow2] = useState<Pt[] | null>(null) // GPX importado que se sigue
   const [back, setBack] = useState<[number, number, number][] | null>(null)
+  const [navLegs, setNavLegs] = useState<Leg[] | null>(null)
   const [layer, setLayer] = useState<'vec' | 'mtn' | 'pnoa'>('mtn')
   const pts = useRef<Pt[]>([])
   const lastAlt = useRef<number | null>(null)
@@ -99,7 +102,7 @@ export default function MiGps({ places, onClose }: { places: Place[]; onClose: (
     if (!fix || !car) return
     setMsg('Calculando el camino de vuelta…')
     const r = await computeRoute([fix.lat, fix.lng], [car.lat, car.lng], 'directo')
-    if (r.ok) { setBack(r.coords); setMsg('') } else setMsg(`${r.error}. Sigue la flecha hacia el coche.`)
+    if (r.ok) { setBack(r.coords); setMsg(''); setNavLegs([buildWalkLeg(r.coords as [number, number, number][], 'el coche', [car.lat, car.lng])]) } else setMsg(`${r.error}. Sigue la flecha hacia el coche.`)
   }, [fix, car])
   const importGpx = async (f: File) => {
     try {
@@ -194,6 +197,7 @@ export default function MiGps({ places, onClose }: { places: Place[]; onClose: (
         </div>
         <p className="mt-2 flex items-center gap-1 text-[11px]" style={{ color: 'var(--ink-soft)' }}><Mountain size={12} />Caminos: pistas marrones, senderos naranjas, senderos difíciles rojos; GR rojo, PR amarillo, SL verde.</p>
       </div>
+      {navLegs && car && <Suspense fallback={null}><Navegacion legs={navLegs} dest={{ id: 'coche', name: 'el coche', kind: 'parking', lat: car.lat, lng: car.lng } as Place} places={[]} onClose={() => setNavLegs(null)} /></Suspense>}
     </div>
   )
 }
