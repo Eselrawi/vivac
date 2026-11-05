@@ -84,8 +84,9 @@ function DetailInner({ r, onClose }: { r: VivacRecord; onClose: () => void }) {
     <Drawer.Root open onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[94%] overflow-y-auto rounded-t-3xl pb-8 outline-none" style={{ background: 'var(--bg)' }}>
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[94dvh] flex flex-col rounded-t-3xl outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle className="my-2" />
+          <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-8">
           <div className="h-56 overflow-hidden">{url ? <img src={url} alt={`Foto de ${r.name}`} className="h-full w-full object-cover" /> : <Illustration kind="vivac" className="h-full w-full" />}</div>
           <div className="px-5 pt-4">
             <Drawer.Title className="font-display text-3xl font-semibold leading-tight">{r.name}</Drawer.Title>
@@ -104,6 +105,7 @@ function DetailInner({ r, onClose }: { r: VivacRecord; onClose: () => void }) {
               <button onClick={() => download(`${r.name}.gpx`, 'application/gpx+xml', toGpx([r]))} className="tap flex flex-col items-center gap-1 rounded-2xl py-3" style={{ background: 'var(--surface)' }}><Download size={20} />GPX</button>
               <button onClick={del} className="tap flex flex-col items-center gap-1 rounded-2xl py-3" style={{ background: sure ? '#d1553f' : 'var(--surface)', color: sure ? '#fff' : 'var(--ink)' }}><Trash2 size={20} />{sure ? '¿Seguro?' : 'Borrar'}</button>
             </div>
+          </div>
           </div>
         </Drawer.Content>
       </Drawer.Portal>

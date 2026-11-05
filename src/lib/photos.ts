@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { db } from './db'
 import type { Place } from './types'
 
-export interface Photo { url: string; page: string; author: string; license: string; title: string }
+export interface Photo { url: string; page: string; author: string; license: string; title: string; own?: boolean }
 
 const strip = (h?: string) => (h ?? '').replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').trim()
 
@@ -25,10 +25,11 @@ async function commons(p: Place): Promise<Photo[]> {
     }))
 }
 
-export function usePhotos(p: Place | null): Photo[] {
+export function usePhotos(p: Place | null, fixed?: Photo[]): Photo[] {
   const [ph, setPh] = useState<Photo[]>([])
   useEffect(() => {
     setPh([])
+    if (fixed?.length) { setPh(fixed); return }
     if (!p || p.kind === 'cumbre') return
     let alive = true
     const key = `photos:${p.id}`
@@ -44,6 +45,6 @@ export function usePhotos(p: Place | null): Photo[] {
       } catch { /* sin red */ }
     })
     return () => { alive = false }
-  }, [p?.id]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [p?.id, fixed?.length]) // eslint-disable-line react-hooks/exhaustive-deps
   return ph
 }

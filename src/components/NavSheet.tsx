@@ -167,7 +167,7 @@ export default function NavSheet({ target, places, ctx, onClose, onRoute, onCurs
             </div>
           )}
 
-          <div className="no-scrollbar mt-3 flex-1 overflow-y-auto">
+          <div data-vaul-no-drag className="no-scrollbar mt-3 min-h-0 flex-1 overflow-y-auto overscroll-contain">
             {busy && !r && <p className="flex items-center gap-2 py-6" style={{ color: 'var(--ink-soft)' }}><Loader2 className="animate-spin" />Calculando ruta…</p>}
             {res && !res.ok && <p className="rounded-2xl p-4 text-sm" style={{ background: '#e5b23a33' }}>{res.error}. Abre el mapa topográfico y sigue la zona a ojo, o prueba a salir de otro aparcamiento.</p>}
             {r && !navOn && (

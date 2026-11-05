@@ -37,8 +37,9 @@ export default function DownloadSheet({ open, onClose, view }: { open: boolean; 
     <Drawer.Root open={open} onOpenChange={(o) => !o && !prog && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92%] overflow-y-auto rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
-          <Drawer.Handle />
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92dvh] rounded-t-3xl outline-none flex flex-col" style={{ background: 'var(--bg)' }}>
+          <div className="px-5 pt-5"><Drawer.Handle /></div>
+          <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-10">
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Mapas sin conexión</Drawer.Title>
           <Drawer.Description className="text-sm" style={{ color: 'var(--ink-soft)' }}>Descárgalos con wifi antes de subir. Las rutas y las fichas ya funcionan sin cobertura.</Drawer.Description>
 
@@ -80,6 +81,7 @@ export default function DownloadSheet({ open, onClose, view }: { open: boolean; 
             {prog ? <button onClick={() => ctl.current?.abort()} className="tap rounded-2xl py-3 font-bold text-white" style={{ background: '#d1553f' }}>Cancelar</button>
               : <button onClick={go} disabled={!layers.length && !(vec && !hasVec)} className="tap flex items-center justify-center gap-2 rounded-2xl py-3 text-lg font-bold text-white disabled:opacity-40" style={{ background: 'var(--accent)' }}><Download size={20} />Descargar</button>}
           </div>
+        </div>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

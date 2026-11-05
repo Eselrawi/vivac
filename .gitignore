@@ -28,3 +28,4 @@ scripts/dbg.mjs
 scripts/one.mjs
 data/raw/
 scripts/dbg2.mjs
+scripts/plan-test.mjs

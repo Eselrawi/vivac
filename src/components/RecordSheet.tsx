@@ -47,8 +47,9 @@ export default function RecordSheet({ mode, onClose, places }: { mode: Mode | nu
     <Drawer.Root open={!!mode} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] rounded-t-3xl p-5 pb-8" style={{ background: 'var(--bg)' }}>
-          <Drawer.Handle />
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] rounded-t-3xl max-h-[92dvh] flex flex-col" style={{ background: 'var(--bg)' }}>
+          <div className="px-5 pt-5"><Drawer.Handle /></div>
+          <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-10">
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">{mode === 'deseo' ? 'Quiero ir aquí' : 'Dormimos aquí'}</Drawer.Title>
           <Drawer.Description className="sr-only">Guardar un sitio</Drawer.Description>
           {done ? (
@@ -94,6 +95,7 @@ export default function RecordSheet({ mode, onClose, places }: { mode: Mode | nu
               </button>
             </div>
           )}
+        </div>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

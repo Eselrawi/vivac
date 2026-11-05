@@ -9,6 +9,7 @@ import { DGT_URL, hhmm, isPass } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
 import { cellKey } from '../lib/weather'
 import { usePhotos } from '../lib/photos'
+import { CONF_COLOR, CONF_LABEL, useEvidence } from '../lib/evidence'
 import { getSb, GROUP_KEY } from '../lib/sb'
 import { Dot, Illustration, NightChart, ScoreRing, WindRose } from './ui'
 
@@ -61,7 +62,8 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
     }
     return best
   }, [place, sleepKind, e, days, dayIdx, places, ctx])
-  const photos = usePhotos(place)
+  const ev = useEvidence(place)
+  const photos = usePhotos(place, ev?.ph)
   const [shot, setShot] = useState(0)
   const a = e?.access[0]
   const confirm = async () => {
@@ -79,7 +81,7 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-40 flex h-full max-h-[96%] flex-col rounded-t-3xl shadow-2xl outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle className="mt-2 mb-1" />
           {place && (
-            <div className="no-scrollbar overflow-y-auto pb-28">
+            <div data-vaul-no-drag className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain pb-28">
               <div className="relative h-48 overflow-hidden">
                 {photos.length ? (
                   <div className="no-scrollbar flex h-full snap-x snap-mandatory overflow-x-auto" onScroll={(ev) => setShot(Math.round(ev.currentTarget.scrollLeft / ev.currentTarget.clientWidth))}>
@@ -88,7 +90,7 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                 ) : <Illustration kind={place.kind} className="h-full w-full" />}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20" style={{ background: 'linear-gradient(transparent, var(--bg))' }} />
               </div>
-              {photos[shot] && <p className="px-5 text-[11px]" style={{ color: 'var(--ink-soft)' }}>Foto: {photos[shot].author} · {photos[shot].license} · <a className="underline" href={photos[shot].page} target="_blank" rel="noreferrer">Wikimedia Commons</a></p>}
+              {photos[shot] && <p className="px-5 text-[11px]" style={{ color: 'var(--ink-soft)' }}>{photos[shot].own === false ? 'Foto cercana (puede no ser del sitio)' : 'Foto'}: {photos[shot].author} · {photos[shot].license} · <a className="underline" href={photos[shot].page} target="_blank" rel="noreferrer">Wikimedia Commons</a></p>}
               <div className="mt-2 px-5">
                 <p className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--accent)' }}>
                   {KIND_LABEL[place.kind]}{place.kind === 'refugio_pago' && ' · De pago · precio: consultar'}
@@ -98,6 +100,19 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                   {place.ele ? `${place.ele} m` : ''}{place.eleDem ? ' (modelo de elevación)' : ''} · {place.verified ? 'Confirmado por el grupo' : 'Sin verificar'}
                 </Drawer.Description>
 
+                {ev && (
+                  <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
+                    <p className="flex items-center gap-2 text-sm font-bold"><i className="inline-block h-3 w-3 rounded-full" style={{ background: CONF_COLOR[ev.c] }} />{CONF_LABEL[ev.c]}</p>
+                    <p className="mt-2 leading-snug">{ev.d}</p>
+                    <details className="mt-2 text-sm">
+                      <summary className="cursor-pointer font-semibold" style={{ color: 'var(--accent)' }}>¿Por qué lo creemos?</summary>
+                      <ul className="mt-2 flex flex-col gap-1.5">
+                        {ev.e.map((x, i) => <li key={i} style={{ opacity: x.weak ? 0.7 : 1 }}><b>{x.s}:</b> {x.t}{x.url && <> · <a className="underline" href={x.url} target="_blank" rel="noreferrer">ver</a></>}</li>)}
+                      </ul>
+                      <p className="mt-2 text-xs" style={{ color: 'var(--ink-soft)' }}>Ninguna fuente online garantiza que algo siga en pie. Confírmalo cuando vayas con «Existe: confirmar».</p>
+                    </details>
+                  </div>
+                )}
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   {[
                     { l: 'Cómo llegar', I: Navigation, f: () => onRoute(place) },

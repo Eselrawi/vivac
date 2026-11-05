@@ -75,8 +75,9 @@ export default function ProfileSheet({ open, onClose, acc, onWelcome }: { open: 
     <Drawer.Root open={open} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92%] overflow-y-auto rounded-t-3xl p-5 pb-10 outline-none" style={{ background: 'var(--bg)' }}>
-          <Drawer.Handle />
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92dvh] rounded-t-3xl outline-none flex flex-col" style={{ background: 'var(--bg)' }}>
+          <div className="px-5 pt-5"><Drawer.Handle /></div>
+          <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-10">
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Perfil</Drawer.Title>
           <Drawer.Description className="sr-only">Cuenta, grupo y ajustes</Drawer.Description>
           <div className="mt-4 flex flex-col gap-3">
@@ -158,6 +159,7 @@ export default function ProfileSheet({ open, onClose, acc, onWelcome }: { open: 
           <p className="mt-2 text-xs leading-relaxed" style={{ color: 'var(--ink-soft)' }}>
             Mapas © IGN España (MTN, PNOA) · relieve: Terrain Tiles de AWS · refugios, fuentes y cumbres: © colaboradores de OpenStreetMap (ODbL) · tiempos en coche: OSRM · previsión: Open-Meteo (CC BY 4.0). La acampada y el vivac están regulados en el Parque Nacional de la Sierra de Guadarrama: consulta las zonas autorizadas en datos.gob.es antes de salir. Los datos de refugios y parapetos están sin verificar: confirma sobre el terreno y con el parte oficial. La montaña es peligrosa: esta app orienta, no sustituye al criterio ni a la previsión oficial (AEMET).
           </p>
+        </div>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

@@ -62,8 +62,9 @@ export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClos
     <Drawer.Root open={open} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
-        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92%] overflow-y-auto rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
-          <Drawer.Handle />
+        <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92dvh] rounded-t-3xl outline-none flex flex-col" style={{ background: 'var(--bg)' }}>
+          <div className="px-5 pt-5"><Drawer.Handle /></div>
+          <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-10">
           <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Encontré un sitio</Drawer.Title>
           <Drawer.Description className="sr-only">Añadir un refugio, parapeto o fuente</Drawer.Description>
           {done ? (
@@ -101,6 +102,7 @@ export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClos
               <button onClick={save} disabled={!pos || !name.trim()} className="tap rounded-2xl py-4 text-lg font-bold text-white disabled:opacity-40" style={{ background: 'var(--accent)' }}>Guardar</button>
             </div>
           )}
+        </div>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
