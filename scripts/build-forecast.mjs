@@ -6,7 +6,7 @@ const STEP = 0.1
 const MODELS = ['ecmwf_ifs025', 'icon_seamless', 'meteofrance_seamless']
 const VARS = ['temperature_2m', 'wind_speed_10m', 'wind_gusts_10m', 'wind_direction_10m', 'precipitation', 'snowfall', 'weather_code', 'cloud_cover', 'relative_humidity_2m', 'cape', 'snow_depth']
 const read = (f) => { try { return JSON.parse(readFileSync(f, 'utf8')) } catch { return [] } }
-const pts = [...read('public/data/places.json'), ...read('public/data/discover.json')].filter((p) => ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'candidato', 'parking'].includes(p.kind))
+const pts = [...read('public/data/places.json'), ...read('public/data/discover.json')].filter((p) => ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'bunker', 'candidato', 'parking'].includes(p.kind))
 const cells = new Map()
 for (const p of pts) {
   const key = `${Math.floor(p.lat / STEP)}_${Math.floor(p.lng / STEP)}`

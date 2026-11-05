@@ -18,6 +18,7 @@ type Near = 0 | 90 | 120
 
 interface Props {
   places: Place[]
+  winterOn: boolean
   days: Date[]
   dayIdx: number
   onDay: (i: number) => void
@@ -42,7 +43,7 @@ const Chip = ({ on, children, onClick }: { on: boolean; children: React.ReactNod
   </button>
 )
 
-export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpen }: Props) {
+export default function Dormir({ places, winterOn, days, dayIdx, onDay, ctx, status, onOpen }: Props) {
   const [view, setView] = useState<'lista' | 'mapa'>('lista')
   const [fee, setFee] = useState<Fee>('todos')
   const [near, setNear] = useState<Near>(0)
@@ -95,16 +96,17 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
       if (fee === 'gratis' && p.kind === 'refugio_pago') return false
       if (fee === 'pago' && p.kind !== 'refugio_pago') return false
       if (near && !(e.access[0] && e.access[0].totalMin <= near)) return false
-      if (techo && !(p.shelter === 'cerrado' || p.shelter === 'techo' || p.kind === 'refugio_libre' || p.kind === 'refugio_pago')) return false
+      if (techo && !(p.shelter === 'cerrado' || p.shelter === 'techo' || p.kind === 'refugio_libre' || p.kind === 'refugio_pago' || p.kind === 'bunker')) return false
       if (parapeto && p.shelter !== 'parapeto') return false
       if (stars && !(e.stats.cloud < 30 && e.moon.fraction < 0.4)) return false
       if (noSnow && (e.stats.snowDepth >= 0.03 || e.stats.snow > 0.2)) return false
       if (never && p.visited) return false
+      if (winterOn && (p.kind === 'parapeto' || p.kind === 'candidato' || (p.kind === 'abrigo' && p.toponym) || p.shelter === 'raso' || (p.shelter == null && p.kind !== 'bunker' && p.kind !== 'abrigo' && p.kind !== 'refugio_libre' && p.kind !== 'refugio_pago'))) return false
       return true
     })
     const rank = (e: Entry) => e.score.score - (e.place.unnamed ? 25 : 0)
     return list.sort((a, b) => rank(b) - rank(a) || (a.access[0]?.totalMin ?? 999) - (b.access[0]?.totalMin ?? 999))
-  }, [gridDay, fee, near, techo, parapeto, stars, noSnow, never])
+  }, [gridDay, fee, near, techo, parapeto, stars, noSnow, never, winterOn])
 
   const heroes = useMemo(() => ranked.slice(0, 3).map((e) => evaluate(e.place, day, ctx) ?? e), [ranked, day, ctx])
   const top = heroes[0]
@@ -148,6 +150,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
       {status.error && !ctx.wx && <p className="mx-4 mt-3 rounded-2xl p-3 text-sm" style={{ background: '#e5b23a33' }}>No he podido cargar la previsión. Prueba con cobertura y pulsa el botón de actualizar.</p>}
 
       <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4">
+        <Chip on={winterOn} onClick={() => setPrefs({ winter: winterOn ? 'no' : 'si' })}>❄️ Modo invierno cubierto</Chip>
         <Chip on={near === 90} onClick={() => setNear(near === 90 ? 0 : 90)}>Cerca &lt; 1 h 30</Chip>
         <Chip on={near === 120} onClick={() => setNear(near === 120 ? 0 : 120)}>&lt; 2 h</Chip>
         <Chip on={techo} onClick={() => setTecho(!techo)}>Con techo</Chip>

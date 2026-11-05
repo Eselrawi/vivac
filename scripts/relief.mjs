@@ -6,7 +6,7 @@ import sharp from 'sharp'
 const Z = 13, N = 2 ** Z
 const places = JSON.parse(readFileSync('public/data/places.json', 'utf8'))
 const disc = (() => { try { return JSON.parse(readFileSync('public/data/discover.json', 'utf8')) } catch { return [] } })()
-const targets = [...places, ...disc].filter((p) => ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'candidato', 'parking'].includes(p.kind))
+const targets = [...places, ...disc].filter((p) => ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'bunker', 'candidato', 'parking'].includes(p.kind))
 
 const tiles = new Map()
 async function tile(x, y) {

@@ -7,6 +7,7 @@ import type { useAccount } from '../lib/auth'
 import { db } from '../lib/db'
 import { download, parseAny, toGeoJson, toGpx } from '../lib/gpx'
 import { setPrefs, usePrefs } from '../lib/prefs'
+import { useAcceso } from '../lib/acceso'
 import { InstallSteps } from './Welcome'
 
 type Acc = ReturnType<typeof useAccount>
@@ -28,6 +29,7 @@ function Slider({ label, value, min, max, step = 1, unit, onChange }: { label: s
 
 export default function ProfileSheet({ open, onClose, acc, onWelcome }: { open: boolean; onClose: () => void; acc: Acc; onWelcome: () => void }) {
   const prefs = usePrefs()
+  const access = useAcceso()
   const [email, setEmail] = useState('')
   const [sent, setSent] = useState(false)
   const [gname, setGname] = useState('')
@@ -148,6 +150,15 @@ export default function ProfileSheet({ open, onClose, acc, onWelcome }: { open: 
             <button className="tap col-span-2 flex items-center justify-center gap-2 rounded-2xl py-3 text-sm font-semibold" style={card} onClick={() => file.current?.click()}><Upload size={16} />Importar GPX, KML o GeoJSON (de Wikiloc…)</button>
             <input ref={file} type="file" accept=".gpx,.kml,.geojson,.json" hidden onChange={(e) => { const f = e.target.files?.[0]; if (f) void importFile(f); e.target.value = '' }} />
           </div>
+
+          <H>Sitios descartados</H>
+          <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>No se muestran en Dormir ni en el mapa: son falsos refugios (hospitales, retenes, casas forestales, privados) o sitios que el grupo ha visto en ruinas.</p>
+          <details className="mt-2 rounded-2xl p-3 text-sm" style={card}>
+            <summary className="cursor-pointer font-semibold">Ver los {access.descartados.length} descartados</summary>
+            <ul className="mt-2 flex max-h-64 flex-col gap-1.5 overflow-y-auto">
+              {access.descartados.map((d) => <li key={d.id}><b>{d.name || 'Sin nombre'}</b> · {d.motivo}</li>)}
+            </ul>
+          </details>
 
           <H>Avisos</H>
           <button className="tap mt-2 w-full rounded-2xl py-3 text-sm font-semibold" style={card} onClick={async () => { if (!('Notification' in window)) return setMsg('Este móvil no admite avisos. En iPhone, instala primero la app.'); const r = await Notification.requestPermission(); setMsg(r === 'granted' ? 'Avisos activados: te recordaré valorar cada noche.' : 'Avisos desactivados.') }}>Activar el aviso «¿qué tal durmieron?»</button>

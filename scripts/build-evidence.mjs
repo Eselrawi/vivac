@@ -68,6 +68,12 @@ const fmt = (min) => { const m = Math.max(5, Math.round(min / 5) * 5); const h =
 
 function whatIs(p, t) {
   const n = norm(p.name)
+  if (p.sub === 'bunker' || p.kind === 'bunker') return 'Búnker o fortín de la Guerra Civil: construcción de hormigón o piedra con techo. Resguarda del viento y la lluvia, pero suele ser oscuro, húmedo y con suelo irregular; mira bien el interior antes de usarlo.'
+  if (p.sub === 'ermita') return 'Ermita aislada: puede tener un porche que resguarde de la lluvia; de dentro no hay datos y suele estar cerrada con llave.'
+  if (p.sub === 'ruina') return 'Ruina de una construcción: puede conservar parte del techo o no. No hay datos del estado actual.'
+  if (p.sub === 'chozo') return 'Construcción de pastores o ganadera (chozo, aprisco o cobertizo): da techo, aunque su estado varía mucho y puede haber ganado o suciedad.'
+  if (p.sub === 'caseta') return 'Caseta o cabaña de monte (forestal, de caza o de camineros): da techo y paredes; puede estar cerrada con llave o ser privada, así que no cuentes con entrar sin comprobarlo.'
+  if (p.sub === 'cueva') return 'Cueva o abrigo natural bajo roca: da techo y resguardo del viento y la lluvia; el suelo suele ser de tierra o piedras.'
   if (p.kind === 'refugio_pago') return 'Refugio guardado o albergue de pago: hay que reservar y consultar precio.'
   if (p.kind === 'parapeto') return 'Parapeto o vivac de piedra: un muro de piedra seca, sin techo, que corta el viento. Se duerme al raso con saco y funda; la protección depende de hacia dónde mira la abertura.'
   if (/covachuela/.test(n)) return 'Covachuela: abrigo pequeño bajo la roca. Da techo, pero suele caber muy poca gente.'
@@ -95,7 +101,7 @@ const out = {}
 const stats = { confirmado: 0, probable: 0, 'sin confirmar': 0 }
 let withMuni = 0
 for (const p of places) {
-  if (!['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo'].includes(p.kind)) continue
+  if (!['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'bunker'].includes(p.kind)) continue
   const ids = [...p.source.matchAll(/(node|way|relation)\/(\d+)/g)].map((m) => `${m[1]}/${m[2]}`)
   const metas = ids.map((k) => meta[k]).filter(Boolean)
   const a = auto[p.id] ?? { osm: metas.map((m) => ({ v: m.v, ts: m.ts, user: m.user })), tags: Object.assign({}, ...metas.map((m) => m.tags)), photos: [], wiki: [], wd: null, geo: null }

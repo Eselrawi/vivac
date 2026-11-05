@@ -1,0 +1,134 @@
+﻿id;nombre;tipo;lat;lng;altitud;motivo;fuente
+osm-n11369808978;Retén Guardas Forestales;refugio_libre;40.858;-3.893;1306;Retén de guardas forestales: no es refugio de uso libre;OpenStreetMap node/11369808978
+osm-w499001899;Hospital de Gudillos;refugio_libre;40.73292;-4.1403;1364;Antiguo hospital o edificio no destinado a refugio;OpenStreetMap way/499001899
+osm-w1052815528;Casa Forestal de La Tejera;refugio_libre;41.04203;-3.68226;1217;Casa forestal: suele estar cerrada o ser de uso de guardas;OpenStreetMap way/1052815528
+osm-n5708138122;Camping;refugio_libre;40.84339;-3.75172;;Privado, de uso público distinto o no es refugio;OpenStreetMap node/5708138122
+osm-n6363150249;Campamentos de la Peñota;refugio_libre;40.74105;-4.07805;;Privado, de uso público distinto o no es refugio;OpenStreetMap node/6363150249
+osm-n6540182459;Capilla del antiguo Hospital de San Juan de Dios;refugio_libre;40.9515;-4.12581;;Edificio que no es un refugio de uso libre;OpenStreetMap node/6540182459
+osm-n9647395758;Escuela Infantil El Nido de San Lorenzo;refugio_libre;40.59416;-4.14391;;Edificio que no es un refugio de uso libre;OpenStreetMap node/9647395758
+osm-n11917619670;Capilla del Colegio Claret;refugio_libre;40.94624;-4.11148;;Privado, de uso público distinto o no es refugio;OpenStreetMap node/11917619670
+osm-n12504368267;Cueva de la Vaquera (norte);refugio_libre;41.08643;-4.05821;;Privado, de uso público distinto o no es refugio;OpenStreetMap node/12504368267
+osm-n12952430175;Cueva de los Murcigallinos;refugio_libre;41.08347;-4.03687;;Privado, de uso público distinto o no es refugio;OpenStreetMap node/12952430175
+osm-n13671803043;Capilla Colegio Marista;refugio_libre;40.9472;-4.12662;;Edificio que no es un refugio de uso libre;OpenStreetMap node/13671803043
+osm-w25951340;Camping El Escorial;refugio_libre;40.62271;-4.10022;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/25951340
+osm-w28400387;La Fresneda;refugio_libre;40.74216;-3.81438;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/28400387
+osm-w36856713;San Juan;refugio_libre;40.50783;-4.05073;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/36856713
+osm-w45428436;Camping La Nava;refugio_libre;40.65494;-4.20869;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/45428436
+osm-w71907942;Camping Valle Enmedio;refugio_libre;40.65678;-4.20417;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/71907942
+osm-w90791393;Camping D'Oremor;refugio_libre;40.81957;-3.63814;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/90791393
+osm-w90868512;Pico de la Miel;refugio_libre;40.85973;-3.61681;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/90868512
+osm-w91460376;Camping de La Acebeda;refugio_libre;41.08939;-3.62262;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/91460376
+osm-w92020208;Camping Piscis;refugio_libre;40.80674;-3.69476;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/92020208
+osm-w92065376;Camping Monte Holiday;refugio_libre;40.95152;-3.7318;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/92065376
+osm-w132791249;Camping Privado "Los Herrenes";refugio_libre;40.67609;-3.957;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/132791249
+osm-w164485573;Camping Acueducto;refugio_libre;40.93231;-4.09018;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/164485573
+osm-w181277190;Camping Valdemorillo;refugio_libre;40.50525;-4.05651;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/181277190
+osm-w185604861;El Canto de la Gallina;refugio_libre;40.50779;-4.28664;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/185604861
+osm-w370457456;Sin nombre;refugio_libre;40.78863;-4.00135;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/370457456
+osm-w429878980;Sin nombre;refugio_libre;40.89783;-4.1718;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/429878980
+osm-w511545907;Sin nombre;refugio_libre;40.56917;-3.92061;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/511545907
+osm-w511566157;Sin nombre;refugio_libre;40.5214;-3.88535;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/511566157
+osm-w512149348;Sin nombre;refugio_libre;40.65276;-3.76664;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/512149348
+osm-w512149349;Sin nombre;refugio_libre;40.65254;-3.76629;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/512149349
+osm-w512149350;Sin nombre;refugio_libre;40.59878;-3.71537;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/512149350
+osm-w512149351;Sin nombre;refugio_libre;40.59896;-3.71521;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/512149351
+osm-w676628000;Sin nombre;refugio_libre;40.85314;-4.16345;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/676628000
+osm-w694962136;Sin nombre;refugio_libre;40.76392;-4.03716;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/694962136
+osm-w696531415;Cámping El Ortigal;refugio_libre;40.74148;-3.87436;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/696531415
+osm-w764526784;Sin nombre;refugio_libre;40.73328;-3.99375;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/764526784
+osm-w814967709;Sin nombre;refugio_libre;40.79181;-4.0106;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/814967709
+osm-w835274622;Sin nombre;refugio_libre;40.88142;-4.3722;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/835274622
+osm-w914465525;Cabanillas del Monte-Segovia;refugio_libre;40.97445;-4.02831;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/914465525
+osm-w1039696429;Sin nombre;refugio_libre;40.96395;-4.03479;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1039696429
+osm-w1039696433;Sin nombre;refugio_libre;40.96187;-4.03748;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1039696433
+osm-w1039696439;Sin nombre;refugio_libre;40.95745;-4.03924;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1039696439
+osm-w1039696441;Sin nombre;refugio_libre;40.95474;-4.04057;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1039696441
+osm-w1044494583;Sin nombre;refugio_libre;41.0836;-3.9615;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1044494583
+osm-w1065673393;Sin nombre;refugio_libre;40.95137;-4.07238;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1065673393
+osm-w1068020831;Sin nombre;refugio_libre;40.9894;-4.02486;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1068020831
+osm-w1086916010;Ermita del Cementerio de Espirdo;refugio_libre;41.00017;-4.07624;;Edificio que no es un refugio de uso libre;OpenStreetMap way/1086916010
+osm-w1086916015;Sin nombre;refugio_libre;40.99705;-4.0735;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1086916015
+osm-w1090151335;Sin nombre;refugio_libre;40.95215;-4.08166;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1090151335
+osm-w1105855528;Sin nombre;refugio_libre;40.86343;-4.13794;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1105855528
+osm-w1107202281;Sin nombre;refugio_libre;40.91407;-4.06609;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1107202281
+osm-w1108001640;Sin nombre;refugio_libre;40.9101;-4.05873;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1108001640
+osm-w1117628753;Sin nombre;refugio_libre;40.99548;-4.02162;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1117628753
+osm-w1117628754;Sin nombre;refugio_libre;40.99912;-4.02099;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1117628754
+osm-w1124659861;Bernuy de Porreros;refugio_libre;40.99926;-4.11786;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1124659861
+osm-w1127501510;Sin nombre;refugio_libre;40.99174;-4.02305;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1127501510
+osm-w1127501531;Sin nombre;refugio_libre;40.9518;-4.07744;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1127501531
+osm-w1128226587;Sin nombre;refugio_libre;41.02303;-4.03057;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1128226587
+osm-w1134242540;Sin nombre;refugio_libre;40.91771;-4.06354;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1134242540
+osm-w1134271520;Sin nombre;refugio_libre;41.07597;-3.80641;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1134271520
+osm-w1142009979;Búnker del Cementerio de Balsaín;refugio_libre;40.88062;-4.03084;;Edificio que no es un refugio de uso libre;OpenStreetMap way/1142009979
+osm-w1144358035;Sin nombre;refugio_libre;40.95238;-4.07989;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1144358035
+osm-w1153834495;Sin nombre;refugio_libre;40.87216;-4.10065;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1153834495
+osm-w1153834496;Revenga;refugio_libre;40.87152;-4.10096;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1153834496
+osm-w1174323167;Cuartel del Pajarón (ruinas);refugio_libre;40.90172;-4.0093;;Edificio que no es un refugio de uso libre;OpenStreetMap way/1174323167
+osm-w1179681027;Sin nombre;refugio_libre;40.99623;-4.02171;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1179681027
+osm-w1179841981;Sin nombre;refugio_libre;40.88851;-4.47194;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1179841981
+osm-w1183906933;Hontanares de Eresma;refugio_libre;40.98362;-4.20412;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1183906933
+osm-w1196424408;Sin nombre;refugio_libre;40.95182;-4.097;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1196424408
+osm-w1206583509;Sin nombre;refugio_libre;40.80303;-3.98363;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1206583509
+osm-w1206699139;Sin nombre;refugio_libre;40.75624;-4.04727;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1206699139
+osm-w1214757800;Sin nombre;refugio_libre;40.95796;-4.19818;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1214757800
+osm-w1221912262;Fuentemilanos Aeródromo;refugio_libre;40.88812;-4.24179;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1221912262
+osm-w1229744955;Sin nombre;refugio_libre;41.03846;-3.91831;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1229744955
+osm-w1235570110;Sin nombre;refugio_libre;41.04156;-3.98944;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1235570110
+osm-w1235591126;Sin nombre;refugio_libre;41.02989;-3.94068;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1235591126
+osm-w1237815990;Sin nombre;refugio_libre;41.02763;-4.02405;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1237815990
+osm-w1243733387;Sin nombre;refugio_libre;40.87572;-4.02208;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1243733387
+osm-w1259735922;Sin nombre;refugio_libre;41.06694;-4.10946;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1259735922
+osm-w1259735931;Sin nombre;refugio_libre;41.07764;-4.13044;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1259735931
+osm-w1260732149;Sin nombre;refugio_libre;40.93109;-4.06068;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1260732149
+osm-w1262286547;Sin nombre;refugio_libre;41.06822;-4.02489;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1262286547
+osm-w1265501157;Sin nombre;refugio_libre;40.92283;-4.07828;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1265501157
+osm-w1270621912;Sin nombre;refugio_libre;40.8781;-4.01833;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1270621912
+osm-w1304788547;Sin nombre;refugio_libre;41.02756;-4.11182;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1304788547
+osm-w1313296405;Sin nombre;refugio_libre;40.90078;-4.00996;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1313296405
+osm-w1347580199;Albergue Juvenil Campamento Alto de León;refugio_libre;40.71761;-4.16262;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1347580199
+osm-w1351426564;Sin nombre;refugio_libre;40.79176;-4.00123;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1351426564
+osm-w1355512677;Sin nombre;refugio_libre;40.73776;-4.06635;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1355512677
+osm-w1378685133;Sin nombre;refugio_libre;40.77504;-4.20763;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1378685133
+osm-w1378694349;Sin nombre;refugio_libre;40.92972;-4.05645;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1378694349
+osm-w1378694353;Sin nombre;refugio_libre;41.01612;-4.08079;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1378694353
+osm-w1378694357;Sin nombre;refugio_libre;41.03566;-4.05242;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1378694357
+osm-w1388747924;Sin nombre;refugio_libre;40.82345;-3.96211;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1388747924
+osm-w1388806136;Sin nombre;refugio_libre;41.01629;-4.15887;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1388806136
+osm-w1390246965;Sin nombre;refugio_libre;40.95187;-4.27424;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1390246965
+osm-w1390742351;Sin nombre;refugio_libre;40.75741;-4.07106;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1390742351
+osm-w1390742402;Sin nombre;refugio_libre;40.87837;-4.02701;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1390742402
+osm-w1393577447;Sin nombre;refugio_libre;40.6057;-4.11709;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1393577447
+osm-w1393577457;Sin nombre;refugio_libre;40.61535;-4.11441;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1393577457
+osm-w1393577458;Sin nombre;refugio_libre;40.61575;-4.11419;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1393577458
+osm-w1430185060;Sin nombre;refugio_libre;40.76056;-4.07265;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1430185060
+osm-w1434561306;Sin nombre;refugio_libre;40.96757;-4.09142;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1434561306
+osm-w1435710548;Sin nombre;refugio_libre;40.84263;-4.17562;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1435710548
+osm-w1442623674;Sin nombre;refugio_libre;41.00913;-4.21925;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1442623674
+osm-w1445514336;Sin nombre;refugio_libre;41.0343;-3.94009;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445514336
+osm-w1445535464;Sin nombre;refugio_libre;41.05957;-3.89613;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445535464
+osm-w1445639309;Sin nombre;refugio_libre;40.79493;-4.27838;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445639309
+osm-w1445744615;Sin nombre;refugio_libre;40.78083;-4.41568;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445744615
+osm-w1445860096;Sin nombre;refugio_libre;40.80589;-4.33531;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445860096
+osm-w1445860098;Sin nombre;refugio_libre;40.80573;-4.33476;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445860098
+osm-w1445867122;Sin nombre;refugio_libre;40.79548;-4.37902;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445867122
+osm-w1445878288;Sin nombre;refugio_libre;40.71968;-4.21892;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445878288
+osm-w1445878296;Sin nombre;refugio_libre;40.71412;-4.19071;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445878296
+osm-w1445878300;Sin nombre;refugio_libre;40.73592;-4.18969;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445878300
+osm-w1445884500;Sin nombre;refugio_libre;40.73955;-4.18799;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1445884500
+osm-w1446031022;Sin nombre;refugio_libre;40.7777;-4.22288;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1446031022
+osm-w1446160695;Sin nombre;refugio_libre;41.02831;-4.18321;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1446160695
+osm-w1446161993;Sin nombre;refugio_libre;41.03959;-4.23245;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1446161993
+osm-w1459953601;Sin nombre;refugio_libre;40.70595;-4.12498;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1459953601
+osm-w1463217419;Sin nombre;refugio_libre;41.09588;-3.75758;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1463217419
+osm-w1465073310;Casa Rural Nido de El Tuerto de Pirón;refugio_libre;41.06682;-4.10953;;Edificio que no es un refugio de uso libre;OpenStreetMap way/1465073310
+osm-w1467936333;Sin nombre;refugio_libre;40.57694;-4.20435;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1467936333
+osm-w1470029744;Sin nombre;refugio_libre;40.98624;-4.26345;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1470029744
+osm-w1472006079;Sin nombre;refugio_libre;40.8958;-4.38425;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1472006079
+osm-w1486035472;Sin nombre;refugio_libre;41.06822;-4.02457;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1486035472
+osm-w1488560323;Sin nombre;refugio_libre;40.56777;-4.28276;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1488560323
+osm-w1496584108;Sin nombre;refugio_libre;41.07265;-4.23656;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1496584108
+osm-w1496588606;Sin nombre;refugio_libre;41.09936;-4.23553;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1496588606
+osm-w1532217543;Sin nombre;refugio_libre;40.74181;-4.05117;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1532217543
+osm-w1575069589;Sin nombre;refugio_libre;40.83095;-4.1671;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1575069589
+osm-w1575069590;Sin nombre;refugio_libre;40.83066;-4.16707;;Privado, de uso público distinto o no es refugio;OpenStreetMap way/1575069590

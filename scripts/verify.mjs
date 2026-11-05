@@ -3,7 +3,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 
 const UA = { 'User-Agent': 'vivac-app/1.0 (https://github.com/Eselrawi/vivac; verificacion de sitios)' }
-const places = JSON.parse(readFileSync('public/data/places.json', 'utf8')).filter((p) => ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo'].includes(p.kind))
+const places = JSON.parse(readFileSync('public/data/places.json', 'utf8')).filter((p) => ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'bunker'].includes(p.kind))
 const OUT = 'data/raw/evidence-auto.json'
 const out = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : {}
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))

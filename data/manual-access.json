@@ -1,0 +1,241 @@
+{
+  "osm-w927193975": {
+    "estado": "parcial",
+    "nota": "Refugio de piedra no guardado en el circo de Peñalara. Una reseña de noviembre de 2023 cuenta que dentro no se puede pernoctar (espacio minúsculo, casi todo cerrado) y que el vivac se hace fuera. Confirma antes con la RSEA Peñalara o el Parque Nacional.",
+    "fecha": "2025-03-04",
+    "fuentes": [
+      {
+        "site": "Carreras de Montaña (Mayayo)",
+        "url": "https://carrerasdemontana.com/2025/03/04/refugio-zabala-penalara-mayayo/",
+        "fecha": "2025-03-04"
+      },
+      {
+        "site": "Reseña en Wanderlog",
+        "url": "https://wanderlog.com/place/details/9431790/refugio-zabala",
+        "fecha": "2023-11-15"
+      },
+      {
+        "site": "Hispanopedia",
+        "url": "https://es.hispanopedia.com/wiki/Refugio_Zabala",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "5 muy justas (Walkaholic)",
+      "chimenea": "sí (Walkaholic)"
+    }
+  },
+  "osm-w936572547": {
+    "estado": "abierto",
+    "nota": "Refugio libre, en mal estado según el listado oficial del Parque Nacional (3 plazas, con chimenea).",
+    "fecha": null,
+    "fuentes": [
+      {
+        "site": "Listado oficial de refugios (Anexo V, Comunidad de Madrid)",
+        "url": "https://www.comunidad.madrid/sites/default/files/doc/medio-ambiente/cma_consejoma_10_anexo_v_refugios.pdf",
+        "fecha": null
+      },
+      {
+        "site": "Komoot / Visit Madrid",
+        "url": "https://www.visitmadrid.es/rutas/ruta-najarra-puerto-morcuera",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "3",
+      "chimenea": "sí"
+    }
+  },
+  "osm-w190733756": {
+    "estado": "abierto",
+    "nota": "Refugio libre dentro de un antiguo búnker de la guerra civil, «en razonable estado de uso» según una ruta de agosto de 2025.",
+    "fecha": "2025-08-08",
+    "fuentes": [
+      {
+        "site": "Carreras de Montaña (Mayayo)",
+        "url": "https://carrerasdemontana.com/2025/08/08/cabeza-lijar-y-cueva-valiente-mayayo/",
+        "fecha": "2025-08-08"
+      },
+      {
+        "site": "Walkaholic",
+        "url": "https://www.walkaholic.me/shelter/spain/community-of-madrid/madrid/295-cabeza-lijar",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "5 camas (Walkaholic)"
+    }
+  },
+  "osm-w71902242": {
+    "estado": "abierto",
+    "nota": "Refugio libre de piedra en la cima de Cueva Valiente. Una ruta de agosto de 2025 lo cita; Walkaholic da 5 camas y un listado de la Comunidad de Madrid, 10 plazas.",
+    "fecha": "2025-08-08",
+    "fuentes": [
+      {
+        "site": "Carreras de Montaña (Mayayo)",
+        "url": "https://carrerasdemontana.com/2025/08/08/cabeza-lijar-y-cueva-valiente-mayayo/",
+        "fecha": "2025-08-08"
+      },
+      {
+        "site": "Walkaholic",
+        "url": "https://www.walkaholic.me/shelter/spain/castile-and-leon/avila/292-refugio-de-cueva-valiente",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "5 (Walkaholic) o 10 (Comunidad de Madrid)"
+    }
+  },
+  "osm-w791858644": {
+    "estado": "abierto",
+    "nota": "Pequeño refugio libre en lo alto del cerro. Sin datos recientes de su estado.",
+    "fecha": null,
+    "fuentes": [
+      {
+        "site": "Walkaholic",
+        "url": "https://www.walkaholic.me/shelter/spain/castile-and-leon/segovia/214-refugio-del-cerro-de-la-camorca",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "2"
+    }
+  },
+  "osm-w71303945": {
+    "estado": "sin_datos",
+    "nota": "Las fuentes se contradicen: Komoot lo describe con estufa de leña y unas 25 plazas, y un comentario de SummitPost dice que está cerrado por vandalismo. No hay una fecha fiable: no cuentes con él sin comprobarlo.",
+    "fecha": null,
+    "fuentes": [
+      {
+        "site": "Komoot",
+        "url": "https://blog.komoot.de/smarttour/e1231283620/pingarron-camino-las-vueltas-loop-trail",
+        "fecha": null
+      },
+      {
+        "site": "SummitPost",
+        "url": "https://www.summitpost.org/view_object.php?object_id=150906",
+        "fecha": null
+      }
+    ]
+  },
+  "osm-w90806870": {
+    "estado": "abierto",
+    "nota": "Refugio libre pequeño en un pinar de la vertiente norte. Sin datos recientes.",
+    "fecha": null,
+    "fuentes": [
+      {
+        "site": "Mountain Forecast",
+        "url": "https://www.mountain-forecast.com/huts-and-lodges/Refugio-la-Naranjera",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "8"
+    }
+  },
+  "osm-w472906070": {
+    "estado": "reserva",
+    "nota": "Refugio guardado de la RSEA Peñalara en La Pedriza (unas 50 plazas). Precio y reserva: consultar con la RSEA Peñalara; no hay precio confirmado.",
+    "fecha": null,
+    "precio": {
+      "texto": "consultar",
+      "fecha": null
+    },
+    "fuentes": [
+      {
+        "site": "Mountain Forecast",
+        "url": "https://www.mountain-forecast.com/huts-and-lodges/Refugio-Giner-de-Los-Rios",
+        "fecha": null
+      },
+      {
+        "site": "Wikiloc",
+        "url": "https://it.wikiloc.com/waypoints/VO5qBf/refugio-giner-de-los-rios",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "50"
+    }
+  },
+  "osm-w173915162": {
+    "estado": "reserva",
+    "nota": "Refugio juvenil de la Comunidad de Madrid. Según su web, del 15 de julio al 15 de septiembre no admite reservas. Precio y condiciones: consultar. Los refugios guardados de la Dirección de Juventud abren de viernes (17:00) a domingo (17:00) para grupos; confirma el calendario.",
+    "fecha": null,
+    "precio": {
+      "texto": "consultar",
+      "fecha": null
+    },
+    "fuentes": [
+      {
+        "site": "Comunidad de Madrid",
+        "url": "https://www.comunidad.madrid/centros/refugio-juvenil-puerto-morcuera",
+        "fecha": null
+      }
+    ]
+  },
+  "osm-w359620702": {
+    "estado": "reserva",
+    "nota": "Refugio juvenil (Comunidad de Madrid). Precio y condiciones: consultar.",
+    "fecha": null,
+    "precio": {
+      "texto": "consultar",
+      "fecha": null
+    },
+    "fuentes": [
+      {
+        "site": "Walkaholic",
+        "url": "https://www.walkaholic.me/shelter/spain/community-of-madrid/madrid",
+        "fecha": null
+      }
+    ]
+  },
+  "osm-w359619783": {
+    "estado": "reserva",
+    "nota": "Refugio juvenil (Comunidad de Madrid). Precio y condiciones: consultar.",
+    "fecha": null,
+    "precio": {
+      "texto": "consultar",
+      "fecha": null
+    },
+    "fuentes": [
+      {
+        "site": "Walkaholic",
+        "url": "https://www.walkaholic.me/shelter/spain/community-of-madrid/madrid",
+        "fecha": null
+      }
+    ]
+  },
+  "osm-w48675286": {
+    "estado": "abierto",
+    "nota": "Refugio libre de La Salamanca, citado en un artículo de noviembre de 2020 sobre refugios de montaña libres. Dato de hace más de 3 años.",
+    "fecha": "2020-11-12",
+    "fuentes": [
+      {
+        "site": "Carreras de Montaña (Mayayo)",
+        "url": "https://carrerasdemontana.com/2020/11/12/refugios-de-montana-libres-la-salamanca/",
+        "fecha": "2020-11-12"
+      }
+    ]
+  },
+  "osm-n10308175373": {
+    "estado": "abierto",
+    "nota": "Chozo libre en Manzanares el Real, en mal estado, sin chimenea ni aseos según el listado oficial de refugios de la Comunidad de Madrid (documento sin fecha clara, puede estar desfasado).",
+    "fecha": null,
+    "fuentes": [
+      {
+        "site": "Listado oficial de refugios (Anexo V, Comunidad de Madrid)",
+        "url": "https://www.comunidad.madrid/sites/default/files/doc/medio-ambiente/cma_consejoma_10_anexo_v_refugios.pdf",
+        "fecha": null
+      },
+      {
+        "site": "Walkaholic",
+        "url": "https://www.walkaholic.me/shelter/spain/community-of-madrid/madrid",
+        "fecha": null
+      }
+    ],
+    "invierno": {
+      "plazas": "2",
+      "chimenea": "no"
+    }
+  }
+}

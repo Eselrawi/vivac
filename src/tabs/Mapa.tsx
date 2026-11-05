@@ -18,7 +18,7 @@ const MODES: { id: Mode; label: string }[] = [
   { id: 'dormir', label: 'Para dormir' },
   { id: 'dormimos', label: 'Donde hemos dormido' },
 ]
-const LEGEND: (keyof typeof KIND_COLOR)[] = ['vivac', 'refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'fuente', 'deseo', 'parking']
+const LEGEND: (keyof typeof KIND_COLOR)[] = ['vivac', 'refugio_libre', 'refugio_pago', 'bunker', 'parapeto', 'abrigo', 'fuente', 'deseo', 'parking']
 
 function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [pos, setPos] = useState<GeolocationCoordinates | null>(null)

@@ -33,3 +33,4 @@ scripts/close-test.mjs
 scripts/b1-shots.mjs
 public/data/forecast.json
 scripts/b2-test.mjs
+scripts/b4-test.mjs

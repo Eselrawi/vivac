@@ -9,6 +9,7 @@ export type PlaceKind =
   | 'parking'
   | 'cumbre'
   | 'candidato'
+  | 'bunker'
 
 export type Shelter = 'cerrado' | 'techo' | 'parapeto' | 'raso'
 
@@ -27,6 +28,10 @@ export interface Place {
   source: string
   visited?: number
   eleDem?: boolean
+  /** Subtipo: bunker, caseta, chozo, ermita, ruina, cueva. */
+  sub?: string
+  ruin?: boolean
+  osm?: Record<string, string>
   tpi?: number
   score?: number
   unnamed?: boolean
@@ -47,6 +52,7 @@ export const KIND_LABEL: Record<PlaceKind, string> = {
   parking: 'Aparcamiento',
   cumbre: 'Cumbre',
   candidato: 'Sitio sugerido',
+  bunker: 'Búnker o fortín',
 }
 
 export const KIND_COLOR: Record<PlaceKind, string> = {
@@ -60,8 +66,9 @@ export const KIND_COLOR: Record<PlaceKind, string> = {
   parking: '#5b6472',
   cumbre: '#6b7280',
   candidato: '#9a7fd1',
+  bunker: '#6b5b4a',
 }
 
-export const SLEEP_KINDS: PlaceKind[] = ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'vivac', 'deseo']
+export const SLEEP_KINDS: PlaceKind[] = ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'bunker', 'vivac', 'deseo']
 
 export const HOME = { name: 'Villanueva de la Cañada', lat: 40.4436, lng: -3.9944 }

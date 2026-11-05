@@ -13,6 +13,7 @@ import { usePhotos } from '../lib/photos'
 import { CONF_COLOR, CONF_LABEL, useEvidence } from '../lib/evidence'
 import { getSb, GROUP_KEY } from '../lib/sb'
 import { MODE_LABEL } from '../lib/score'
+import { ESTADO_UI, REPORT_UI, useAcceso, type ReportState } from '../lib/acceso'
 import { Dot, Illustration, NightChart, ScoreRing, WindRose } from './ui'
 
 const DAY = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb']
@@ -73,6 +74,8 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
     return best
   }, [place, sleepKind, e, days, dayIdx, places, ctx])
   const ev = useEvidence(place)
+  const acc = useAcceso()
+  const eff = place ? acc.effective(place.id) : null
   const photos = usePhotos(place, ev?.ph)
   const [shot, setShot] = useState(0)
   const a = e?.access[0]
@@ -124,6 +127,42 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                   ))}
                 </div>
 
+                {sleepKind && eff && (
+                  <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)', borderLeft: `6px solid ${ESTADO_UI[eff.estado].color}` }}>
+                    <p className="font-display text-2xl font-semibold leading-tight">{ESTADO_UI[eff.estado].emoji} {ESTADO_UI[eff.estado].label}{eff.full ? ' · lleno' : ''}</p>
+                    <p className="mt-1 text-sm">
+                      {eff.report ? `El grupo lo vio «${REPORT_UI[eff.report.state].label.toLowerCase()}» el ${new Date(eff.report.at).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}. Lo que dice el grupo manda.` : eff.acceso?.nota ?? 'No hay datos de si está abierto.'}
+                    </p>
+                    {!eff.report && eff.acceso && (
+                      <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>
+                        {eff.acceso.fecha ? `Dato de ${eff.acceso.fecha}.` : 'Sin fecha del dato.'} {eff.acceso.fuentes.map((f, i) => <span key={i}>{i ? ' · ' : ''}{f.url ? <a className="underline" href={f.url} target="_blank" rel="noreferrer">{f.site}</a> : f.site}</span>)}
+                      </p>
+                    )}
+                    {eff.acceso?.precio && <p className="mt-1 text-sm font-semibold">Precio: {eff.acceso.precio.texto}{eff.acceso.precio.fecha ? ` (${eff.acceso.precio.fecha})` : ''}</p>}
+                    {eff.estado === 'llave' && (
+                      <div className="mt-2 rounded-2xl p-3 text-sm" style={{ background: 'var(--bg)' }}>
+                        <b>🔑 Recoger la llave</b>
+                        <br />{eff.acceso?.llave ? [eff.acceso.llave.quien && `A quién: ${eff.acceso.llave.quien}`, eff.acceso.llave.tel && `Teléfono: ${eff.acceso.llave.tel}`, eff.acceso.llave.web && `Web: ${eff.acceso.llave.web}`, eff.acceso.llave.horario && `Horario: ${eff.acceso.llave.horario}`, eff.acceso.llave.fianza && `Fianza: ${eff.acceso.llave.fianza}`].filter(Boolean).join(' · ') : 'Sin datos de a quién pedirla, teléfono, horario ni fianza.'}
+                      </div>
+                    )}
+                    <p className="mb-1 mt-3 text-sm font-semibold">¿Cómo estaba cuando fuisteis?</p>
+                    <div className="grid grid-cols-2 gap-2 text-sm font-semibold">
+                      {(Object.keys(REPORT_UI) as ReportState[]).map((k) => (
+                        <button key={k} onClick={() => acc.report(place!.id, k)} aria-pressed={eff.report?.state === k} className="tap rounded-2xl" style={{ background: eff.report?.state === k ? 'var(--accent)' : 'var(--bg)', color: eff.report?.state === k ? '#fff' : 'var(--ink)' }}>{REPORT_UI[k].emoji} {REPORT_UI[k].label}</button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {sleepKind && eff?.acceso && (
+                  <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
+                    <p className="font-semibold">❄️ Datos de invierno</p>
+                    <ul className="mt-1 grid grid-cols-1 gap-0.5 text-sm">
+                      {([['Puerta', eff.acceso.invierno.puerta], ['Chimenea', eff.acceso.invierno.chimenea], ['Leña', eff.acceso.invierno.lena], ['Suelo', eff.acceso.invierno.suelo], ['Plazas', eff.acceso.invierno.plazas], ['Se suele llenar', eff.acceso.invierno.llena], ['Agua', eff.acceso.invierno.agua], ['Acceso con nieve', eff.acceso.invierno.nieveAcceso]] as Array<[string, string | null]>).map(([k, v]) => (
+                        <li key={k} className="flex justify-between gap-3"><span style={{ color: 'var(--ink-soft)' }}>{k}</span><span className="text-right font-semibold" style={{ opacity: v ? 1 : 0.55 }}>{v ?? 'sin datos'}</span></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 {place.kind === 'fuente' && (
                   <div className="mt-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
                     <p className="font-semibold">💧 ¿Cómo está el agua?</p>

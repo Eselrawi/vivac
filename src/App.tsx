@@ -8,6 +8,7 @@ import RecordSheet from './components/RecordSheet'
 import Dormir from './tabs/Dormir'
 import { useCatalog } from './lib/catalog'
 import { useEvidenceMap } from './lib/evidence'
+import { useAcceso } from './lib/acceso'
 import { useAccount } from './lib/auth'
 import { askPersistent, db, recordToPlace, useLive, type TrackRecord, type VivacRecord } from './lib/db'
 import { haversine } from './lib/geo'
@@ -71,17 +72,23 @@ export default function App() {
   const wxPlaces = useMemo(() => catalog.filter((p) => SLEEP_KINDS.includes(p.kind) || p.kind === 'candidato' || p.kind === 'parking'), [catalog])
   const weather = useWeather(wxPlaces)
   const evidence = useEvidenceMap()
+  const access = useAcceso()
+  const month = new Date().getMonth()
+  const winterOn = prefs.winter === 'si' || (prefs.winter === 'auto' && (month >= 10 || month <= 2))
   const quality = useMemo(() => {
     const q: Record<string, number> = {}
     for (const p of places) {
       const c = evidence?.[p.id]?.c
       let v = c === 'confirmado' ? 100 : c === 'probable' ? 80 : c === 'sin confirmar' ? 55 : p.source === 'grupo' ? 90 : 70
+      const est = access.effective(p.id).estado
+      v += winterOn ? { abierto: 5, parcial: -5, llave: -8, reserva: -3, cerrado: -40, sin_datos: -15 }[est] : { abierto: 3, parcial: 0, llave: -3, reserva: 0, cerrado: -40, sin_datos: -4 }[est]
       if (p.toponym) v -= 20
       if (p.unnamed) v -= 10
       q[p.id] = Math.max(10, v)
     }
     return q
-  }, [places, evidence])
+  }, [places, evidence, access.ready, access.reports, winterOn]) // eslint-disable-line react-hooks/exhaustive-deps
+  const visible = useMemo(() => places.filter((p) => access.effective(p.id).estado !== 'cerrado'), [places, access.ready, access.reports]) // eslint-disable-line react-hooks/exhaustive-deps
   const ctx: Ctx = useMemo(() => ({ wx: weather.wx, parkings, drive, prefs, quality }), [weather.wx, parkings, drive, prefs, quality])
 
   const vivacRows = useLive<VivacRecord[]>(() => db.vivacs.where('kind').equals('vivac').toArray(), [])
@@ -136,14 +143,14 @@ export default function App() {
     <div className="relative h-full overflow-hidden">
       {tab !== 'mapa' && <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-10" style={{ height: 'calc(var(--safe-t) + 70px)', background: 'linear-gradient(var(--bg) 60%, transparent)' }} />}
       <main className="absolute inset-0 overflow-y-auto" hidden={tab === 'mapa'}>
-        {tab === 'dormir' && <Dormir places={places} days={days} dayIdx={dayIdx} onDay={setDayIdx} ctx={ctx} status={weather} onOpen={open} />}
+        {tab === 'dormir' && <Dormir places={visible} winterOn={winterOn} days={days} dayIdx={dayIdx} onDay={setDayIdx} ctx={ctx} status={weather} onOpen={open} />}
         {tab === 'diario' && <Suspense fallback={null}><Diario places={places} focusId={diaryFocus} onFocused={() => setDiaryFocus(null)} /></Suspense>}
         {tab === 'mochila' && <Suspense fallback={null}><Mochila places={places} ctx={ctx} /></Suspense>}
       </main>
       {mapSeen && (
         <div className="absolute inset-0" style={{ visibility: tab === 'mapa' ? 'visible' : 'hidden' }}>
           <Suspense fallback={<div className="grid h-full place-items-center">Cargando mapa…</div>}>
-            <Mapa places={places} selectedId={selected?.id ?? navTarget?.id ?? null} onSelect={setSelected} route={routeLine} cursor={cursor} tracks={tracks} ctx={ctx} onGo={route} />
+            <Mapa places={visible} selectedId={selected?.id ?? navTarget?.id ?? null} onSelect={setSelected} route={routeLine} cursor={cursor} tracks={tracks} ctx={ctx} onGo={route} />
           </Suspense>
         </div>
       )}

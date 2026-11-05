@@ -14,6 +14,7 @@ export interface Prefs {
   names: string[] // quién suele venir
   contacts: { name: string; phone: string }[] // contactos de emergencia
   units: 'm' | 'ft'
+  winter: 'auto' | 'si' | 'no' // modo invierno cubierto
   nightMode: 'comoda' | 'aventura' | 'estrellas'
   discover: boolean // incluir sitios sugeridos por el relieve
   theme: 'auto' | 'claro' | 'oscuro' | 'rojo'
@@ -21,7 +22,7 @@ export interface Prefs {
 
 const DEFAULT: Prefs = {
   homeName: HOME.name, homeLat: HOME.lat, homeLng: HOME.lng,
-  marginMin: 60, consumption: 7, fuelPrice: 1.55, people: 3, threshold: -2, coldMargin: 0, names: ["Yo"], contacts: [], units: 'm', nightMode: 'comoda', discover: false, theme: 'auto',
+  marginMin: 60, consumption: 7, fuelPrice: 1.55, people: 3, threshold: -2, coldMargin: 0, names: ["Yo"], contacts: [], units: 'm', winter: 'auto', nightMode: 'comoda', discover: false, theme: 'auto',
 }
 
 const KEY = 'vivac.prefs'

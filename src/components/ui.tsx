@@ -14,6 +14,7 @@ const SCENE: Record<string, [string, string, string]> = {
   parking: ['#2b3f5e', '#c4bfb2', '#4a4f57'],
   cumbre: ['#1b2c44', '#ffd9a0', '#6b7280'],
   candidato: ['#241f4a', '#d9b8ff', '#3a4a6a'],
+  bunker: ['#1d2530', '#b8a58a', '#4a4036'],
 }
 
 export function Illustration({ kind, className = '' }: { kind: PlaceKind; className?: string }) {
@@ -44,6 +45,7 @@ export function Illustration({ kind, className = '' }: { kind: PlaceKind; classN
       {kind === 'abrigo' && (
         <g><path d="M120 210 Q130 140 210 135 Q290 140 285 210Z" fill="#5a5148" /><path d="M165 210 Q175 170 210 168 Q245 170 250 210Z" fill="#14202e" /></g>
       )}
+      {kind === 'bunker' && <g><path d="M130 210 V178 Q130 150 160 150 H250 Q280 150 280 178 V210Z" fill="#8d8a82" /><rect x="165" y="172" width="80" height="12" rx="3" fill="#14202e" /><path d="M118 210 H292" stroke="#5a5750" strokeWidth="8" /></g>}
       {(kind === 'vivac' || kind === 'candidato') && <g><path d="M200 140 L270 210 H130Z" fill="#f4efe6" /><path d="M200 170 L225 210 H175Z" fill="#14202e" /></g>}
       {kind === 'deseo' && <path d="M200 120 l14 32 35 4 -26 24 8 34 -31 -18 -31 18 8 -34 -26 -24 35 -4Z" fill="#ffd9a0" />}
       {kind === 'fuente' && <path d="M200 120 C230 160 240 175 200 205 C160 175 170 160 200 120Z" fill="#8fc7e8" />}

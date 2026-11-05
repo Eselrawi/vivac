@@ -49,7 +49,7 @@ const style: StyleSpecification = {
 }
 
 const GLYPH: Record<string, string> = {
-  refugio_libre: '🛖', refugio_pago: '€', parapeto: '🧱', abrigo: '🪨', vivac: '⛺', deseo: '⭐', fuente: '💧', parking: 'P', cumbre: '▲', candidato: '✨',
+  refugio_libre: '🛖', refugio_pago: '€', parapeto: '🧱', abrigo: '🪨', vivac: '⛺', deseo: '⭐', fuente: '💧', parking: 'P', cumbre: '▲', candidato: '✨', bunker: '🪖',
 }
 
 function addIcons(m: maplibregl.Map) {
