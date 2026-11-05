@@ -1,12 +1,12 @@
-import { useMemo, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { CloudOff, List, Map as MapIcon, RefreshCw, ThermometerSnowflake } from 'lucide-react'
-import MapView from '../components/MapView'
 import { Dot, Illustration, ScoreRing } from '../components/ui'
-import { evaluate, type Ctx, type Entry } from '../lib/plan'
+import { evaluate, evaluateLight, quickScore, type Ctx, type Entry } from '../lib/plan'
 import { hhmm } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
 import { SLEEP_KINDS, KIND_LABEL, type Place } from '../lib/types'
 
+const MapView = lazy(() => import('../components/MapView'))
 const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
 type Fee = 'todos' | 'gratis' | 'pago'
 type Near = 0 | 90 | 120
@@ -47,22 +47,40 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
   const [noSnow, setNoSnow] = useState(false)
   const [never, setNever] = useState(false)
   const [lowToo, setLowToo] = useState(false)
-  const [limit, setLimit] = useState(40)
+  const [limit, setLimit] = useState(15)
 
-  const sleepable = useMemo(() => places.filter((p) => SLEEP_KINDS.includes(p.kind) && !(p.kind === 'abrigo' && p.toponym)), [places])
-
-  // Todas las noches de todos los días (para los puntitos de la tira y el modo inverso).
-  const grid = useMemo(() => days.map((d) => sleepable.map((p) => evaluate(p, d, ctx))), [days, sleepable, ctx])
-  const dots = useMemo(
-    () => grid.map((col) => {
-      const top = col.filter(Boolean).map((e) => e!.score.score).sort((a, b) => b - a).slice(0, 3)
-      return top.length ? Math.round(top.reduce((a, b) => a + b, 0) / top.length) : null
-    }),
-    [grid],
+  const sleepable = useMemo(
+    () => places.filter((p) => SLEEP_KINDS.includes(p.kind) && !(p.kind === 'abrigo' && p.toponym) && (lowToo || p.kind === 'vivac' || p.kind === 'deseo' || (p.ele ?? 9999) >= 1200)),
+    [places, lowToo],
   )
 
+  // Solo el día elegido al abrir (rápido); los puntitos de los demás días se calculan después, por tandas.
+  const day = days[dayIdx]
+  const gridDay = useMemo(() => sleepable.map((p) => evaluateLight(p, day, ctx)), [sleepable, day, ctx])
+  const [dots, setDots] = useState<(number | null)[]>([])
+  useEffect(() => {
+    if (!ctx.wx) return
+    let alive = true
+    const out: (number | null)[] = []
+    let day = 0, idx = 0, tops: number[] = []
+    const step = () => {
+      if (!alive || day >= days.length) return
+      const end = Math.min(idx + 16, sleepable.length)
+      for (; idx < end; idx++) { const s = quickScore(sleepable[idx], days[day], ctx); if (s != null) tops.push(s) }
+      if (idx >= sleepable.length) {
+        tops.sort((a, b) => b - a)
+        const t3 = tops.slice(0, 3)
+        out.push(t3.length ? Math.round(t3.reduce((a, b) => a + b, 0) / t3.length) : null)
+        setDots([...out]); day++; idx = 0; tops = []
+      }
+      setTimeout(step, 16)
+    }
+    const t = setTimeout(step, 600)
+    return () => { alive = false; clearTimeout(t) }
+  }, [days, sleepable, ctx])
+
   const ranked = useMemo(() => {
-    const list = grid[dayIdx].filter((e): e is Entry => !!e).filter((e) => {
+    const list = gridDay.filter((e): e is Entry => !!e).filter((e) => {
       const p = e.place
       if (fee === 'gratis' && p.kind === 'refugio_pago') return false
       if (fee === 'pago' && p.kind !== 'refugio_pago') return false
@@ -72,16 +90,15 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
       if (stars && !(e.stats.cloud < 30 && e.moon.fraction < 0.4)) return false
       if (noSnow && (e.stats.snowDepth >= 0.03 || e.stats.snow > 0.2)) return false
       if (never && p.visited) return false
-      if (!lowToo && p.kind !== 'vivac' && p.kind !== 'deseo' && (p.ele ?? 9999) < 1200) return false
       return true
     })
     const rank = (e: Entry) => e.score.score - (e.place.unnamed ? 25 : 0)
     return list.sort((a, b) => rank(b) - rank(a) || (a.access[0]?.totalMin ?? 999) - (b.access[0]?.totalMin ?? 999))
-  }, [grid, dayIdx, fee, near, techo, parapeto, stars, noSnow, never, lowToo])
+  }, [gridDay, fee, near, techo, parapeto, stars, noSnow, never])
 
-  const top = ranked[0]
-  const d = days[dayIdx]
-  const dayLabel = dayIdx === 0 ? 'hoy' : dayIdx === 1 ? 'mañana' : d.toLocaleDateString('es-ES', { weekday: 'long' })
+  const heroes = useMemo(() => ranked.slice(0, 3).map((e) => evaluate(e.place, day, ctx) ?? e), [ranked, day, ctx])
+  const top = heroes[0]
+  const dayLabel = dayIdx === 0 ? 'hoy' : dayIdx === 1 ? 'mañana' : day.toLocaleDateString('es-ES', { weekday: 'long' })
   const scored = useMemo(() => ranked.map((e) => ({ ...e.place, score: e.score.score })), [ranked])
   const pick = (id: string) => { const p = places.find((x) => x.id === id); if (p) onOpen(p) }
 
@@ -101,7 +118,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
           <button key={i} role="tab" aria-selected={i === dayIdx} onClick={() => onDay(i)} className="tap flex min-w-[4.4rem] flex-col items-center rounded-2xl px-3 py-2 font-semibold transition-colors" style={{ background: i === dayIdx ? 'var(--accent)' : 'var(--surface)', color: i === dayIdx ? '#fff' : 'var(--ink)' }}>
             <span className="text-xs opacity-80">{i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : DIAS[dd.getDay()]}</span>
             <span className="text-xl leading-tight">{dd.getDate()}</span>
-            <span className="mt-0.5 rounded-full" style={{ boxShadow: i === dayIdx ? "0 0 0 2px #fff" : "none" }}><Dot score={dots[i]} size={9} /></span>
+            <span className="mt-1 flex" style={{ lineHeight: 0 }}><Dot score={dots[i] ?? null} size={i === dayIdx ? 11 : 9} /></span>
           </button>
         ))}
       </div>
@@ -139,7 +156,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
         </div>
       ) : view === 'mapa' ? (
         <div className="relative mx-4 mt-4 overflow-hidden rounded-3xl" style={{ height: '58vh' }}>
-          <MapView places={scored} onSelect={(p) => pick(p.id)} is3D={false} layer="mtn" scoreMode />
+          <Suspense fallback={<div className="grid h-full place-items-center">Cargando mapa…</div>}><MapView places={scored} onSelect={(p) => pick(p.id)} is3D={false} layer="mtn" scoreMode /></Suspense>
         </div>
       ) : ranked.length === 0 ? (
         <div className="mx-4 mt-6 rounded-3xl p-8 text-center" style={{ background: 'var(--surface)' }}>
@@ -174,9 +191,9 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
                 </div>
               </button>
             )}
-            {ranked.length > 1 && (
+            {heroes.length > 1 && (
               <div className="mt-3 grid grid-cols-2 gap-3">
-                {ranked.slice(1, 3).map((e) => (
+                {heroes.slice(1, 3).map((e) => (
                   <button key={e.place.id} onClick={() => onOpen(e.place)} className="overflow-hidden rounded-3xl text-left shadow-sm active:scale-[0.98]" style={{ background: 'var(--surface)' }}>
                     <div className="relative h-24"><Illustration kind={e.place.kind} className="h-full w-full" /><div className="absolute right-2 top-2 rounded-full p-0.5" style={{ background: 'var(--surface)' }}><ScoreRing score={e.score.score} size={40} /></div></div>
                     <div className="p-3"><p className="line-clamp-2 font-bold leading-tight">{e.place.name}</p><p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>{keyData(e)}</p></div>
@@ -203,7 +220,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
                 </li>
               ))}
             </ul>
-            {ranked.length > limit && <button onClick={() => setLimit(limit + 40)} className="tap mt-3 w-full rounded-2xl font-semibold" style={{ background: 'var(--surface)' }}>Ver más</button>}
+            {ranked.length > limit && <button onClick={() => setLimit(limit + 20)} className="tap mt-3 w-full rounded-2xl font-semibold" style={{ background: 'var(--surface)' }}>Ver más</button>}
           </section>
         </>
       )}

@@ -1,11 +1,12 @@
 import { db } from './db'
-import { supabase } from './supabase'
+import { getSb } from './sb'
 
 let running = false
 
 /** Descarga los vivacs del grupo que aún no están en este móvil. */
 export async function pullGroup(): Promise<number> {
   if (!navigator.onLine) return 0
+  const supabase = await getSb()
   const { data } = await supabase.from('vivacs').select('id,name,lat,lng,ele,slept_at,sleep_rating,notes,photo_path,created_by,weather')
   let n = 0
   for (const v of data ?? []) {
@@ -29,6 +30,7 @@ export async function syncNow(groupId: string): Promise<number> {
   running = true
   let n = 0
   try {
+    const supabase = await getSb()
     const { data: s } = await supabase.auth.getSession()
     const uid = s.session?.user.id
     if (!uid) return 0

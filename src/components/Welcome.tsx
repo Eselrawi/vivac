@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { MapPin, Share, SquarePlus, Users } from 'lucide-react'
 import { canPromptInstall, detectPlatform, isStandalone, promptInstall } from '../lib/platform'
 
-export const WELCOME_KEY = 'vivac.welcome'
+import { WELCOME_KEY } from '../lib/platform'
 
 export function InstallSteps() {
   const p = detectPlatform()

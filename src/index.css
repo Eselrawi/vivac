@@ -68,7 +68,9 @@ body {
   user-select: none;
 }
 h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
-button { font: inherit; color: inherit; touch-action: manipulation; }
+@layer base {
+  button { font: inherit; color: inherit; touch-action: manipulation; }
+}
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 .tap { min-height: 48px; min-width: 48px; }

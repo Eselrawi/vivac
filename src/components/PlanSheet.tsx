@@ -18,6 +18,7 @@ export default function PlanSheet({ place, day, ctx, onClose }: { place: Place |
   const [name, setName] = useState('')
   const [parking, setParking] = useState<string | undefined>()
   const [saved, setSaved] = useState(false)
+  const [back, setBack] = useState(() => { const d = new Date(); d.setDate(d.getDate() + 1); d.setHours(18, 0, 0, 0); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16) })
   const gear = useLive(() => db.gear.toArray(), [])
   const e = useMemo(() => (place ? evaluate(place, day, ctx, parking) : null), [place, day, ctx, parking])
   const who = going.length ? going : ['Yo']
@@ -47,6 +48,12 @@ export default function PlanSheet({ place, day, ctx, onClose }: { place: Place |
     const t = text()
     if (navigator.share) await navigator.share({ title: 'Salida', text: t }).catch(() => {})
     else window.open(`https://wa.me/?text=${encodeURIComponent(t)}`, '_blank')
+  }
+  const warn = (phone?: string) => {
+    if (!place) return
+    const when = new Date(back).toLocaleString('es-ES', { weekday: 'long', hour: '2-digit', minute: '2-digit' })
+    const t = `Aviso de salida: voy a ${place.name} (${KIND_LABEL[place.kind]}) con ${who.join(', ')}. Salimos ${dateTxt}${a ? ` desde ${a.parking.name}` : ''}. Hora prevista de vuelta: ${when}. Ruta: https://www.google.com/maps?q=${place.lat},${place.lng}. Si pasada esa hora no he dado señales, llama al 112 y dales este punto.`
+    window.open(`https://wa.me/${phone ? phone.replace(/[^0-9]/g, '') : ''}?text=${encodeURIComponent(t)}`, '_blank')
   }
   const close = () => { setStep(0); setSaved(false); setParking(undefined); onClose() }
 
@@ -105,6 +112,16 @@ export default function PlanSheet({ place, day, ctx, onClose }: { place: Place |
                 ))}
               </ul>
               <p className="mt-3 text-sm" style={{ color: 'var(--ink-soft)' }}>Tu mochila personal pesa unos {(totalG(lines, true) / 1000).toFixed(1)} kg. Revisa la lista completa en la pestaña Mochila.</p>
+              <div className="mt-4 rounded-2xl p-3" style={{ background: 'var(--surface)' }}>
+                <p className="font-semibold">Aviso de salida a un contacto</p>
+                <label className="mt-1 block text-sm" style={{ color: 'var(--ink-soft)' }}>Hora prevista de vuelta
+                  <input type="datetime-local" value={back} onChange={(e) => setBack(e.target.value)} className="tap mt-1 w-full rounded-xl border px-3" style={{ background: 'var(--bg)', borderColor: 'var(--line)', color: 'var(--ink)', userSelect: 'text' }} />
+                </label>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {ctx.prefs.contacts.map((c) => <button key={c.phone} onClick={() => warn(c.phone)} className="tap rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--bg)' }}>Avisar a {c.name}</button>)}
+                  <button onClick={() => warn()} className="tap rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--bg)' }}>Elegir contacto…</button>
+                </div>
+              </div>
               {saved && <p className="mt-3 flex items-center gap-2 font-bold" style={{ color: 'var(--accent)' }}><Check /> Salida guardada</p>}
             </div>
           )}

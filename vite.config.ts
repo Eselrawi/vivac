@@ -34,11 +34,13 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         navigateFallback: `${base}index.html`,
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
+        globIgnores: ['**/graph.json'],
         runtimeCaching: [
+          { urlPattern: /\/data\/graph\.json$/, handler: 'CacheFirst', options: { cacheName: 'rutas', cacheableResponse: { statuses: [200] } } },
           {
             urlPattern: /^https:\/\/(s3\.amazonaws\.com\/elevation-tiles-prod|www\.ign\.es\/wmts)\/.*/,
             handler: 'CacheFirst',
-            options: { cacheName: 'tiles', expiration: { maxEntries: 3000, maxAgeSeconds: 60 * 60 * 24 * 60 }, cacheableResponse: { statuses: [0, 200] } },
+            options: { cacheName: 'tiles', cacheableResponse: { statuses: [0, 200] } },
           },
         ],
       },

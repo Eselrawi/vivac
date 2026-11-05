@@ -1,18 +1,21 @@
 import { useMemo, useState } from 'react'
 import { Drawer } from 'vaul'
 import { AlertTriangle, BadgeCheck, CalendarCheck, Car, Globe, Phone, ExternalLink, Footprints, Navigation, Share2, Sunrise, Sunset, Wallet } from 'lucide-react'
-import { KIND_LABEL, type Place } from '../lib/types'
-import { evaluate, setOverride, type Ctx } from '../lib/plan'
+import * as SunCalc from 'suncalc'
+import { db, useLive } from '../lib/db'
+import { KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
+import { evaluate, evaluateLight, setOverride, type Ctx } from '../lib/plan'
 import { DGT_URL, hhmm, isPass } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
 import { cellKey } from '../lib/weather'
 import { usePhotos } from '../lib/photos'
-import { supabase, GROUP_KEY } from '../lib/supabase'
+import { getSb, GROUP_KEY } from '../lib/sb'
 import { Dot, Illustration, NightChart, ScoreRing, WindRose } from './ui'
 
 const DAY = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb']
 
 interface Props {
+  places: Place[]
   place: Place | null
   days: Date[]
   dayIdx: number
@@ -23,7 +26,7 @@ interface Props {
   onPlan: (p: Place, dayIdx: number) => void
 }
 
-export default function PlaceSheet({ place, days, dayIdx, ctx, onDay, onClose, onRoute, onPlan }: Props) {
+export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, onClose, onRoute, onPlan }: Props) {
   const [picked, setPicked] = useState<string | undefined>()
   const entries = useMemo(() => (place ? days.map((d) => evaluate(place, d, ctx, picked)) : []), [place, days, ctx, picked])
   const e = entries[dayIdx] ?? null
@@ -37,6 +40,27 @@ export default function PlaceSheet({ place, days, dayIdx, ctx, onDay, onClose, o
     else window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
+  const sleepKind = !!place && SLEEP_KINDS.includes(place.kind)
+  const water = useLive<Array<{ at: number; state: 'agua' | 'seca' | 'helada' }>>(async () => (place ? (((await db.kv.get(`water:${place.id}`))?.v as Array<{ at: number; state: 'agua' | 'seca' | 'helada' }>) ?? []) : []), [])
+  const reportWater = async (state: 'agua' | 'seca' | 'helada') => {
+    if (!place) return
+    await db.kv.put({ k: `water:${place.id}`, v: [{ at: Date.now(), state }, ...water].slice(0, 12) })
+    const gid = localStorage.getItem(GROUP_KEY)
+    if (gid && navigator.onLine) await (await getSb()).from('place_notes').insert({ group_id: gid, place_ref: place.id, kind: 'water', data: { state } })
+  }
+  // Plan B: otro sitio cercano que esa noche vaya claramente mejor.
+  const planB = useMemo(() => {
+    if (!place || !sleepKind || !e || e.score.score >= 55) return null
+    const day = days[dayIdx]
+    let best: { p: Place; s: number } | null = null
+    for (const q of places) {
+      if (q.id === place.id || !SLEEP_KINDS.includes(q.kind) || (q.ele ?? 0) < 1200 || q.unnamed) continue
+      if (Math.abs(q.lat - place.lat) > 0.12 || Math.abs(q.lng - place.lng) > 0.15) continue
+      const x = evaluateLight(q, day, ctx)
+      if (x && x.score.score >= e.score.score + 20 && (!best || x.score.score > best.s)) best = { p: q, s: x.score.score }
+    }
+    return best
+  }, [place, sleepKind, e, days, dayIdx, places, ctx])
   const photos = usePhotos(place)
   const [shot, setShot] = useState(0)
   const a = e?.access[0]
@@ -44,7 +68,7 @@ export default function PlaceSheet({ place, days, dayIdx, ctx, onDay, onClose, o
     if (!place) return
     setOverride(place.id, { verified: true })
     const gid = localStorage.getItem(GROUP_KEY)
-    if (gid && navigator.onLine) await supabase.from('place_notes').insert({ group_id: gid, place_ref: place.id, kind: 'confirm', data: {} })
+    if (gid && navigator.onLine) await (await getSb()).from('place_notes').insert({ group_id: gid, place_ref: place.id, kind: 'confirm', data: {} })
   }
   const sunsetOk = e && a && e.leave
   const dayName = (d: Date, i: number) => (i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : `${DAY[d.getDay()]} ${d.getDate()}`)
@@ -102,23 +126,34 @@ export default function PlaceSheet({ place, days, dayIdx, ctx, onDay, onClose, o
                 </div>
                 <p className="mt-2 text-[11px]" style={{ color: 'var(--ink-soft)' }}>Fuente: {place.source}</p>
 
-                <h3 className="mt-6 text-lg font-semibold">Esta noche</h3>
-                <div className="no-scrollbar -mx-5 mt-2 flex gap-2 overflow-x-auto px-5">
+                {place.kind === 'fuente' && (
+                  <div className="mt-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
+                    <p className="font-semibold">💧 ¿Cómo está el agua?</p>
+                    <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>{water[0] ? `Último aviso (${new Date(water[0].at).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}): ${water[0].state === 'agua' ? 'sale agua' : water[0].state === 'seca' ? 'seca' : 'helada'}` : 'Nadie ha avisado aún. En verano suelen secarse y en invierno helarse: confirmadlo.'}</p>
+                    <div className="mt-2 grid grid-cols-3 gap-2 text-sm font-semibold">
+                      {([['agua', '💧 Sale agua'], ['seca', '🏜️ Seca'], ['helada', '🧊 Helada']] as const).map(([k, l]) => <button key={k} onClick={() => reportWater(k)} className="tap rounded-2xl" style={{ background: 'var(--bg)' }}>{l}</button>)}
+                    </div>
+                  </div>
+                )}
+
+                {sleepKind && <h3 className="mt-6 text-lg font-semibold">Esta noche</h3>}
+                {sleepKind && <div className="no-scrollbar -mx-5 mt-2 flex gap-2 overflow-x-auto px-5">
                   {days.map((d, i) => (
                     <button key={i} onClick={() => onDay(i)} className="tap flex min-w-[4.2rem] flex-col items-center rounded-2xl px-2 py-2 text-xs font-semibold" style={{ background: i === dayIdx ? 'var(--accent)' : 'var(--surface)', color: i === dayIdx ? '#fff' : 'var(--ink)', outline: i === bestDay ? '2px solid #e5b23a' : 'none' }}>
                       <span>{dayName(d, i)}</span>
                       <span className="mt-1 flex items-center gap-1"><Dot score={entries[i]?.score.score ?? null} size={10} /><b className="text-sm">{entries[i]?.score.score ?? '–'}</b></span>
                     </button>
                   ))}
-                </div>
-                {bestDay >= 0 && <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>Mejor día para ir aquí: <b>{dayName(days[bestDay], bestDay)}</b> ({entries[bestDay]!.score.score} puntos)</p>}
+                </div>}
+                {sleepKind && bestDay >= 0 && <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>Mejor día para ir aquí: <b>{dayName(days[bestDay], bestDay)}</b> ({entries[bestDay]!.score.score} puntos)</p>}
 
-                {!ctx.wx ? (
+                {!sleepKind ? null : !ctx.wx ? (
                   <p className="mt-4 rounded-2xl p-4 text-sm" style={{ background: 'var(--surface)' }}>Cargando la previsión… Si no hay cobertura, se verá la última guardada.</p>
                 ) : !e ? (
                   <p className="mt-4 rounded-2xl p-4 text-sm" style={{ background: 'var(--surface)' }}>Aún no hay previsión para ese día en este punto.</p>
                 ) : (
                   <>
+                    {planB && <button onClick={() => { setPicked(undefined); onClose(); window.dispatchEvent(new CustomEvent('vivac-open', { detail: planB.p.id })) }} className="tap mt-4 block w-full rounded-3xl p-4 text-left" style={{ background: '#e5b23a33' }}><b>Plan B:</b> {planB.p.name} va mucho mejor esa noche ({planB.s} puntos). Toca para verlo.</button>}
                     <div className="mt-4 flex items-center gap-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
                       <ScoreRing score={e.score.score} size={72} />
                       <p className="font-display text-lg leading-snug">{e.text}</p>
@@ -142,7 +177,7 @@ export default function PlaceSheet({ place, days, dayIdx, ctx, onDay, onClose, o
                       </div>
                       <div className="rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
                         <Sunrise size={18} className="mb-1" />Amanece a las <b className="block text-lg">{hhmm(e.night.sunrise)}</b>
-                        <span className="text-xs" style={{ color: 'var(--ink-soft)' }}>{dayName(new Date(days[dayIdx].getTime() + 86400000), dayIdx + 1).toLowerCase()}, en {place.name}</span>
+                        <span className="text-xs" style={{ color: 'var(--ink-soft)' }}>{dayName(new Date(days[dayIdx].getTime() + 86400000), dayIdx + 1).toLowerCase()}, en {place.name}{(() => { const az = (SunCalc.getPosition(e.night.sunrise, place.lat, place.lng).azimuth * 180) / Math.PI + 180; return ` · sale por el ${compass(az)}` })()}</span>
                       </div>
                     </div>
 

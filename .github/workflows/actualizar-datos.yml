@@ -1,0 +1,36 @@
+name: Actualizar datos de la sierra
+
+# Una vez al mes: refugios y fuentes de OpenStreetMap, altitudes y tiempos en coche desde casa.
+on:
+  schedule:
+    - cron: '0 5 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  datos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Descargar OpenStreetMap
+        id: osm
+        continue-on-error: true
+        run: node scripts/fetch-osm.mjs
+      - name: Reconstruir el catálogo
+        if: steps.osm.outcome == 'success'
+        run: node scripts/build-places.mjs
+      - name: Altitudes y tiempos en coche
+        run: node scripts/enrich.mjs
+      - name: Guardar cambios
+        run: |
+          git config user.name "vivac-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/data data/review
+          git diff --cached --quiet || (git commit -m "Datos de la sierra actualizados (automático)" && git push)

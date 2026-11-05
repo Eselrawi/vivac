@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
-import { GROUP_KEY, JOIN_KEY, supabase } from './supabase'
+import { getSb, GROUP_KEY, JOIN_KEY } from './sb'
 import { syncNow } from './sync'
 
 export interface GroupInfo { id: string; name: string; invite_code: string }
@@ -12,6 +12,9 @@ if (q) {
   history.replaceState(null, '', location.pathname)
 }
 
+/** ¿Venimos de un enlace mágico? Entonces Supabase debe procesarlo ya. */
+const comingFromMagicLink = /access_token|refresh_token|code=/.test(location.hash + location.search)
+
 export function useAccount() {
   const [session, setSession] = useState<Session | null>(null)
   const [group, setGroup] = useState<GroupInfo | null>(null)
@@ -19,23 +22,33 @@ export function useAccount() {
   const [syncing, setSyncing] = useState(false)
 
   const loadGroup = useCallback(async () => {
-    const { data: s } = await supabase.auth.getSession()
+    const sb = await getSb()
+    const { data: s } = await sb.auth.getSession()
     if (!s.session) { setGroup(null); return }
     const code = localStorage.getItem(JOIN_KEY)
     if (code) {
-      const { error } = await supabase.rpc('join_group', { code })
+      const { error } = await sb.rpc('join_group', { code })
       if (!error) localStorage.removeItem(JOIN_KEY)
     }
-    const { data } = await supabase.from('groups').select('id,name,invite_code').limit(1)
+    const { data } = await sb.from('groups').select('id,name,invite_code').limit(1)
     const g = (data?.[0] as GroupInfo | undefined) ?? null
     setGroup(g)
     if (g) localStorage.setItem(GROUP_KEY, g.id)
   }, [])
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => { setSession(data.session); setReady(true) })
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s))
-    return () => sub.subscription.unsubscribe()
+    let off: (() => void) | undefined
+    let dead = false
+    const start = async () => {
+      const sb = await getSb()
+      if (dead) return
+      const { data } = await sb.auth.getSession()
+      setSession(data.session); setReady(true)
+      const { data: sub } = sb.auth.onAuthStateChange((_e, s) => setSession(s))
+      off = () => sub.subscription.unsubscribe()
+    }
+    const t = setTimeout(start, comingFromMagicLink || localStorage.getItem(JOIN_KEY) ? 0 : 2500)
+    return () => { dead = true; clearTimeout(t); off?.() }
   }, [])
 
   useEffect(() => { if (session) void loadGroup(); else setGroup(null) }, [session, loadGroup])

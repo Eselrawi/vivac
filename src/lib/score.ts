@@ -68,7 +68,13 @@ export function nightFor(day: Date, lat: number, lng: number, ele = 0): Night {
 
 export function statsFor(cell: Cell | undefined, p: Place, night: Night): NightStats | null {
   if (!cell) return null
-  const hs = cell.hours.filter((h) => h.t >= night.from.getTime() && h.t <= night.to.getTime())
+  const a = night.from.getTime(), b = night.to.getTime()
+  const H = cell.hours
+  let lo = 0, hi = H.length
+  while (lo < hi) { const m = (lo + hi) >> 1; if (H[m].t < a) lo = m + 1; else hi = m }
+  let end = lo
+  while (end < H.length && H[end].t <= b) end++
+  const hs = H.slice(lo, end)
   if (hs.length < 3) return null
   const dz = (p.ele ?? cell.elev) - cell.elev
   const adj = (h: Hour) => h.temp - 0.0065 * dz

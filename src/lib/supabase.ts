@@ -8,5 +8,3 @@ export const supabase = createClient(URL, KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
 })
 
-export const GROUP_KEY = 'vivac.group'
-export const JOIN_KEY = 'vivac.join'

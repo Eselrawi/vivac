@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { db } from './db'
 import type { Place } from './types'
 
@@ -29,8 +29,8 @@ const VARS = ['temperature_2m', 'wind_speed_10m', 'wind_gusts_10m', 'wind_direct
 type Raw = Record<string, (number | null)[]>
 const mean = (v: number[]) => (v.length ? v.reduce((a, b) => a + b, 0) / v.length : NaN)
 
-function merge(raw: Raw, i: number): Hour | null {
-  const get = (name: string) => MODELS.map((m) => raw[`${name}_${m}`]?.[i]).filter((x): x is number => typeof x === 'number')
+function merge(raw: Raw, i: number, models: string[]): Hour | null {
+  const get = (name: string) => models.map((m) => raw[`${name}_${m}`]?.[i]).filter((x): x is number => typeof x === 'number')
   const temps = get('temperature_2m')
   if (!temps.length) return null
   const dirs = get('wind_direction_10m')
@@ -66,7 +66,7 @@ export function cellsFor(places: Place[]) {
   return [...m.values()]
 }
 
-export async function fetchWeather(places: Place[], days = 10): Promise<WxStore> {
+export async function fetchWeather(places: Place[], days = 10, models: string[] = MODELS): Promise<WxStore> {
   const cs = cellsFor(places)
   const elev = cs.map((c) => Math.round(c.eles.length ? c.eles.sort((a, b) => a - b)[Math.floor(c.eles.length / 2)] : 1500))
   const qs = new URLSearchParams({
@@ -74,7 +74,7 @@ export async function fetchWeather(places: Place[], days = 10): Promise<WxStore>
     longitude: cs.map((c) => c.lng.toFixed(3)).join(','),
     elevation: elev.join(','),
     hourly: VARS.join(','),
-    models: MODELS.join(','),
+    models: models.join(','),
     timezone: 'Europe/Madrid',
     timeformat: 'unixtime',
     forecast_days: String(days),
@@ -88,7 +88,7 @@ export async function fetchWeather(places: Place[], days = 10): Promise<WxStore>
   arr.forEach((loc, k) => {
     const hours: Hour[] = []
     for (let i = 0; i < loc.hourly.time.length; i++) {
-      const h = merge(loc.hourly, i)
+      const h = merge(loc.hourly, i, models)
       if (h) hours.push(h)
     }
     cells[cs[k].key] = { key: cs[k].key, lat: cs[k].lat, lng: cs[k].lng, elev: loc.elevation ?? elev[k], hours }
@@ -100,6 +100,8 @@ const STALE = 3 * 3600 * 1000
 
 export function useWeather(places: Place[]) {
   const [wx, setWx] = useState<WxStore | null>(null)
+  const wxRef = useRef<WxStore | null>(null)
+  wxRef.current = wx
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const key = places.length
@@ -109,6 +111,8 @@ export function useWeather(places: Place[]) {
     setLoading(true)
     setError(false)
     try {
+      // Primero un solo modelo (llega antes y pinta la pantalla); después los tres para afinar y medir la fiabilidad.
+      if (!wxRef.current) setWx(await fetchWeather(places, 10, ['ecmwf_ifs025']))
       const w = await fetchWeather(places)
       setWx(w)
       await db.kv.put({ k: 'wx', v: w })

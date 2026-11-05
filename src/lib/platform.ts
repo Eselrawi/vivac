@@ -1,3 +1,5 @@
+export const WELCOME_KEY = 'vivac.welcome'
+
 export type Platform = 'ios' | 'android' | 'otro'
 
 export function detectPlatform(): Platform {

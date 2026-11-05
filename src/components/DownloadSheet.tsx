@@ -22,6 +22,7 @@ export default function DownloadSheet({ open, onClose, view }: { open: boolean; 
     ctl.current = new AbortController()
     setResult(''); setProg({ done: 0, total: list.length })
     await navigator.storage?.persist?.()
+    await fetch(`${import.meta.env.BASE_URL}data/graph.json`).catch(() => {})
     const r = await downloadTiles(list, (done, total) => setProg({ done, total }), ctl.current.signal)
     setProg(null)
     setResult(ctl.current.signal.aborted ? 'Descarga cancelada.' : r.failed ? `Listo, pero ${r.failed} teselas fallaron. Vuelve a pulsar para completar.` : '¡Zona descargada! Ya puedes usar el mapa sin cobertura.')

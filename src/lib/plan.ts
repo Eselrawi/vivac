@@ -28,13 +28,44 @@ export interface Ctx {
   prefs: Prefs
 }
 
+let accKey: unknown[] = []
+const accCache = new Map<string, AccessOption[]>()
+function accessCached(place: Place, ctx: Ctx): AccessOption[] {
+  if (accKey[0] !== ctx.drive || accKey[1] !== ctx.parkings) { accCache.clear(); accKey = [ctx.drive, ctx.parkings] }
+  let a = accCache.get(place.id)
+  if (!a) { a = accessFor(place, ctx.parkings, ctx.drive); accCache.set(place.id, a) }
+  return a
+}
+
 /** Evalúa una noche concreta en un sitio. Devuelve null si aún no hay previsión para ese día. */
 export function evaluate(place: Place, day: Date, ctx: Ctx, pickedParking?: string): Entry | null {
+  return build(place, day, ctx, pickedParking, false)
+}
+
+const moonMemo = new Map<number, ReturnType<typeof moonInfo>>()
+function moonCached(sunset: Date) {
+  const k = Math.floor(sunset.getTime() / 3600000 / 12)
+  let m = moonMemo.get(k)
+  if (!m) { m = moonInfo(new Date(sunset.getTime() + 6 * 3600000)); moonMemo.set(k, m) }
+  return m
+}
+
+/** Versión ligera (sin frase ni coste) para listas largas. */
+export function evaluateLight(place: Place, day: Date, ctx: Ctx): Entry | null {
+  return build(place, day, ctx, undefined, true)
+}
+
+/** Solo la nota (sin frase, luna ni coste): para los puntitos de colores de la tira de días. */
+export function quickScore(place: Place, day: Date, ctx: Ctx): number | null {
+  return build(place, day, ctx, undefined, true)?.score.score ?? null
+}
+
+function build(place: Place, day: Date, ctx: Ctx, pickedParking: string | undefined, light: boolean): Entry | null {
   if (!ctx.wx) return null
   const night = nightFor(day, place.lat, place.lng, place.ele)
   const stats = statsFor(ctx.wx.cells[cellKey(place.lat, place.lng)], place, night)
   if (!stats) return null
-  const access = accessFor(place, ctx.parkings, ctx.drive)
+  const access = [...accessCached(place, ctx)]
   if (pickedParking) {
     const i = access.findIndex((a) => a.parking.id === pickedParking)
     if (i > 0) access.unshift(...access.splice(i, 1))
@@ -44,6 +75,7 @@ export function evaluate(place: Place, day: Date, ctx: Ctx, pickedParking?: stri
   // Salir antes de las 11:00 para llegar con luz es poco realista: contamos llegada de noche.
   const arriveDark = leave ? leave.getHours() < 11 : false
   const score = scoreNight(place, stats, { threshold: ctx.prefs.threshold - ctx.prefs.coldMargin, arriveDark })
+  if (light) return { place, night, stats, score, text: '', conf: { label: 'media', text: '' }, access, leave, cost: null, moon: moonCached(night.sunset) }
   return {
     place, night, stats, score,
     text: phrase(stats, score, new Date(night.sunset.getTime() + 6 * 3600000)),
