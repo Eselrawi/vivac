@@ -24,6 +24,7 @@ let worker: Worker | null = null
 let ready: Promise<void> | null = null
 let seq = 0
 const pending = new Map<number, (r: RouteOut) => void>()
+const edgePending = new Map<number, (r: { ok: boolean; edges?: Array<{ c: number; p: number[] }> }) => void>()
 
 function ensure(): Promise<void> {
   if (ready) return ready
@@ -32,10 +33,21 @@ function ensure(): Promise<void> {
     worker!.onmessage = (ev) => {
       if (ev.data.type === 'ready') res()
       else if (ev.data.type === 'result') { pending.get(ev.data.id)?.(ev.data); pending.delete(ev.data.id) }
+      else if (ev.data.type === 'edges') { edgePending.get(ev.data.id)?.(ev.data); edgePending.delete(ev.data.id) }
     }
     worker!.postMessage({ type: 'load', url: `${import.meta.env.BASE_URL}data/graph.json` })
   })
   return ready
+}
+
+/** Pistas y senderos del grafo que caen dentro de un recuadro (lng oeste, lat sur, lng este, lat norte). */
+export async function queryEdges(bbox: [number, number, number, number], max = 9000): Promise<Array<{ c: number; p: number[] }>> {
+  await ensure()
+  const id = ++seq
+  return new Promise((res) => {
+    edgePending.set(id, (r) => res(r.edges ?? []))
+    worker!.postMessage({ type: 'edges', id, bbox, max })
+  })
 }
 
 export async function computeRoute(from: [number, number], to: [number, number], profile: Profile): Promise<RouteOut> {

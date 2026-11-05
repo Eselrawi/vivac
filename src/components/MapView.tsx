@@ -7,6 +7,7 @@ import { PMTiles, Protocol } from 'pmtiles'
 import { layers as pmLayers, namedFlavor } from '@protomaps/basemaps'
 import { KIND_COLOR, type Place } from '../lib/types'
 import { HybridSource, PM_URL } from '../lib/vec'
+import { queryEdges } from '../lib/router'
 
 maplibregl.setWorkerUrl(workerUrl)
 const protocol = new Protocol()
@@ -99,9 +100,16 @@ interface Props {
   initialZoom?: number
   onMoveEnd?: (lng: number, lat: number, zoom: number) => void
   controls?: boolean
+  /** Pistas y senderos (con dificultad) y rutas señalizadas GR, PR y SL. */
+  trails?: boolean
+  /** Ubicación y rumbo propios (flecha). */
+  me?: { lng: number; lat: number; heading: number | null } | null
+  follow?: boolean
 }
 
-export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false, onLongPress, initialCenter, initialZoom, onMoveEnd, controls = true }: Props) {
+export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false, onLongPress, initialCenter, initialZoom, onMoveEnd, controls = true, trails = false, me = null, follow = false }: Props) {
+  const trailsRef = useRef(trails)
+  trailsRef.current = trails
   const moveRef = useRef(onMoveEnd)
   moveRef.current = onMoveEnd
   const longRef = useRef(onLongPress)
@@ -120,7 +128,20 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
   useEffect(() => {
     if (!el.current) return
     const m = new maplibregl.Map({ container: el.current, style, center: initialCenter ?? [-3.97, 40.8], zoom: initialZoom ?? 10.2, pitch: initialCenter ? 0 : 55, bearing: initialCenter ? 0 : -15, maxPitch: 80 })
-    m.on('moveend', () => { const c = m.getCenter(); moveRef.current?.(c.lng, c.lat, m.getZoom()) })
+    let trailTimer: ReturnType<typeof setTimeout> | null = null
+    const refreshTrails = () => {
+      if (trailTimer) clearTimeout(trailTimer)
+      trailTimer = setTimeout(async () => {
+        const src = m.getSource('caminos') as GeoJSONSource | undefined
+        if (!src || !trailsRef.current) return
+        if (m.getZoom() < 11) { src.setData({ type: 'FeatureCollection', features: [] } as FeatureCollection); return }
+        const b = m.getBounds()
+        const edges = await queryEdges([b.getWest(), b.getSouth(), b.getEast(), b.getNorth()], m.getZoom() < 12.5 ? 5000 : 12000)
+        src.setData({ type: 'FeatureCollection', features: edges.map((e) => ({ type: 'Feature', properties: { c: e.c }, geometry: { type: 'LineString', coordinates: e.p.reduce<number[][]>((a, v, i) => { if (i % 2 === 0) a.push([v, e.p[i + 1]]); return a }, []) } })) } as FeatureCollection)
+      }, 220)
+    }
+    ;(m as unknown as { __refreshTrails: () => void }).__refreshTrails = refreshTrails
+    m.on('moveend', () => { const c = m.getCenter(); moveRef.current?.(c.lng, c.lat, m.getZoom()); refreshTrails() })
     m.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left')
     if (controls) m.addControl(new maplibregl.GeolocateControl({ trackUserLocation: true, positionOptions: { enableHighAccuracy: true } }), 'bottom-right')
     map.current = m
@@ -171,6 +192,15 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       addIcons(m)
       const empty = { type: 'FeatureCollection', features: [] } as FeatureCollection
       m.addSource('route', { type: 'geojson', data: empty })
+      m.addSource('caminos', { type: 'geojson', data: empty })
+      m.addSource('senderos', { type: 'geojson', data: `${import.meta.env.BASE_URL}data/senderos.geojson` })
+      const T = { visibility: 'none' as const }
+      m.addLayer({ id: 'camino-pista', type: 'line', source: 'caminos', minzoom: 11, filter: ['in', ['get', 'c'], ['literal', [0, 1]]], layout: T, paint: { 'line-color': '#9b8159', 'line-width': ['interpolate', ['linear'], ['zoom'], 11, 1, 15, 2.6], 'line-opacity': 0.9 } })
+      m.addLayer({ id: 'camino-sendero', type: 'line', source: 'caminos', minzoom: 11, filter: ['==', ['get', 'c'], 2], layout: T, paint: { 'line-color': '#e08a35', 'line-width': ['interpolate', ['linear'], ['zoom'], 11, 0.9, 15, 2], 'line-dasharray': [2, 1.4] } })
+      m.addLayer({ id: 'camino-dificil', type: 'line', source: 'caminos', minzoom: 11, filter: ['in', ['get', 'c'], ['literal', [3, 5]]], layout: T, paint: { 'line-color': '#c0392b', 'line-width': ['interpolate', ['linear'], ['zoom'], 11, 1.1, 15, 2.4], 'line-dasharray': [1.2, 1.2] } })
+      m.addLayer({ id: 'sendero-base', type: 'line', source: 'senderos', minzoom: 10, layout: { ...T, 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': ['match', ['get', 'kind'], 'GR', '#d1342f', 'PR', '#f2c230', '#2e9e57'], 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 2, 15, 5], 'line-opacity': 0.9 } })
+      m.addLayer({ id: 'sendero-marca', type: 'line', source: 'senderos', minzoom: 11.5, layout: T, paint: { 'line-color': '#fff', 'line-width': ['interpolate', ['linear'], ['zoom'], 11.5, 0.8, 15, 1.8], 'line-dasharray': [2, 3] } })
+      m.addLayer({ id: 'sendero-codigo', type: 'symbol', source: 'senderos', minzoom: 12, filter: ['!=', ['get', 'code'], ''], layout: { ...T, 'symbol-placement': 'line', 'symbol-spacing': 420, 'text-field': ['get', 'code'], 'text-font': ['Noto Sans Medium'], 'text-size': 11, 'text-letter-spacing': 0.04 }, paint: { 'text-color': '#14202e', 'text-halo-color': '#fff', 'text-halo-width': 2 } })
       m.addSource('tracks', { type: 'geojson', data: empty })
       m.addSource('zonas', { type: 'geojson', data: `${import.meta.env.BASE_URL}data/vivac-zonas.geojson` })
       m.addLayer({ id: 'zonas-fill', type: 'fill', source: 'zonas', layout: { visibility: 'none' }, paint: { 'fill-color': '#3f8a68', 'fill-opacity': 0.28 } })
@@ -225,6 +255,29 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
     whenReady((m) => { for (const id of RASTER_IDS) m.setLayoutProperty(id, 'visibility', id === layer ? 'visible' : 'none')
       for (const id of VEC_IDS) m.setLayoutProperty(id, 'visibility', layer === 'vec' ? 'visible' : 'none') })
   }, [layer])
+
+  useEffect(() => {
+    whenReady((m) => {
+      for (const id of ['camino-pista', 'camino-sendero', 'camino-dificil', 'sendero-base', 'sendero-marca', 'sendero-codigo']) m.setLayoutProperty(id, 'visibility', trails ? 'visible' : 'none')
+      if (trails) (m as unknown as { __refreshTrails: () => void }).__refreshTrails()
+    })
+  }, [trails])
+
+  const meRef = useRef<maplibregl.Marker | null>(null)
+  useEffect(() => {
+    whenReady((m) => {
+      if (!me) { meRef.current?.remove(); meRef.current = null; return }
+      if (!meRef.current) {
+        const el = document.createElement('div')
+        el.innerHTML = '<div class="me-arrow" style="width:34px;height:34px;transition:transform .25s"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="15" fill="rgba(58,134,200,.18)"/><path d="M17 4 L27 28 L17 22 L7 28 Z" fill="#1d6fd6" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg></div>'
+        meRef.current = new maplibregl.Marker({ element: el, rotationAlignment: 'map', pitchAlignment: 'map' }).setLngLat([me.lng, me.lat]).addTo(m)
+      }
+      meRef.current.setLngLat([me.lng, me.lat])
+      const arrow = meRef.current.getElement().querySelector('.me-arrow') as HTMLElement | null
+      if (arrow && me.heading != null) arrow.style.transform = `rotate(${me.heading}deg)`
+      if (follow) m.easeTo({ center: [me.lng, me.lat], duration: 600 })
+    })
+  }, [me, follow])
 
   useEffect(() => {
     whenReady((m) => {

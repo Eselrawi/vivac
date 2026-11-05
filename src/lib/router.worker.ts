@@ -163,6 +163,24 @@ self.onmessage = async (ev: MessageEvent) => {
       const j = await (await fetch(m.url)).json()
       load(j)
       self.postMessage({ type: 'ready' })
+    } else if (m.type === 'edges') {
+      if (!G) return self.postMessage({ type: 'edges', id: m.id, ok: false })
+      const g = G
+      const [w, s, e, n] = m.bbox as number[]
+      const out: Array<{ c: number; p: number[] }> = []
+      for (let i = 0; i < g.edges.length / 8 && out.length < (m.max ?? 9000); i++) {
+        const o = i * 8, cls = g.edges[o + 5]
+        if (cls === 4) continue // las carreteras ya salen en el mapa base
+        const u = g.edges[o], v = g.edges[o + 1]
+        const ulat = g.nodes[u * 3] / 1e5, ulng = g.nodes[u * 3 + 1] / 1e5, vlat = g.nodes[v * 3] / 1e5, vlng = g.nodes[v * 3 + 1] / 1e5
+        const inU = ulng >= w && ulng <= e && ulat >= s && ulat <= n, inV = vlng >= w && vlng <= e && vlat >= s && vlat <= n
+        if (!inU && !inV) continue
+        const p = [ulng, ulat]
+        for (let k = 0; k < g.edges[o + 7]; k++) p.push(g.geom[(g.edges[o + 6] + k) * 3 + 1] / 1e5, g.geom[(g.edges[o + 6] + k) * 3] / 1e5)
+        p.push(vlng, vlat)
+        out.push({ c: cls, p })
+      }
+      self.postMessage({ type: 'edges', id: m.id, ok: true, edges: out })
     } else if (m.type === 'route') {
       if (!G) return self.postMessage({ type: 'result', id: m.id, ok: false, error: 'El mapa de caminos aún no está cargado' })
       self.postMessage({ type: 'result', id: m.id, ...route(m.from, m.to, m.profile) })

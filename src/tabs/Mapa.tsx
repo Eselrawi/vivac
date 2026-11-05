@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import CloseBtn from '../components/CloseBtn'
 import { Drawer } from 'vaul'
-import { Copy, Download, Info, Layers, ShieldCheck, Mountain, Phone, Search, Siren, X } from 'lucide-react'
+import { Copy, Download, Footprints, Info, Layers, LocateFixed, ShieldCheck, Mountain, Phone, Search, Siren, X } from 'lucide-react'
 import DownloadSheet from '../components/DownloadSheet'
+import { lazy, Suspense } from 'react'
 import WhatsHere, { type Pin } from '../components/WhatsHere'
 import type { Ctx } from '../lib/plan'
 import MapView, { type BaseLayer } from '../components/MapView'
@@ -10,6 +11,7 @@ import type { Bounds } from '../lib/offline'
 import { usePrefs } from '../lib/prefs'
 import { KIND_COLOR, KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
 
+const MiGps = lazy(() => import('../components/MiGps'))
 const NEXT: Record<BaseLayer, BaseLayer> = { vec: 'mtn', mtn: 'pnoa', pnoa: 'ign', ign: 'vec' }
 const NAME: Record<BaseLayer, string> = { vec: 'Vectorial', ign: 'Mapa IGN', mtn: 'Topográfico', pnoa: 'Satélite' }
 type Mode = 'todo' | 'dormir' | 'dormimos'
@@ -72,6 +74,8 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
   const [sos, setSos] = useState(false)
   const [dl, setDl] = useState(false)
   const [zones, setZones] = useState(false)
+  const [trails, setTrails] = useState(false)
+  const [gps, setGps] = useState(false)
   const [pin, setPin] = useState<Pin | null>(null)
   const [view, setView] = useState<Bounds | null>(null)
   const [q, setQ] = useState('')
@@ -92,7 +96,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
   const btn = 'tap grid h-12 w-12 place-items-center rounded-full shadow-lg'
   return (
     <div className="absolute inset-0">
-      <MapView places={shown} selectedId={focusId ?? selectedId} onSelect={onSelect} is3D={is3D} layer={layer} route={route} cursor={cursor} tracks={tracks} zones={zones} onLongPress={(lng, lat, ele) => setPin({ lng, lat, ele })} />
+      <MapView places={shown} selectedId={focusId ?? selectedId} onSelect={onSelect} is3D={is3D} layer={layer} route={route} cursor={cursor} tracks={tracks} zones={zones} trails={trails} onLongPress={(lng, lat, ele) => setPin({ lng, lat, ele })} />
 
       <div className="absolute inset-x-0 z-20 flex flex-col items-center gap-2 px-16" style={{ top: 'calc(var(--safe-t) + 10px)' }}>
         <div className="flex w-full max-w-md items-center gap-2 rounded-full px-4 shadow-lg" style={{ background: 'var(--surface)', minHeight: 48 }}>
@@ -120,6 +124,8 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
       <div className="absolute right-3 flex flex-col gap-2" style={{ top: 'calc(var(--safe-t) + 124px)' }}>
         <button className={btn} style={{ background: 'var(--surface)' }} aria-label={`Capa: ${NAME[layer]}`} onClick={() => setLayer(NEXT[layer])}><Layers size={22} /></button>
         <button className={btn} style={{ background: is3D ? 'var(--accent)' : 'var(--surface)', color: is3D ? '#fff' : 'var(--ink)' }} aria-label="3D" aria-pressed={is3D} onClick={() => setIs3D(!is3D)}><Mountain size={22} /></button>
+        <button className={btn} style={{ background: trails ? 'var(--accent)' : 'var(--surface)', color: trails ? '#fff' : 'var(--ink)' }} aria-label="Caminos y senderos" aria-pressed={trails} onClick={() => setTrails(!trails)}><Footprints size={22} /></button>
+        <button className={btn} style={{ background: '#1d6fd6', color: '#fff' }} aria-label="Mi GPS" onClick={() => setGps(true)}><LocateFixed size={22} /></button>
         <button className={btn} style={{ background: zones ? 'var(--accent)' : 'var(--surface)', color: zones ? '#fff' : 'var(--ink)' }} aria-label="Zonas de vivac autorizadas" aria-pressed={zones} onClick={() => setZones(!zones)}><ShieldCheck size={22} /></button>
         <button className={btn} style={{ background: 'var(--surface)' }} aria-label="Descargar zona sin conexión" onClick={() => { const b = (window as unknown as { __map?: { getBounds: () => { getWest: () => number; getSouth: () => number; getEast: () => number; getNorth: () => number } } }).__map?.getBounds(); setView(b ? { w: b.getWest(), s: b.getSouth(), e: b.getEast(), n: b.getNorth() } : null); setDl(true) }}><Download size={22} /></button>
         <button className={btn} style={{ background: '#d1553f', color: '#fff' }} aria-label="SOS 112" onClick={() => setSos(true)}><Siren size={22} /></button>
@@ -132,12 +138,22 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
             <li className="col-span-2 flex items-center gap-2"><i className="inline-block h-3 w-3 rounded-full border-2" style={{ borderColor: '#ffd9a0', background: '#999' }} />Con borde dorado: ya dormimos ahí</li>
           </ul>
         )}
+        {trails && (
+          <ul className="grid grid-cols-1 gap-1 rounded-2xl p-3 text-xs font-semibold shadow-xl" style={{ background: 'var(--surface)' }}>
+            <li className="flex items-center gap-2"><i className="inline-block h-1 w-6 rounded" style={{ background: '#9b8159' }} />Pista</li>
+            <li className="flex items-center gap-2"><i className="inline-block h-1 w-6 rounded" style={{ background: '#e08a35' }} />Sendero</li>
+            <li className="flex items-center gap-2"><i className="inline-block h-1 w-6 rounded" style={{ background: '#c0392b' }} />Sendero difícil o escaleras</li>
+            <li className="flex items-center gap-2"><i className="inline-block h-1.5 w-6 rounded" style={{ background: '#d1342f' }} />GR · <i className="inline-block h-1.5 w-4 rounded" style={{ background: '#f2c230' }} />PR · <i className="inline-block h-1.5 w-4 rounded" style={{ background: '#2e9e57' }} />SL</li>
+            <li style={{ color: 'var(--ink-soft)' }}>Se ven desde el zoom 11 y sin conexión.</li>
+          </ul>
+        )}
         {zones && <p className="max-w-[17rem] rounded-2xl p-3 text-xs shadow-xl" style={{ background: 'var(--surface)' }}>Zonas del Parque Nacional donde el PRUG permite vivac. Fuente: Comunidad de Madrid (CC BY 4.0). Solo orienta: confirma las normas vigentes antes de salir.</p>}
         <button onClick={() => setLegend(!legend)} className="tap flex items-center gap-2 rounded-full px-4 text-sm font-bold shadow-lg" style={{ background: 'var(--surface)' }}>
           <Info size={16} />{sleepN.length} sitios · {visited} visitados
         </button>
       </div>
       <SOS open={sos} onClose={() => setSos(false)} />
+      {gps && <Suspense fallback={null}><MiGps places={places} onClose={() => setGps(false)} /></Suspense>}
       <WhatsHere pin={pin} places={places} ctx={ctx} onClose={() => setPin(null)} onGo={onGo} />
       <DownloadSheet open={dl} onClose={() => setDl(false)} view={view} />
     </div>

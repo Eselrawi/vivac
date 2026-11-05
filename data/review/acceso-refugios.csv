@@ -15,7 +15,7 @@ osm-n1243026439;La Corraliza;abrigo;;1443;sin_datos;sin fecha;;;;;No he encontra
 osm-n1243026896;Majada Muñoveros;abrigo;;1705;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n1243026979;Majada del Brezo;abrigo;;1551;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n1243027013;Majada Morena;abrigo;;1808;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n1243028876;Cueva del Cestero;abrigo;;985;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n1243028876;Cueva del Cestero;abrigo;;985;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/1243028876;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n1243028922;Majada de Pericón;abrigo;;1457;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n1243029517;Majada de la Zorra;abrigo;;1968;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n1243029770;Majada de la Zarza;abrigo;;1439;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -99,15 +99,15 @@ osm-n1243424178;Corral del Estudiante;abrigo;;1035;sin_datos;sin fecha;;;;;No he
 osm-n1243437137;Majada del Espinar;abrigo;;1808;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n1482405483;El Corralillo;abrigo;;943;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n2410791054;La cueva del Oso;abrigo;;1050;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n2873273512;Cueva de Prueba Valiente;abrigo;;1783;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n2873273512;Cueva de Prueba Valiente;abrigo;;1783;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/2873273512;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n3177331994;Vivac Peña Vaqueros;parapeto;;2218;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n3578706691;Cueva del Monje;abrigo;;1390;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n3578706691;Cueva del Monje;abrigo;;1390;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/3578706691;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n4319790343;Abrigo del Molino;abrigo;;924;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n4431634289;Sin nombre;abrigo;;1515;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n4468627232;Majada de Quila;abrigo;;1609;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n4485721300;Cueva-vivac;abrigo;;1678;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n4539470992;La Sima;abrigo;;939;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n4857681679;Cueva de una antigua mina;abrigo;;1470;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n4539470992;La Sima;abrigo;;939;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/4539470992;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-n4857681679;Cueva de una antigua mina;abrigo;;1470;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/4857681679;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n4868239943;Sin nombre;abrigo;;1434;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n4946182156;Sin nombre;refugio_libre;;1787;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n5188134151;Corrales de la Majada Minguete;abrigo;;1820;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -143,12 +143,12 @@ osm-n7021018449;Ciudad de los Muchachos y Majadas de los Palanes;abrigo;;1157;si
 osm-n7021032927;Cueva de los Maquis;abrigo;;1354;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n7091898086;Majada de las Ovejas;abrigo;;1284;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n7099361563;Corral de la Vereda;abrigo;;1331;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n7229172216;Gruta del Estanque;abrigo;;1262;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n7229172216;Gruta del Estanque;abrigo;;1262;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/7229172216;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n7285119203;Cueva de la Mora;abrigo;;1453;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n7620437237;Sin nombre;abrigo;;2063;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n7724197288;Refugio Peña la Casa;refugio_libre;;1354;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n7873502155;Abrigo de los Aljibes;abrigo;;1019;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n7903442033;Antigua Mina de Wolframio abandonada;abrigo;;1710;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n7903442033;Antigua Mina de Wolframio abandonada;abrigo;;1710;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/7903442033;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n7972591656;Cueva de la Torreta;abrigo;;1167;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n7972593185;Sin nombre;abrigo;;1464;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n7972689182;Vivac del Peñotillo;parapeto;;1939;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -159,10 +159,10 @@ osm-n8443267706;Chozo Almedrano;abrigo;;1753;sin_datos;sin fecha;;;;;No he encon
 osm-n8543110752;Majada del Cojo;abrigo;;1599;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n8685306144;Vivac;parapeto;;1767;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n8740296777;Sin nombre;abrigo;;1625;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n9501660042;Chozo Kindelán;abrigo;;1080;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n9501660042;Chozo Kindelán;abrigo;;1080;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/9501660042;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n9601878619;Cueva de la Zorra;abrigo;;955;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n9655344843;Vivac;parapeto;;2197;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n9974606531;Cueva del Lobo;abrigo;;992;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n9974606531;Cueva del Lobo;abrigo;;992;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/9974606531;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n10272766200;Cancho del Horno;abrigo;;1149;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n10308175373;Refugio Cancho Porrón;abrigo;;1670;abierto;sin fecha;Listado oficial de refugios (Anexo V, Comunidad de Madrid) + Walkaholic;https://www.comunidad.madrid/sites/default/files/doc/medio-ambiente/cma_consejoma_10_anexo_v_refugios.pdf https://www.walkaholic.me/shelter/spain/community-of-madrid/madrid;;;Chozo libre en Manzanares el Real, en mal estado, sin chimenea ni aseos según el listado oficial de refugios de la Comunidad de Madrid (documento sin fecha clara, puede estar desfasado).
 osm-n10550528443;Sin nombre;refugio_libre;;802;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -171,12 +171,12 @@ osm-n10739332248;Sin nombre;abrigo;;1153;sin_datos;sin fecha;;;;;No he encontrad
 osm-n10739381869;Vivac del Cachalote;parapeto;;1259;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n10739424294;Vivac del Ratón;parapeto;;1216;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n10739455280;Vivac del Bizcocho;parapeto;;1537;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n10739594998;Refugio Libre Casetón de los Horcos;refugio_libre;;1506;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n10739594998;Refugio Libre Casetón de los Horcos;refugio_libre;;1506;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/10739594998;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n10739900259;Cabaña Iñaki;abrigo;;1500;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n10739900260;Vivac;parapeto;;1698;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n10739940346;Refugio Libre de Las Majarganillas;refugio_libre;;1371;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n10739940346;Refugio Libre de Las Majarganillas;refugio_libre;;1371;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/10739940346;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n10739952938;Cueva de las Brujas;abrigo;;1497;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n11170261143;Covachuela de la Acevera;abrigo;;1248;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n11170261143;Covachuela de la Acevera;abrigo;;1248;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/11170261143;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n11176584665;Cueva del Bandolero;abrigo;;1101;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n11242931602;Sin nombre;refugio_libre;;1592;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n11519799343;Chozo de Majada Minguete;refugio_libre;;1829;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -185,28 +185,28 @@ osm-n11519843524;Chozo Rectangular;refugio_libre;;1706;sin_datos;sin fecha;;;;;N
 osm-n11586726035;Cueva-Vivac;abrigo;;1334;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n11637438926;Sin nombre;abrigo;;2090;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n12650300285;Sin nombre;abrigo;;968;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n12775731608;Sin nombre;abrigo;;1087;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n12775731608;Sin nombre;abrigo;;1087;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/12775731608;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n12844613627;Resguardo La Cañada;refugio_libre;;1145;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n12963037287;Cueva de San Lázaro;abrigo;;927;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n12963037288;Abrigo del Molino superior;abrigo;;930;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n12963037289;Cueva de la Tarascona;abrigo;;935;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n12963156166;Cuevas del Búho y la Zarzamora;abrigo;;973;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n12980126555;Cueva de la Llave;abrigo;;922;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n13081825156;Sin nombre;abrigo;;1001;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n13081825157;Sin nombre;abrigo;;997;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n12963156166;Cuevas del Búho y la Zarzamora;abrigo;;973;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/12963156166;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-n12980126555;Cueva de la Llave;abrigo;;922;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/12980126555;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-n13081825156;Sin nombre;abrigo;;1001;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/13081825156;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-n13081825157;Sin nombre;abrigo;;997;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/13081825157;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n13093291329;Vivac;parapeto;;1503;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13107117842;Cabaña del Pastor;refugio_libre;;1370;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n13290788830;Sin nombre;abrigo;;989;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n13436592395;Cueva de los Moros;abrigo;;971;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n13290788830;Sin nombre;abrigo;;989;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/13290788830;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-n13436592395;Cueva de los Moros;abrigo;;971;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/13436592395;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n13449261314;Sin nombre;abrigo;;926;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n13449274128;Sin nombre;abrigo;;993;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n13449274128;Sin nombre;abrigo;;993;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/13449274128;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n13449274134;Sin nombre;abrigo;;986;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13449274137;Sin nombre;abrigo;;982;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13449274139;Sin nombre;abrigo;;981;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13449284497;Sin nombre;abrigo;;979;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13516574039;Covachuela de los Vadillos;abrigo;;1315;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13525249423;Pequeño refugio;refugio_libre;;1950;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n13527520925;Covachuelas de Piedras Caballeras;abrigo;;1542;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n13527520925;Covachuelas de Piedras Caballeras;abrigo;;1542;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/13527520925;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n13536356829;Sin nombre;refugio_libre;;1422;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13592387926;Vivac;parapeto;;1697;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n13607088265;Majada Lobos;abrigo;;1388;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -214,8 +214,8 @@ osm-n13742579401;Sin nombre;refugio_libre;;1124;sin_datos;sin fecha;;;;;No he en
 osm-n13910256501;vivac;parapeto;;1990;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n14098630001;Cabaña del Tio Blas;refugio_libre;;1714;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n14155942268;Refugio Regajohondo;refugio_libre;;1739;abierto;sin fecha;Walkaholic;https://www.walkaholic.me/shelter/spain/castile-and-leon/segovia/1020-refugio-regajohondo;;;Figura como refugio de uso libre en Walkaholic (4 camas). Sin fecha: no hay confirmación reciente.
-osm-n14175911072;Sin nombre;abrigo;;990;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-n14175911074;Sin nombre;abrigo;;992;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-n14175911072;Sin nombre;abrigo;;990;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/14175911072;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-n14175911074;Sin nombre;abrigo;;992;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/node/14175911074;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-n14292944308;Vivac del Hueso I;parapeto;;1377;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n14292944310;Refugio Navajuelos;abrigo;;1658;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n14292944312;Vivac del Manatial;parapeto;;1473;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -259,7 +259,7 @@ osm-w443867012;Refugio del Puerto de Navafría;refugio_libre;;1770;sin_datos;sin
 osm-w472906070;Refugio Giner de los Ríos;refugio_pago;;1201;reserva;sin fecha;Mountain Forecast + Wikiloc;https://www.mountain-forecast.com/huts-and-lodges/Refugio-Giner-de-Los-Rios https://it.wikiloc.com/waypoints/VO5qBf/refugio-giner-de-los-rios;consultar;;Refugio guardado de la RSEA Peñalara en La Pedriza (unas 50 plazas). Precio y reserva: consultar con la RSEA Peñalara, no hay precio confirmado.
 osm-w474501165;Sin nombre;abrigo;;1168;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w480991098;Sin nombre;abrigo;;1581;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w499027379;Refugio del Raso;refugio_libre;;1402;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w499027379;Refugio del Raso;refugio_libre;;1402;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/499027379;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w499027380;Refugio de los Horcajos;refugio_libre;;1420;abierto;sin fecha;Walkaholic;https://www.walkaholic.me/shelter/spain/castile-and-leon/segovia/793-refugio-horcajos;;;Figura como refugio de uso libre en Walkaholic. Sin fecha: no hay confirmación reciente.
 osm-w499027382;Refugio de las Tabladillas;refugio_libre;;1495;abierto;sin fecha;Walkaholic;https://www.walkaholic.me/shelter/spain/castile-and-leon/segovia/1086-refugio-tabladillas;;;Figura como refugio de uso libre en Walkaholic. Sin fecha: no hay confirmación reciente.
 osm-w534875229;Corrales del Juncional;abrigo;;1532;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -281,7 +281,7 @@ osm-w582702628;Sin nombre;refugio_libre;;1053;sin_datos;sin fecha;;;;;No he enco
 osm-w582702629;Sin nombre;refugio_libre;;1051;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w582702630;Sin nombre;refugio_libre;;1052;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w626837239;Sin nombre;refugio_libre;;1183;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w631683398;Refugio Libre del Pinganillo;refugio_libre;;1669;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w631683398;Refugio Libre del Pinganillo;refugio_libre;;1669;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/631683398;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w672686594;Sin nombre;abrigo;;1184;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w701168827;Sin nombre;refugio_libre;;1195;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w701646691;Sin nombre;refugio_libre;;1170;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -311,7 +311,7 @@ osm-w920057215;Sin nombre;refugio_libre;;836;sin_datos;sin fecha;;;;;No he encon
 osm-w920057216;Sin nombre;refugio_libre;;837;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w926313101;Sin nombre;refugio_libre;;891;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w927193975;Refugio Zabala;refugio_libre;;2075;parcial;2025-03-04;Carreras de Montaña (Mayayo) (2025-03-04) + Reseña en Wanderlog (2023-11-15) + Hispanopedia;https://carrerasdemontana.com/2025/03/04/refugio-zabala-penalara-mayayo/ https://wanderlog.com/place/details/9431790/refugio-zabala https://es.hispanopedia.com/wiki/Refugio_Zabala;;;Refugio de piedra no guardado en el circo de Peñalara. Una reseña de noviembre de 2023 cuenta que dentro no se puede pernoctar (espacio minúsculo, casi todo cerrado) y que el vivac se hace fuera. Confirma antes con la RSEA Peñalara o el Parque Nacional.
-osm-w934776143;Sin nombre;abrigo;;1096;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w934776143;Sin nombre;abrigo;;1096;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/934776143;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w936572547;Refugio La Najarra;refugio_libre;;2100;abierto;sin fecha;Listado oficial de refugios (Anexo V, Comunidad de Madrid) + Komoot / Visit Madrid;https://www.comunidad.madrid/sites/default/files/doc/medio-ambiente/cma_consejoma_10_anexo_v_refugios.pdf https://www.visitmadrid.es/rutas/ruta-najarra-puerto-morcuera;;;Refugio libre, en mal estado según el listado oficial del Parque Nacional (3 plazas, con chimenea).
 osm-w938177502;Sin nombre;refugio_libre;;1533;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w938440436;Refugio Piedra;refugio_libre;;1519;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -321,9 +321,9 @@ osm-w941675354;Sin nombre;refugio_libre;;882;sin_datos;sin fecha;;;;;No he encon
 osm-w958894116;Sin nombre;refugio_libre;;1121;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w967933401;Sin nombre;refugio_libre;;1147;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w990647239;Refugio Valle Enmedio;refugio_libre;;1621;abierto;sin fecha;Walkaholic;https://www.walkaholic.me/shelter/spain/castile-and-leon/avila/712-refugio-enmedio;;;Figura como refugio de uso libre en Walkaholic (8 camas). Sin fecha: no hay confirmación reciente.
-osm-w993416059;Chozo de los Arteseros;refugio_libre;;1564;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w997628182;Refugio Las Esquinillas;refugio_libre;;1590;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w999354903;Refugio de la Peña Cítores;refugio_libre;;2000;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w993416059;Chozo de los Arteseros;refugio_libre;;1564;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/993416059;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-w997628182;Refugio Las Esquinillas;refugio_libre;;1590;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/997628182;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
+osm-w999354903;Refugio de la Peña Cítores;refugio_libre;;2000;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/999354903;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w1009489716;Refugio El;refugio_libre;;1483;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1035603026;Sin nombre;refugio_libre;;1113;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1039696473;Sin nombre;refugio_libre;;1123;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -341,7 +341,7 @@ osm-w1046802449;Sin nombre;refugio_libre;;758;sin_datos;sin fecha;;;;;No he enco
 osm-w1049100410;Sin nombre;refugio_libre;;986;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1052050686;Sin nombre;refugio_libre;;1074;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1053573830;Sin nombre;refugio_libre;;737;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w1055537062;Refugio Pilangostillos;refugio_libre;;885;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w1055537062;Refugio Pilangostillos;refugio_libre;;885;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/1055537062;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w1057238474;Sin nombre;refugio_libre;;1123;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1063001000;Sin nombre;refugio_libre;;1120;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1065333309;Sin nombre;refugio_libre;;1153;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -351,27 +351,27 @@ osm-w1106791168;Sin nombre;refugio_libre;;1003;sin_datos;sin fecha;;;;;No he enc
 osm-w1107764820;Chozo;refugio_libre;;1730;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1107765578;Sin nombre;refugio_libre;;1543;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1108977497;Sin nombre;refugio_libre;;1044;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w1117311662;Chozo de Majada Hambrienta;refugio_libre;;1780;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w1117311662;Chozo de Majada Hambrienta;refugio_libre;;1780;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/1117311662;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w1120991634;Chozo del Tío Blas;refugio_libre;;1720;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1120992226;Choza del Guarda;refugio_libre;;1947;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1144829508;Sin nombre;refugio_libre;;1241;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1149629706;Sin nombre;refugio_libre;;1205;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w1156052749;Refugio Libre el Vivero;refugio_libre;;1349;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w1156052749;Refugio Libre el Vivero;refugio_libre;;1349;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/1156052749;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w1156053826;Refugio Libre;refugio_libre;;1590;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1156055561;Chozo;refugio_libre;;1531;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w1156057459;Refugio Libre del Raso de La Atalayuela;refugio_libre;;1872;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w1156057459;Refugio Libre del Raso de La Atalayuela;refugio_libre;;1872;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/1156057459;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w1156989328;Vivac Las Mesas;parapeto;;1151;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1156989329;Sin nombre;abrigo;;1128;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1156989330;Sin nombre;abrigo;;1144;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1167329480;Sin nombre;refugio_libre;;1067;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1173428543;choza;refugio_libre;;1576;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1176895358;Sin nombre;refugio_libre;;974;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w1176936954;Sin nombre;refugio_libre;;1121;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w1176936954;Sin nombre;refugio_libre;;1121;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/1176936954;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w1178777737;Chozo de la Portera de la Dehesa;refugio_libre;;1320;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1188611482;Resguardo de la Morcuera;refugio_libre;;1790;sin_datos;sin fecha;Mountain Forecast;https://www.mountain-forecast.com/huts-and-lodges/Refugio-Morcuera;;;Figura en Mountain Forecast, pero sin datos de si está abierto.
 osm-w1201680230;Sin nombre;refugio_libre;;961;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1211235054;Sin nombre;refugio_libre;;983;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w1212819908;Refugio de Majada de Los Lobos;refugio_libre;;1508;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w1212819908;Refugio de Majada de Los Lobos;refugio_libre;;1508;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/1212819908;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-w1212820521;Mirador de los Buitres;refugio_libre;;1424;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1215031605;Sin nombre;refugio_libre;;1015;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1215031616;Sin nombre;refugio_libre;;1032;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
@@ -428,7 +428,7 @@ osm-w1548726147;Sin nombre;refugio_libre;;1010;sin_datos;sin fecha;;;;;No he enc
 osm-w1565452765;Sin nombre;refugio_libre;;1048;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1570528052;Sin nombre;refugio_libre;;1022;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-w1570528054;Sin nombre;refugio_libre;;1021;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
-osm-w1574985736;Chozo de Pastores;refugio_libre;;1664;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
+osm-w1574985736;Chozo de Pastores;refugio_libre;;1664;abierto;sin fecha;OpenStreetMap;https://www.openstreetmap.org/way/1574985736;;;En OpenStreetMap figura con acceso libre. Sin confirmación reciente.
 osm-r19190422;Pradera de Corralillos;abrigo;;1525;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n1144422631;Cueva del Cristal;abrigo;cueva;1024;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.
 osm-n1304113578;Peñacovacha;abrigo;cueva;1338;sin_datos;sin fecha;;;;;No he encontrado datos sobre si está abierto, ni fecha de la última visita.

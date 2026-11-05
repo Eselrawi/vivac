@@ -30,3 +30,21 @@ export const fmtDur = (min: number) => {
   const r = m % 60
   return h === 0 ? `${r} min` : r === 0 ? `${h} h` : `${h} h ${String(r).padStart(2, '0')} min`
 }
+
+/** Distancia lateral (m) de un punto a una línea [lng, lat, …] y metros recorridos hasta su proyección. */
+export function projectOnLine(line: ArrayLike<number | undefined>[], lat: number, lng: number): { d: number; along: number; total: number } {
+  const k = Math.cos((lat * Math.PI) / 180) * 111320
+  let best = Infinity, along = 0, acc = 0
+  for (let i = 1; i < line.length; i++) {
+    const ax = ((line[i - 1][0] as number) - lng) * k, ay = ((line[i - 1][1] as number) - lat) * 111320
+    const bx = ((line[i][0] as number) - lng) * k, by = ((line[i][1] as number) - lat) * 111320
+    const dx = bx - ax, dy = by - ay
+    const l2 = dx * dx + dy * dy
+    const t = l2 ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / l2)) : 0
+    const d = Math.hypot(ax + t * dx, ay + t * dy)
+    const seg = Math.sqrt(l2)
+    if (d < best) { best = d; along = acc + t * seg }
+    acc += seg
+  }
+  return { d: best, along, total: acc }
+}

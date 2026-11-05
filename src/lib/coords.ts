@@ -61,7 +61,7 @@ export function toUTM(lat: number, lng: number): { zone: number; band: string; e
   const e = k0 * N * (A + ((1 - T + C) * A ** 3) / 6 + ((5 - 18 * T + T ** 2 + 72 * C - 58 * ep2) * A ** 5) / 120) + 500000
   let n = k0 * (M + N * Math.tan(phi) * (A ** 2 / 2 + ((5 - T + 9 * C + 4 * C ** 2) * A ** 4) / 24 + ((61 - 58 * T + T ** 2 + 600 * C - 330 * ep2) * A ** 6) / 720))
   if (lat < 0) n += 10000000
-  return { zone, band: 'SRQPNMLKJHGFEDCXWVUTS'.charAt(Math.floor((lat + 80) / 8)) || 'T', e: Math.round(e), n: Math.round(n) }
+  return { zone, band: 'CDEFGHJKLMNPQRSTUVWX'.charAt(Math.floor((lat + 80) / 8)) || 'T', e: Math.round(e), n: Math.round(n) }
 }
 
 /** Grados, minutos y segundos para leer por radio. */

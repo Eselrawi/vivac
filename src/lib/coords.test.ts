@@ -31,3 +31,10 @@ describe('coordenadas', () => {
     expect(inSierra({ lat: 37.4, lng: -5.9 })).toBe(false)
   })
 })
+
+describe('UTM: banda', () => {
+  it('la sierra está en 30T', () => {
+    const u = toUTM(40.82, -3.96)
+    expect(`${u.zone}${u.band}`).toBe('30T')
+  })
+})
