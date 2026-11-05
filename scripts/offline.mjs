@@ -20,14 +20,14 @@ await page.screenshot({ path: 'screenshots/offline-dormir.png' })
 
 // Mochila y Diario sin red
 for (const tab of ['Mochila', 'Diario']) {
-  await page.getByRole('button', { name: tab, exact: true }).click()
+  await page.locator('nav').getByRole('button', { name: tab, exact: true }).click()
   await page.waitForTimeout(1500)
   console.log(tab, '→', (await page.locator('h1').first().textContent()))
 }
 // Guardar un vivac sin red
 await ctx.grantPermissions(['geolocation'])
 await ctx.setGeolocation({ latitude: 40.82, longitude: -3.96 })
-await page.getByRole('button', { name: 'Dormir', exact: true }).click()
+await page.locator('nav').getByRole('button', { name: 'Dormir', exact: true }).click()
 await page.waitForTimeout(800)
 await page.getByRole('button', { name: 'Añadir', exact: true }).click()
 await page.getByText('Dormimos aquí', { exact: true }).first().click()
@@ -35,7 +35,7 @@ await page.waitForTimeout(2500)
 await page.getByPlaceholder('Nombre del sitio').fill('Prueba sin cobertura')
 await page.getByRole('button', { name: 'Guardar', exact: true }).click()
 await page.waitForTimeout(1800)
-await page.getByRole('button', { name: 'Diario', exact: true }).click()
+await page.locator('nav').getByRole('button', { name: 'Diario', exact: true }).click()
 await page.waitForTimeout(1500)
 console.log('Diario tras guardar sin red contiene el vivac:', (await page.locator('text=Prueba sin cobertura').count()) > 0)
 await page.screenshot({ path: 'screenshots/offline-diario.png' })

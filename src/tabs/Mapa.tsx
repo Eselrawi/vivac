@@ -7,8 +7,8 @@ import type { Bounds } from '../lib/offline'
 import { usePrefs } from '../lib/prefs'
 import { KIND_COLOR, KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
 
-const NEXT: Record<BaseLayer, BaseLayer> = { ign: 'mtn', mtn: 'pnoa', pnoa: 'ign' }
-const NAME: Record<BaseLayer, string> = { ign: 'Mapa', mtn: 'Topográfico', pnoa: 'Satélite' }
+const NEXT: Record<BaseLayer, BaseLayer> = { vec: 'mtn', mtn: 'pnoa', pnoa: 'ign', ign: 'vec' }
+const NAME: Record<BaseLayer, string> = { vec: 'Vectorial', ign: 'Mapa IGN', mtn: 'Topográfico', pnoa: 'Satélite' }
 type Mode = 'todo' | 'dormir' | 'dormimos'
 const MODES: { id: Mode; label: string }[] = [
   { id: 'todo', label: 'Todo' },
@@ -62,7 +62,7 @@ interface MapaProps { places: Place[]; selectedId: string | null; onSelect: (p: 
 
 export default function Mapa({ places, selectedId, onSelect, route, cursor, tracks }: MapaProps) {
   const [is3D, setIs3D] = useState(true)
-  const [layer, setLayer] = useState<BaseLayer>('ign')
+  const [layer, setLayer] = useState<BaseLayer>('vec')
   const [mode, setMode] = useState<Mode>("dormir")
   const [legend, setLegend] = useState(false)
   const [sos, setSos] = useState(false)

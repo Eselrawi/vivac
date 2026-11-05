@@ -36,6 +36,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
         globIgnores: ['**/graph.json'],
         runtimeCaching: [
+          { urlPattern: /^https:\/\/protomaps\.github\.io\/basemaps-assets\//, handler: 'CacheFirst', options: { cacheName: 'mapa-fuentes', cacheableResponse: { statuses: [0, 200] } } },
           { urlPattern: /\/data\/graph\.json$/, handler: 'CacheFirst', options: { cacheName: 'rutas', cacheableResponse: { statuses: [200] } } },
           {
             urlPattern: /^https:\/\/(s3\.amazonaws\.com\/elevation-tiles-prod|www\.ign\.es\/wmts)\/.*/,

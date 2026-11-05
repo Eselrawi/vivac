@@ -3,11 +3,23 @@ import * as maplibregl from 'maplibre-gl'
 import type { StyleSpecification, GeoJSONSource } from 'maplibre-gl'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import type { FeatureCollection, Point } from 'geojson'
+import { PMTiles, Protocol } from 'pmtiles'
+import { layers as pmLayers, namedFlavor } from '@protomaps/basemaps'
 import { KIND_COLOR, type Place } from '../lib/types'
+import { HybridSource, PM_URL } from '../lib/vec'
 
 maplibregl.setWorkerUrl(workerUrl)
+const protocol = new Protocol()
+maplibregl.addProtocol('pmtiles', protocol.tile)
+protocol.add(new PMTiles(new HybridSource(PM_URL)))
 
-export type BaseLayer = 'ign' | 'mtn' | 'pnoa'
+export type BaseLayer = 'vec' | 'ign' | 'mtn' | 'pnoa'
+
+// Mapa vectorial con los colores de la marca (granito, pino, agua de montaña).
+const flavor = { ...namedFlavor('light'), earth: '#f3eee3', water: '#9cc7e6', park_a: '#d6e5c9', park_b: '#c9dcbc', wood_a: '#cadcbd', wood_b: '#bdd2b0', scrub_a: '#dde5c6', scrub_b: '#d2dbb9', glacier: '#f4f9fb' }
+const VEC_LAYERS = pmLayers('protomaps', flavor, { lang: 'es' }).map((l) => ({ ...l, layout: { ...(l.layout ?? {}), visibility: 'visible' as const } }))
+const VEC_IDS = VEC_LAYERS.map((l) => l.id)
+const RASTER_IDS = ['ign', 'mtn', 'pnoa']
 
 const wmts = (layer: string, server: string) =>
   `https://www.ign.es/wmts/${server}?service=WMTS&request=GetTile&version=1.0.0&layer=${layer}&style=default&tilematrixset=GoogleMapsCompatible&format=image/jpeg&tilematrix={z}&tilerow={y}&tilecol={x}`
@@ -15,8 +27,10 @@ const DEM = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}
 
 const style: StyleSpecification = {
   version: 8,
-  glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
+  glyphs: 'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
+  sprite: 'https://protomaps.github.io/basemaps-assets/sprites/v4/light',
   sources: {
+    protomaps: { type: 'vector', url: `pmtiles://${PM_URL}`, attribution: '© OpenStreetMap · Protomaps' },
     ign: { type: 'raster', tiles: [wmts('IGNBaseTodo', 'ign-base')], tileSize: 256, maxzoom: 19, attribution: '© IGN' },
     mtn: { type: 'raster', tiles: [wmts('MTN', 'mapa-raster')], tileSize: 256, maxzoom: 17, attribution: '© IGN MTN' },
     pnoa: { type: 'raster', tiles: [wmts('OI.OrthoimageCoverage', 'pnoa-ma')], tileSize: 256, maxzoom: 19, attribution: '© PNOA IGN' },
@@ -24,9 +38,10 @@ const style: StyleSpecification = {
     dem: { type: 'raster-dem', tiles: [DEM], encoding: 'terrarium', tileSize: 256, maxzoom: 14, attribution: 'Terrain Tiles AWS' },
   },
   layers: [
-    { id: 'ign', type: 'raster', source: 'ign' },
+    { id: 'ign', type: 'raster', source: 'ign', layout: { visibility: 'none' } },
     { id: 'mtn', type: 'raster', source: 'mtn', layout: { visibility: 'none' } },
     { id: 'pnoa', type: 'raster', source: 'pnoa', layout: { visibility: 'none' } },
+    ...VEC_LAYERS,
     { id: 'hillshade', type: 'hillshade', source: 'demShade', paint: { 'hillshade-exaggeration': 0.35, 'hillshade-shadow-color': '#1b2c44', 'hillshade-highlight-color': '#fff7e6' } },
   ],
   sky: { 'sky-color': '#7fb0e0', 'horizon-color': '#f6e6cf', 'fog-color': '#f6e6cf', 'sky-horizon-blend': 0.6, 'horizon-fog-blend': 0.7, 'fog-ground-blend': 0.3, 'atmosphere-blend': 0.8 },
@@ -123,7 +138,7 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       m.addSource('zonas', { type: 'geojson', data: `${import.meta.env.BASE_URL}data/vivac-zonas.geojson` })
       m.addLayer({ id: 'zonas-fill', type: 'fill', source: 'zonas', layout: { visibility: 'none' }, paint: { 'fill-color': '#3f8a68', 'fill-opacity': 0.28 } })
       m.addLayer({ id: 'zonas-line', type: 'line', source: 'zonas', layout: { visibility: 'none' }, paint: { 'line-color': '#1f4d3a', 'line-width': 2.5, 'line-dasharray': [3, 2] } })
-      m.addLayer({ id: 'zonas-name', type: 'symbol', source: 'zonas', minzoom: 11, layout: { visibility: 'none', 'text-field': ['concat', 'Zona de vivac: ', ['get', 'DS_ZONA']], 'text-font': ['Open Sans Semibold'], 'text-size': 12 }, paint: { 'text-color': '#1f4d3a', 'text-halo-color': '#fff', 'text-halo-width': 1.8 } })
+      m.addLayer({ id: 'zonas-name', type: 'symbol', source: 'zonas', minzoom: 11, layout: { visibility: 'none', 'text-field': ['concat', 'Zona de vivac: ', ['get', 'DS_ZONA']], 'text-font': ['Noto Sans Medium'], 'text-size': 12 }, paint: { 'text-color': '#1f4d3a', 'text-halo-color': '#fff', 'text-halo-width': 1.8 } })
       m.addSource('cursor', { type: 'geojson', data: empty })
       m.addLayer({ id: 'tracks', type: 'line', source: 'tracks', paint: { 'line-color': '#7a6fa8', 'line-width': 3, 'line-opacity': 0.85, 'line-dasharray': [2, 1] } })
       m.addLayer({ id: 'route-casing', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#fff', 'line-width': 9 } })
@@ -131,14 +146,14 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       m.addLayer({ id: 'cursor', type: 'circle', source: 'cursor', paint: { 'circle-radius': 8, 'circle-color': '#1b2c44', 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
       m.addSource('places', { type: 'geojson', data: toGeo(placesRef.current, scoreRef.current), cluster: true, clusterRadius: 46, clusterMaxZoom: 12 })
       m.addLayer({ id: 'clusters', type: 'circle', source: 'places', filter: ['has', 'point_count'], paint: { 'circle-color': '#1f4d3a', 'circle-radius': ['step', ['get', 'point_count'], 16, 10, 20, 50, 26], 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
-      m.addLayer({ id: 'cluster-n', type: 'symbol', source: 'places', filter: ['has', 'point_count'], layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Open Sans Semibold'], 'text-size': 13 }, paint: { 'text-color': '#fff' } })
+      m.addLayer({ id: 'cluster-n', type: 'symbol', source: 'places', filter: ['has', 'point_count'], layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Noto Sans Medium'], 'text-size': 13 }, paint: { 'text-color': '#fff' } })
       m.addLayer({
         id: 'icons', type: 'symbol', source: 'places', filter: ['!', ['has', 'point_count']],
         layout: { 'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 8, 0.55, 13, 0.9, 16, 1.1], 'icon-allow-overlap': true, 'symbol-sort-key': ['get', 'prio'] },
       })
       m.addLayer({
         id: 'names', type: 'symbol', source: 'places', minzoom: 13, filter: ['!', ['has', 'point_count']],
-        layout: { 'text-field': ['get', 'name'], 'text-font': ['Open Sans Semibold'], 'text-size': 12, 'text-offset': [0, 1.5], 'text-anchor': 'top', 'text-optional': true },
+        layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Medium'], 'text-size': 12, 'text-offset': [0, 1.5], 'text-anchor': 'top', 'text-optional': true },
         paint: { 'text-color': '#14202e', 'text-halo-color': '#fff', 'text-halo-width': 1.6 },
       })
       m.on('click', 'clusters', (e) => {
@@ -170,7 +185,8 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
   }
 
   useEffect(() => {
-    whenReady((m) => { for (const id of ['ign', 'mtn', 'pnoa']) m.setLayoutProperty(id, 'visibility', id === layer ? 'visible' : 'none') })
+    whenReady((m) => { for (const id of RASTER_IDS) m.setLayoutProperty(id, 'visibility', id === layer ? 'visible' : 'none')
+      for (const id of VEC_IDS) m.setLayoutProperty(id, 'visibility', layer === 'vec' ? 'visible' : 'none') })
   }, [layer])
 
   useEffect(() => {

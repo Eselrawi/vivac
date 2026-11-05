@@ -23,7 +23,7 @@ for (const [name, dev] of [['iphone15', devices['iPhone 15']], ['pixel', devices
     await page.keyboard.press('Escape')
     await page.waitForTimeout(800)
     for (const tab of ['Mapa', 'Diario', 'Mochila']) {
-      await page.getByRole('button', { name: tab, exact: true }).click({ timeout: 5000 }).catch(() => {})
+      await page.locator('nav').getByRole('button', { name: tab, exact: true }).click({ timeout: 5000 }).catch(() => {})
       await page.waitForTimeout(tab === 'Mapa' ? 12000 : 1500)
       await shot(tab.toLowerCase())
     }
