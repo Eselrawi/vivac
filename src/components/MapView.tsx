@@ -5,7 +5,7 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import type { FeatureCollection, Point } from 'geojson'
 import { PMTiles, Protocol } from 'pmtiles'
 import { layers as pmLayers, namedFlavor } from '@protomaps/basemaps'
-import { KIND_COLOR, type Place } from '../lib/types'
+import { KIND_COLOR, KIND_EMOJI, type Place } from '../lib/types'
 import { HybridSource, PM_URL } from '../lib/vec'
 import { queryEdges } from '../lib/router'
 
@@ -49,12 +49,9 @@ const style: StyleSpecification = {
   terrain: { source: 'dem', exaggeration: 1.3 },
 }
 
-const GLYPH: Record<string, string> = {
-  refugio_libre: '🛖', refugio_pago: '€', parapeto: '🧱', abrigo: '🪨', vivac: '⛺', deseo: '⭐', fuente: '💧', parking: 'P', cumbre: '▲', candidato: '✨', bunker: '🪖',
-}
 
 function addIcons(m: maplibregl.Map) {
-  for (const [kind, glyph] of Object.entries(GLYPH)) {
+  for (const [kind, glyph] of Object.entries(KIND_EMOJI)) {
     for (const visited of [false, true]) {
       const name = `${kind}${visited ? '-v' : ''}`
       if (m.hasImage(name)) continue
@@ -68,7 +65,7 @@ function addIcons(m: maplibregl.Map) {
       g.shadowColor = 'transparent'
       g.lineWidth = visited ? 6 : 4; g.strokeStyle = visited ? '#ffd9a0' : '#fff'; g.stroke()
       g.fillStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle'
-      g.font = kind === 'refugio_pago' || kind === 'parking' || kind === 'cumbre' ? 'bold 26px Inter, sans-serif' : '26px sans-serif'
+      g.font = '28px sans-serif'
       g.fillText(glyph, s / 2, s / 2 + 2)
       m.addImage(name, g.getImageData(0, 0, s, s), { pixelRatio: 2 })
     }

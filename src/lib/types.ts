@@ -43,16 +43,21 @@ export interface Place {
 
 export const KIND_LABEL: Record<PlaceKind, string> = {
   refugio_libre: 'Refugio libre',
-  refugio_pago: 'Refugio de pago',
+  refugio_pago: 'Refugio guardado (de pago)',
   parapeto: 'Parapeto',
   abrigo: 'Abrigo',
   vivac: 'Vivac nuestro',
   deseo: 'Deseo',
   fuente: 'Fuente',
   parking: 'Aparcamiento',
-  cumbre: 'Cumbre',
+  cumbre: 'Cumbre o mirador',
   candidato: 'Sitio sugerido',
   bunker: 'Búnker o fortín',
+}
+
+/** Emoticono que se ve en el mapa y en la leyenda. */
+export const KIND_EMOJI: Record<string, string> = {
+  refugio_libre: '🛖', refugio_pago: '🏠', parapeto: '🧱', abrigo: '🪨', vivac: '⛺', deseo: '⭐', fuente: '💧', parking: '🅿️', cumbre: '⛰️', candidato: '✨', bunker: '🪖',
 }
 
 export const KIND_COLOR: Record<PlaceKind, string> = {

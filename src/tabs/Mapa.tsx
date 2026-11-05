@@ -10,7 +10,7 @@ import MapView, { type BaseLayer } from '../components/MapView'
 import type { Bounds } from '../lib/offline'
 import { usePrefs } from '../lib/prefs'
 import { useLikes } from '../lib/likes'
-import { KIND_COLOR, KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
+import { KIND_COLOR, KIND_EMOJI, KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
 
 const MiGps = lazy(() => import('../components/MiGps'))
 const NEXT: Record<BaseLayer, BaseLayer> = { vec: 'mtn', mtn: 'pnoa', pnoa: 'ign', ign: 'vec' }
@@ -22,7 +22,7 @@ const MODES: { id: Mode; label: string }[] = [
   { id: 'dormimos', label: 'Donde hemos dormido' },
   { id: 'gustan', label: '❤️ Nos gustan' },
 ]
-const LEGEND: (keyof typeof KIND_COLOR)[] = ['vivac', 'refugio_libre', 'refugio_pago', 'bunker', 'parapeto', 'abrigo', 'fuente', 'deseo', 'parking']
+const LEGEND: (keyof typeof KIND_COLOR)[] = ['vivac', 'refugio_libre', 'refugio_pago', 'bunker', 'parapeto', 'abrigo', 'fuente', 'cumbre', 'deseo', 'parking']
 
 function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [pos, setPos] = useState<GeolocationCoordinates | null>(null)
@@ -138,7 +138,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
       <div className="absolute left-3 flex flex-col items-start gap-2" style={{ bottom: 'calc(112px + var(--safe-b))', maxWidth: 'calc(100% - 96px)' }}>
         {legend && (
           <ul className="grid grid-cols-2 gap-x-4 gap-y-1 rounded-2xl p-3 text-xs font-semibold shadow-xl" style={{ background: 'var(--surface)' }}>
-            {LEGEND.map((k) => <li key={k} className="flex items-center gap-2"><i className="inline-block h-3 w-3 rounded-full" style={{ background: KIND_COLOR[k] }} />{KIND_LABEL[k]}</li>)}
+            {LEGEND.map((k) => <li key={k} className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full text-sm" style={{ background: KIND_COLOR[k] }}>{KIND_EMOJI[k]}</span>{KIND_LABEL[k]}</li>)}
             <li className="col-span-2 flex items-center gap-2"><i className="inline-block h-3 w-3 rounded-full border-2" style={{ borderColor: '#ffd9a0', background: '#999' }} />Con borde dorado: ya dormimos ahí</li>
           </ul>
         )}
