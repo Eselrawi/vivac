@@ -19,6 +19,7 @@ type Near = 0 | 90 | 120
 interface Props {
   places: Place[]
   winterOn: boolean
+  onFinde: () => void
   days: Date[]
   dayIdx: number
   onDay: (i: number) => void
@@ -43,7 +44,7 @@ const Chip = ({ on, children, onClick }: { on: boolean; children: React.ReactNod
   </button>
 )
 
-export default function Dormir({ places, winterOn, days, dayIdx, onDay, ctx, status, onOpen }: Props) {
+export default function Dormir({ places, winterOn, onFinde, days, dayIdx, onDay, ctx, status, onOpen }: Props) {
   const [view, setView] = useState<'lista' | 'mapa'>('lista')
   const [fee, setFee] = useState<Fee>('todos')
   const [near, setNear] = useState<Near>(0)
@@ -124,6 +125,8 @@ export default function Dormir({ places, winterOn, days, dayIdx, onDay, ctx, sta
           {status.error ? <CloudOff size={20} /> : <RefreshCw size={20} className={status.loading ? 'animate-spin' : ''} />}
         </button>
       </div>
+
+      <button onClick={onFinde} className="tap mx-4 mt-4 flex w-[calc(100%-2rem)] items-center justify-center gap-2 rounded-2xl py-3 text-lg font-bold text-white shadow-lg active:scale-[0.99]" style={{ background: 'var(--accent)' }}>🗓️ Hazme el plan del finde</button>
 
       <div className="no-scrollbar mt-4 flex gap-2 overflow-x-auto px-4 pb-1" role="tablist" aria-label="Día">
         {days.map((dd, i) => (

@@ -12,7 +12,9 @@ import { useAcceso } from './lib/acceso'
 import { useAccount } from './lib/auth'
 import { askPersistent, db, recordToPlace, useLive, type TrackRecord, type VivacRecord } from './lib/db'
 import { haversine } from './lib/geo'
-import { useDays, useDrive, useOverrides, type Ctx } from './lib/plan'
+import { evaluate, useDays, useDrive, useOverrides, type Ctx } from './lib/plan'
+import { pickPlan, type Finde } from './lib/finde'
+import type { Trip } from './components/PlanFinde'
 import { usePrefs } from './lib/prefs'
 import { SLEEP_KINDS, type Place } from './lib/types'
 import { useWeather } from './lib/weather'
@@ -21,7 +23,7 @@ const Mapa = lazy(() => import('./tabs/Mapa'))
 const Diario = lazy(() => import('./tabs/Diario'))
 const Mochila = lazy(() => import('./tabs/Mochila'))
 const NavSheet = lazy(() => import('./components/NavSheet'))
-const PlanSheet = lazy(() => import('./components/PlanSheet'))
+const PlanFinde = lazy(() => import('./components/PlanFinde'))
 const ProfileSheet = lazy(() => import('./components/ProfileSheet'))
 const AddPlaceSheet = lazy(() => import('./components/AddPlaceSheet'))
 const Welcome = lazy(() => import('./components/Welcome'))
@@ -38,7 +40,9 @@ export default function App() {
   const [mapSeen, setMapSeen] = useState(false)
   useEffect(() => { if (tab === 'mapa') setMapSeen(true) }, [tab])
   const [selected, setSelected] = useState<Place | null>(null)
-  const [plan, setPlan] = useState<Place | null>(null)
+  const [single, setSingle] = useState<{ place: Place; dayIdx: number } | null>(null)
+  const [finde, setFinde] = useState<Finde | null>(null)
+  const [noPlan, setNoPlan] = useState(false)
   const [navTarget, setNavTarget] = useState<Place | null>(null)
   const [routeLine, setRouteLine] = useState<[number, number, number][] | null>(null)
   const [cursor, setCursor] = useState<[number, number] | null>(null)
@@ -94,7 +98,22 @@ export default function App() {
   const vivacRows = useLive<VivacRecord[]>(() => db.vivacs.where('kind').equals('vivac').toArray(), [])
   const toRate = useMemo(() => vivacRows.filter((v) => !v.sleep && Date.now() - v.at > 8 * 3600000 && Date.now() - v.at < 5 * 86400000).sort((x, y) => y.at - x.at)[0], [vivacRows])
   const [dismissed, setDismissed] = useState<string | null>(null)
-  const trip = useLive<{ placeId: string; date: string } | undefined>(async () => (await db.kv.get('trip'))?.v as { placeId: string; date: string } | undefined, undefined)
+  const trip = useLive<Trip | undefined>(async () => (await db.kv.get('trip'))?.v as Trip | undefined, undefined)
+  // El día antes (o el mismo día): si la previsión ha empeorado, propongo el plan B.
+  const worse = useMemo(() => {
+    if (!trip || !ctx.wx) return null
+    const d = new Date(trip.date)
+    const dayStart = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime()
+    const diff = (dayStart(d) - dayStart(new Date())) / 86400000
+    if (diff < 0 || diff > 1) return null
+    const p = places.find((x) => x.id === trip.placeId)
+    const e = p && evaluate(p, d, ctx)
+    if (!p || !e) return null
+    if (!(e.score.score < 45 || (trip.score != null && e.score.score <= trip.score - 15))) return null
+    const dayIdx = days.findIndex((x) => dayStart(x) === dayStart(d))
+    const alts = (trip.alts ?? []).map((id) => places.find((x) => x.id === id)).filter((x): x is Place => !!x).map((a) => evaluate(a, d, ctx)).filter((x): x is NonNullable<typeof x> => !!x).sort((a, b) => b.score.score - a.score.score)
+    return { place: p, now: e.score.score, was: trip.score ?? null, plan: alts[0] && alts[0].score.score > e.score.score ? alts[0] : null, dayIdx }
+  }, [trip, ctx, places, days])
   const tomorrow = useMemo(() => { if (!trip) return null; const d = new Date(trip.date); const t = new Date(); t.setDate(t.getDate() + 1); return d.toDateString() === t.toDateString() ? catalog.find((p) => p.id === trip.placeId) ?? mine.find((p) => p.id === trip.placeId) ?? null : null }, [trip, catalog, mine])
   useEffect(() => {
     if (!toRate || !('Notification' in window) || Notification.permission !== 'granted') return
@@ -130,7 +149,7 @@ export default function App() {
     else apply()
   }, [])
 
-  const sheetOpen = !!(selected || plan || navTarget || rec || addPlace || profile)
+  const sheetOpen = !!(selected || single || finde || navTarget || rec || addPlace || profile)
   const open = (p: Place) => setSelected(p)
   useEffect(() => {
     const h = (e: Event) => { const p = places.find((x) => x.id === (e as CustomEvent<string>).detail); if (p) setSelected(p) }
@@ -143,7 +162,7 @@ export default function App() {
     <div className="relative h-full overflow-hidden">
       {tab !== 'mapa' && <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-10" style={{ height: 'calc(var(--safe-t) + 70px)', background: 'linear-gradient(var(--bg) 60%, transparent)' }} />}
       <main className="absolute inset-0 overflow-y-auto" hidden={tab === 'mapa'}>
-        {tab === 'dormir' && <Dormir places={visible} winterOn={winterOn} days={days} dayIdx={dayIdx} onDay={setDayIdx} ctx={ctx} status={weather} onOpen={open} />}
+        {tab === 'dormir' && <Dormir places={visible} winterOn={winterOn} onFinde={() => { const f = pickPlan(visible, days, ctx, { winter: winterOn }); if (f) setFinde(f); else { setNoPlan(true); setTimeout(() => setNoPlan(false), 4000) } }} days={days} dayIdx={dayIdx} onDay={setDayIdx} ctx={ctx} status={weather} onOpen={open} />}
         {tab === 'diario' && <Suspense fallback={null}><Diario places={places} focusId={diaryFocus} onFocused={() => setDiaryFocus(null)} /></Suspense>}
         {tab === 'mochila' && <Suspense fallback={null}><Mochila places={places} ctx={ctx} /></Suspense>}
       </main>
@@ -156,7 +175,14 @@ export default function App() {
       )}
       {(tab === 'dormir' || tab === 'mapa') && !sheetOpen && <Fab onPick={(id) => (id === 'refugio' ? setAddPlace(true) : setRec(id === 'ir' ? 'deseo' : 'vivac'))} />}
       {!sheetOpen && <button aria-label="Perfil" onClick={() => setProfile(true)} className="tap fixed left-3 z-20 grid h-11 w-11 place-items-center rounded-full shadow-lg" style={{ top: 'calc(var(--safe-t) + 12px)', background: acc.session ? 'var(--accent)' : 'var(--surface)', color: acc.session ? '#fff' : 'var(--ink)' }}><User size={22} /></button>}
-      {tomorrow && !toRate && !welcome && dismissed !== 'trip' && (
+      {worse && !welcome && dismissed !== 'worse' && (
+        <div role="alert" className="fixed inset-x-3 z-20 mx-auto flex max-w-md items-center gap-3 rounded-2xl p-3 shadow-xl" style={{ top: 'calc(var(--safe-t) + 62px)', background: '#d1553f', color: '#fff' }}>
+          <span className="flex-1 text-sm font-semibold">El tiempo ha empeorado para {worse.place.name} ({worse.was != null ? `${worse.was} → ` : ''}{worse.now} puntos).{worse.plan ? ` Plan B: ${worse.plan.place.name} (${worse.plan.score.score}).` : ''}</span>
+          {worse.plan && <button className="tap rounded-xl bg-white px-3 font-bold" style={{ color: '#d1553f' }} onClick={() => { setFinde({ primary: { dayIdx: worse.dayIdx, entry: worse.plan! }, alts: [], nights: [worse.dayIdx] }); setDismissed('worse') }}>Ver plan B</button>}
+          <button aria-label="Cerrar aviso" className="tap px-2" onClick={() => setDismissed('worse')}>✕</button>
+        </div>
+      )}
+      {tomorrow && !worse && !toRate && !welcome && dismissed !== 'trip' && (
         <div role="status" className="fixed inset-x-3 z-20 mx-auto flex max-w-md items-center gap-3 rounded-2xl p-3 shadow-xl" style={{ top: 'calc(var(--safe-t) + 62px)', background: '#1b2c44', color: '#fff' }}>
           <span className="flex-1 text-sm font-semibold">Mañana salís a {tomorrow.name}. ¿Mochila lista?</span>
           <button className="tap rounded-xl bg-white px-3 font-bold" style={{ color: '#1b2c44' }} onClick={() => go('mochila')}>Ver lista</button>
@@ -174,9 +200,10 @@ export default function App() {
       {welcome && <Suspense fallback={null}><Welcome onDone={() => setWelcome(false)} onJoin={() => setProfile(true)} /></Suspense>}
       <RecordSheet mode={rec} onClose={() => setRec(null)} places={places} />
       {useSeen(addPlace) && <Suspense fallback={null}><AddPlaceSheet open={addPlace} onClose={() => setAddPlace(false)} /></Suspense>}
-      <PlaceSheet places={places} place={selected && places.find((p) => p.id === selected.id) || selected} days={days} dayIdx={dayIdx} ctx={ctx} onDay={setDayIdx} onClose={() => setSelected(null)} onRoute={route} onPlan={(p) => { setPlan(p); setSelected(null) }} />
+      <PlaceSheet places={places} place={selected && places.find((p) => p.id === selected.id) || selected} days={days} dayIdx={dayIdx} ctx={ctx} onDay={setDayIdx} onClose={() => setSelected(null)} onRoute={route} onPlan={(p, i) => { setSingle({ place: p, dayIdx: i }); setSelected(null) }} />
       {useSeen(!!navTarget) && <Suspense fallback={null}><NavSheet target={navTarget} places={places} ctx={ctx} onClose={() => setNavTarget(null)} onRoute={setRouteLine} onCursor={setCursor} /></Suspense>}
-      {useSeen(!!plan) && <Suspense fallback={null}><PlanSheet place={plan} day={days[dayIdx]} ctx={ctx} onClose={() => setPlan(null)} /></Suspense>}
+      {useSeen(!!(single || finde)) && <Suspense fallback={null}><PlanFinde finde={finde} single={single} days={days} ctx={ctx} places={visible} onClose={() => { setFinde(null); setSingle(null) }} /></Suspense>}
+      {noPlan && <div role="status" className="fixed inset-x-3 z-[80] mx-auto max-w-md rounded-2xl p-3 text-sm font-semibold shadow-xl" style={{ top: 'calc(var(--safe-t) + 62px)', background: '#1b2c44', color: '#fff' }}>Aún no hay previsión para armar el plan. Pulsa actualizar y reinténtalo.</div>}
       <BottomNav tab={tab} onChange={go} />
     </div>
   )

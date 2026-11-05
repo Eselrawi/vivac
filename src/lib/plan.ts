@@ -157,11 +157,11 @@ export function useDrive(prefs: Prefs, parkings: Place[]): DriveTable {
 // ---- Ediciones locales de un sitio (orientación del parapeto, tipo de protección) ----
 type Ovr = Record<string, Partial<Pick<Place, 'shelteredFrom' | 'shelter' | 'priceNight' | 'verified'>>>
 const KEY = 'vivac.ovr'
-let ovr: Ovr = JSON.parse(localStorage.getItem(KEY) ?? '{}')
+let ovr: Ovr = JSON.parse((typeof localStorage !== 'undefined' ? localStorage.getItem(KEY) : null) ?? '{}')
 const subs = new Set<() => void>()
 export const setOverride = (id: string, patch: Ovr[string]) => {
   ovr = { ...ovr, [id]: { ...ovr[id], ...patch } }
-  localStorage.setItem(KEY, JSON.stringify(ovr))
+  if (typeof localStorage !== 'undefined') localStorage.setItem(KEY, JSON.stringify(ovr))
   subs.forEach((f) => f())
 }
 export const useOverrides = () => useSyncExternalStore((cb) => { subs.add(cb); return () => subs.delete(cb) }, () => ovr)

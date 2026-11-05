@@ -190,3 +190,27 @@ describe('tipos de noche y relieve', () => {
     expect(crest.windMean).toBeGreaterThan(mid.windMean * 1.3)
   })
 })
+
+import { makeIcs, pickPlan, timeline, weekendNights } from './finde'
+import { DEFAULT_PREFS } from './prefs'
+
+describe('plan del finde', () => {
+  it('encuentra las noches de viernes y sábado', () => {
+    const days = Array.from({ length: 10 }, (_, i) => new Date(2026, 10, 5 + i, 12)) // jueves 5 nov 2026
+    const n = weekendNights(days)
+    expect(n.map((i) => days[i].getDay())).toEqual([5, 6])
+  })
+  it('el calendario .ics lleva el aviso del día anterior y las coordenadas', () => {
+    const ics = makeIcs({ title: 'Vivac; Zabala', start: new Date('2026-11-14T14:00:00Z'), end: new Date('2026-11-15T12:00:00Z'), description: 'a, b', lat: 40.85, lng: -3.96, location: 'Peñalara' })
+    expect(ics).toContain('BEGIN:VEVENT')
+    expect(ics).toContain('TRIGGER:-P1D')
+    expect(ics).toContain('GEO:40.85;-3.96')
+    expect(ics).toContain(String.raw`SUMMARY:Vivac\; Zabala`)
+    expect(ics).toContain('DTSTART:20261114T140000Z')
+  })
+  it('sin previsión no inventa un plan', () => {
+    const days = [new Date(2026, 10, 6, 12)]
+    expect(pickPlan([], days, { wx: null, parkings: [], drive: {}, prefs: DEFAULT_PREFS }, { winter: false })).toBeNull()
+    void timeline
+  })
+})

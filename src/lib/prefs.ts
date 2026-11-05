@@ -20,19 +20,19 @@ export interface Prefs {
   theme: 'auto' | 'claro' | 'oscuro' | 'rojo'
 }
 
-const DEFAULT: Prefs = {
+export const DEFAULT_PREFS: Prefs = {
   homeName: HOME.name, homeLat: HOME.lat, homeLng: HOME.lng,
   marginMin: 60, consumption: 7, fuelPrice: 1.55, people: 3, threshold: -2, coldMargin: 0, names: ["Yo"], contacts: [], units: 'm', winter: 'auto', nightMode: 'comoda', discover: false, theme: 'auto',
 }
 
 const KEY = 'vivac.prefs'
-let state: Prefs = { ...DEFAULT, ...(JSON.parse(localStorage.getItem(KEY) ?? '{}') as Partial<Prefs>) }
+let state: Prefs = { ...DEFAULT_PREFS, ...(JSON.parse((typeof localStorage !== 'undefined' ? localStorage.getItem(KEY) : null) ?? '{}') as Partial<Prefs>) }
 const subs = new Set<() => void>()
 
 export const getPrefs = () => state
 export function setPrefs(p: Partial<Prefs>) {
   state = { ...state, ...p }
-  localStorage.setItem(KEY, JSON.stringify(state))
+  if (typeof localStorage !== 'undefined') localStorage.setItem(KEY, JSON.stringify(state))
   subs.forEach((f) => f())
 }
 export const usePrefs = () =>
