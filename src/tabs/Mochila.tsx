@@ -3,7 +3,8 @@ import CloseBtn from '../components/CloseBtn'
 import { Drawer } from 'vaul'
 import { Plus, Trash2 } from 'lucide-react'
 import { db, useLive } from '../lib/db'
-import { CATS, distribute, recommend, totalG, type Cat, type GearItem } from '../lib/pack'
+import { CATS, distribute, recommend, sleepSystem, totalG, type Cat, type GearItem } from '../lib/pack'
+import { CATALOG, TEMPLATES } from '../lib/gearCatalog'
 import { evaluate, type Ctx } from '../lib/plan'
 import { setPrefs } from '../lib/prefs'
 import type { Place } from '../lib/types'
@@ -67,6 +68,15 @@ export default function Mochila({ places, ctx }: { places: Place[]; ctx: Ctx }) 
   const personal = lines.filter((l) => !l.shared)
   const myLoad = totalG(personal) + mine.reduce((a, l) => a + l.weightG, 0)
 
+  const sys = useMemo(() => (entry ? sleepSystem(gear, entry.stats.tmin, m) : null), [entry, gear, m])
+  const addItems = async (ids: string[]) => {
+    const have = new Set(gear.map((g) => g.name.toLowerCase()))
+    for (const id of ids) {
+      const c = CATALOG[id]
+      if (!c || have.has(c.name.toLowerCase())) continue
+      await db.gear.add({ id: crypto.randomUUID(), cat: c.cat, name: c.name, weightG: c.weightG, value: c.value ?? null, tag: c.tag, shared: c.shared })
+    }
+  }
   const tick = (k: string) => db.kv.put({ k: 'checks', v: { ...checks, [k]: !checks[k] } })
   const adj = (d: number) => setPrefs({ coldMargin: Math.max(-4, Math.min(8, Math.round((m + d) * 10) / 10)) })
 
@@ -100,6 +110,20 @@ export default function Mochila({ places, ctx }: { places: Place[]; ctx: Ctx }) 
           <>
             <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{place.name} · {new Date(trip.date).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
             <p className="mt-2 rounded-2xl p-3 font-display" style={{ background: 'var(--surface)' }}>{entry.text}</p>
+            {sys && (
+              <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)', borderLeft: `6px solid ${{ sobrado: '#3f8a68', justo: '#e5b23a', frio: '#d1553f', 'sin-saco': '#8a8c8f' }[sys.verdict]}` }}>
+                <p className="font-semibold">🛌 Tu sistema de dormir</p>
+                {sys.comfortC == null ? (
+                  <p className="mt-1 text-sm">Apunta un saco abajo y calculo si aguanta esa noche.</p>
+                ) : (
+                  <>
+                    <p className="mt-1 text-sm">{sys.parts.join(' + ')}</p>
+                    <p className="mt-1 text-sm">Aguanta hasta unos <b>{Math.round(sys.comfortC)} °C</b>. Mínima del aire esa noche: <b>{Math.round(entry!.stats.tmin)} °C</b>{m ? ` (con tu margen: ${Math.round(sys.needC)} °C)` : ''}. Aislantes: R <b>{sys.rTotal}</b>.</p>
+                    <p className="mt-1 text-sm font-bold">{sys.verdict === 'sobrado' ? '✅ Vas sobrado.' : sys.verdict === 'justo' ? '🟡 Vas justo: ropa seca, botella caliente y comer antes de dormir.' : '🔴 Pasarás frío: añade un saco más cálido, un forro u otro aislante.'}</p>
+                  </>
+                )}
+              </div>
+            )}
             <ul className="mt-3 flex flex-col gap-2">
               {[...personal, ...mine].map((l) => (
                 <li key={l.key}>
@@ -120,7 +144,17 @@ export default function Mochila({ places, ctx }: { places: Place[]; ctx: Ctx }) 
       </section>
 
       <section className="mt-8">
-        <div className="flex items-center justify-between"><h2 className="text-xl font-semibold">Mi material</h2><button onClick={() => setAdd(true)} className="tap inline-flex items-center gap-1 rounded-full px-4 font-semibold text-white" style={{ background: 'var(--accent)' }}><Plus size={18} />Añadir</button></div>
+        <p className="mt-3 text-sm font-semibold">Plantillas de un toque</p>
+        <div className="mt-1 grid grid-cols-3 gap-2">
+          {TEMPLATES.map((t) => <button key={t.id} onClick={() => addItems(t.items)} className="tap rounded-2xl p-2 text-center text-xs font-bold" style={{ background: 'var(--surface)' }}><span className="block text-2xl">{t.emoji}</span>{t.label}<span className="block text-[10px] font-normal" style={{ color: 'var(--ink-soft)' }}>{t.desc}</span></button>)}
+        </div>
+        <details className="mt-2 rounded-2xl p-3 text-sm" style={{ background: 'var(--surface)' }}>
+          <summary className="cursor-pointer font-semibold">Catálogo de material típico</summary>
+          <ul className="mt-2 flex max-h-72 flex-col gap-1 overflow-y-auto">
+            {Object.entries(CATALOG).map(([id, c]) => <li key={id} className="flex items-center justify-between gap-2 py-1"><span className="min-w-0"><b className="block truncate">{c.name}</b><span className="text-xs" style={{ color: 'var(--ink-soft)' }}>{c.weightG} g · {c.why}</span></span><button aria-label={`Añadir ${c.name}`} className="tap grid h-10 w-10 shrink-0 place-items-center rounded-full text-white" style={{ background: 'var(--accent)' }} onClick={() => addItems([id])}>+</button></li>)}
+          </ul>
+        </details>
+        <div className="mt-4 flex items-center justify-between"><h2 className="text-xl font-semibold">Mi material</h2><button onClick={() => setAdd(true)} className="tap inline-flex items-center gap-1 rounded-full px-4 font-semibold text-white" style={{ background: 'var(--accent)' }}><Plus size={18} />Añadir</button></div>
         {gear.length === 0 ? (
           <p className="mt-3 rounded-3xl p-5 text-center text-sm" style={{ background: 'var(--surface)' }}>🎒 Apunta tu material una sola vez (saco, aislante, ropa…) y la app elegirá lo mejor para cada noche.</p>
         ) : (

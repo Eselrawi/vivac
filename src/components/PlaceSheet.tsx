@@ -13,6 +13,7 @@ import { usePhotos } from '../lib/photos'
 import { CONF_COLOR, CONF_LABEL, useEvidence } from '../lib/evidence'
 import { getSb, GROUP_KEY } from '../lib/sb'
 import { MODE_LABEL } from '../lib/score'
+import { useLikes } from '../lib/likes'
 import { ESTADO_UI, REPORT_UI, useAcceso, type ReportState } from '../lib/acceso'
 import { Dot, Illustration, NightChart, ScoreRing, WindRose } from './ui'
 
@@ -75,6 +76,8 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
   }, [place, sleepKind, e, days, dayIdx, places, ctx])
   const ev = useEvidence(place)
   const acc = useAcceso()
+  const likes = useLikes()
+  const likers = place ? likes.who(place.id) : []
   const eff = place ? acc.effective(place.id) : null
   const photos = usePhotos(place, ev?.ph)
   const [shot, setShot] = useState(0)
@@ -115,17 +118,19 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                   {place.ele ? `${place.ele} m` : ''}{place.eleDem ? ' (modelo de elevación)' : ''}{sleepKind ? (place.verified ? ' · Confirmado por el grupo' : ' · Sin verificar') : ''}
                 </Drawer.Description>
 
-                <div className="mt-4 grid grid-cols-3 gap-2">
+                <div className="mt-4 grid grid-cols-4 gap-2">
                   {[
+                    { l: likers.includes('Tú') ? '❤️ Te gusta' : '🤍 Me gusta', I: null, f: () => likes.toggle(place.id) },
                     { l: 'Cómo llegar', I: Navigation, f: () => onRoute(place) },
                     { l: 'Planear', I: CalendarCheck, f: () => onPlan(place, dayIdx) },
                     { l: 'Compartir', I: Share2, f: share },
                   ].map(({ l, I, f }) => (
                     <button key={l} onClick={f} className="tap flex flex-col items-center gap-1 rounded-2xl py-3 text-sm font-semibold active:scale-95" style={{ background: 'var(--surface)' }}>
-                      <I size={22} />{l}
+                      {I ? <I size={22} /> : null}{l}
                     </button>
                   ))}
                 </div>
+                {likers.length > 0 && <p className="mt-2 text-sm">❤️ Les gusta a: <b>{likers.join(', ')}</b></p>}
 
                 {sleepKind && eff && (
                   <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)', borderLeft: `6px solid ${ESTADO_UI[eff.estado].color}` }}>

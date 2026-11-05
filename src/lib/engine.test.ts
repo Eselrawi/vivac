@@ -214,3 +214,37 @@ describe('plan del finde', () => {
     void timeline
   })
 })
+
+import { sleepSystem } from './pack'
+describe('sistema de dormir', () => {
+  const g = (o: Partial<GearItem>): GearItem => ({ id: Math.random().toString(), cat: 'otro', name: 'x', weightG: 100, ...o })
+  it('suma saco, forro, funda y ropa y compara con el aire', () => {
+    const gear = [g({ cat: 'saco', value: 0, name: 'Saco 3 est.' }), g({ cat: 'saco', value: 4, tag: 'forro', name: 'Forro' }), g({ cat: 'refugio', value: 2, tag: 'funda' }), g({ tag: 'plumas', cat: 'ropa' }), g({ cat: 'aislante', value: 4 })]
+    const s = sleepSystem(gear, -2, 0)
+    expect(s.comfortC).toBe(0 - 4 - 2 - 3)
+    expect(s.verdict).toBe('sobrado')
+  })
+  it('varios aislantes suman su valor R y uno solo flojo deja la noche en «frío»', () => {
+    const weak = [g({ cat: 'saco', value: -8 }), g({ cat: 'aislante', value: 2 })]
+    expect(sleepSystem(weak, -4, 0).verdict).toBe('frio')
+    const two = [...weak, g({ cat: 'aislante', value: 2 })]
+    expect(sleepSystem(two, -4, 0).rTotal).toBe(4)
+    expect(sleepSystem(two, -4, 0).verdict).not.toBe('frio')
+  })
+  it('el margen personal exige más abrigo', () => {
+    const gear = [g({ cat: 'saco', value: -5 }), g({ cat: 'aislante', value: 4 })]
+    expect(sleepSystem(gear, -4, 0).verdict).not.toBe('frio')
+    expect(sleepSystem(gear, -4, 5).verdict).toBe('frio')
+  })
+  it('sin saco no inventa nada', () => { expect(sleepSystem([], 0, 0).verdict).toBe('sin-saco') })
+})
+
+describe('me gusta', () => {
+  it('suman puntos a la noche, sin salirse de 100', () => {
+    const s = stats({ tmin: 1, feels: 0, windMean: 10, gustMax: 20 })
+    const a = scoreNight(base, s, { threshold: -2, like: 0 }).score
+    const b = scoreNight(base, s, { threshold: -2, like: 1 }).score
+    expect(b).toBeGreaterThan(a)
+    expect(scoreNight({ ...base, shelter: 'cerrado' }, stats({ tmin: 9, feels: 9, windMean: 2, gustMax: 5 }), { threshold: -2, like: 1 }).score).toBeLessThanOrEqual(100)
+  })
+})

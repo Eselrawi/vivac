@@ -9,16 +9,18 @@ import type { Ctx } from '../lib/plan'
 import MapView, { type BaseLayer } from '../components/MapView'
 import type { Bounds } from '../lib/offline'
 import { usePrefs } from '../lib/prefs'
+import { useLikes } from '../lib/likes'
 import { KIND_COLOR, KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
 
 const MiGps = lazy(() => import('../components/MiGps'))
 const NEXT: Record<BaseLayer, BaseLayer> = { vec: 'mtn', mtn: 'pnoa', pnoa: 'ign', ign: 'vec' }
 const NAME: Record<BaseLayer, string> = { vec: 'Vectorial', ign: 'Mapa IGN', mtn: 'Topográfico', pnoa: 'Satélite' }
-type Mode = 'todo' | 'dormir' | 'dormimos'
+type Mode = 'todo' | 'dormir' | 'dormimos' | 'gustan'
 const MODES: { id: Mode; label: string }[] = [
   { id: 'todo', label: 'Todo' },
   { id: 'dormir', label: 'Para dormir' },
   { id: 'dormimos', label: 'Donde hemos dormido' },
+  { id: 'gustan', label: '❤️ Nos gustan' },
 ]
 const LEGEND: (keyof typeof KIND_COLOR)[] = ['vivac', 'refugio_libre', 'refugio_pago', 'bunker', 'parapeto', 'abrigo', 'fuente', 'deseo', 'parking']
 
@@ -70,6 +72,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
   const [is3D, setIs3D] = useState(true)
   const [layer, setLayer] = useState<BaseLayer>('vec')
   const [mode, setMode] = useState<Mode>("dormir")
+  const likes = useLikes()
   const [legend, setLegend] = useState(false)
   const [sos, setSos] = useState(false)
   const [dl, setDl] = useState(false)
@@ -83,9 +86,10 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
 
   const shown = useMemo(() => {
     if (mode === 'dormimos') return places.filter((p) => p.kind === 'vivac')
+    if (mode === 'gustan') return places.filter((p) => likes.who(p.id).length > 0)
     if (mode === 'dormir') return places.filter((p) => (SLEEP_KINDS.includes(p.kind) || p.kind === 'candidato') && !p.toponym)
     return places
-  }, [places, mode])
+  }, [places, mode, likes.version])
   const sleepN = useMemo(() => places.filter((p) => SLEEP_KINDS.includes(p.kind) && p.kind !== 'vivac' && !p.toponym), [places])
   const visited = sleepN.filter((p) => p.visited).length
   const hits = useMemo(() => {

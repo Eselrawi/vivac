@@ -9,11 +9,12 @@ import Dormir from './tabs/Dormir'
 import { useCatalog } from './lib/catalog'
 import { useEvidenceMap } from './lib/evidence'
 import { useAcceso } from './lib/acceso'
+import { useLikes } from './lib/likes'
 import { useAccount } from './lib/auth'
 import { askPersistent, db, recordToPlace, useLive, type TrackRecord, type VivacRecord } from './lib/db'
 import { haversine } from './lib/geo'
 import { evaluate, useDays, useDrive, useOverrides, type Ctx } from './lib/plan'
-import { pickPlan, type Finde } from './lib/finde'
+import { pickPlan, weekendNights, type Finde } from './lib/finde'
 import type { Trip } from './components/PlanFinde'
 import { usePrefs } from './lib/prefs'
 import { SLEEP_KINDS, type Place } from './lib/types'
@@ -77,6 +78,7 @@ export default function App() {
   const weather = useWeather(wxPlaces)
   const evidence = useEvidenceMap()
   const access = useAcceso()
+  const likes = useLikes()
   const month = new Date().getMonth()
   const winterOn = prefs.winter === 'si' || (prefs.winter === 'auto' && (month >= 10 || month <= 2))
   const quality = useMemo(() => {
@@ -93,7 +95,8 @@ export default function App() {
     return q
   }, [places, evidence, access.ready, access.reports, winterOn]) // eslint-disable-line react-hooks/exhaustive-deps
   const visible = useMemo(() => places.filter((p) => access.effective(p.id).estado !== 'cerrado'), [places, access.ready, access.reports]) // eslint-disable-line react-hooks/exhaustive-deps
-  const ctx: Ctx = useMemo(() => ({ wx: weather.wx, parkings, drive, prefs, quality }), [weather.wx, parkings, drive, prefs, quality])
+  const likeMap = useMemo(() => { const m: Record<string, number> = {}; for (const id of likes.likedIds()) m[id] = likes.fraction(id); return m }, [likes.version]) // eslint-disable-line react-hooks/exhaustive-deps
+  const ctx: Ctx = useMemo(() => ({ wx: weather.wx, parkings, drive, prefs, quality, likes: likeMap }), [weather.wx, parkings, drive, prefs, quality, likeMap])
 
   const vivacRows = useLive<VivacRecord[]>(() => db.vivacs.where('kind').equals('vivac').toArray(), [])
   const toRate = useMemo(() => vivacRows.filter((v) => !v.sleep && Date.now() - v.at > 8 * 3600000 && Date.now() - v.at < 5 * 86400000).sort((x, y) => y.at - x.at)[0], [vivacRows])
@@ -114,6 +117,21 @@ export default function App() {
     const alts = (trip.alts ?? []).map((id) => places.find((x) => x.id === id)).filter((x): x is Place => !!x).map((a) => evaluate(a, d, ctx)).filter((x): x is NonNullable<typeof x> => !!x).sort((a, b) => b.score.score - a.score.score)
     return { place: p, now: e.score.score, was: trip.score ?? null, plan: alts[0] && alts[0].score.score > e.score.score ? alts[0] : null, dayIdx }
   }, [trip, ctx, places, days])
+  const coincidence = useMemo(() => {
+    if (!ctx.wx || likes.groupSize < 2) return null
+    const nights = weekendNights(days)
+    let best: { place: Place; dayIdx: number; score: number } | null = null
+    for (const id of likes.likedIds()) {
+      if (likes.fraction(id) < 1) continue
+      const p = visible.find((x) => x.id === id)
+      if (!p) continue
+      for (const dayIdx of nights) {
+        const e = evaluate(p, days[dayIdx], ctx)
+        if (e && e.score.score >= 70 && (!best || e.score.score > best.score)) best = { place: p, dayIdx, score: e.score.score }
+      }
+    }
+    return best
+  }, [ctx, likes.version, visible, days]) // eslint-disable-line react-hooks/exhaustive-deps
   const tomorrow = useMemo(() => { if (!trip) return null; const d = new Date(trip.date); const t = new Date(); t.setDate(t.getDate() + 1); return d.toDateString() === t.toDateString() ? catalog.find((p) => p.id === trip.placeId) ?? mine.find((p) => p.id === trip.placeId) ?? null : null }, [trip, catalog, mine])
   useEffect(() => {
     if (!toRate || !('Notification' in window) || Notification.permission !== 'granted') return
@@ -180,6 +198,13 @@ export default function App() {
           <span className="flex-1 text-sm font-semibold">El tiempo ha empeorado para {worse.place.name} ({worse.was != null ? `${worse.was} → ` : ''}{worse.now} puntos).{worse.plan ? ` Plan B: ${worse.plan.place.name} (${worse.plan.score.score}).` : ''}</span>
           {worse.plan && <button className="tap rounded-xl bg-white px-3 font-bold" style={{ color: '#d1553f' }} onClick={() => { setFinde({ primary: { dayIdx: worse.dayIdx, entry: worse.plan! }, alts: [], nights: [worse.dayIdx] }); setDismissed('worse') }}>Ver plan B</button>}
           <button aria-label="Cerrar aviso" className="tap px-2" onClick={() => setDismissed('worse')}>✕</button>
+        </div>
+      )}
+      {coincidence && !worse && !welcome && dismissed !== 'match' && (
+        <div role="status" className="fixed inset-x-3 z-20 mx-auto flex max-w-md items-center gap-3 rounded-2xl p-3 shadow-xl" style={{ top: 'calc(var(--safe-t) + 62px)', background: '#c2315b', color: '#fff' }}>
+          <span className="flex-1 text-sm font-semibold">❤️ ¡Coincidencia! A todos os gusta {coincidence.place.name} y la noche del {days[coincidence.dayIdx].toLocaleDateString('es-ES', { weekday: 'long' })} va bien ({coincidence.score}).</span>
+          <button className="tap rounded-xl bg-white px-3 font-bold" style={{ color: '#c2315b' }} onClick={() => { setSingle({ place: coincidence.place, dayIdx: coincidence.dayIdx }); setDismissed('match') }}>Planear</button>
+          <button aria-label="Cerrar aviso" className="tap px-2" onClick={() => setDismissed('match')}>✕</button>
         </div>
       )}
       {tomorrow && !worse && !toRate && !welcome && dismissed !== 'trip' && (

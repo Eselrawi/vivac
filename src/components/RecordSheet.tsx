@@ -4,6 +4,7 @@ import { Camera, Check, Search, X } from 'lucide-react'
 import CloseBtn from './CloseBtn'
 import LocationField, { type Pos } from './LocationField'
 import { compressPhoto, saveVivac } from '../lib/db'
+import { toggleLike } from '../lib/likes'
 import { haversine } from '../lib/geo'
 import { KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
 
@@ -59,7 +60,8 @@ export default function RecordSheet({ mode, onClose, places }: { mode: Mode | nu
     if (!pos || !name.trim() || !mode) return
     // Una noche pasada se guarda a las 23:00 de ese día, para pedir luego el tiempo real de esa noche.
     const at = date === today() ? undefined : new Date(`${date}T23:00:00`).getTime()
-    await saveVivac({ name: name.trim(), kind: mode, lat: pos.lat, lng: pos.lng, ele: pos.ele, photo, sleep, placeId: linked?.id }, at)
+    const rec = await saveVivac({ name: name.trim(), kind: mode, lat: pos.lat, lng: pos.lng, ele: pos.ele, photo, sleep, placeId: linked?.id }, at)
+    if (mode === 'deseo') await toggleLike(rec.id) // «Quiero ir aquí» = me gusta
     setDone(true)
     setTimeout(onClose, 1100)
   }

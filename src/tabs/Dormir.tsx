@@ -6,6 +6,7 @@ import { evaluate, evaluateLight, quickScore, type Ctx, type Entry } from '../li
 import { hhmm } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
 import { CONF_COLOR, useEvidenceMap } from '../lib/evidence'
+import { useLikes } from '../lib/likes'
 import { setPrefs, usePrefs } from '../lib/prefs'
 import { MODE_LABEL, type NightMode } from '../lib/score'
 import { SLEEP_KINDS, KIND_LABEL, type Place } from '../lib/types'
@@ -56,6 +57,8 @@ export default function Dormir({ places, winterOn, onFinde, days, dayIdx, onDay,
   const [lowToo, setLowToo] = useState(false)
   const { discover, nightMode } = usePrefs()
   const evs = useEvidenceMap()
+  const likes = useLikes()
+  const [onlyLiked, setOnlyLiked] = useState(false)
   const [waited, setWaited] = useState(false)
   useEffect(() => { const t = setTimeout(() => setWaited(true), 7000); return () => clearTimeout(t) }, [])
   const brief = (id: string) => evs?.[id]?.d.split(/(?<=\.)\s/)[0] ?? ''
@@ -102,12 +105,13 @@ export default function Dormir({ places, winterOn, onFinde, days, dayIdx, onDay,
       if (stars && !(e.stats.cloud < 30 && e.moon.fraction < 0.4)) return false
       if (noSnow && (e.stats.snowDepth >= 0.03 || e.stats.snow > 0.2)) return false
       if (never && p.visited) return false
+      if (onlyLiked && likes.who(p.id).length === 0) return false
       if (winterOn && (p.kind === 'parapeto' || p.kind === 'candidato' || (p.kind === 'abrigo' && p.toponym) || p.shelter === 'raso' || (p.shelter == null && p.kind !== 'bunker' && p.kind !== 'abrigo' && p.kind !== 'refugio_libre' && p.kind !== 'refugio_pago'))) return false
       return true
     })
     const rank = (e: Entry) => e.score.score - (e.place.unnamed ? 25 : 0)
     return list.sort((a, b) => rank(b) - rank(a) || (a.access[0]?.totalMin ?? 999) - (b.access[0]?.totalMin ?? 999))
-  }, [gridDay, fee, near, techo, parapeto, stars, noSnow, never, winterOn])
+  }, [gridDay, fee, near, techo, parapeto, stars, noSnow, never, winterOn, onlyLiked, likes.version])
 
   const heroes = useMemo(() => ranked.slice(0, 3).map((e) => evaluate(e.place, day, ctx) ?? e), [ranked, day, ctx])
   const top = heroes[0]
@@ -153,6 +157,7 @@ export default function Dormir({ places, winterOn, onFinde, days, dayIdx, onDay,
       {status.error && !ctx.wx && <p className="mx-4 mt-3 rounded-2xl p-3 text-sm" style={{ background: '#e5b23a33' }}>No he podido cargar la previsión. Prueba con cobertura y pulsa el botón de actualizar.</p>}
 
       <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4">
+        <Chip on={onlyLiked} onClick={() => setOnlyLiked(!onlyLiked)}>❤️ Nos gustan</Chip>
         <Chip on={winterOn} onClick={() => setPrefs({ winter: winterOn ? 'no' : 'si' })}>❄️ Modo invierno cubierto</Chip>
         <Chip on={near === 90} onClick={() => setNear(near === 90 ? 0 : 90)}>Cerca &lt; 1 h 30</Chip>
         <Chip on={near === 120} onClick={() => setNear(near === 120 ? 0 : 120)}>&lt; 2 h</Chip>
@@ -267,7 +272,7 @@ export default function Dormir({ places, winterOn, onFinde, days, dayIdx, onDay,
                   <button onClick={() => onOpen(e.place)} className="tap flex w-full items-center gap-3 rounded-2xl p-3 text-left active:scale-[0.99]" style={{ background: 'var(--surface)' }}>
                     <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl"><Illustration kind={e.place.kind} className="h-full w-full" /></div>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate font-bold">{e.place.name}{price(e.place)}</p>
+                      <p className="truncate font-bold">{likes.who(e.place.id).length > 0 && <span aria-label="Nos gusta">❤️ </span>}{e.place.name}{price(e.place)}</p>
                       <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>{KIND_LABEL[e.place.kind]}{e.place.ele ? ` · ${e.place.ele} m` : ''}{e.access[0] ? ` · 🚗 ${fmtDur(e.access[0].driveMin)} + 🥾 ${fmtDur(e.access[0].walkMin)}` : ''}</p>
                       <p className="truncate text-xs font-semibold">{keyData(e)}</p>
                       {brief(e.place.id) && <p className="line-clamp-2 text-xs" style={{ color: 'var(--ink-soft)' }}>{evs?.[e.place.id] && <i className="mr-1 inline-block h-2 w-2 rounded-full align-middle" style={{ background: CONF_COLOR[evs[e.place.id].c] }} />}{brief(e.place.id)}</p>}

@@ -101,7 +101,49 @@ export function recommend(e: Entry, gear: GearItem[], margin = 0): PackLine[] {
   lines.push({ key: 'frontal', label: lamp ? lamp.name : 'Frontal con pilas nuevas', reason: `Anochece a las ${e.night.sunset.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`, item: lamp, missing: !lamp, weightG: lamp?.weightG ?? 90 })
   if (s.tmin < 2) lines.push({ key: 'bateria', label: 'Batería externa', reason: 'El frío gasta las baterías: duerme con móvil y batería dentro del saco', weightG: 250 })
 
+  // Lista de invierno completa: cada cosa con su porqué
+  const cold = s.tmin < 0
+  const has = (cat: Cat, tag?: string) => gear.some((g) => g.cat === cat && (!tag || g.tag === tag))
+  if (cold) {
+    lines.push({ key: 'gas-inv', label: 'Gas de invierno', reason: `Con ${Math.round(s.tmin)} °C el gas normal no arranca: usa mezcla de invierno y guarda el bote en el saco`, weightG: 450, shared: true, missing: !gear.some((g) => /gas de invierno/i.test(g.name)) })
+    lines.push({ key: 'botella-cal', label: 'Botella de agua caliente', reason: 'Metida en el saco calienta los pies toda la noche (y el agua no se hiela)', weightG: 150, missing: !gear.some((g) => /agua caliente/i.test(g.name)) })
+    lines.push({ key: 'pilas-litio', label: 'Pilas de litio de repuesto', reason: 'Las alcalinas se agotan con el frío; el frontal no puede fallar', weightG: 60, missing: !gear.some((g) => /litio/i.test(g.name)) })
+    lines.push({ key: 'manta-term', label: 'Manta térmica de emergencia', reason: 'Pesa 90 g y puede salvar una noche', weightG: 90, missing: !gear.some((g) => /manta térmica/i.test(g.name)) })
+  }
+  if (s.snowDepth > 0.3) lines.push({ key: 'raquetas', label: 'Raquetas de nieve', reason: `Hay unos ${Math.round(s.snowDepth * 100)} cm de nieve: sin raquetas te hundes y gastas el doble`, weightG: 1900, alert: true, missing: !gear.some((g) => /raquetas/i.test(g.name)) })
+  else if (s.snowDepth > 0.08 || (cold && s.rhMax > 80)) lines.push({ key: 'crampones-inv', label: 'Crampones o microcrampones', reason: 'Nieve dura o hielo en el sendero a primera hora y al volver', weightG: 900, missing: !has('invierno') })
+  if (cold || s.snowDepth > 0.05) lines.push({ key: 'botiquin', label: 'Botiquín con manta térmica y vendaje', reason: 'Con frío una torcedura se convierte en problema serio', weightG: 250, shared: true })
   return lines
+}
+
+export interface SleepSystem {
+  /** Temperatura de confort del conjunto (saco + forro + funda + ropa de abrigo), en °C. */
+  comfortC: number | null
+  /** Valor R sumado de todos los aislantes. */
+  rTotal: number
+  /** Temperatura mínima del AIRE esperada (no la sensación térmica), más el margen personal aprendido. */
+  needC: number
+  verdict: 'sobrado' | 'justo' | 'frio' | 'sin-saco'
+  parts: string[]
+}
+
+/** Suma el sistema de dormir y lo compara con la mínima real del aire más tu margen personal (los sacos se clasifican con el aire, no con el viento). */
+export function sleepSystem(gear: GearItem[], tminAir: number, margin = 0): SleepSystem {
+  const bags = gear.filter((g) => g.cat === 'saco' && g.value != null && g.tag !== 'forro')
+  const bag = [...bags].sort((a, b) => (a.value as number) - (b.value as number))[0] // el más cálido
+  const liner = gear.filter((g) => g.tag === 'forro').reduce((a, g) => a + ((g.value as number) ?? 0), 0)
+  const bivy = gear.filter((g) => g.tag === 'funda').reduce((a, g) => a + ((g.value as number) ?? 1.5), 0)
+  const clothes = (gear.some((g) => g.tag === 'plumas') ? 3 : 0) + (gear.some((g) => g.tag === 'medio') ? 1.5 : 0)
+  const pads = gear.filter((g) => g.cat === 'aislante' && g.value != null)
+  const rTotal = pads.reduce((a, g) => a + (g.value as number), 0)
+  const needC = tminAir - margin
+  if (!bag) return { comfortC: null, rTotal, needC, verdict: 'sin-saco', parts: [] }
+  const comfortC = (bag.value as number) - liner - bivy - clothes
+  const diff = needC - comfortC
+  const padOk = rTotal >= (tminAir < -10 ? 5 : tminAir < 0 ? 4 : tminAir < 6 ? 3 : 2)
+  const verdict = diff >= 4 && padOk ? 'sobrado' : diff >= 0 && padOk ? 'justo' : 'frio'
+  const parts = [bag.name, ...(liner ? [`forro (+${liner} °C)`] : []), ...(bivy ? [`funda (+${bivy} °C)`] : []), ...(clothes ? [`ropa de abrigo (+${clothes} °C)`] : [])]
+  return { comfortC, rTotal, needC, verdict: padOk || verdict === 'frio' ? verdict : 'frio', parts }
 }
 
 export const totalG = (ls: PackLine[], skipShared = false) => ls.filter((l) => !(skipShared && l.shared)).reduce((a, l) => a + l.weightG, 0)

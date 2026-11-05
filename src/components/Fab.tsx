@@ -5,7 +5,7 @@ import { Plus, Tent, Star, Droplets } from 'lucide-react'
 
 const OPTIONS = [
   { id: 'aqui', label: 'Dormimos aquí', sub: 'Guarda este sitio con GPS y foto', Icon: Tent, color: '#1b2c44' },
-  { id: 'ir', label: 'Quiero ir aquí', sub: 'A la lista de deseos', Icon: Star, color: '#d1553f' },
+  { id: 'ir', label: 'Quiero ir aquí', sub: 'Un punto nuevo que os gusta (❤️)', Icon: Star, color: '#d1553f' },
   { id: 'refugio', label: 'Refugio / fuente', sub: 'Un parapeto, refugio o fuente nuevo', Icon: Droplets, color: '#3a86c8' },
 ]
 
