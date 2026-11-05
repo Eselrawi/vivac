@@ -40,7 +40,7 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
     else window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
-  const sleepKind = !!place && SLEEP_KINDS.includes(place.kind)
+  const sleepKind = !!place && (SLEEP_KINDS.includes(place.kind) || place.kind === 'candidato')
   const water = useLive<Array<{ at: number; state: 'agua' | 'seca' | 'helada' }>>(async () => (place ? (((await db.kv.get(`water:${place.id}`))?.v as Array<{ at: number; state: 'agua' | 'seca' | 'helada' }>) ?? []) : []), [])
   const reportWater = async (state: 'agua' | 'seca' | 'helada') => {
     if (!place) return
@@ -89,7 +89,7 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20" style={{ background: 'linear-gradient(transparent, var(--bg))' }} />
               </div>
               {photos[shot] && <p className="px-5 text-[11px]" style={{ color: 'var(--ink-soft)' }}>Foto: {photos[shot].author} · {photos[shot].license} · <a className="underline" href={photos[shot].page} target="_blank" rel="noreferrer">Wikimedia Commons</a></p>}
-              <div className="-mt-6 px-5">
+              <div className="mt-2 px-5">
                 <p className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--accent)' }}>
                   {KIND_LABEL[place.kind]}{place.kind === 'refugio_pago' && ' · De pago · precio: consultar'}
                 </p>

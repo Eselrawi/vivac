@@ -152,7 +152,7 @@ export default function NavSheet({ target, places, ctx, onClose, onRoute, onCurs
   const big = 'font-display text-4xl font-bold leading-none'
 
   return (
-    <Drawer.Root open={!!target} onOpenChange={(o) => { if (!o && !navOn) { onRoute(null); onClose() } }} modal={false} dismissible={!navOn} snapPoints={[0.34, 0.62]} fadeFromIndex={1}>
+    <Drawer.Root open={!!target} onOpenChange={(o) => { if (!o && !navOn) { onRoute(null); onClose() } }} modal={false} dismissible={!navOn} snapPoints={[0.52, 0.92]} fadeFromIndex={1}>
       <Drawer.Portal>
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[45] flex h-full max-h-[94%] flex-col rounded-t-3xl p-5 pb-8 shadow-2xl outline-none" style={{ background: 'var(--bg)' }}>
           <Drawer.Handle className="mb-2" />

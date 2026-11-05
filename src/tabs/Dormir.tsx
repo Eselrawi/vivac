@@ -4,6 +4,7 @@ import { Dot, Illustration, ScoreRing } from '../components/ui'
 import { evaluate, evaluateLight, quickScore, type Ctx, type Entry } from '../lib/plan'
 import { hhmm } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
+import { setPrefs, usePrefs } from '../lib/prefs'
 import { SLEEP_KINDS, KIND_LABEL, type Place } from '../lib/types'
 
 const MapView = lazy(() => import('../components/MapView'))
@@ -47,10 +48,11 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
   const [noSnow, setNoSnow] = useState(false)
   const [never, setNever] = useState(false)
   const [lowToo, setLowToo] = useState(false)
+  const { discover } = usePrefs()
   const [limit, setLimit] = useState(15)
 
   const sleepable = useMemo(
-    () => places.filter((p) => SLEEP_KINDS.includes(p.kind) && !(p.kind === 'abrigo' && p.toponym) && (lowToo || p.kind === 'vivac' || p.kind === 'deseo' || (p.ele ?? 9999) >= 1200)),
+    () => places.filter((p) => (SLEEP_KINDS.includes(p.kind) || p.kind === 'candidato') && !(p.kind === 'abrigo' && p.toponym) && (lowToo || p.kind === 'vivac' || p.kind === 'deseo' || (p.ele ?? 9999) >= 1200)),
     [places, lowToo],
   )
 
@@ -135,6 +137,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
         <Chip on={noSnow} onClick={() => setNoSnow(!noSnow)}>Sin nieve</Chip>
         <Chip on={never} onClick={() => setNever(!never)}>Nunca hemos ido</Chip>
         <Chip on={lowToo} onClick={() => setLowToo(!lowToo)}>Incluir &lt; 1.200 m</Chip>
+        <Chip on={discover} onClick={() => setPrefs({ discover: !discover })}>✨ Sugeridos por el relieve</Chip>
       </div>
       <div className="mt-2 flex items-center justify-between gap-2 px-4">
         <div className="inline-flex rounded-full p-1" style={{ background: 'var(--surface)' }} role="group" aria-label="Precio">

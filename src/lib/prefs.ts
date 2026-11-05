@@ -14,12 +14,13 @@ export interface Prefs {
   names: string[] // quién suele venir
   contacts: { name: string; phone: string }[] // contactos de emergencia
   units: 'm' | 'ft'
+  discover: boolean // incluir sitios sugeridos por el relieve
   theme: 'auto' | 'claro' | 'oscuro' | 'rojo'
 }
 
 const DEFAULT: Prefs = {
   homeName: HOME.name, homeLat: HOME.lat, homeLng: HOME.lng,
-  marginMin: 60, consumption: 7, fuelPrice: 1.55, people: 3, threshold: -2, coldMargin: 0, names: ["Yo"], contacts: [], units: 'm', theme: 'auto',
+  marginMin: 60, consumption: 7, fuelPrice: 1.55, people: 3, threshold: -2, coldMargin: 0, names: ["Yo"], contacts: [], units: 'm', discover: false, theme: 'auto',
 }
 
 const KEY = 'vivac.prefs'

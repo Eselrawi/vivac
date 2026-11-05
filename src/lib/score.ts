@@ -37,6 +37,11 @@ export function shelterFor(p: Pick<Place, 'shelter' | 'shelteredFrom' | 'kind'>,
       ? { wind: 0.3, rain: 1, label: 'el parapeto te cubre de ese viento', covered: false }
       : { wind: 0.95, rain: 1, label: 'el viento entra por la abertura', covered: false }
   }
+  const from = p.shelteredFrom ?? []
+  if (from.length) {
+    const ok = from.some((f) => angDiff(f, dir) <= 33)
+    return ok ? { wind: 0.6, rain: 1, label: 'el relieve te resguarda un poco de ese viento', covered: false } : { wind: 1, rain: 1, label: 'al raso', covered: false }
+  }
   return { wind: 1, rain: 1, label: 'al raso', covered: false }
 }
 

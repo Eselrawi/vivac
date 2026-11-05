@@ -8,6 +8,7 @@ export type PlaceKind =
   | 'fuente'
   | 'parking'
   | 'cumbre'
+  | 'candidato'
 
 export type Shelter = 'cerrado' | 'techo' | 'parapeto' | 'raso'
 
@@ -44,6 +45,7 @@ export const KIND_LABEL: Record<PlaceKind, string> = {
   fuente: 'Fuente',
   parking: 'Aparcamiento',
   cumbre: 'Cumbre',
+  candidato: 'Sitio sugerido',
 }
 
 export const KIND_COLOR: Record<PlaceKind, string> = {
@@ -56,6 +58,7 @@ export const KIND_COLOR: Record<PlaceKind, string> = {
   fuente: '#3a86c8',
   parking: '#5b6472',
   cumbre: '#6b7280',
+  candidato: '#9a7fd1',
 }
 
 export const SLEEP_KINDS: PlaceKind[] = ['refugio_libre', 'refugio_pago', 'parapeto', 'abrigo', 'vivac', 'deseo']

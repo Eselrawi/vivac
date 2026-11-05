@@ -5,9 +5,9 @@ import type { Place } from './types'
 export function useCatalog(): Place[] {
   const [items, setItems] = useState<Place[]>([])
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}data/places.json`)
-      .then((r) => r.json())
-      .then(setItems)
+    const base = import.meta.env.BASE_URL
+    Promise.all([fetch(`${base}data/places.json`).then((r) => r.json()), fetch(`${base}data/discover.json`).then((r) => r.json()).catch(() => [])])
+      .then(([a, b]) => setItems([...a, ...b]))
       .catch(() => setItems([]))
   }, [])
   return items

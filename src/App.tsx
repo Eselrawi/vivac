@@ -57,17 +57,17 @@ export default function App() {
   const mine = useLive(async () => (await db.vivacs.toArray()).map(recordToPlace), [] as Place[])
 
   const places = useMemo(() => {
-    const base = catalog.map((p) => {
+    const base = catalog.filter((p) => p.kind !== 'candidato' || prefs.discover).map((p) => {
       const o = ovr[p.id]
       const visited = mine.filter((m) => m.kind === 'vivac' && haversine(m.lat, m.lng, p.lat, p.lng) < 300).length
       return { ...p, ...o, visited: visited || undefined }
     })
     return [...base, ...mine]
-  }, [catalog, mine, ovr])
+  }, [catalog, mine, ovr, prefs.discover])
 
   const parkings = useMemo(() => places.filter((p) => p.kind === 'parking'), [places])
   const drive = useDrive(prefs, parkings)
-  const wxPlaces = useMemo(() => catalog.filter((p) => SLEEP_KINDS.includes(p.kind) || p.kind === 'parking'), [catalog])
+  const wxPlaces = useMemo(() => catalog.filter((p) => SLEEP_KINDS.includes(p.kind) || p.kind === 'candidato' || p.kind === 'parking'), [catalog])
   const weather = useWeather(wxPlaces)
   const ctx: Ctx = useMemo(() => ({ wx: weather.wx, parkings, drive, prefs }), [weather.wx, parkings, drive, prefs])
 

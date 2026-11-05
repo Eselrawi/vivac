@@ -34,7 +34,7 @@ const style: StyleSpecification = {
 }
 
 const GLYPH: Record<string, string> = {
-  refugio_libre: '🛖', refugio_pago: '€', parapeto: '🧱', abrigo: '🪨', vivac: '⛺', deseo: '⭐', fuente: '💧', parking: 'P', cumbre: '▲',
+  refugio_libre: '🛖', refugio_pago: '€', parapeto: '🧱', abrigo: '🪨', vivac: '⛺', deseo: '⭐', fuente: '💧', parking: 'P', cumbre: '▲', candidato: '✨',
 }
 
 function addIcons(m: maplibregl.Map) {
@@ -78,9 +78,10 @@ interface Props {
   route?: [number, number, number][] | null
   cursor?: [number, number] | null
   tracks?: [number, number, number?][][]
+  zones?: boolean
 }
 
-export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [] }: Props) {
+export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false }: Props) {
   const scoreRef = useRef(scoreMode)
   scoreRef.current = scoreMode
   const el = useRef<HTMLDivElement>(null)
@@ -119,6 +120,10 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       const empty = { type: 'FeatureCollection', features: [] } as FeatureCollection
       m.addSource('route', { type: 'geojson', data: empty })
       m.addSource('tracks', { type: 'geojson', data: empty })
+      m.addSource('zonas', { type: 'geojson', data: `${import.meta.env.BASE_URL}data/vivac-zonas.geojson` })
+      m.addLayer({ id: 'zonas-fill', type: 'fill', source: 'zonas', layout: { visibility: 'none' }, paint: { 'fill-color': '#3f8a68', 'fill-opacity': 0.28 } })
+      m.addLayer({ id: 'zonas-line', type: 'line', source: 'zonas', layout: { visibility: 'none' }, paint: { 'line-color': '#1f4d3a', 'line-width': 2.5, 'line-dasharray': [3, 2] } })
+      m.addLayer({ id: 'zonas-name', type: 'symbol', source: 'zonas', minzoom: 11, layout: { visibility: 'none', 'text-field': ['concat', 'Zona de vivac: ', ['get', 'DS_ZONA']], 'text-font': ['Open Sans Semibold'], 'text-size': 12 }, paint: { 'text-color': '#1f4d3a', 'text-halo-color': '#fff', 'text-halo-width': 1.8 } })
       m.addSource('cursor', { type: 'geojson', data: empty })
       m.addLayer({ id: 'tracks', type: 'line', source: 'tracks', paint: { 'line-color': '#7a6fa8', 'line-width': 3, 'line-opacity': 0.85, 'line-dasharray': [2, 1] } })
       m.addLayer({ id: 'route-casing', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#fff', 'line-width': 9 } })
@@ -189,6 +194,10 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       }
     })
   }, [route])
+
+  useEffect(() => {
+    whenReady((m) => { for (const id of ['zonas-fill', 'zonas-line', 'zonas-name']) m.setLayoutProperty(id, 'visibility', zones ? 'visible' : 'none') })
+  }, [zones])
 
   useEffect(() => {
     whenReady((m) => (m.getSource('cursor') as GeoJSONSource).setData({ type: 'FeatureCollection', features: cursor ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: cursor } }] : [] } as FeatureCollection))

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Drawer } from 'vaul'
 import { Camera, Check, MapPin } from 'lucide-react'
 import { compressPhoto, saveVivac } from '../lib/db'
+import { gps as exifGps } from 'exifr'
 import { haversine } from '../lib/geo'
 import type { Place } from '../lib/types'
 
@@ -70,7 +71,14 @@ export default function RecordSheet({ mode, onClose, places }: { mode: Mode | nu
               />
               <label className="tap flex cursor-pointer items-center justify-center gap-2 rounded-2xl py-3 font-semibold" style={{ background: 'var(--surface)' }}>
                 <Camera size={22} /> {photo ? 'Foto lista ✓' : 'Hacer foto'}
-                <input type="file" accept="image/*" capture="environment" hidden onChange={async (e) => { const f = e.target.files?.[0]; if (f) setPhoto(await compressPhoto(f)) }} />
+                <input type="file" accept="image/*" capture="environment" hidden onChange={async (e) => {
+                  const f = e.target.files?.[0]
+                  if (!f) return
+                  // Si la foto trae ubicación (EXIF) y aún no hay GPS, la usamos.
+                  const g = await exifGps(f).catch(() => null)
+                  if (g && !pos) setPos({ lat: g.latitude, lng: g.longitude, ele: null })
+                  setPhoto(await compressPhoto(f))
+                }} />
               </label>
               {mode === 'vivac' && (
                 <div className="grid grid-cols-3 gap-2">
