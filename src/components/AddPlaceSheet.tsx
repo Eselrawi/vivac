@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import CloseBtn from './CloseBtn'
 import { Drawer } from 'vaul'
 import { Camera, Check, Compass, MapPin } from 'lucide-react'
 import { compressPhoto, saveVivac } from '../lib/db'
@@ -63,9 +64,10 @@ export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClos
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92dvh] rounded-t-3xl outline-none flex flex-col" style={{ background: 'var(--bg)' }}>
+          <CloseBtn onClick={onClose} />
           <div className="px-5 pt-5"><Drawer.Handle /></div>
           <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-10">
-          <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Encontré un sitio</Drawer.Title>
+          <Drawer.Title className="pr-12 font-display mt-3 text-2xl font-semibold">Encontré un sitio</Drawer.Title>
           <Drawer.Description className="sr-only">Añadir un refugio, parapeto o fuente</Drawer.Description>
           {done ? (
             <div className="grid place-items-center py-10"><div className="grid h-20 w-20 animate-bounce place-items-center rounded-full text-white" style={{ background: 'var(--accent)' }}><Check size={44} /></div><p className="font-display mt-4 text-xl font-semibold">¡Añadido para el grupo!</p></div>

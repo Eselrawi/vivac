@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import CloseBtn from '../components/CloseBtn'
 import { Drawer } from 'vaul'
 import { Award, Download, Share2, Trash2 } from 'lucide-react'
 import { db, useLive, type VivacRecord } from '../lib/db'
@@ -85,11 +86,12 @@ function DetailInner({ r, onClose }: { r: VivacRecord; onClose: () => void }) {
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[94dvh] flex flex-col rounded-t-3xl outline-none" style={{ background: 'var(--bg)' }}>
+          <CloseBtn onClick={onClose} />
           <Drawer.Handle className="my-2" />
           <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-8">
           <div className="h-56 overflow-hidden">{url ? <img src={url} alt={`Foto de ${r.name}`} className="h-full w-full object-cover" /> : <Illustration kind="vivac" className="h-full w-full" />}</div>
           <div className="px-5 pt-4">
-            <Drawer.Title className="font-display text-3xl font-semibold leading-tight">{r.name}</Drawer.Title>
+            <Drawer.Title className="pr-12 font-display text-3xl font-semibold leading-tight">{r.name}</Drawer.Title>
             <Drawer.Description className="text-sm" style={{ color: 'var(--ink-soft)' }}>{fmtDate(r.at)}{r.ele ? ` · ${Math.round(r.ele)} m` : ''}{!r.synced && ' · pendiente de subir'}</Drawer.Description>
             {r.wx ? (
               <p className="mt-3 rounded-2xl p-3 text-sm" style={{ background: 'var(--surface)' }}>🌡️ Mínima <b>{t1(r.wx.tmin)}</b> · 💨 viento hasta <b>{Math.round(r.wx.windMax)} km/h</b> · 🌧️ {r.wx.precip >= 0.5 ? `${r.wx.precip.toFixed(1)} mm` : 'sin lluvia'} · ☁️ {Math.round(r.wx.cloud)} % nubes <span style={{ color: 'var(--ink-soft)' }}>({r.wx.src === 'real' ? 'datos reales de esa noche' : 'previsión'})</span></p>

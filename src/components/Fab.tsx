@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import CloseBtn from './CloseBtn'
 import { Drawer } from 'vaul'
 import { Plus, Tent, Star, Droplets } from 'lucide-react'
 
@@ -24,8 +25,9 @@ export default function Fab({ onPick }: { onPick: (id: string) => void }) {
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-50 rounded-t-3xl p-4 pb-8" style={{ background: 'var(--bg)' }}>
+          <CloseBtn onClick={() => setOpen(false)} />
           <Drawer.Handle />
-          <Drawer.Title className="font-display mb-3 mt-3 text-2xl font-semibold">¿Qué quieres añadir?</Drawer.Title>
+          <Drawer.Title className="pr-12 font-display mb-3 mt-3 text-2xl font-semibold">¿Qué quieres añadir?</Drawer.Title>
           <Drawer.Description className="sr-only">Elige una opción</Drawer.Description>
           <div className="flex flex-col gap-3">
             {OPTIONS.map(({ id, label, sub, Icon, color }) => (

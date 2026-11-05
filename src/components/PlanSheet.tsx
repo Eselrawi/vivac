@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import CloseBtn from './CloseBtn'
 import { Drawer } from 'vaul'
 import { Check, Plus, Share2 } from 'lucide-react'
 import { db } from '../lib/db'
@@ -62,9 +63,10 @@ export default function PlanSheet({ place, day, ctx, onClose }: { place: Place |
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92dvh] rounded-t-3xl outline-none flex flex-col" style={{ background: 'var(--bg)' }}>
+          <CloseBtn onClick={close} />
           <div className="px-5 pt-5"><Drawer.Handle /></div>
           <div data-vaul-no-drag className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-10">
-          <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Planear salida</Drawer.Title>
+          <Drawer.Title className="pr-12 font-display mt-3 text-2xl font-semibold">Planear salida</Drawer.Title>
           <Drawer.Description className="text-sm" style={{ color: 'var(--ink-soft)' }}>{place?.name} · {dateTxt} · paso {step + 1} de 3</Drawer.Description>
           <div className="mt-3 flex gap-1.5" aria-hidden>{[0, 1, 2].map((i) => <i key={i} className="h-1.5 flex-1 rounded-full" style={{ background: i <= step ? 'var(--accent)' : 'var(--line)' }} />)}</div>
 

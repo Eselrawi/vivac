@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import CloseBtn from '../components/CloseBtn'
 import { Drawer } from 'vaul'
 import { Copy, Download, Info, Layers, ShieldCheck, Mountain, Phone, Search, Siren, X } from 'lucide-react'
 import DownloadSheet from '../components/DownloadSheet'
@@ -36,8 +37,9 @@ function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/50" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
+          <CloseBtn onClick={onClose} />
           <Drawer.Handle />
-          <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Emergencia</Drawer.Title>
+          <Drawer.Title className="pr-12 font-display mt-3 text-2xl font-semibold">Emergencia</Drawer.Title>
           <Drawer.Description className="text-sm" style={{ color: 'var(--ink-soft)' }}>Llama al 112 y dicta estas coordenadas. Funciona sin cobertura de datos.</Drawer.Description>
           <div className="mt-4 rounded-3xl p-5 text-center" style={{ background: 'var(--surface)' }}>
             <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>Tu posición ahora</p>

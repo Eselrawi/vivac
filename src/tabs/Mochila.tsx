@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import CloseBtn from '../components/CloseBtn'
 import { Drawer } from 'vaul'
 import { Plus, Trash2 } from 'lucide-react'
 import { db, useLive } from '../lib/db'
@@ -29,8 +30,9 @@ function AddGear({ open, onClose }: { open: boolean; onClose: () => void }) {
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] rounded-t-3xl p-5 pb-8 outline-none" style={{ background: 'var(--bg)' }}>
+          <CloseBtn onClick={onClose} />
           <Drawer.Handle />
-          <Drawer.Title className="font-display mt-3 text-2xl font-semibold">Añadir material</Drawer.Title>
+          <Drawer.Title className="pr-12 font-display mt-3 text-2xl font-semibold">Añadir material</Drawer.Title>
           <Drawer.Description className="sr-only">Nuevo objeto de tu mochila</Drawer.Description>
           <div className="no-scrollbar -mx-5 mt-3 flex gap-2 overflow-x-auto px-5">
             {CATS.map((c) => <button key={c.id} onClick={() => setCat(c.id)} aria-pressed={cat === c.id} className="tap shrink-0 rounded-full px-4 text-sm font-semibold" style={{ background: cat === c.id ? 'var(--accent)' : 'var(--surface)', color: cat === c.id ? '#fff' : 'var(--ink)' }}>{c.emoji} {c.label}</button>)}

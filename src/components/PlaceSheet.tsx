@@ -1,6 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import CloseBtn from './CloseBtn'
 import { Drawer } from 'vaul'
-import { AlertTriangle, BadgeCheck, CalendarCheck, Car, Globe, Phone, ExternalLink, Footprints, Navigation, Share2, Sunrise, Sunset, Wallet } from 'lucide-react'
+import { ChevronsDown, ChevronsUp, AlertTriangle, BadgeCheck, CalendarCheck, Car, Globe, Phone, ExternalLink, Footprints, Navigation, Share2, Sunrise, Sunset, Wallet } from 'lucide-react'
 import * as SunCalc from 'suncalc'
 import { db, useLive } from '../lib/db'
 import { KIND_LABEL, SLEEP_KINDS, type Place } from '../lib/types'
@@ -29,6 +30,14 @@ interface Props {
 
 export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, onClose, onRoute, onPlan }: Props) {
   const [picked, setPicked] = useState<string | undefined>()
+  const [snap, setSnap] = useState<number | string | null>(0.5)
+  useEffect(() => { setSnap(0.5) }, [place?.id])
+  useEffect(() => {
+    if (!place) return
+    const k = (ev: KeyboardEvent) => { if (ev.key === 'Escape') onClose() }
+    window.addEventListener('keydown', k)
+    return () => window.removeEventListener('keydown', k)
+  }, [place, onClose])
   const entries = useMemo(() => (place ? days.map((d) => evaluate(place, d, ctx, picked)) : []), [place, days, ctx, picked])
   const e = entries[dayIdx] ?? null
   const bestDay = entries.reduce((b, x, i) => (x && (b < 0 || x.score.score > (entries[b]?.score.score ?? -1)) ? i : b), -1)
@@ -76,9 +85,11 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
   const dayName = (d: Date, i: number) => (i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : `${DAY[d.getDay()]} ${d.getDate()}`)
 
   return (
-    <Drawer.Root open={!!place} onOpenChange={(o) => { if (!o) { onClose(); setPicked(undefined) } }} snapPoints={[0.5, 1]} modal={false} fadeFromIndex={1}>
+    <Drawer.Root open={!!place} onOpenChange={(o) => { if (!o) { onClose(); setPicked(undefined) } }} snapPoints={[0.5, 1]} activeSnapPoint={snap} setActiveSnapPoint={setSnap} modal={false} fadeFromIndex={1}>
       <Drawer.Portal>
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-40 flex h-full max-h-[96%] flex-col rounded-t-3xl shadow-2xl outline-none" style={{ background: 'var(--bg)' }}>
+          <CloseBtn onClick={() => { onClose(); setPicked(undefined) }} />
+          <button type="button" aria-label={snap === 1 ? 'Reducir ficha' : 'Ampliar ficha'} onClick={() => setSnap(snap === 1 ? 0.5 : 1)} className="tap absolute right-16 top-3 z-20 grid h-11 w-11 place-items-center rounded-full shadow-md active:scale-95" style={{ background: 'var(--surface)', color: 'var(--ink)' }}>{snap === 1 ? <ChevronsDown size={22} /> : <ChevronsUp size={22} />}</button>
           <Drawer.Handle className="mt-2 mb-1" />
           {place && (
             <div data-vaul-no-drag className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain pb-28">
@@ -95,7 +106,7 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                 <p className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--accent)' }}>
                   {KIND_LABEL[place.kind]}{place.kind === 'refugio_pago' && ' · De pago · precio: consultar'}
                 </p>
-                <Drawer.Title className="font-display text-3xl font-semibold leading-tight">{place.name}</Drawer.Title>
+                <Drawer.Title className="pr-12 font-display text-3xl font-semibold leading-tight">{place.name}</Drawer.Title>
                 <Drawer.Description className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>
                   {place.ele ? `${place.ele} m` : ''}{place.eleDem ? ' (modelo de elevación)' : ''} · {place.verified ? 'Confirmado por el grupo' : 'Sin verificar'}
                 </Drawer.Description>

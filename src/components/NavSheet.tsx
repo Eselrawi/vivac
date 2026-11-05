@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Drawer } from 'vaul'
 import { BatteryLow, Compass, Flag, LifeBuoy, Loader2, Moon, Route, TriangleAlert } from 'lucide-react'
+import CloseBtn from './CloseBtn'
 import { accessFor } from '../lib/access'
 import { db } from '../lib/db'
 import { fmtDur, haversine } from '../lib/geo'
@@ -155,8 +156,9 @@ export default function NavSheet({ target, places, ctx, onClose, onRoute, onCurs
     <Drawer.Root open={!!target} onOpenChange={(o) => { if (!o && !navOn) { onRoute(null); onClose() } }} modal={false} dismissible={!navOn} snapPoints={[0.52, 0.92]} fadeFromIndex={1}>
       <Drawer.Portal>
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[45] flex h-full max-h-[94%] flex-col rounded-t-3xl p-5 pb-8 shadow-2xl outline-none" style={{ background: 'var(--bg)' }}>
+          {!navOn && <CloseBtn onClick={() => { onRoute(null); onClose() }} />}
           <Drawer.Handle className="mb-2" />
-          <Drawer.Title className="font-display text-2xl font-semibold leading-tight">{navOn ? 'Navegando' : 'Cómo llegar'}: {dest?.name}</Drawer.Title>
+          <Drawer.Title className="pr-12 font-display text-2xl font-semibold leading-tight">{navOn ? 'Navegando' : 'Cómo llegar'}: {dest?.name}</Drawer.Title>
           <Drawer.Description className="text-sm" style={{ color: 'var(--ink-soft)' }}>{origin ? `Desde ${origin.label}` : 'Buscando punto de salida…'} · rutas sin conexión</Drawer.Description>
 
           {!navOn && (
