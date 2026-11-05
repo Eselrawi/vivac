@@ -93,7 +93,7 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
           <Drawer.Handle className="mt-2 mb-1" />
           {place && (
             <div data-vaul-no-drag className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain pb-28">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-28 overflow-hidden">
                 {photos.length ? (
                   <div className="no-scrollbar flex h-full snap-x snap-mandatory overflow-x-auto" onScroll={(ev) => setShot(Math.round(ev.currentTarget.scrollLeft / ev.currentTarget.clientWidth))}>
                     {photos.map((ph) => <img key={ph.url} src={ph.url} alt={ph.title} loading="lazy" className="h-full w-full shrink-0 snap-center object-cover" />)}
@@ -102,28 +102,15 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20" style={{ background: 'linear-gradient(transparent, var(--bg))' }} />
               </div>
               {photos[shot] && <p className="px-5 text-[11px]" style={{ color: 'var(--ink-soft)' }}>{photos[shot].own === false ? 'Foto cercana (puede no ser del sitio)' : 'Foto'}: {photos[shot].author} · {photos[shot].license} · <a className="underline" href={photos[shot].page} target="_blank" rel="noreferrer">Wikimedia Commons</a></p>}
-              <div className="mt-2 px-5">
+              <div className="mt-1 px-5">
                 <p className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--accent)' }}>
                   {KIND_LABEL[place.kind]}{place.kind === 'refugio_pago' && ' · De pago · precio: consultar'}
                 </p>
                 <Drawer.Title className="pr-12 font-display text-3xl font-semibold leading-tight">{place.name}</Drawer.Title>
                 <Drawer.Description className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>
-                  {place.ele ? `${place.ele} m` : ''}{place.eleDem ? ' (modelo de elevación)' : ''} · {place.verified ? 'Confirmado por el grupo' : 'Sin verificar'}
+                  {place.ele ? `${place.ele} m` : ''}{place.eleDem ? ' (modelo de elevación)' : ''}{sleepKind ? (place.verified ? ' · Confirmado por el grupo' : ' · Sin verificar') : ''}
                 </Drawer.Description>
 
-                {ev && (
-                  <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
-                    <p className="flex items-center gap-2 text-sm font-bold"><i className="inline-block h-3 w-3 rounded-full" style={{ background: CONF_COLOR[ev.c] }} />{CONF_LABEL[ev.c]}</p>
-                    <p className="mt-2 leading-snug">{ev.d}</p>
-                    <details className="mt-2 text-sm">
-                      <summary className="cursor-pointer font-semibold" style={{ color: 'var(--accent)' }}>¿Por qué lo creemos?</summary>
-                      <ul className="mt-2 flex flex-col gap-1.5">
-                        {ev.e.map((x, i) => <li key={i} style={{ opacity: x.weak ? 0.7 : 1 }}><b>{x.s}:</b> {x.t}{x.url && <> · <a className="underline" href={x.url} target="_blank" rel="noreferrer">ver</a></>}</li>)}
-                      </ul>
-                      <p className="mt-2 text-xs" style={{ color: 'var(--ink-soft)' }}>Ninguna fuente online garantiza que algo siga en pie. Confírmalo cuando vayas con «Existe: confirmar».</p>
-                    </details>
-                  </div>
-                )}
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   {[
                     { l: 'Cómo llegar', I: Navigation, f: () => onRoute(place) },
@@ -135,22 +122,6 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                     </button>
                   ))}
                 </div>
-
-                {(place.phone || place.web || place.kind === 'refugio_pago') && (
-                  <div className="mt-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
-                    <p className="font-semibold">Reservar</p>
-                    <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>Precio por noche: consultar. Los precios que no están confirmados no los inventamos.</p>
-                    <div className="mt-2 grid grid-cols-2 gap-2">
-                      {place.phone && <a href={`tel:${place.phone}`} className="tap flex items-center justify-center gap-2 rounded-2xl font-semibold text-white" style={{ background: 'var(--accent)' }}><Phone size={18} />Llamar</a>}
-                      {place.web && <a href={place.web} target="_blank" rel="noreferrer" className="tap flex items-center justify-center gap-2 rounded-2xl font-semibold" style={{ background: 'var(--bg)' }}><Globe size={18} />Web</a>}
-                    </div>
-                  </div>
-                )}
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {!place.verified && place.source !== 'grupo' && <button onClick={confirm} className="tap inline-flex items-center gap-2 rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--surface)' }}><BadgeCheck size={18} />Existe: confirmar</button>}
-                  <a href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(place.name + ' Guadarrama')}`} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--surface)' }}><ExternalLink size={16} />Ver más fotos en la web</a>
-                </div>
-                <p className="mt-2 text-[11px]" style={{ color: 'var(--ink-soft)' }}>Fuente: {place.source}</p>
 
                 {place.kind === 'fuente' && (
                   <div className="mt-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
@@ -266,6 +237,36 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                     </div>
                   </>
                 )}
+
+                {ev && (
+                  <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
+                    <p className="flex items-center gap-2 text-sm font-bold"><i className="inline-block h-3 w-3 rounded-full" style={{ background: CONF_COLOR[ev.c] }} />{CONF_LABEL[ev.c]}</p>
+                    <p className="mt-2 leading-snug">{ev.d}</p>
+                    <details className="mt-2 text-sm">
+                      <summary className="cursor-pointer font-semibold" style={{ color: 'var(--accent)' }}>¿Por qué lo creemos?</summary>
+                      <ul className="mt-2 flex flex-col gap-1.5">
+                        {ev.e.map((x, i) => <li key={i} style={{ opacity: x.weak ? 0.7 : 1 }}><b>{x.s}:</b> {x.t}{x.url && <> · <a className="underline" href={x.url} target="_blank" rel="noreferrer">ver</a></>}</li>)}
+                      </ul>
+                      <p className="mt-2 text-xs" style={{ color: 'var(--ink-soft)' }}>Ninguna fuente online garantiza que algo siga en pie. Confírmalo cuando vayas con «Existe: confirmar».</p>
+                    </details>
+                  </div>
+                )}
+                {(place.phone || place.web || place.kind === 'refugio_pago') && (
+                  <div className="mt-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
+                    <p className="font-semibold">Reservar</p>
+                    <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>Precio por noche: consultar. Los precios que no están confirmados no los inventamos.</p>
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      {place.phone && <a href={`tel:${place.phone}`} className="tap flex items-center justify-center gap-2 rounded-2xl font-semibold text-white" style={{ background: 'var(--accent)' }}><Phone size={18} />Llamar</a>}
+                      {place.web && <a href={place.web} target="_blank" rel="noreferrer" className="tap flex items-center justify-center gap-2 rounded-2xl font-semibold" style={{ background: 'var(--bg)' }}><Globe size={18} />Web</a>}
+                    </div>
+                  </div>
+                )}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {!place.verified && place.source !== 'grupo' && <button onClick={confirm} className="tap inline-flex items-center gap-2 rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--surface)' }}><BadgeCheck size={18} />Existe: confirmar</button>}
+                  <a href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(place.name + ' Guadarrama')}`} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-full px-4 text-sm font-semibold" style={{ background: 'var(--surface)' }}><ExternalLink size={16} />Ver más fotos en la web</a>
+                </div>
+                <p className="mt-2 text-[11px]" style={{ color: 'var(--ink-soft)' }}>Fuente: {place.source}</p>
+
               </div>
             </div>
           )}

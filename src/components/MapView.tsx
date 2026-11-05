@@ -16,7 +16,7 @@ protocol.add(new PMTiles(new HybridSource(PM_URL)))
 export type BaseLayer = 'vec' | 'ign' | 'mtn' | 'pnoa'
 
 // Mapa vectorial con los colores de la marca (granito, pino, agua de montaña).
-const flavor = { ...namedFlavor('light'), earth: '#f3eee3', water: '#9cc7e6', park_a: '#d6e5c9', park_b: '#c9dcbc', wood_a: '#cadcbd', wood_b: '#bdd2b0', scrub_a: '#dde5c6', scrub_b: '#d2dbb9', glacier: '#f4f9fb' }
+const flavor = { ...namedFlavor('light'), background: '#f3eee3', earth: '#f3eee3', water: '#9cc7e6', park_a: '#d6e5c9', park_b: '#c9dcbc', wood_a: '#cadcbd', wood_b: '#bdd2b0', scrub_a: '#dde5c6', scrub_b: '#d2dbb9', glacier: '#f4f9fb' }
 const VEC_LAYERS = pmLayers('protomaps', flavor, { lang: 'es' }).map((l) => ({ ...l, layout: { ...(l.layout ?? {}), visibility: 'visible' as const } }))
 const VEC_IDS = VEC_LAYERS.map((l) => l.id)
 const RASTER_IDS = ['ign', 'mtn', 'pnoa']
@@ -79,7 +79,7 @@ const toGeo = (places: Place[], scoreMode = false): FeatureCollection => ({
   features: places.map((p) => ({
     type: 'Feature',
     geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
-    properties: { id: p.id, name: p.name, icon: scoreMode && p.score != null ? `s${p.score}` : `${p.kind}${p.visited ? '-v' : ''}`, prio: p.kind === 'cumbre' ? 0 : p.kind === 'fuente' ? 1 : 2 },
+    properties: { id: p.id, kind: p.kind, name: p.name, icon: scoreMode && p.score != null ? `s${p.score}` : `${p.kind}${p.visited ? '-v' : ''}`, prio: p.kind === 'cumbre' ? 0 : p.kind === 'fuente' ? 1 : 2 },
   })),
 })
 
@@ -120,7 +120,26 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
     ;(window as unknown as { __map?: unknown }).__map = m
 
     m.on('styleimagemissing', (e) => {
-      const mm = /^s(d+)$/.exec(e.id)
+      const cl = /^cl-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)$/.exec(e.id)
+      if (cl && !m.hasImage(e.id)) {
+        const parts = cl.slice(1).map(Number)
+        const total = parts.reduce((a, b) => a + b, 0)
+        const COL = ['#3f8a68', '#e08a35', '#7a6fa8', '#8a6a4a', '#5b6472']
+        const S = 112, R = 26 + Math.min(14, Math.log2(Math.max(total, 2)) * 3.2)
+        const cv = document.createElement('canvas'); cv.width = cv.height = S
+        const g = cv.getContext('2d')!
+        g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 8; g.shadowOffsetY = 2
+        g.beginPath(); g.arc(S / 2, S / 2, R, 0, Math.PI * 2); g.fillStyle = '#fff'; g.fill()
+        g.shadowColor = 'transparent'
+        let a0 = -Math.PI / 2
+        parts.forEach((n, i) => { if (!n) return; const a1 = a0 + (n / total) * Math.PI * 2; g.beginPath(); g.arc(S / 2, S / 2, R - 3, a0, a1); g.lineWidth = 9; g.strokeStyle = COL[i]; g.stroke(); a0 = a1 })
+        g.fillStyle = '#14202e'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.font = `bold ${total > 99 ? 22 : 26}px Inter, sans-serif`
+        g.fillText(String(total), S / 2, S / 2 + 1)
+        if (parts[1] > 0) { g.beginPath(); g.arc(S / 2 + R * 0.72, S / 2 - R * 0.72, 12, 0, Math.PI * 2); g.fillStyle = '#e08a35'; g.fill(); g.lineWidth = 3; g.strokeStyle = '#fff'; g.stroke(); g.fillStyle = '#fff'; g.font = 'bold 16px Inter, sans-serif'; g.fillText('€', S / 2 + R * 0.72, S / 2 - R * 0.72 + 1) }
+        m.addImage(e.id, g.getImageData(0, 0, S, S), { pixelRatio: 2 })
+        return
+      }
+      const mm = /^s(\d+)$/.exec(e.id)
       if (!mm || m.hasImage(e.id)) return
       const sc = +mm[1]
       const c = document.createElement('canvas'); c.width = c.height = 64
@@ -140,7 +159,8 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
     m.on('touchstart', (e) => { clear(); if (e.originalEvent.touches.length === 1) timer = setTimeout(() => fire(e.lngLat), 650) })
     m.on('touchmove', clear); m.on('touchend', clear); m.on('touchcancel', clear); m.on('dragstart', clear); m.on('zoomstart', clear)
     m.on('contextmenu', (e) => fire(e.lngLat))
-    m.on('load', () => {
+    // Las chinchetas salen en cuanto hay estilo, sin esperar a que lleguen todas las teselas.
+    m.once('style.load', () => {
       addIcons(m)
       const empty = { type: 'FeatureCollection', features: [] } as FeatureCollection
       m.addSource('route', { type: 'geojson', data: empty })
@@ -154,9 +174,9 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       m.addLayer({ id: 'route-casing', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#fff', 'line-width': 9 } })
       m.addLayer({ id: 'route', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#e08a35', 'line-width': 5 } })
       m.addLayer({ id: 'cursor', type: 'circle', source: 'cursor', paint: { 'circle-radius': 8, 'circle-color': '#1b2c44', 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
-      m.addSource('places', { type: 'geojson', data: toGeo(placesRef.current, scoreRef.current), cluster: true, clusterRadius: 46, clusterMaxZoom: 12 })
-      m.addLayer({ id: 'clusters', type: 'circle', source: 'places', filter: ['has', 'point_count'], paint: { 'circle-color': '#1f4d3a', 'circle-radius': ['step', ['get', 'point_count'], 16, 10, 20, 50, 26], 'circle-stroke-width': 3, 'circle-stroke-color': '#fff' } })
-      m.addLayer({ id: 'cluster-n', type: 'symbol', source: 'places', filter: ['has', 'point_count'], layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Noto Sans Medium'], 'text-size': 13 }, paint: { 'text-color': '#fff' } })
+      const isK = (...k: string[]) => ['case', ['in', ['get', 'kind'], ['literal', k]], 1, 0]
+      m.addSource('places', { type: 'geojson', data: toGeo(placesRef.current, scoreRef.current), cluster: true, clusterRadius: 50, clusterMaxZoom: 12, clusterProperties: { libre: ['+', isK('refugio_libre')], pago: ['+', isK('refugio_pago')], para: ['+', isK('parapeto')], abri: ['+', isK('abrigo', 'candidato')], otro: ['+', isK('fuente', 'cumbre', 'parking', 'vivac', 'deseo')] } as never })
+      m.addLayer({ id: 'clusters', type: 'symbol', source: 'places', filter: ['has', 'point_count'], layout: { 'icon-image': ['concat', 'cl-', ['get', 'libre'], '-', ['get', 'pago'], '-', ['get', 'para'], '-', ['get', 'abri'], '-', ['get', 'otro']], 'icon-allow-overlap': true, 'icon-size': 1 } })
       m.addLayer({
         id: 'icons', type: 'symbol', source: 'places', filter: ['!', ['has', 'point_count']],
         layout: { 'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 8, 0.55, 13, 0.9, 16, 1.1], 'icon-allow-overlap': true, 'symbol-sort-key': ['get', 'prio'] },
@@ -239,5 +259,5 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId])
 
-  return <div ref={el} style={{ position: 'absolute', inset: 0 }} />
+  return <div ref={el} style={{ position: 'absolute', inset: 0, background: '#f3eee3' }} />
 }

@@ -125,7 +125,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
         <button className={btn} style={{ background: '#d1553f', color: '#fff' }} aria-label="SOS 112" onClick={() => setSos(true)}><Siren size={22} /></button>
       </div>
 
-      <div className="absolute left-3 flex flex-col items-start gap-2" style={{ bottom: 'calc(72px + var(--safe-b))' }}>
+      <div className="absolute left-3 flex flex-col items-start gap-2" style={{ bottom: 'calc(112px + var(--safe-b))', maxWidth: 'calc(100% - 96px)' }}>
         {legend && (
           <ul className="grid grid-cols-2 gap-x-4 gap-y-1 rounded-2xl p-3 text-xs font-semibold shadow-xl" style={{ background: 'var(--surface)' }}>
             {LEGEND.map((k) => <li key={k} className="flex items-center gap-2"><i className="inline-block h-3 w-3 rounded-full" style={{ background: KIND_COLOR[k] }} />{KIND_LABEL[k]}</li>)}
@@ -134,7 +134,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
         )}
         {zones && <p className="max-w-[17rem] rounded-2xl p-3 text-xs shadow-xl" style={{ background: 'var(--surface)' }}>Zonas del Parque Nacional donde el PRUG permite vivac. Fuente: Comunidad de Madrid (CC BY 4.0). Solo orienta: confirma las normas vigentes antes de salir.</p>}
         <button onClick={() => setLegend(!legend)} className="tap flex items-center gap-2 rounded-full px-4 text-sm font-bold shadow-lg" style={{ background: 'var(--surface)' }}>
-          <Info size={16} />{sleepN.length} sitios para dormir · {visited} ya visitados
+          <Info size={16} />{sleepN.length} sitios · {visited} visitados
         </button>
       </div>
       <SOS open={sos} onClose={() => setSos(false)} />

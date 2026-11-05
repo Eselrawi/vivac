@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
-import { CloudOff, List, Map as MapIcon, RefreshCw, ThermometerSnowflake } from 'lucide-react'
+import { CloudOff, List, Map as MapIcon, RefreshCw } from 'lucide-react'
 import { Dot, Illustration, ScoreRing } from '../components/ui'
+import { accessFor } from '../lib/access'
 import { evaluate, evaluateLight, quickScore, type Ctx, type Entry } from '../lib/plan'
 import { hhmm } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
@@ -51,7 +52,9 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
   const [lowToo, setLowToo] = useState(false)
   const { discover } = usePrefs()
   const evs = useEvidenceMap()
-  const brief = (id: string) => evs?.[id]?.d.split(/(?<=.)s/)[0] ?? ''
+  const [waited, setWaited] = useState(false)
+  useEffect(() => { const t = setTimeout(() => setWaited(true), 7000); return () => clearTimeout(t) }, [])
+  const brief = (id: string) => evs?.[id]?.d.split(/(?<=\.)\s/)[0] ?? ''
   const [limit, setLimit] = useState(15)
 
   const sleepable = useMemo(
@@ -155,11 +158,38 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
       </div>
 
       {!ctx.wx ? (
-        <div className="mx-4 mt-6 rounded-3xl p-8 text-center" style={{ background: 'var(--surface)' }}>
-          <ThermometerSnowflake className="mx-auto" size={40} />
-          <p className="font-display mt-3 text-xl font-semibold">Mirando el cielo…</p>
-          <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>Estoy pidiendo la previsión de varios modelos para toda la sierra.</p>
-        </div>
+        <section className="px-4">
+          <div className="mt-5 rounded-3xl p-5" style={{ background: 'var(--surface)' }}>
+            {status.loading && !waited && !status.error ? (
+              <p className="flex items-center gap-3 font-semibold"><RefreshCw className="animate-spin" size={20} />Cargando la previsión…</p>
+            ) : (
+              <>
+                <p className="flex items-center gap-2 font-bold"><CloudOff size={20} />No tengo la previsión ahora mismo</p>
+                <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>Puede ser la cobertura o que el servicio esté saturado. Los sitios se ven igualmente, sin nota de la noche.</p>
+                <button onClick={status.refresh} className="tap mt-3 w-full rounded-2xl py-3 font-bold text-white" style={{ background: 'var(--accent)' }}>Reintentar</button>
+              </>
+            )}
+          </div>
+          <h2 className="mt-6 text-xl font-semibold">Sitios para dormir <span className="text-sm font-normal" style={{ color: 'var(--ink-soft)' }}>({sleepable.length})</span></h2>
+          <ul className="mt-3 flex flex-col gap-2.5">
+            {sleepable.slice(0, limit).map((p) => {
+              const a = accessFor(p, ctx.parkings, ctx.drive)[0]
+              return (
+                <li key={p.id}>
+                  <button onClick={() => onOpen(p)} className="tap flex w-full items-center gap-3 rounded-2xl p-3 text-left active:scale-[0.99]" style={{ background: 'var(--surface)' }}>
+                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl"><Illustration kind={p.kind} className="h-full w-full" /></div>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate font-bold">{p.name}{price(p)}</p>
+                      <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>{KIND_LABEL[p.kind]}{p.ele ? ` · ${p.ele} m` : ''}{a ? ` · 🚗 ${fmtDur(a.driveMin)} + 🥾 ${fmtDur(a.walkMin)}` : ''}</p>
+                      {brief(p.id) && <p className="line-clamp-2 text-xs" style={{ color: 'var(--ink-soft)' }}>{brief(p.id)}</p>}
+                    </div>
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+          {sleepable.length > limit && <button onClick={() => setLimit(limit + 20)} className="tap mt-3 w-full rounded-2xl font-semibold" style={{ background: 'var(--surface)' }}>Ver más</button>}
+        </section>
       ) : view === 'mapa' ? (
         <div className="relative mx-4 mt-4 overflow-hidden rounded-3xl" style={{ height: '58vh' }}>
           <Suspense fallback={<div className="grid h-full place-items-center">Cargando mapa…</div>}><MapView places={scored} onSelect={(p) => pick(p.id)} is3D={false} layer="mtn" scoreMode /></Suspense>

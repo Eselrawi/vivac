@@ -48,7 +48,8 @@ export default function Welcome({ onDone, onJoin }: { onDone: () => void; onJoin
   const s = slides[i]
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col overflow-y-auto px-6" style={{ background: 'var(--bg)', paddingTop: 'calc(var(--safe-t) + 24px)', paddingBottom: 'calc(var(--safe-b) + 24px)' }}>
+    <div className="fixed inset-x-0 top-0 z-[100] flex flex-col px-6" style={{ height: '100dvh', background: 'var(--bg)', paddingTop: 'calc(var(--safe-t) + 16px)', paddingBottom: 'calc(var(--safe-b) + 16px)' }}>
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
       <AnimatePresence mode="wait">
         <motion.div key={i} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.25 }} className="mx-auto flex w-full max-w-md flex-1 flex-col items-center text-center">
           {s.Icon ? <div className="mt-6 grid h-24 w-24 place-items-center rounded-3xl text-white" style={{ background: 'var(--accent)' }}><s.Icon size={44} /></div> : <img src={`${import.meta.env.BASE_URL}icon-192.png`} alt="" width={96} height={96} className="mt-6 rounded-3xl shadow-xl" />}
@@ -57,7 +58,8 @@ export default function Welcome({ onDone, onJoin }: { onDone: () => void; onJoin
           <div className="mt-6 w-full">{s.body}</div>
         </motion.div>
       </AnimatePresence>
-      <div className="mx-auto mt-6 w-full max-w-md">
+      </div>
+      <div className="mx-auto mt-3 w-full max-w-md shrink-0">
         <div className="mb-4 flex justify-center gap-2" aria-hidden>{[0, 1, 2].map((n) => <i key={n} className="h-2 rounded-full transition-all" style={{ width: n === i ? 24 : 8, background: n === i ? 'var(--accent)' : 'var(--line)' }} />)}</div>
         <button onClick={next} className="tap w-full rounded-2xl py-4 text-lg font-bold" style={{ background: 'var(--surface)' }}>{last ? 'Empezar' : 'Siguiente'}</button>
         {!last && <button onClick={() => { localStorage.setItem(WELCOME_KEY, '1'); onDone() }} className="tap mt-2 w-full text-sm" style={{ color: 'var(--ink-soft)' }}>Saltar</button>}

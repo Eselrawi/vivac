@@ -110,6 +110,7 @@ export default function App() {
     else apply()
   }, [])
 
+  const sheetOpen = !!(selected || plan || navTarget || rec || addPlace || profile)
   const open = (p: Place) => setSelected(p)
   useEffect(() => {
     const h = (e: Event) => { const p = places.find((x) => x.id === (e as CustomEvent<string>).detail); if (p) setSelected(p) }
@@ -133,8 +134,8 @@ export default function App() {
           </Suspense>
         </div>
       )}
-      {(tab === 'dormir' || tab === 'mapa') && <Fab onPick={(id) => (id === 'refugio' ? setAddPlace(true) : setRec(id === 'ir' ? 'deseo' : 'vivac'))} />}
-      <button aria-label="Perfil" onClick={() => setProfile(true)} className="tap fixed left-3 z-20 grid h-11 w-11 place-items-center rounded-full shadow-lg" style={{ top: 'calc(var(--safe-t) + 12px)', background: acc.session ? 'var(--accent)' : 'var(--surface)', color: acc.session ? '#fff' : 'var(--ink)' }}><User size={22} /></button>
+      {(tab === 'dormir' || tab === 'mapa') && !sheetOpen && <Fab onPick={(id) => (id === 'refugio' ? setAddPlace(true) : setRec(id === 'ir' ? 'deseo' : 'vivac'))} />}
+      {!sheetOpen && <button aria-label="Perfil" onClick={() => setProfile(true)} className="tap fixed left-3 z-20 grid h-11 w-11 place-items-center rounded-full shadow-lg" style={{ top: 'calc(var(--safe-t) + 12px)', background: acc.session ? 'var(--accent)' : 'var(--surface)', color: acc.session ? '#fff' : 'var(--ink)' }}><User size={22} /></button>}
       {tomorrow && !toRate && !welcome && dismissed !== 'trip' && (
         <div role="status" className="fixed inset-x-3 z-20 mx-auto flex max-w-md items-center gap-3 rounded-2xl p-3 shadow-xl" style={{ top: 'calc(var(--safe-t) + 62px)', background: '#1b2c44', color: '#fff' }}>
           <span className="flex-1 text-sm font-semibold">Mañana salís a {tomorrow.name}. ¿Mochila lista?</span>
