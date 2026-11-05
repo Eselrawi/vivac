@@ -12,6 +12,7 @@ import { cellKey } from '../lib/weather'
 import { usePhotos } from '../lib/photos'
 import { CONF_COLOR, CONF_LABEL, useEvidence } from '../lib/evidence'
 import { getSb, GROUP_KEY } from '../lib/sb'
+import { MODE_LABEL } from '../lib/score'
 import { Dot, Illustration, NightChart, ScoreRing, WindRose } from './ui'
 
 const DAY = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb']
@@ -137,7 +138,7 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                 {sleepKind && <div className="no-scrollbar -mx-5 mt-2 flex gap-2 overflow-x-auto px-5">
                   {days.map((d, i) => (
                     <button key={i} onClick={() => onDay(i)} className="tap flex min-w-[4.2rem] flex-col items-center rounded-2xl px-2 py-2 text-xs font-semibold" style={{ background: i === dayIdx ? 'var(--accent)' : 'var(--surface)', color: i === dayIdx ? '#fff' : 'var(--ink)', outline: i === bestDay ? '2px solid #e5b23a' : 'none' }}>
-                      <span>{dayName(d, i)}</span>
+                      <span className="whitespace-nowrap">{dayName(d, i)}</span>
                       <span className="mt-1 flex items-center gap-1"><Dot score={entries[i]?.score.score ?? null} size={10} /><b className="text-sm">{entries[i]?.score.score ?? '–'}</b></span>
                     </button>
                   ))}
@@ -154,6 +155,16 @@ export default function PlaceSheet({ places, place, days, dayIdx, ctx, onDay, on
                     <div className="mt-4 flex items-center gap-4 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
                       <ScoreRing score={e.score.score} size={72} />
                       <p className="font-display text-lg leading-snug">{e.text}</p>
+                    </div>
+                    <div className="mt-3 rounded-3xl p-4" style={{ background: 'var(--surface)' }}>
+                      <p className="mb-2 text-sm font-bold">Cómo sale la nota ({MODE_LABEL[e.score.mode]})</p>
+                      {([['Tiempo', e.score.parts.tiempo], ['Protección', e.score.parts.proteccion], ['Acceso', e.score.parts.acceso], ['Calidad del sitio', e.score.parts.calidad], ...(e.score.mode === 'aventura' ? [['Aventura', e.score.parts.extra]] : e.score.mode === 'estrellas' ? [['Cielo', e.score.parts.extra]] : []), ['Nos gusta', e.score.parts.megusta]] as Array<[string, number]>).map(([l, v]) => (
+                        <div key={l} className="mb-1.5 flex items-center gap-2 text-xs">
+                          <span className="w-28 shrink-0 font-semibold">{l}</span>
+                          <div className="h-2 flex-1 overflow-hidden rounded-full" style={{ background: 'var(--line)' }}><div className="h-2 rounded-full" style={{ width: `${Math.round(v)}%`, background: v >= 70 ? '#3f8a68' : v >= 45 ? '#e5b23a' : '#d1553f' }} /></div>
+                          <span className="w-7 text-right tabular-nums">{Math.round(v)}</span>
+                        </div>
+                      ))}
                     </div>
                     <p className="mt-2 text-xs" style={{ color: 'var(--ink-soft)' }}>
                       Fiabilidad de la previsión: <b>{e.conf.label}</b> · {e.conf.text} · Luna: {e.moon.name} ({Math.round(e.moon.fraction * 100)} %)

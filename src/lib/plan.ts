@@ -26,6 +26,10 @@ export interface Ctx {
   parkings: Place[]
   drive: DriveTable
   prefs: Prefs
+  /** Calidad 0–100 de cada sitio (evidencia de que existe y su estado). */
+  quality?: Record<string, number>
+  /** Fracción de «me gusta» del grupo (0–1) por sitio. */
+  likes?: Record<string, number>
 }
 
 let accKey: unknown[] = []
@@ -74,7 +78,19 @@ function build(place: Place, day: Date, ctx: Ctx, pickedParking: string | undefi
   const leave = best ? leaveBy(night.sunset, best, ctx.prefs) : null
   // Salir antes de las 11:00 para llegar con luz es poco realista: contamos llegada de noche.
   const arriveDark = leave ? leave.getHours() < 11 : false
-  const score = scoreNight(place, stats, { threshold: ctx.prefs.threshold - ctx.prefs.coldMargin, arriveDark })
+  // Nieve o hielo en el aparcamiento (si es un puerto alto): mismo día, a mediodía.
+  let accessSnow = false
+  if (best && (best.parking.ele ?? 0) >= 1400 && ctx.wx) {
+    const c = ctx.wx.cells[cellKey(best.parking.lat, best.parking.lng)]
+    const noon = day.getTime()
+    const hs = c?.hours.filter((h) => Math.abs(h.t - noon) <= 6 * 3600000) ?? []
+    accessSnow = hs.some((h) => h.snowDepth > 0.05 || h.snow > 0.3)
+  }
+  const score = scoreNight(place, stats, {
+    threshold: ctx.prefs.threshold - ctx.prefs.coldMargin, arriveDark, mode: ctx.prefs.nightMode,
+    walkMin: best?.walkMin, driveMin: best?.driveMin, accessSnow,
+    quality: ctx.quality?.[place.id], like: ctx.likes?.[place.id] ?? 0, moon: moonCached(night.sunset).fraction,
+  })
   if (light) return { place, night, stats, score, text: '', conf: { label: 'media', text: '' }, access, leave, cost: null, moon: moonCached(night.sunset) }
   return {
     place, night, stats, score,

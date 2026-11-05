@@ -7,9 +7,11 @@ import { hhmm } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
 import { CONF_COLOR, useEvidenceMap } from '../lib/evidence'
 import { setPrefs, usePrefs } from '../lib/prefs'
+import { MODE_LABEL, type NightMode } from '../lib/score'
 import { SLEEP_KINDS, KIND_LABEL, type Place } from '../lib/types'
 
 const MapView = lazy(() => import('../components/MapView'))
+const ago = (t: number) => { const m = Math.max(1, Math.round((Date.now() - t) / 60000)); return m < 90 ? `hace ${m} min` : `hace ${Math.round(m / 60)} h` }
 const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
 type Fee = 'todos' | 'gratis' | 'pago'
 type Near = 0 | 90 | 120
@@ -50,7 +52,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
   const [noSnow, setNoSnow] = useState(false)
   const [never, setNever] = useState(false)
   const [lowToo, setLowToo] = useState(false)
-  const { discover } = usePrefs()
+  const { discover, nightMode } = usePrefs()
   const evs = useEvidenceMap()
   const [waited, setWaited] = useState(false)
   useEffect(() => { const t = setTimeout(() => setWaited(true), 7000); return () => clearTimeout(t) }, [])
@@ -131,8 +133,19 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
         ))}
       </div>
 
+      {ctx.wx && (
+        <p className="mx-4 mt-3 text-xs" style={{ color: 'var(--ink-soft)' }}>
+          Previsión actualizada {ago(ctx.wx.fetchedAt)}{status.error ? ' · sin conexión: es la última guardada' : ''}.
+        </p>
+      )}
+      <div className="mx-4 mt-3 grid grid-cols-3 gap-1 rounded-2xl p-1" style={{ background: 'var(--surface)' }} role="group" aria-label="Tipo de noche">
+        {(Object.keys(MODE_LABEL) as NightMode[]).map((m) => (
+          <button key={m} aria-pressed={nightMode === m} onClick={() => setPrefs({ nightMode: m })} className="tap rounded-xl text-sm font-bold" style={{ background: nightMode === m ? 'var(--accent)' : 'transparent', color: nightMode === m ? '#fff' : 'var(--ink)' }}>
+            {m === 'comoda' ? '🛖 ' : m === 'aventura' ? '⛰️ ' : '✨ '}{MODE_LABEL[m]}
+          </button>
+        ))}
+      </div>
       {status.error && !ctx.wx && <p className="mx-4 mt-3 rounded-2xl p-3 text-sm" style={{ background: '#e5b23a33' }}>No he podido cargar la previsión. Prueba con cobertura y pulsa el botón de actualizar.</p>}
-      {status.error && ctx.wx && <p className="mx-4 mt-3 text-xs" style={{ color: 'var(--ink-soft)' }}>Sin cobertura: se muestra la última previsión guardada ({new Date(ctx.wx.fetchedAt).toLocaleString('es-ES', { weekday: 'short', hour: '2-digit', minute: '2-digit' })}).</p>}
 
       <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4">
         <Chip on={near === 90} onClick={() => setNear(near === 90 ? 0 : 90)}>Cerca &lt; 1 h 30</Chip>

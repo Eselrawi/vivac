@@ -19,9 +19,9 @@ export interface Hour {
   n: number // modelos con datos
 }
 export interface Cell { key: string; lat: number; lng: number; elev: number; hours: Hour[] }
-export interface WxStore { fetchedAt: number; days: number; cells: Record<string, Cell> }
+export interface WxStore { fetchedAt: number; days: number; cells: Record<string, Cell>; v?: number }
 
-const STEP = 0.2
+const STEP = 0.1
 export const cellKey = (lat: number, lng: number) => `${Math.floor(lat / STEP)}_${Math.floor(lng / STEP)}`
 const MODELS = ['ecmwf_ifs025', 'icon_seamless', 'meteofrance_seamless']
 const VARS = ['temperature_2m', 'wind_speed_10m', 'wind_gusts_10m', 'wind_direction_10m', 'precipitation', 'snowfall', 'weather_code', 'cloud_cover', 'relative_humidity_2m', 'cape', 'snow_depth']
@@ -67,7 +67,13 @@ export function cellsFor(places: Place[]) {
 }
 
 export async function fetchWeather(places: Place[], days = 10, models: string[] = MODELS): Promise<WxStore> {
-  const cs = cellsFor(places)
+  const all = cellsFor(places)
+  const parts: WxStore[] = []
+  for (let i = 0; i < all.length; i += 12) parts.push(await fetchChunk(all.slice(i, i + 12), days, models))
+  return { fetchedAt: Date.now(), days, cells: Object.assign({}, ...parts.map((p) => p.cells)) }
+}
+
+async function fetchChunk(cs: ReturnType<typeof cellsFor>, days: number, models: string[]): Promise<WxStore> {
   const elev = cs.map((c) => Math.round(c.eles.length ? c.eles.sort((a, b) => a - b)[Math.floor(c.eles.length / 2)] : 1500))
   const qs = new URLSearchParams({
     latitude: cs.map((c) => c.lat.toFixed(3)).join(','),
@@ -96,7 +102,26 @@ export async function fetchWeather(places: Place[], days = 10, models: string[] 
   return { fetchedAt: Date.now(), days, cells }
 }
 
-const STALE = 3 * 3600 * 1000
+
+interface StaticCell { lat: number; lng: number; elev: number; t0: number; h: Record<string, (number | null)[]> }
+
+/** Previsión precalculada cada 3 h por GitHub (sin llamar a Open-Meteo desde el móvil). */
+export async function loadStatic(): Promise<WxStore | null> {
+  const r = await fetch(`${import.meta.env.BASE_URL}data/forecast.json`, { cache: 'no-cache' })
+  if (!r.ok) return null
+  const j = (await r.json()) as { generated: string; cells: Record<string, StaticCell> }
+  const cells: Record<string, Cell> = {}
+  for (const [key, c] of Object.entries(j.cells)) {
+    const h = c.h
+    const hours: Hour[] = []
+    for (let i = 0; i < h.temp.length; i++) {
+      if (h.temp[i] == null) continue
+      hours.push({ t: (c.t0 + i * 3600) * 1000, temp: h.temp[i]! / 10, wind: h.wind[i]! / 10, gust: h.gust[i]! / 10, dir: h.dir[i]!, precip: h.precip[i]! / 10, snow: h.snow[i]! / 10, code: h.code[i]!, cloud: h.cloud[i]!, rh: h.rh[i]!, cape: h.cape[i]!, snowDepth: h.sd[i]! / 100, spread: h.spread[i]! / 10, n: h.n[i]! })
+    }
+    cells[key] = { key, lat: c.lat, lng: c.lng, elev: c.elev, hours }
+  }
+  return { fetchedAt: Date.parse(j.generated), days: 10, cells }
+}
 
 export function useWeather(places: Place[]) {
   const [wx, setWx] = useState<WxStore | null>(null)
@@ -111,11 +136,16 @@ export function useWeather(places: Place[]) {
     setLoading(true)
     setError(false)
     try {
-      // Primero un solo modelo (llega antes y pinta la pantalla); después los tres para afinar y medir la fiabilidad.
-      if (!wxRef.current) setWx(await fetchWeather(places, 10, ['ecmwf_ifs025']))
-      const w = await fetchWeather(places)
-      setWx(w)
-      await db.kv.put({ k: 'wx', v: w })
+      // 1) Previsión precalculada en GitHub (rápida, sin bloqueos). 2) Si no está o es muy vieja, directa a Open-Meteo.
+      let w: WxStore | null = null
+      try { w = await loadStatic() } catch { w = null }
+      if (!w || Date.now() - w.fetchedAt > 24 * 3600 * 1000) {
+        try { w = await fetchWeather(places) } catch { /* nos quedamos con lo que haya */ }
+      }
+      if (!w) throw new Error('sin previsión')
+      const v2 = { ...w, v: 2 }
+      setWx(v2)
+      await db.kv.put({ k: 'wx', v: v2 })
     } catch {
       setError(true)
     } finally {
@@ -128,9 +158,11 @@ export function useWeather(places: Place[]) {
     if (!places.length) return
     let live = true
     db.kv.get('wx').then((row) => {
-      const cached = row?.v as WxStore | undefined
-      if (cached && live) setWx(cached)
-      if ((!cached || Date.now() - cached.fetchedAt > STALE) && navigator.onLine) void refresh()
+      const cached = row?.v as (WxStore & { v?: number }) | undefined
+      const ok = cached && cached.v === 2
+      if (ok && live) setWx(cached)
+      if ((!ok || Date.now() - cached.fetchedAt > 30 * 60 * 1000) && navigator.onLine) void refresh()
+      else if (!ok) setError(true)
     })
     const on = () => void refresh()
     window.addEventListener('online', on)

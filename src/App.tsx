@@ -7,6 +7,7 @@ import { WELCOME_KEY } from './lib/platform'
 import RecordSheet from './components/RecordSheet'
 import Dormir from './tabs/Dormir'
 import { useCatalog } from './lib/catalog'
+import { useEvidenceMap } from './lib/evidence'
 import { useAccount } from './lib/auth'
 import { askPersistent, db, recordToPlace, useLive, type TrackRecord, type VivacRecord } from './lib/db'
 import { haversine } from './lib/geo'
@@ -69,7 +70,19 @@ export default function App() {
   const drive = useDrive(prefs, parkings)
   const wxPlaces = useMemo(() => catalog.filter((p) => SLEEP_KINDS.includes(p.kind) || p.kind === 'candidato' || p.kind === 'parking'), [catalog])
   const weather = useWeather(wxPlaces)
-  const ctx: Ctx = useMemo(() => ({ wx: weather.wx, parkings, drive, prefs }), [weather.wx, parkings, drive, prefs])
+  const evidence = useEvidenceMap()
+  const quality = useMemo(() => {
+    const q: Record<string, number> = {}
+    for (const p of places) {
+      const c = evidence?.[p.id]?.c
+      let v = c === 'confirmado' ? 100 : c === 'probable' ? 80 : c === 'sin confirmar' ? 55 : p.source === 'grupo' ? 90 : 70
+      if (p.toponym) v -= 20
+      if (p.unnamed) v -= 10
+      q[p.id] = Math.max(10, v)
+    }
+    return q
+  }, [places, evidence])
+  const ctx: Ctx = useMemo(() => ({ wx: weather.wx, parkings, drive, prefs, quality }), [weather.wx, parkings, drive, prefs, quality])
 
   const vivacRows = useLive<VivacRecord[]>(() => db.vivacs.where('kind').equals('vivac').toArray(), [])
   const toRate = useMemo(() => vivacRows.filter((v) => !v.sleep && Date.now() - v.at > 8 * 3600000 && Date.now() - v.at < 5 * 86400000).sort((x, y) => y.at - x.at)[0], [vivacRows])

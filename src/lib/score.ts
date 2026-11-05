@@ -82,7 +82,11 @@ export function statsFor(cell: Cell | undefined, p: Place, night: Night): NightS
   const hs = H.slice(lo, end)
   if (hs.length < 3) return null
   const dz = (p.ele ?? cell.elev) - cell.elev
-  const adj = (h: Hour) => h.temp - 0.0065 * dz
+  // Relieve: las crestas reciben más viento; en los valles, las noches despejadas y en calma acumulan aire frío (inversión térmica).
+  const tpi = p.tpi ?? 0
+  const windK = 1 + Math.max(-0.2, Math.min(0.45, tpi / 220))
+  const inversion = (h: Hour) => (h.cloud < 35 && h.wind < 12 ? (tpi < -30 ? -Math.min(3.5, (-tpi - 30) / 35) : tpi > 60 ? 0.8 : 0) : 0)
+  const adj = (h: Hour) => h.temp - 0.0065 * dz + inversion(h)
   const temps = hs.map(adj)
   const tmin = Math.min(...temps)
   const dir = Math.round(
@@ -96,13 +100,13 @@ export function statsFor(cell: Cell | undefined, p: Place, night: Night): NightS
       360,
   )
   const sh = shelterFor(p, dir)
-  const windMean = hs.reduce((a, h) => a + h.wind, 0) / hs.length
-  const feels = Math.min(...hs.map((h) => windChill(adj(h), h.wind * sh.wind)))
+  const windMean = (hs.reduce((a, h) => a + h.wind, 0) / hs.length) * windK
+  const feels = Math.min(...hs.map((h) => windChill(adj(h), h.wind * windK * sh.wind)))
   return {
     tmin,
     feels,
     windMean,
-    gustMax: Math.max(...hs.map((h) => h.gust)),
+    gustMax: Math.max(...hs.map((h) => h.gust)) * windK,
     dir,
     precip: hs.reduce((a, h) => a + h.precip, 0),
     snow: hs.reduce((a, h) => a + h.snow, 0),
@@ -114,46 +118,85 @@ export function statsFor(cell: Cell | undefined, p: Place, night: Night): NightS
     spread: Math.max(...hs.map((h) => h.spread)),
     models: Math.min(...hs.map((h) => h.n)),
     hours: hs.length,
-    series: hs.map((h, i) => ({ t: h.t, temp: temps[i], wind: h.wind, gust: h.gust, dir: h.dir, precip: h.precip })),
+    series: hs.map((h, i) => ({ t: h.t, temp: temps[i], wind: h.wind * windK, gust: h.gust * windK, dir: h.dir, precip: h.precip })),
   }
 }
+
+export type NightMode = 'comoda' | 'aventura' | 'estrellas'
+export const MODE_LABEL: Record<NightMode, string> = { comoda: 'Cómoda', aventura: 'Aventura', estrellas: 'Estrellas' }
 
 export interface ScoreCtx {
   /** Temperatura de sensación mínima con la que el grupo duerme bien (se aprende en la mochila). */
   threshold: number
-  /** Salir a esa hora (min desde las 00:00) obliga a llegar de noche. */
+  /** Llegar de noche resta. */
   arriveDark?: boolean
+  mode?: NightMode
+  walkMin?: number
+  driveMin?: number
+  /** Nieve o hielo esperables en el aparcamiento. */
+  accessSnow?: boolean
+  /** Calidad del sitio 0–100 (cuánta evidencia hay de que existe y su estado). */
+  quality?: number
+  /** Fracción de «me gusta» del grupo 0–1. */
+  like?: number
+  /** Fracción iluminada de la luna 0–1 (para la noche de estrellas). */
+  moon?: number
 }
+export interface Parts { tiempo: number; proteccion: number; acceso: number; calidad: number; extra: number; megusta: number }
 export interface Score {
   score: number
   level: 'verde' | 'ambar' | 'rojo'
-  parts: { frio: number; viento: number; lluvia: number; extra: number }
+  parts: Parts
   shelter: Shelter
+  mode: NightMode
 }
 
 const lerp = (v: number, lo: number, hi: number) => Math.max(0, Math.min(1, (v - lo) / (hi - lo)))
+const WEIGHTS: Record<NightMode, Record<'tiempo' | 'proteccion' | 'acceso' | 'calidad' | 'extra', number>> = {
+  comoda: { tiempo: 0.35, proteccion: 0.3, acceso: 0.2, calidad: 0.15, extra: 0 },
+  aventura: { tiempo: 0.2, proteccion: 0.15, acceso: 0.1, calidad: 0.15, extra: 0.4 },
+  estrellas: { tiempo: 0.2, proteccion: 0.2, acceso: 0.1, calidad: 0.1, extra: 0.4 },
+}
 
+/** Nota 0–100 por partes (tiempo, protección, acceso, calidad del sitio) y según el tipo de noche. */
 export function scoreNight(p: Place, s: NightStats, ctx: ScoreCtx): Score {
+  const mode = ctx.mode ?? 'comoda'
   const sh = shelterFor(p, s.dir)
   const frio = 100 * lerp(s.feels, ctx.threshold - 8, ctx.threshold + 8)
-  const gustEff = s.gustMax * sh.wind
-  const viento = 100 * (1 - lerp(gustEff, 15, 65))
-  const wet = s.precip * sh.rain + (s.snow * 2 * sh.rain)
+  const wet = s.precip * sh.rain + s.snow * 2 * sh.rain
   const lluvia = 100 * (1 - lerp(wet, 0, 5))
-  let extra = 100
-  if (s.fogHours > 3 && !sh.covered) extra -= 12
-  if (ctx.arriveDark) extra -= 20
-  if (s.snowDepth > 0.05 && (p.ele ?? 0) > 1500) extra -= 15
-  if (s.rhMax > 95 && s.tmin < 2 && !sh.covered) extra -= 8 // escarcha / rocío
-  extra = Math.max(0, extra)
+  const tiempo = 0.62 * frio + 0.38 * lluvia
 
-  let score = 0.4 * frio + 0.3 * viento + 0.3 * lluvia
-  // Un solo fallo gordo hunde la noche aunque lo demás vaya bien.
-  score = Math.min(score, Math.min(frio, viento, lluvia) + 35)
-  score -= (100 - extra) * 0.3
+  let proteccion = 100 * (1 - lerp(s.gustMax * sh.wind, 15, 65))
+  if (s.fogHours > 3 && !sh.covered) proteccion -= 12
+  if (s.rhMax > 95 && s.tmin < 2 && !sh.covered) proteccion -= 8 // rocío o escarcha
+  proteccion = Math.max(0, proteccion)
+
+  let acceso = 100
+  if (ctx.arriveDark) acceso -= 35
+  const w = ctx.walkMin ?? 0
+  acceso -= w > 180 ? 35 : w > 120 ? 20 : w > 75 ? 8 : 0
+  if ((ctx.driveMin ?? 0) > 150) acceso -= 10
+  if (ctx.accessSnow) acceso -= 20
+  if (s.snowDepth > 0.05 && (p.ele ?? 0) > 1500) acceso -= 15
+  acceso = Math.max(0, acceso)
+
+  const calidad = ctx.quality ?? 100
+
+  // Parte propia de cada tipo de noche. Así no gana siempre el sitio más bajo y resguardado.
+  let extra = 0
+  if (mode === 'aventura') extra = 100 * (0.7 * lerp(p.ele ?? 1200, 1300, 2200) + 0.3 * lerp(p.tpi ?? 0, -20, 80))
+  if (mode === 'estrellas') extra = 100 * (0.45 * (1 - s.cloud / 100) + 0.25 * (1 - (ctx.moon ?? 0.5)) + 0.15 * (1 - lerp(s.rhMax, 60, 100)) + 0.15 * lerp(p.ele ?? 1200, 1000, 2200)) - (s.fogHours > 2 ? 20 : 0)
+  extra = Math.max(0, Math.min(100, extra))
+
+  const W = WEIGHTS[mode]
+  let score = W.tiempo * tiempo + W.proteccion * proteccion + W.acceso * acceso + W.calidad * calidad + W.extra * extra
+  // Un fallo gordo de tiempo o viento hunde la noche aunque lo demás vaya bien.
+  score = Math.min(score, Math.min(tiempo, proteccion) + 35)
   if (s.thunder) score = Math.min(score, sh.covered ? 60 : 25)
+  score += 8 * (ctx.like ?? 0)
   score = Math.round(Math.max(0, Math.min(100, score)))
-  return { score, level: score >= 70 ? 'verde' : score >= 45 ? 'ambar' : 'rojo', parts: { frio, viento, lluvia, extra }, shelter: sh }
+  return { score, level: score >= 70 ? 'verde' : score >= 45 ? 'ambar' : 'rojo', parts: { tiempo, proteccion, acceso, calidad, extra, megusta: 100 * (ctx.like ?? 0) }, shelter: sh, mode }
 }
 
 export const LEVEL_COLOR = { verde: '#3f8a68', ambar: '#e5b23a', rojo: '#d1553f' } as const

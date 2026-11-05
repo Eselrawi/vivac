@@ -31,3 +31,5 @@ scripts/dbg2.mjs
 scripts/plan-test.mjs
 scripts/close-test.mjs
 scripts/b1-shots.mjs
+public/data/forecast.json
+scripts/b2-test.mjs

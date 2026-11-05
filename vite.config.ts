@@ -34,8 +34,9 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         navigateFallback: `${base}index.html`,
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
-        globIgnores: ['**/graph.json'],
+        globIgnores: ['**/graph.json', '**/forecast.json'],
         runtimeCaching: [
+          { urlPattern: /\/data\/forecast\.json$/, handler: 'NetworkFirst', options: { cacheName: 'forecast', networkTimeoutSeconds: 4, cacheableResponse: { statuses: [200] } } },
           { urlPattern: /^https:\/\/protomaps\.github\.io\/basemaps-assets\//, handler: 'CacheFirst', options: { cacheName: 'mapa-fuentes', cacheableResponse: { statuses: [0, 200] } } },
           { urlPattern: /\/data\/graph\.json$/, handler: 'CacheFirst', options: { cacheName: 'rutas', cacheableResponse: { statuses: [200] } } },
           {

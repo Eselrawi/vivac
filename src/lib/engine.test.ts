@@ -153,3 +153,40 @@ describe('mochila', () => {
     expect(learnMargin(-4, 3)).toBe(-4)
   })
 })
+
+describe('tipos de noche y relieve', () => {
+  const low: Place = { ...base, id: 'low', ele: 1250, shelter: 'cerrado', tpi: -60 }
+  const high: Place = { ...base, id: 'high', ele: 2100, shelter: 'cerrado', tpi: 70 }
+  it('en «Aventura» gana el sitio alto; en «Cómoda» no lo penaliza de más', () => {
+    const s = stats({ tmin: 6, feels: 6, windMean: 5, gustMax: 10 })
+    const av = (p: Place) => scoreNight(p, s, { threshold: -2, mode: 'aventura' }).score
+    expect(av(high)).toBeGreaterThan(av(low))
+  })
+  it('en «Estrellas» manda el cielo despejado y sin luna', () => {
+    const clear = stats({ tmin: 6, feels: 6, windMean: 5, gustMax: 10, cloud: 5, rhMax: 55 })
+    const cloudy = stats({ tmin: 6, feels: 6, windMean: 5, gustMax: 10, cloud: 95, rhMax: 90 })
+    const f = (s: NightStats, moon: number) => scoreNight(high, s, { threshold: -2, mode: 'estrellas', moon }).score
+    expect(f(clear, 0.05)).toBeGreaterThan(f(cloudy, 0.05))
+    expect(f(clear, 0.05)).toBeGreaterThan(f(clear, 0.98))
+  })
+  it('la calidad del sitio y el acceso se reflejan por partes', () => {
+    const s = stats({ tmin: 8, feels: 8, windMean: 5, gustMax: 10 })
+    const a = scoreNight(low, s, { threshold: -2, quality: 100, walkMin: 30 })
+    const b = scoreNight(low, s, { threshold: -2, quality: 55, walkMin: 200, accessSnow: true })
+    expect(b.parts.calidad).toBeLessThan(a.parts.calidad)
+    expect(b.parts.acceso).toBeLessThan(a.parts.acceso)
+    expect(b.score).toBeLessThan(a.score)
+  })
+  it('valle en noche despejada y en calma: más frío que en la ladera; la cresta recibe más viento', () => {
+    const night = nightFor(new Date('2026-11-14T12:00:00'), 40.8, -3.95)
+    const hours: Hour[] = []
+    for (let t = night.from.getTime(); t <= night.to.getTime(); t += 3600000)
+      hours.push({ t, temp: 3, wind: 5, gust: 8, dir: 0, precip: 0, snow: 0, code: 0, cloud: 5, rh: 50, cape: 0, snowDepth: 0, spread: 0, n: 3 })
+    const cell: Cell = { key: 'x', lat: 40.8, lng: -3.95, elev: 1500, hours }
+    const val = statsFor(cell, { ...base, ele: 1500, tpi: -110 }, night)!
+    const mid = statsFor(cell, { ...base, ele: 1500, tpi: 0 }, night)!
+    const crest = statsFor(cell, { ...base, ele: 1500, tpi: 150 }, night)!
+    expect(val.tmin).toBeLessThan(mid.tmin - 1.5)
+    expect(crest.windMean).toBeGreaterThan(mid.windMean * 1.3)
+  })
+})
