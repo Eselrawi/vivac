@@ -1,0 +1,58 @@
+{
+  "osm-w927193975": {
+    "web": [
+      { "site": "Carreras de Montaña (Mayayo)", "note": "Artículo de 2025 sobre el refugio, que prepara su centenario en 2027", "url": "https://carrerasdemontana.com/2025/03/04/refugio-zabala-penalara-mayayo/" },
+      { "site": "Hispanopedia", "note": "Lo describe como refugio de montaña no guardado en el circo de Peñalara", "url": "https://es.hispanopedia.com/wiki/Refugio_Zabala" },
+      { "site": "Walkaholic", "note": "Ficha: piedra, con chimenea y unas 5 plazas muy justas; junto a Cotos", "url": "https://www.walkaholic.me/shelter/spain/community-of-madrid/madrid/362-refugio-zabala" }
+    ],
+    "desc": "Refugio de piedra no guardado en el circo de Peñalara, de la Real Sociedad Española de Alpinismo Peñalara (se inauguró en 1927). Casi todo su espacio está cerrado: una visita de 2023 cuenta que dentro apenas cabe nadie y que en el macizo solo se tolera vivac fuera. Confirma el estado actual con la RSEA Peñalara o el Parque Nacional."
+  },
+  "osm-w936572547": {
+    "web": [
+      { "site": "Listado oficial de refugios del Parque Nacional (Anexo V)", "note": "Lo clasifica como libre, 3 plazas, mal estado, con chimenea (consultado a través de buscador; el PDF original ya no está online)", "url": "https://www.comunidad.madrid/sites/default/files/doc/medio-ambiente/cma_consejoma_10_anexo_v_refugios.pdf" },
+      { "site": "Komoot", "note": "Lo describe como pequeño refugio de piedra deteriorado", "url": "https://www.visitmadrid.es/rutas/ruta-najarra-puerto-morcuera" }
+    ],
+    "desc": "Pequeño refugio de piedra libre bajo la cima de La Najarra (2.105 m), en término de Rascafría. Según el listado oficial, 3 plazas y en mal estado."
+  },
+  "osm-w472906070": {
+    "web": [
+      { "site": "Wikiloc", "note": "Waypoint de refugio custodiado", "url": "https://it.wikiloc.com/waypoints/VO5qBf/refugio-giner-de-los-rios" },
+      { "site": "Mountain Forecast", "note": "Refugio de pago en la Comunidad de Madrid", "url": "https://www.mountain-forecast.com/huts-and-lodges/Refugio-Giner-de-Los-Rios" },
+      { "site": "Kiddle", "note": "Primer refugio de montaña creado y propiedad de la RSEA Peñalara", "url": "https://ninos.kiddle.co/Refugio_Giner_de_los_Ríos" }
+    ],
+    "desc": "Refugio guardado de la Real Sociedad Española de Alpinismo Peñalara en La Pedriza, con unas 50 plazas. Se llega a pie desde Canto Cochino en unos 45 minutos. Precio y reservas: consultar con la RSEA Peñalara."
+  },
+  "osm-w190733756": {
+    "web": [
+      { "site": "Walkaholic", "note": "Ficha de Cabeza Líjar: 5 camas, uso libre", "url": "https://www.walkaholic.me/shelter/spain/community-of-madrid/madrid/295-cabeza-lijar" },
+      { "site": "Carreras de Montaña (Mayayo)", "note": "Ruta que cita el refugio libre en el interior de la construcción circular de la cima", "url": "https://carrerasdemontana.com/2025/08/08/cabeza-lijar-y-cueva-valiente-mayayo/" }
+    ],
+    "desc": "Refugio libre dentro de un antiguo búnker de la guerra civil, reconvertido en mirador, en la cima de Cabeza Líjar. Unas 5 plazas."
+  },
+  "osm-w791858644": {
+    "web": [
+      { "site": "Walkaholic", "note": "Ficha del refugio del Cerro de la Camorca: 2 camas, uso libre", "url": "https://www.walkaholic.me/shelter/spain/castile-and-leon/segovia/214-refugio-del-cerro-de-la-camorca" }
+    ],
+    "desc": "Pequeño refugio libre en lo alto del Cerro de la Camorca, en el valle de Valsaín, para unas 2 personas."
+  },
+  "osm-w71303945": {
+    "web": [
+      { "site": "Wikiloc", "note": "Waypoint del refugio", "url": "https://www.wikiloc.com/waypoints/T0HIbY/refugio-pingarron" },
+      { "site": "Komoot", "note": "Lo describe como refugio con estufa de leña y unas 25 plazas, cerca de Rascafría", "url": "https://blog.komoot.de/smarttour/e1231283620/pingarron-camino-las-vueltas-loop-trail" }
+    ],
+    "desc": "Refugio de montaña cerca de Rascafría. Las fuentes no coinciden: unas lo dan como guardado, con estufa y unas 25 plazas, y otra cita que estaba cerrado por vandalismo. Confirma su estado antes de ir."
+  },
+  "osm-w71902242": {
+    "web": [
+      { "site": "Walkaholic", "note": "Ficha del refugio de Cueva Valiente: 5 camas, uso libre", "url": "https://www.walkaholic.me/shelter/spain/castile-and-leon/avila/292-refugio-de-cueva-valiente" },
+      { "site": "Wikiloc", "note": "Waypoint del refugio", "url": "https://it.wikiloc.com/waypoints/m6RQlN/refugio-cueva-valiente" }
+    ],
+    "desc": "Pequeño refugio de piedra libre en la cima de Cueva Valiente. Se sube desde San Rafael (Segovia) o Peguerinos (Ávila). 5 plazas según Walkaholic; un listado de la Comunidad de Madrid habla de 10."
+  },
+  "osm-w90806870": {
+    "web": [
+      { "site": "Mountain Forecast", "note": "Ficha del refugio: para 8 personas, uso libre", "url": "https://www.mountain-forecast.com/huts-and-lodges/Refugio-la-Naranjera" }
+    ],
+    "desc": "Pequeño refugio libre en un pinar de la vertiente norte (Castilla y León), con vistas a la cruz del Valle de los Caídos. Unas 8 plazas según Mountain Forecast."
+  }
+}

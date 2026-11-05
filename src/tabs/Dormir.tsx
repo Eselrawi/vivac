@@ -4,6 +4,7 @@ import { Dot, Illustration, ScoreRing } from '../components/ui'
 import { evaluate, evaluateLight, quickScore, type Ctx, type Entry } from '../lib/plan'
 import { hhmm } from '../lib/access'
 import { compass, fmtDur } from '../lib/geo'
+import { CONF_COLOR, useEvidenceMap } from '../lib/evidence'
 import { setPrefs, usePrefs } from '../lib/prefs'
 import { SLEEP_KINDS, KIND_LABEL, type Place } from '../lib/types'
 
@@ -49,6 +50,8 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
   const [never, setNever] = useState(false)
   const [lowToo, setLowToo] = useState(false)
   const { discover } = usePrefs()
+  const evs = useEvidenceMap()
+  const brief = (id: string) => evs?.[id]?.d.split(/(?<=.)s/)[0] ?? ''
   const [limit, setLimit] = useState(15)
 
   const sleepable = useMemo(
@@ -183,6 +186,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
                 </div>
                 <div className="p-4">
                   <p className="font-display text-lg leading-snug">{top.text}</p>
+                  {brief(top.place.id) && <p className="mt-2 text-sm" style={{ color: 'var(--ink-soft)' }}>{brief(top.place.id)}</p>}
                   {top.access[0] && (
                     <p className="mt-2 text-sm font-semibold">
                       🚗 {fmtDur(top.access[0].driveMin)} + 🥾 {fmtDur(top.access[0].walkMin)} desde casa
@@ -217,6 +221,7 @@ export default function Dormir({ places, days, dayIdx, onDay, ctx, status, onOpe
                       <p className="truncate font-bold">{e.place.name}{price(e.place)}</p>
                       <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>{KIND_LABEL[e.place.kind]}{e.place.ele ? ` · ${e.place.ele} m` : ''}{e.access[0] ? ` · 🚗 ${fmtDur(e.access[0].driveMin)} + 🥾 ${fmtDur(e.access[0].walkMin)}` : ''}</p>
                       <p className="truncate text-xs font-semibold">{keyData(e)}</p>
+                      {brief(e.place.id) && <p className="line-clamp-2 text-xs" style={{ color: 'var(--ink-soft)' }}>{evs?.[e.place.id] && <i className="mr-1 inline-block h-2 w-2 rounded-full align-middle" style={{ background: CONF_COLOR[evs[e.place.id].c] }} />}{brief(e.place.id)}</p>}
                     </div>
                     <ScoreRing score={e.score.score} size={46} />
                   </button>
