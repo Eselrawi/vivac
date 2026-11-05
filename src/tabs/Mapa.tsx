@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Drawer } from 'vaul'
 import { Copy, Download, Info, Layers, ShieldCheck, Mountain, Phone, Search, Siren, X } from 'lucide-react'
 import DownloadSheet from '../components/DownloadSheet'
+import WhatsHere, { type Pin } from '../components/WhatsHere'
+import type { Ctx } from '../lib/plan'
 import MapView, { type BaseLayer } from '../components/MapView'
 import type { Bounds } from '../lib/offline'
 import { usePrefs } from '../lib/prefs'
@@ -58,9 +60,9 @@ function SOS({ open, onClose }: { open: boolean; onClose: () => void }) {
   )
 }
 
-interface MapaProps { places: Place[]; selectedId: string | null; onSelect: (p: Place) => void; route: [number, number, number][] | null; cursor: [number, number] | null; tracks: [number, number, number?][][] }
+interface MapaProps { places: Place[]; selectedId: string | null; onSelect: (p: Place) => void; route: [number, number, number][] | null; cursor: [number, number] | null; tracks: [number, number, number?][][]; ctx: Ctx; onGo: (p: Place) => void }
 
-export default function Mapa({ places, selectedId, onSelect, route, cursor, tracks }: MapaProps) {
+export default function Mapa({ places, selectedId, onSelect, route, cursor, tracks, ctx, onGo }: MapaProps) {
   const [is3D, setIs3D] = useState(true)
   const [layer, setLayer] = useState<BaseLayer>('vec')
   const [mode, setMode] = useState<Mode>("dormir")
@@ -68,6 +70,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
   const [sos, setSos] = useState(false)
   const [dl, setDl] = useState(false)
   const [zones, setZones] = useState(false)
+  const [pin, setPin] = useState<Pin | null>(null)
   const [view, setView] = useState<Bounds | null>(null)
   const [q, setQ] = useState('')
   const [focusId, setFocusId] = useState<string | null>(null)
@@ -87,7 +90,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
   const btn = 'tap grid h-12 w-12 place-items-center rounded-full shadow-lg'
   return (
     <div className="absolute inset-0">
-      <MapView places={shown} selectedId={focusId ?? selectedId} onSelect={onSelect} is3D={is3D} layer={layer} route={route} cursor={cursor} tracks={tracks} zones={zones} />
+      <MapView places={shown} selectedId={focusId ?? selectedId} onSelect={onSelect} is3D={is3D} layer={layer} route={route} cursor={cursor} tracks={tracks} zones={zones} onLongPress={(lng, lat, ele) => setPin({ lng, lat, ele })} />
 
       <div className="absolute inset-x-0 z-20 flex flex-col items-center gap-2 px-16" style={{ top: 'calc(var(--safe-t) + 10px)' }}>
         <div className="flex w-full max-w-md items-center gap-2 rounded-full px-4 shadow-lg" style={{ background: 'var(--surface)', minHeight: 48 }}>
@@ -133,6 +136,7 @@ export default function Mapa({ places, selectedId, onSelect, route, cursor, trac
         </button>
       </div>
       <SOS open={sos} onClose={() => setSos(false)} />
+      <WhatsHere pin={pin} places={places} ctx={ctx} onClose={() => setPin(null)} onGo={onGo} />
       <DownloadSheet open={dl} onClose={() => setDl(false)} view={view} />
     </div>
   )

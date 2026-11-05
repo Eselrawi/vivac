@@ -94,9 +94,12 @@ interface Props {
   cursor?: [number, number] | null
   tracks?: [number, number, number?][][]
   zones?: boolean
+  onLongPress?: (lng: number, lat: number, ele: number | null) => void
 }
 
-export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false }: Props) {
+export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false, onLongPress }: Props) {
+  const longRef = useRef(onLongPress)
+  longRef.current = onLongPress
   const scoreRef = useRef(scoreMode)
   scoreRef.current = scoreMode
   const el = useRef<HTMLDivElement>(null)
@@ -130,6 +133,13 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
       g.fillText(String(sc), 32, 34)
       m.addImage(e.id, g.getImageData(0, 0, 64, 64), { pixelRatio: 2 })
     })
+    // Mantener pulsado (o botón derecho en el ordenador) = «¿qué hay aquí?»
+    let timer: ReturnType<typeof setTimeout> | null = null
+    const fire = (ll: maplibregl.LngLat) => longRef.current?.(ll.lng, ll.lat, m.queryTerrainElevation(ll) ?? null)
+    const clear = () => { if (timer) { clearTimeout(timer); timer = null } }
+    m.on('touchstart', (e) => { clear(); if (e.originalEvent.touches.length === 1) timer = setTimeout(() => fire(e.lngLat), 650) })
+    m.on('touchmove', clear); m.on('touchend', clear); m.on('touchcancel', clear); m.on('dragstart', clear); m.on('zoomstart', clear)
+    m.on('contextmenu', (e) => fire(e.lngLat))
     m.on('load', () => {
       addIcons(m)
       const empty = { type: 'FeatureCollection', features: [] } as FeatureCollection

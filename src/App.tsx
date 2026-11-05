@@ -129,7 +129,7 @@ export default function App() {
       {mapSeen && (
         <div className="absolute inset-0" style={{ visibility: tab === 'mapa' ? 'visible' : 'hidden' }}>
           <Suspense fallback={<div className="grid h-full place-items-center">Cargando mapa…</div>}>
-            <Mapa places={places} selectedId={selected?.id ?? navTarget?.id ?? null} onSelect={setSelected} route={routeLine} cursor={cursor} tracks={tracks} />
+            <Mapa places={places} selectedId={selected?.id ?? navTarget?.id ?? null} onSelect={setSelected} route={routeLine} cursor={cursor} tracks={tracks} ctx={ctx} onGo={route} />
           </Suspense>
         </div>
       )}

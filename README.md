@@ -9,7 +9,7 @@ Se abre desde el móvil, se instala como cualquier app y funciona sin cobertura.
 ## Qué hace
 
 - **Dormir:** eliges un día (hasta 10 días vista) y te ordena todos los sitios (refugios, abrigos, parapetos y vuestros vivacs) según lo buena que va a ser esa noche. Cruza la previsión de tres modelos meteorológicos con la protección de cada sitio. Para cada uno te dice el tiempo que tardas desde casa (coche más andando) y a qué hora salir para llegar con luz.
-- **Mapa:** mapa en 3D con los sitios, buscador, capas del IGN (topográfico y satélite) y botón de emergencia con tus coordenadas para llamar al 112.
+- **Mapa:** mapa en 3D con los sitios, buscador, un mapa vectorial propio de la sierra y las capas del IGN (topográfico y satélite). Mantén pulsado en cualquier punto para ver su altitud y el tiempo de esta noche ahí. Tiene capa opcional con las zonas de vivac autorizadas del Parque Nacional, rutas a pie sin conexión y botón de emergencia con tus coordenadas para llamar al 112.
 - **Diario:** una tarjeta por cada noche, con foto, tiempo real de esa noche, cómo se durmió, estadísticas y un mapa de calor.
 - **Mochila:** apuntas tu material una vez y la app te dice qué llevar según la previsión, cuánto pesa y quién lleva lo común. Aprende si sueles pasar frío.
 
@@ -53,6 +53,10 @@ Sin cobertura siguen funcionando: el mapa descargado, las fichas, las rutas a pi
 - **No llega el correo de acceso:** mira en spam y comprueba que no te has equivocado al escribirlo.
 - **Una fuente o un refugio no está donde dice:** abre su ficha. Puedes confirmar que existe, y con «+ → Refugio / fuente» añades los que falten.
 
+## Sitios sugeridos por el relieve
+
+En Dormir, el filtro «✨ Sugeridos por el relieve» añade sitios que no están catalogados: terreno casi plano, cerca de una fuente y con montaña que corta el viento. Los calcula la app con el modelo de elevación. Son solo una pista: hay que verlos sobre el terreno antes de fiarse.
+
 ## Lo que conviene saber
 
 - Los refugios, chozos, abrigos y parapetos vienen de OpenStreetMap y están marcados como **sin verificar** hasta que alguien del grupo los confirme. Cuando vayáis, confirmad en la ficha.
@@ -73,6 +77,8 @@ npm run build      # versión final
 Cada cambio en `main` se publica solo en GitHub Pages (`.github/workflows/deploy.yml`).
 
 - `scripts/fetch-osm.mjs` → `build-places.mjs` → `enrich.mjs`: reconstruyen el catálogo de sitios, completan altitudes con el modelo de elevación y calculan los tiempos en coche desde Villanueva de la Cañada (OSRM). Un workflow mensual lo hace solo.
+- `scripts/discover.mjs`: calcula los sitios sugeridos por el relieve.
+- `public/data/sierra.pmtiles`: extracto de Protomaps/OpenStreetMap de la sierra (hasta zoom 14). Se regenera con la herramienta `pmtiles extract` y la última compilación de https://maps.protomaps.com/builds/.
 - `scripts/build-graph.mjs`: genera el grafo de caminos para las rutas sin conexión. Es pesado; se lanza a mano cuando haga falta.
 - `data/review/lugares.csv` y `lugares.geojson`: el catálogo para revisarlo en una hoja de cálculo o en QGIS.
 - `supabase/migrations`: base de datos (Postgres + PostGIS, con reglas de acceso por grupo).
@@ -80,4 +86,4 @@ Cada cambio en `main` se publica solo en GitHub Pages (`.github/workflows/deploy
 
 ## Datos y licencias
 
-Mapas © IGN España · relieve: Terrain Tiles (AWS) · sitios, fuentes y cumbres © colaboradores de OpenStreetMap (ODbL) · previsión: Open-Meteo · tiempos en coche: OSRM · fotos: Wikimedia Commons, con su autor y licencia en cada una.
+Mapas © IGN España · mapa vectorial © OpenStreetMap y Protomaps · zonas de vivac: Comunidad de Madrid (CC BY 4.0) · relieve: Terrain Tiles (AWS) · sitios, fuentes y cumbres © colaboradores de OpenStreetMap (ODbL) · previsión: Open-Meteo · tiempos en coche: OSRM · fotos: Wikimedia Commons, con su autor y licencia en cada una.
