@@ -7,12 +7,12 @@ let running = false
 export async function pullGroup(): Promise<number> {
   if (!navigator.onLine) return 0
   const supabase = await getSb()
-  const { data } = await supabase.from('vivacs').select('id,name,lat,lng,ele,slept_at,sleep_rating,notes,photo_path,created_by,weather')
+  const { data } = await supabase.from('vivacs').select('id,name,lat,lng,ele,slept_at,sleep_rating,notes,photo_path,created_by,weather,place_ref')
   let n = 0
   for (const v of data ?? []) {
     const have = await db.vivacs.get(v.id)
     if (have) { if (have.synced === 1 && !have.wx && v.weather) await db.vivacs.update(v.id, { wx: v.weather }); continue }
-    await db.vivacs.add({ id: v.id, name: v.name, kind: 'vivac', lat: v.lat, lng: v.lng, ele: v.ele, at: new Date(v.slept_at).getTime(), sleep: v.sleep_rating, notes: v.notes ?? undefined, photoPath: v.photo_path, by: v.created_by, wx: v.weather, synced: 1 })
+    await db.vivacs.add({ id: v.id, name: v.name, kind: 'vivac', lat: v.lat, lng: v.lng, ele: v.ele, at: new Date(v.slept_at).getTime(), sleep: v.sleep_rating, notes: v.notes ?? undefined, photoPath: v.photo_path, placeId: v.place_ref ?? undefined, by: v.created_by, wx: v.weather, synced: 1 })
     n++
   }
   const { data: pl } = await supabase.from('places').select('id,name,kind,lat,lng,ele,shelter,props,created_by').not('group_id', 'is', null)
@@ -59,6 +59,7 @@ export async function syncNow(groupId: string): Promise<number> {
         notes: r.notes ?? null,
         photo_path: photo_path ?? r.photoPath ?? null,
         weather: r.wx ?? null,
+        place_ref: r.placeId ?? null,
         created_by: uid,
       })
       if (!error) {

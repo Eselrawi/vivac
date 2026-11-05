@@ -22,6 +22,8 @@ export interface VivacRecord {
   sleep?: 1 | 2 | 3 | null // 1 frío, 2 bien, 3 calor
   notes?: string
   photoPath?: string | null
+  /** Si es una noche en un sitio de la app, su id. */
+  placeId?: string
   by?: string
   wx?: NightWx | null
   synced: 0 | 1
@@ -43,8 +45,8 @@ class VivacDB extends Dexie {
 
 export const db = new VivacDB()
 
-export async function saveVivac(r: Omit<VivacRecord, 'id' | 'at' | 'synced'>) {
-  const rec: VivacRecord = { ...r, id: crypto.randomUUID(), at: Date.now(), synced: 0 }
+export async function saveVivac(r: Omit<VivacRecord, 'id' | 'at' | 'synced'>, at?: number) {
+  const rec: VivacRecord = { ...r, id: crypto.randomUUID(), at: at ?? Date.now(), synced: 0 }
   await db.vivacs.add(rec)
   return rec
 }

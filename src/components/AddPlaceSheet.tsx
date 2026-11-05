@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import CloseBtn from './CloseBtn'
 import { Drawer } from 'vaul'
-import { Camera, Check, Compass, MapPin } from 'lucide-react'
+import { Camera, Check, Compass } from 'lucide-react'
 import { compressPhoto, saveVivac } from '../lib/db'
 import { WindRose } from './ui'
+import LocationField, { type Pos } from './LocationField'
+
+const PickOnMap = lazy(() => import('./PickOnMap'))
 
 const TYPES = [
   { id: 'refugio_libre', label: 'Refugio o chozo', shelter: 'cerrado', e: '🛖' },
@@ -32,7 +35,13 @@ function useCompass(on: boolean) {
 export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [type, setType] = useState<(typeof TYPES)[number]['id']>('parapeto')
   const [name, setName] = useState('')
-  const [pos, setPos] = useState<{ lat: number; lng: number; ele: number | null } | null>(null)
+  const [pos, setPos] = useState<Pos | null>(null)
+  const [gpsErr, setGpsErr] = useState(false)
+  const [picking, setPicking] = useState(false)
+  const askGps = () => {
+    setGpsErr(false)
+    navigator.geolocation?.getCurrentPosition((p) => setPos({ lat: p.coords.latitude, lng: p.coords.longitude, ele: p.coords.altitude != null ? Math.round(p.coords.altitude) : null, src: 'gps' }), () => setGpsErr(true), { enableHighAccuracy: true, timeout: 15000 })
+  }
   const [photo, setPhoto] = useState<Blob | null>(null)
   const [cap, setCap] = useState<number | null>(null)
   const [open_, setOpen_] = useState<number[]>([])
@@ -42,8 +51,8 @@ export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClos
 
   useEffect(() => {
     if (!open) return
-    setName(''); setPhoto(null); setCap(null); setOpen_([]); setDone(false); setPos(null); setUseC(false)
-    navigator.geolocation?.getCurrentPosition((p) => setPos({ lat: p.coords.latitude, lng: p.coords.longitude, ele: p.coords.altitude }), () => {}, { enableHighAccuracy: true, timeout: 15000 })
+    setName(''); setPhoto(null); setCap(null); setOpen_([]); setDone(false); setPos(null); setUseC(false); setPicking(false)
+    askGps()
   }, [open])
 
   const t = TYPES.find((x) => x.id === type)!
@@ -60,7 +69,8 @@ export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClos
   }
 
   return (
-    <Drawer.Root open={open} onOpenChange={(o) => !o && onClose()}>
+    <>
+    <Drawer.Root open={open && !picking} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[92dvh] rounded-t-3xl outline-none flex flex-col" style={{ background: 'var(--bg)' }}>
@@ -76,7 +86,7 @@ export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClos
               <div className="grid grid-cols-2 gap-2">
                 {TYPES.map((x) => <button key={x.id} onClick={() => setType(x.id)} aria-pressed={type === x.id} className="tap rounded-2xl py-3 text-sm font-semibold" style={{ background: type === x.id ? 'var(--accent)' : 'var(--surface)', color: type === x.id ? '#fff' : 'var(--ink)' }}><span className="block text-2xl">{x.e}</span>{x.label}</button>)}
               </div>
-              <p className="flex items-center gap-2 text-sm" style={{ color: 'var(--ink-soft)' }}><MapPin size={18} />{pos ? `${pos.lat.toFixed(5)}, ${pos.lng.toFixed(5)}${pos.ele ? ` · ${Math.round(pos.ele)} m` : ''}` : 'Buscando GPS…'}</p>
+              <LocationField pos={pos} setPos={setPos} gpsErr={gpsErr} onGps={askGps} onRequestMap={() => setPicking(true)} />
               <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Nombre (p. ej. Parapeto del Peñotillo)" className="tap w-full rounded-2xl border px-4 text-lg" style={{ background: 'var(--surface)', borderColor: 'var(--line)', userSelect: 'text' }} />
               <label className="tap flex cursor-pointer items-center justify-center gap-2 rounded-2xl py-3 font-semibold" style={{ background: 'var(--surface)' }}>
                 <Camera size={22} />{photo ? 'Foto lista ✓' : 'Hacer foto'}
@@ -108,5 +118,7 @@ export default function AddPlaceSheet({ open, onClose }: { open: boolean; onClos
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
+    {picking && <Suspense fallback={null}><PickOnMap start={pos} onCancel={() => setPicking(false)} onPick={(p) => { setPicking(false); setPos({ lat: p.lat, lng: p.lng, ele: p.ele, src: 'mapa' }) }} /></Suspense>}
+    </>
   )
 }

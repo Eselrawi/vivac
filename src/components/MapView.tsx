@@ -95,9 +95,15 @@ interface Props {
   tracks?: [number, number, number?][][]
   zones?: boolean
   onLongPress?: (lng: number, lat: number, ele: number | null) => void
+  initialCenter?: [number, number]
+  initialZoom?: number
+  onMoveEnd?: (lng: number, lat: number, zoom: number) => void
+  controls?: boolean
 }
 
-export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false, onLongPress }: Props) {
+export default function MapView({ places, selectedId, onSelect, is3D, layer, scoreMode = false, route = null, cursor = null, tracks = [], zones = false, onLongPress, initialCenter, initialZoom, onMoveEnd, controls = true }: Props) {
+  const moveRef = useRef(onMoveEnd)
+  moveRef.current = onMoveEnd
   const longRef = useRef(onLongPress)
   longRef.current = onLongPress
   const scoreRef = useRef(scoreMode)
@@ -113,9 +119,10 @@ export default function MapView({ places, selectedId, onSelect, is3D, layer, sco
 
   useEffect(() => {
     if (!el.current) return
-    const m = new maplibregl.Map({ container: el.current, style, center: [-3.97, 40.8], zoom: 10.2, pitch: 55, bearing: -15, maxPitch: 80 })
+    const m = new maplibregl.Map({ container: el.current, style, center: initialCenter ?? [-3.97, 40.8], zoom: initialZoom ?? 10.2, pitch: initialCenter ? 0 : 55, bearing: initialCenter ? 0 : -15, maxPitch: 80 })
+    m.on('moveend', () => { const c = m.getCenter(); moveRef.current?.(c.lng, c.lat, m.getZoom()) })
     m.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left')
-    m.addControl(new maplibregl.GeolocateControl({ trackUserLocation: true, positionOptions: { enableHighAccuracy: true } }), 'bottom-right')
+    if (controls) m.addControl(new maplibregl.GeolocateControl({ trackUserLocation: true, positionOptions: { enableHighAccuracy: true } }), 'bottom-right')
     map.current = m
     ;(window as unknown as { __map?: unknown }).__map = m
 

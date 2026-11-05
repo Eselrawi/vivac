@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import CloseBtn from '../components/CloseBtn'
 import { Drawer } from 'vaul'
-import { Award, Download, Share2, Trash2 } from 'lucide-react'
+import { lazy, Suspense } from 'react'
+import { Award, Download, MapPin, Share2, Trash2 } from 'lucide-react'
 import { db, useLive, type VivacRecord } from '../lib/db'
 import { learnMargin } from '../lib/pack'
 import { getPrefs, setPrefs } from '../lib/prefs'
@@ -58,7 +59,10 @@ function Heat({ pts, ctx }: { pts: VivacRecord[]; ctx: Place[] }) {
   return <canvas ref={c} className="w-full rounded-2xl" role="img" aria-label="Mapa de calor de vuestras noches en la sierra" />
 }
 
+const PickOnMap = lazy(() => import('../components/PickOnMap'))
+
 function DetailInner({ r, onClose }: { r: VivacRecord; onClose: () => void }) {
+  const [fixing, setFixing] = useState(false)
   const [notes, setNotes] = useState('')
   const [sure, setSure] = useState(false)
   useEffect(() => { setNotes(r.notes ?? ''); setSure(false) }, [r.id, r.notes])
@@ -82,7 +86,8 @@ function DetailInner({ r, onClose }: { r: VivacRecord; onClose: () => void }) {
     onClose()
   }
   return (
-    <Drawer.Root open onOpenChange={(o) => !o && onClose()}>
+    <>
+    <Drawer.Root open={!fixing} onOpenChange={(o) => !o && onClose()}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-[60] bg-black/40" />
         <Drawer.Content className="fixed inset-x-0 bottom-0 mx-auto max-w-xl z-[70] max-h-[94dvh] flex flex-col rounded-t-3xl outline-none" style={{ background: 'var(--bg)' }}>
@@ -102,7 +107,8 @@ function DetailInner({ r, onClose }: { r: VivacRecord; onClose: () => void }) {
             </div>
             <p className="mb-1 mt-4 font-semibold">Notas</p>
             <textarea value={notes} onChange={(e) => setNotes(e.target.value)} onBlur={saveNotes} rows={3} placeholder="Quién vino, qué cenasteis, qué anécdota…" className="w-full rounded-2xl border p-3" style={{ background: 'var(--surface)', borderColor: 'var(--line)', userSelect: 'text' }} />
-            <div className="mt-4 grid grid-cols-3 gap-2 text-sm font-semibold">
+            <button onClick={() => setFixing(true)} className="tap mt-4 flex w-full items-center justify-center gap-2 rounded-2xl py-3 text-sm font-semibold" style={{ background: 'var(--surface)' }}><MapPin size={18} />Corregir la ubicación en el mapa</button>
+            <div className="mt-3 grid grid-cols-3 gap-2 text-sm font-semibold">
               <button onClick={share} className="tap flex flex-col items-center gap-1 rounded-2xl py-3" style={{ background: 'var(--surface)' }}><Share2 size={20} />Compartir</button>
               <button onClick={() => download(`${r.name}.gpx`, 'application/gpx+xml', toGpx([r]))} className="tap flex flex-col items-center gap-1 rounded-2xl py-3" style={{ background: 'var(--surface)' }}><Download size={20} />GPX</button>
               <button onClick={del} className="tap flex flex-col items-center gap-1 rounded-2xl py-3" style={{ background: sure ? '#d1553f' : 'var(--surface)', color: sure ? '#fff' : 'var(--ink)' }}><Trash2 size={20} />{sure ? '¿Seguro?' : 'Borrar'}</button>
@@ -112,6 +118,8 @@ function DetailInner({ r, onClose }: { r: VivacRecord; onClose: () => void }) {
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
+    {fixing && <Suspense fallback={null}><PickOnMap start={{ lat: r.lat, lng: r.lng }} onCancel={() => setFixing(false)} onPick={async (p) => { await db.vivacs.update(r.id, { lat: p.lat, lng: p.lng, ele: p.ele ?? r.ele, synced: 0 }); setFixing(false) }} /></Suspense>}
+    </>
   )
 }
 
